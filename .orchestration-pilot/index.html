@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piloto de contexto compartilhado</title>
+<style>
+  :root { color-scheme: light; font-family: system-ui, sans-serif; }
+  body { margin: 0; padding: clamp(1.5rem, 5vw, 4rem); background: #fff; color: #161616; }
+  main { max-width: 68ch; }
+  h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); line-height: 1.15; text-wrap: balance; }
+  p { font-size: 1rem; line-height: 1.6; }
+  button { font: inherit; padding: .875rem 1.25rem; background: #161616; color: #fff; border: 1px solid #161616; border-radius: .25rem; max-width: 100%; cursor: pointer; }
+  button:hover { background: #333; }
+  button:active { background: #555; }
+  button:focus-visible { outline: 3px solid #161616; outline-offset: 4px; }
+  ::selection { background: #161616; color: #fff; }
+</style>
+<main>
+<h1>Contexto compartilhado — piloto comparativo</h1>
+<p>Esta página de demonstração permite conferir uma ação local do piloto de integração.</p>
+<button type="button">Conferir contexto compartilhado</button>
+<p role="status" aria-live="polite"></p>
+</main>
+<script>
+  document.querySelector('button').addEventListener('click', () => {
+    document.querySelector('[role="status"]').textContent = 'Contexto de demonstração conferido.';
+  });
+</script>
+</html>
