@@ -10,15 +10,25 @@ Alguns executores bloqueiam sockets com `EPERM`, independentemente do Playwright
 
 ## Impeccable
 
+**Gatilho vigente — correção de Luca em 17/10:** a skill atende à concepção, elaboração e rascunho de conceitos visuais de projetos reais que exigem trabalho por etapas e metodologia de design. Não é requisito de toda edição de interface: troca simples de métrica/rótulo, manutenção funcional, dashboard operacional e fixture/piloto técnico seguem implementação e verificação pertinentes, sem launcher, playbook ou detector por reflexo. A presença de CSS, texto ou navegador não autoriza ativação. O uso no piloto AUG-5 e a tentativa na troca dólares → tokens foram inadequados; preservar seus registros como fatos históricos, sem transformá-los em precedentes obrigatórios.
+
 - Seguir os fluxos completos dos comandos/playbooks aplicáveis, incluindo os prescritos pelo plano e pelo estado metodológico no backlog, e informar qual fluxo está sendo aplicado.
 - Registrar etapas exigidas, evidências, artefatos e eventuais omissões ou pendências. Distinguir leitura do playbook, uso de suas orientações, execução de ferramenta CLI e conclusão do fluxo completo; nunca declarar um comando concluído apenas porque seu playbook foi lido.
 - Preservar as decisões confirmadas e os resultados existentes ao completar etapas pendentes. Não fabricar execuções anteriores nem repetir verificações sem necessidade. Consultar o histórico para evidências, o backlog para a fila e HERO para estado metodológico, avaliações e limites dos blocos.
 
 Na retomada de trabalho visual, localizar a skill disponível no executor, ler seu SKILL.md e carregar o playbook de cada fluxo antes de executá-lo. Executar o launcher `impeccable context --target <alvo>` uma vez na sessão, com cwd neste projeto; respeitar o fallback da skill se falhar. O resumo existente permanece em `docs/PRODUCT.md`, com marcador `impeccable:product-schema 1`. Caminhos absolutos registrados em auditorias identificam o ambiente original, não uma instalação garantida em outro agente.
 
-Preservar o mundo visual existente. Ausência de DESIGN.md não autoriza recomeçar a identidade ou reiniciar a entrevista por reflexo. Para planejamento visual usar `shape`; antes de editar UI, ler `craft-floor` conforme o fluxo da skill. Revisão documental não inicia fluxos visuais.
+Preservar o mundo visual existente. Ausência de DESIGN.md não autoriza recomeçar a identidade ou reiniciar a entrevista por reflexo. Dentro de um trabalho de design em que a skill seja aplicável, usar `shape` para planejamento visual e ler `craft-floor` antes da edição conforme o fluxo. Revisão documental e manutenção funcional não iniciam fluxos visuais.
 
 A sequência, estados e critérios do hero estão em [HERO.md](HERO.md#plano-vigente-por-blocos). `document` deve extrair a implementação e cumprir seus artefatos/validações; não copiar auditoria ou hipóteses como tokens aprovados. Não existe snapshot formal de critique registrado; uma futura execução deve seguir seu fluxo completo. Não atualizar nota histórica sem nova auditoria.
+
+## Skills compartilhadas e etapas de design
+
+`augeo-context` resolve contexto e limites; `augeo-react-frontend` orienta implementação/revisão de componentes e interações React/TypeScript. A segunda preserva Vite/Bun, convenções existentes, cleanup de listeners/observers/frames, buffers mutáveis intencionais e reduced motion. Não adota recomendações Next.js, novas bibliotecas ou memoização por reflexo. As fontes são compartilhadas por links; detalhes locais de instalação ficam no README da ponte. Instalação não comprova descoberta na IDE nem paridade de ferramentas.
+
+Em design visual aplicável, manter os comandos/playbooks Impeccable e seus gates completos. No Paperclip, delimitar a etapa corrente: descoberta/brief, escolha de conceito, implementação autorizada ou apresentação/verificação. Se a etapa exigir resposta, o executor retorna perguntas/opções/brief e identifica a decisão pendente; encerra o turno para revisão, sem presumir aprovação. A resposta fica no mesmo ticket e a continuação explícita retoma a sessão salva. Os gates/artefatos concretos vêm do playbook, incluindo avaliações intermediárias quando exigidas; esta divisão não os substitui. Em conversa interativa, realizar os mesmos gates e registrar as decisões no ticket acompanhado.
+
+Implementação só começa com as decisões requeridas e o escopo de escrita autorizado. Não ampliar os limites de tempo, iniciar segundo agente ou repetir checks para atravessar uma etapa automaticamente. A apresentação final inclui preview utilizável e evidências reais. Validar descoberta, acesso ao launcher, navegador e geração de imagem separadamente; uma skill não instala a ferramenta. Um `engine-probe` comprova apenas o runtime, sem executar `context`, `shape`, detector ou qualquer fluxo de design.
 
 ## Nomenclatura
 

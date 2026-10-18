@@ -2,6 +2,24 @@
 
 Arquivo histórico consolidado em 2026-10-17. Registros descrevem os estados das respectivas datas e não autorizam trabalho. Próxima ação: [BACKLOG.md](../BACKLOG.md). Regras: [AGENTS.md](../../AGENTS.md) e [WORKFLOW.md](../WORKFLOW.md). Hero atual e propostas vigentes: [HERO.md](../HERO.md). O antigo backlog é preservado abaixo para rastreabilidade, incluindo suas classificações preparatórias; suas instruções de organização foram substituídas pela modularização.
 
+## Preparação de atualização do repositório — 2026-10-18
+
+- Pedido explícito: atualizar o repositório com push. `git fetch origin` aprovado, `main` e `origin/main` inicialmente em `f061462`; remoto já configurado como `git@github.com:lucavalente93/augeo-v1-landing.git`, sem alteração de URL.
+- Commit `de2d079` preserva `.orchestration-pilot/index.html`, incluindo o título final comparativo. Documentação pendente de orquestração/skills/procedimentos e histórico será enviada em commit separado, com assunto em inglês e Conventional Commits. Mudanças preexistentes preservadas; nenhuma nova execução de modelo ou tarefa do Paperclip.
+- Conferência documental dos cinco arquivos alterados: 57 links locais e 12 âncoras válidos; `git diff --check` aprovado. Sem build/suíte da landing ou novo navegador, pois produto inalterado e evidências do piloto já registradas. PNGs Figma permanecem não rastreados, conforme exclusão anterior e avaliação pendente; fontes privadas e pacote irmão `agent-orchestrator` fora do escopo deste repositório.
+- Resultado do push e igualdade entre HEAD e `origin/main` serão conferidos na entrega. Este registro prepara o envio e não declara sucesso antecipado, nova aprovação criativa ou deploy.
+
+## Skills compartilhadas com Antigravity — 2026-10-18
+
+- **Pedido:** implementar a seleção avaliada de skills, preservando uma fonte por pacote e o gatilho restrito de design. Usadas `skill-creator` para a skill React e `augeo-context` para a continuidade. Inspeção de Impeccable para integração; nenhum fluxo visual ativado.
+- **Instalação:** `augeo-react-frontend` criada no store privado, ligada a Codex e aos dois destinos Antigravity. Pacote Impeccable existente ligado aos destinos CLI/IDE com scripts/referências íntegros, sem alteração upstream. Cinco links novos; `augeo-context` compartilhada e README da ponte atualizados. Instalador conferiu ausência de trava/concessões, hashes pré/pós e conflitos antes de escrever. Originais e manifesto em `skill-sharing-20261018` no estado privado da ponte. Nova checagem em dry-run aceitou o estado instalado. Nenhuma configuração de modelo, permissão ou MCP alterada.
+- **Skill React:** orientação curta adaptada ao projeto; preserva stack React/TypeScript/Vite/Bun, setup/cleanup, refs para dados transitórios, estado para saída renderizada, buffers mutáveis de canvas e checks pertinentes. Fontes oficiais React de `useEffect`/`useRef` consultadas; skill Vercel instalada usada como referência seletiva, sem copiar recomendações Next.js nem impor bibliotecas. Imagem/branding/Figma e estilos adicionais continuam opcionais, sem instalação nesta etapa.
+- **Validação estática/runtime:** `quick_validate.py` aprovou as três skills (`augeo-context`, `augeo-react-frontend`, `impeccable`). Nove resoluções de caminho/hash (três skills × três destinos) correspondem às respectivas fontes únicas. `scripts/impeccable engine-probe` via link CLI respondeu `impeccable-engine 0.1.11`, exit 0; é somente handshake técnico, não `context`, `shape`, detector ou fluxo concluído. SHA256 da nova skill: `a016cb8cd399f248ac271c89186943fcc750ed0becd40e424ed9e68e337bff66`.
+- **Prova CLI:** tarefa `AUG-10` (`a6f77748-9b34-4ae1-a404-b76f92e44475`), run `cc7d0361-9dd0-4176-bd50-8fa39f508a0a`, sessão `95a8a03a-c2a1-4eb9-8aa7-7952dec7e289`. Run somente leitura; contexto essencial + WORKFLOW, nenhum check da ponte selecionado. Retorno `SUCCESS`, sem ações negadas no JSON; resultado/publicação preservados no diretório do run. Antigravity confirmou catálogo das três skills nos links de configuração global, relatou leitura de seus SKILL.md e `reference/shape.md`, identificou parada para decisão humana e preservação de stack/canvas. A ponte conferiu contexto/worktree intactos, `changedFiles: []`, `verification: []`, devolvendo `in_review` com `human_only`/`none`. Não houve segundo executor, nova concessão de escrita ou repetição de modelo.
+- **Ferramentas e limites:** `agy mcp list` retornou nenhum servidor configurado. O executor relatou nenhum navegador nativo/MCP, `read_url_content` apenas estático e `image-generator` disponível via `invoke_subagent`, sem invocação. Disponibilidade relatada não equivale a geração, renderização ou navegação verificadas. Descoberta em conversa gráfica da IDE permanece sem prova. O helper Chromium anterior conserva apenas seu escopo de fixture.
+- **Procedimento:** AGENTS/WORKFLOW e contrato registram skill React e gates humanos por etapa; devolver pergunta/opções/brief, registrar resposta no mesmo ticket e retomar explicitamente a sessão salva. Gates/artefatos dos playbooks preservados, sem automação adicional ou prazo maior. Diagnóstico leu `shape`, não executou o fluxo. Falha inicial de sintaxe do script preparador do ticket ocorreu antes de qualquer POST; corrigida e validada antes da criação única de AUG-10.
+- **Ambiente:** Paperclip estava parado (conexão recusada fora do sandbox). Servidor local iniciado para o diagnóstico, sem serviço de boot; ao final, confirmado run `succeeded`, agentes sem execução e AUG-10 em revisão, depois servidor encerrado por SIGINT com drain de zero runs interrompidos e saída 0. A primeira consulta dentro do sandbox falhou ao abrir socket; escalada confirmou o estado real. Oito vistas derivadas regeneradas e `views-check` aprovado; `git diff --check` aprovado. Sem alteração da landing, build/suíte funcional por reflexo, aprovação humana, commit, push ou publicação. AUG-8/AUG-9 e demais pendências anteriores preservadas.
+
 # Backlog preservado até 2026-10-17
 
 Atualizado em 2026-10-17. Aqui ficam continuidade operacional, trabalho técnico, testes, tooling, commits, publicações e evidências de execução. [HERO_HANDOFF.md](../HERO.md) descreve somente a implementação persistente e a direção do hero; [HERO_DECISIONS_AND_IDEAS.md](../HERO.md) guarda decisões anteriores, alternativas, ideias e avaliações pendentes. Requisitos detalhados pertencem ao [plano](HERO_AUDIT_2026-10-07.md) e à [especificação](../02-WEBSITE_SPEC.md).
@@ -693,3 +711,482 @@ A faixa lateral de 64 px e a matriz quadrada de 288–340 px pertencem ao mobile
 ## Guia humano de operação integrado ao README — 2026-10-17
 
 A pedido do usuário, a explicação prática foi incorporada ao README existente de `agent-orchestrator`, evitando outro guia concorrente. Inclui operação pelo Paperclip, distinção entre instância e processos/sessões, uso direto dos CLIs, passagem explícita por tarefa vinculada, árvore e Obsidian/Graph View/grafo local/Canvas. Mantidos detalhes técnicos e limite de somente leitura. Revisão documental: links locais do README, formatação e diff conferidos; vistas atualizadas após mudança do backlog. Sem mudança de código, nova execução de modelos, testes funcionais, commit, push ou publicação.
+
+
+## Escrita delimitada, navegador e revisão vinculada — 2026-10-17
+
+- Pedido: seguir os passos finais da integração de orquestração/contexto compartilhado. Fontes locais, duas referências e `augeo-context` lidas; contexto canônico resolvido antes da execução. Escolhido piloto técnico isolado; pergunta opcional sobre alvo não recebeu resposta, mantida a fixture proposta. PNGs Figma preexistentes preservados.
+- Código no pacote local `agent-orchestrator`: `access.ts` vincula UUID/projeto/executor/arquivos existentes e monta namespace Bubblewrap com root em leitura, arquivos autorizados e artefatos em escrita; runtime agy explicitamente separado e `/tmp` privado. Rejeita fontes canônicas, `.git`, traversal, symlinks/hardlinks e alvos ausentes/diretórios. `grant.ts`/CLI concedem e revogam sem iniciar execução. `paperclip.ts` captura conteúdos/hashes, verifica outros arquivos e mantém revisão; recovery de leitura recusa escrita. Handoff confere hash atual e inclui runs anteriores. Falhas registram ação/responsável de desbloqueio; timeout preserva saídas e sessão observada não é aceite automático.
+- `AUG-5` (`f8cd84b9-162a-45a4-af2b-d11b34ff869f`), sessão `ef449ed2-aedd-4771-a940-6799e4e9de74`: apenas rótulo do botão de `.orchestration-pilot/index.html`, de “Continuar” para “Conferir contexto compartilhado”. Baseline privado conferido contra manifesto do primeiro run; alvo final SHA-256 `cb1a93c064cd775b545af42f553d0d5a9dc15d696f8728ad634070071aca133a`.
+- Interrupções: `97db9414-44e2-49b0-aac3-b60fb77536d2` editou e depois retornou `SUCCESS` vazio com comando negado em headless. Adicionada allow-rule específica do helper; resultado vazio rejeitado, ação parcial conferida e sessão explícita retomada após reconciliação nativa. `6f5f1df0-da9a-46a7-804f-e4ce1cd734c4` encontrou re-exec `ENOENT`, foi cancelado pelo operador e reconciliado com arquivos/fontes iguais. Scoped-write passou a usar Bubblewrap externo e permissões normais, sem `--sandbox` interno duplicado. `bc70db71-16a1-4496-978e-fd9015818802` executou comando, mas Playwright falhou em `mkdtemp`: TMPDIR herdado apontava para caminho oculto no namespace. Corrigidos TMPDIR/TMP/TEMP para `/tmp` privado. Nenhuma edição foi repetida nem produto revertido. Falhas/logs/reconciliações preservados.
+- Run final `34205410-5b30-4c94-874c-ef065252de59`, exit 0: o próprio Antigravity executou `inspect-pilot.ts` com Playwright existente no website; Chromium headless 1440×900, 390×844 e ampliação CSS 200% em 780×900. Relatório confirma foco após Tab, clique/status, ausência de overflow horizontal e `pageerror`. Três PNGs abertos pela ferramenta de imagem; `image-tool-evidence.json` preserva somente metadados dos três passos de ferramenta nativos, sem texto do planejador. Sessão principal também inspecionou os três PNGs. Não houve teste de zoom nativo, ativação por Enter/Espaço, leitor de tela, outros motores ou aparelhos físicos.
+- `AUG-6` (`52ab9082-defb-46cf-99ac-cd574a143a28`), Codex run `364fa0ae-972e-4788-b038-f1f209650fa3`, sessão `01a14b69-efa1-7b00-84b7-37981a7d2478`, exit 0: confirmou troca exata desde baseline, alvo igual ao snapshot final, outros 82 arquivos preservados, fontes comuns na mesma revisão e limites do helper. Abriu as três capturas, sem executar outro navegador. Ressalva do relatório sobre detector descrevia evidência anterior; complemento posterior com execução real foi anexado aos dois tickets sem disparar novo modelo.
+- Impeccable: aplicado playbook `clarify` (linguagem/hierarquia, `craft-floor`, troca única, verificação). Launcher `context --target .orchestration-pilot/index.html` executado na sessão principal. Tentativa no Antigravity falhou na execução de comandos; fallback para PRODUCT/contexto existente, sem inventar DESIGN ausente. Detector executado uma vez na sessão principal após edição: `detect --json .orchestration-pilot/index.html`, exit 0 e `[]`; artefato privado em `rollout-write-backup/impeccable-detect.json`. Playbook aplicado não é comando `clarify` executado por CLI; `polish` não executado e validações de leitor de tela/zoom nativo não realizadas. Ferramenta/skill dev-browser não localizada; usado helper Playwright delimitado, sem anunciar equivalência ao navegador da IDE.
+- Revisão humana: destinatário usuário não bastava, pois a política padrão era `anyone`. Wrapper agora define `resolverPolicy: human_only`; testes exigem essa propriedade. Pedidos pendentes antigos da ponte foram substituídos e os redundantes retirados com motivo, sem aceitar/rejeitar entregas. Concessão de escrita de AUG-5 revogada por CLI; allow-rule exclusiva do helper removida, preservando demais configurações. Nenhuma flag de ignorar permissões usada.
+- Verificação: `bun run typecheck` e `bun test`, 15/15 testes, 57 asserções; saída privada `rollout-write-backup/tests-final.log`. Testes de Bubblewrap fazem escrita real autorizada e recusam fonte/vizinho, verificam TMPDIR e escopo por tarefa. São distintos dos runs de modelos. Sem suíte/build da landing: sua entrada/código de produto não mudaram. Limite de segurança: filesystem confinado, mas rede/sockets do host e runtime do CLI não formam sandbox adversarial completo; API trusted continua local. Uso agy em retomadas pode ser acumulado por sessão e não deve ser somado como cobrança por run.
+- Documentos AGENTS/ORCHESTRATION/BACKLOG reconciliados; README da integração concentra guia/comandos. Próximo uso: avaliar piloto e definir pequena tarefa real, arquivos permitidos e ferramenta de navegador apropriada ao alvo; leitura é o padrão e o helper atual só cobre fixture. Sem hero retomado, serviço adicional, commit, push ou publicação.
+
+- Fechamento operacional: seis tickets `AUG-1`–`AUG-6` em `in_review`, sem run/bloqueio de recuperação ativo; cinco pedidos pendentes da ponte com política `human_only` e continuação `none` (AUG-3 não tem pedido pendente). Sete vistas Obsidian regeneradas/conferidas. Conferidos 48 links locais e cinco âncoras dos documentos pertinentes/README; `git diff --check` aprovado. Novo backup PostgreSQL `paperclip-20261017-165339.sql.gz` preservado; restauração integral não repetida nesta etapa. Registros posteriores preservam os snapshots da revisão consumida; nova execução deve resolver contexto atualizado.
+
+
+## Primeira tarefa real preparada, sem disparo — 2026-10-17
+
+- Pedido de continuidade em novo contexto: conferir Paperclip/evidências e preparar tarefa pequena com arquivos e navegador adequados. Skill `augeo-context` lida e `augeo-orchestrator context augeo-website` executado. Git reconciliado: documentação consolidada modificada, `.orchestration-pilot/` e PNGs Figma não rastreados; conteúdo preexistente preservado.
+- API local confirmou seis tickets em `in_review`, dois agentes `idle`, nenhum `executionRunId`/bloqueio ativo. AUG-5/AUG-6 mantêm interações pendentes `74f9b8f5-7f3e-4ed2-8eb3-fb21309a0229` e `bfa49ce3-cdb5-40f8-9f80-905a0b57f2f1`, ambas `human_only`/`none`. Configuração privada `writeTasks: {}`; nenhuma trava encontrada. Nenhuma interação de aprovação resolvida.
+- Conferidos relatórios/recibos, comentários e complemento do detector. `browser.json` do run final `34205410-5b30-4c94-874c-ef065252de59` conserva os três cenários; metadados de imagens e detector continuam disponíveis. SHA-256 atual da fixture: `cb1a93c064cd775b545af42f553d0d5a9dc15d696f8728ad634070071aca133a`, igual ao registro. Sem repetir pilotos, detector, capturas ou revisão visual.
+- Criada no Paperclip `AUG-7` (`d555ad7b-2490-4f82-a5b7-425c7cdf426d`): diagnóstico técnico do percurso “Apresentar negócio” → `#entrada`, somente leitura. Estado `backlog`, agente não atribuído, nenhum run iniciado. Responsável previsto Codex; preparação não é delegação executada nem concessão de escrita. Leitura estática confirma href e ausência de destino em App; a especificação já identifica o formulário como futuro, sem nova decisão de produto.
+- Ticket delimita leitura de App/main/styles, configuração Playwright/package e fontes normativas; nenhum arquivo do produto autorizado para escrita. Prevê probe transitório em `artifacts/`, importação do Playwright existente, servidor local controlado com encerramento próprio, Chromium desktop/mobile, clique e Tab/Enter, JSON/capturas, duração/uso e retorno para revisão. Helper da fixture não será reutilizado para a landing. `dev-browser` não localizado no PATH ou nas raízes de skills consultadas; nenhum MCP de navegador exposto nesta sessão. Procedimento proposto, ainda não executado; impedimentos de permissões devem ser reportados sem bypass.
+- Sem fluxo visual Impeccable iniciado: escopo é preparação e diagnóstico funcional, sem crítica estética ou edição da UI. Execução futura deve resolver contexto atualizado. Avaliação humana dos pilotos continua pendente; próxima ação operacional é atribuição explícita da AUG-7. Nenhum commit, push ou publicação.
+- Verificação documental: `git diff --check`, conferência de links/âncoras e regeneração/conferência das sete vistas Obsidian. Sem build/suíte da landing, pois o produto não mudou.
+
+## Direção de eficiência e consumo no dashboard nativo — 2026-10-17
+
+- Luca confirmou quatro pontos: executor único por entrega delimitada/contexto necessário; verificações automáticas pertinentes; revisão por outro agente quando justificada; acompanhamento no Paperclip com limite de execução. Retirou a exigência de registro paralelo/manual de consumo e resultado; depois autorizou ajustar o dashboard. Input/output entre agentes preservado. Seleção de contexto continua pendente: prompt atual ainda injeta todas as fontes configuradas.
+- Antes da mudança, API `/dashboard` e `/costs/summary` retornavam custo zero; `/costs/by-agent` retornava `[]`. Inspecionados schema/API/serviços instalados Paperclip `2026.1012.0`; não modificados pacote upstream, dependências ou UI. Configuração/fontes resolvidas pela skill `augeo-context`; mudanças preexistentes preservadas.
+- Pacote local `agent-orchestrator`: `src/usage.ts` extrai contadores salvos, separa cache do Codex e calcula deltas dos snapshots cumulativos Antigravity pela mesma sessão e ordem de início dos runs. Raciocínio não é somado novamente. Confere identidade projeto/tarefa/agente/run; sem contadores não inventa evento. Publica no endpoint nativo `cost-events`, com valores `unpriced`/cobrança desconhecida e zero monetário exigido pelo schema. Modelo só é identificado com evidência; dados desconhecidos não viram defaults históricos ou preços simulados.
+- `paperclip.ts` sincroniza no fechamento quando `usageReporting.enabled`; falha de telemetria informa pendência sem invalidar entrega de produto. CLI `usage-sync [run-UUID]` recupera logs sem invocar modelos. Trava própria e `cost-publication.json` impedem replay; API sem idempotência deixa POST incerto para reconciliação humana, sem retry cego. Esses recibos são controle técnico, não relatório paralelo. README local atualizado; configuração privada ativada. Backup dos arquivos iniciais e configuração em `dashboard-backup/` no estado privado; não é backup integral da instalação.
+- Nove eventos históricos reais importados. Segunda execução `augeo-orchestrator usage-sync` retornou nove `reused`; totais por agente inalterados na API. Contabilização parcial dos logs preservados, sem este chat ou custo completo de implantação. Valor monetário não apurado: o `$0.00` nativo não comprova gratuidade nem representa estimativa API. Eventos de runs interrompidos com contadores aproveitáveis também foram incluídos; estados das tarefas não foram alterados.
+- Verificação final: `bun test` 20/20, 81 asserções, quatro arquivos, 4,47 s; `bun run typecheck` aprovado. Testes incluem cache/raciocínio, deltas cumulativos, contadores inválidos, identidade, publicação automática pelo wrapper, replay e resposta perdida após POST. Fake executors em testes, sem novas chamadas pagas. API real consultada; Chromium headless abriu `/AUG/costs`, comprovou consumo por agente/projeto e captura `dashboard-backup/costs-native.png` foi aberta na sessão. Nenhuma alteração visual, sem fluxo Impeccable iniciado.
+- AUG-5/AUG-6 mantidos em revisão; AUG-7 em backlog, sem atribuição/run, descrição ajustada para retirar relato manual de consumo. Nenhuma autorização de escrita concedida, produto/hero alterado, commit, push ou publicação. Registros locais e sete vistas Obsidian atualizados; links/âncoras e diff conferidos.
+
+## Correção do gatilho Impeccable e apresentação em tokens — 2026-10-17
+
+- Luca solicitou substituir o valor monetário mostrado por tokens e corrigiu a ativação indevida de Impeccable: ferramenta voltada à concepção/elaboração/rascunho de conceitos visuais reais trabalhados por etapas de design; não aplicável à manutenção funcional do painel nem ao piloto técnico. Leitura da skill e anúncio anterior não equivalem a conclusão de `clarify`; chamada de contexto/playbook foi interrompida e nenhum novo fluxo é declarado concluído. O uso histórico em AUG-5 permanece registrado como fato, agora explicitamente identificado como inadequado.
+- Correção aplicada imediatamente em AGENTS/WORKFLOW, ORCHESTRATION, governança privada, skill `augeo-context` canônica compartilhada e `promptFor` da ponte. Prompt contém regra explícita que supera prescrições antigas de Impeccable no piloto. Conferência por composição de prompt: regra presente e conflito com exemplo antigo explicitamente resolvido; sem novo run Antigravity/Codex ou alteração da skill de terceiros.
+- `src/paperclip-ui.ts` no pacote local da ponte modifica somente apresentação dos indicadores nativos de inferência: card/ledger, totais por agente e por projeto exibem tokens. Usa o total de entrada + cache + saída já disponível nas respostas; não converte moeda, altera contadores, API ou banco. Preserva layout e seção financeira separada. Guarda exige Paperclip `2026.1012.0`, âncoras exatas e JS válido; backup `.augeo-original`, reaplicação idempotente e `postinstall` registrado em package.json. Upgrade upstream exige revisão; cache imutável do bundle requer recarga forçada em abas existentes.
+- Validação: `bun test` 20/20, 81 asserções, quatro arquivos, 4,47 s; typecheck aprovado. Uma primeira tentativa de navegador encontrou servidor indisponível; ausência de processo confirmada e `augeo-paperclip` iniciado, sem segunda instância. Verificação do bundle expôs dependência do card de um ícone obrigatório; corrigido no override. A rota real embute a view no entry além do chunk lazy; ambos agora recebem a substituição. Escrita por rename evita alterar hardlinks do cache Bun; cópias upstream originais preservadas/restauradas. Typecheck aprovado após correções; reaplicação confirmou “already applied”.
+- Chromium headless: desktop 1440×1000 e mobile 390×844 exibiram três totais `3.5M tokens` (card/ledger/projeto), `2.7M tokens` no Antigravity e `781.7k tokens` no Codex; nenhum `pageerror` ou overflow horizontal. Capturas `dashboard-backup/tokens-desktop.png` e `tokens-mobile.png` abertas na sessão. Seção financeira nativa segue separada em dólares. Não houve launcher/playbook/detector Impeccable nesta conclusão funcional.
+- Alterações anteriores, fixture e PNGs preservados; sem edição da landing ou execução de tarefa/agente, aprovação criativa, commit, push ou publicação. Sete vistas Obsidian regeneradas/conferidas; diff e links/âncoras revisados. Seleção de contexto permanece pendente, sem ampliação desse escopo.
+
+## Correção do card mensal no dashboard principal — 2026-10-17
+
+- Luca apontou que continuava vendo `Month Spend` em dólares. O ajuste anterior abrangia Audit → Costs, deixando o dashboard principal de fora. Após pedido explícito de correção, `paperclip-ui.ts` passou a substituir esse card por `Monthly tokens`, consultando o endpoint nativo de uso por agente com intervalo do início do mês UTC até agora e somando entrada + cache + saída. Atualização a cada 30 segundos, estado sem valor durante carregamento/erro, sem alterar preços, orçamento ou eventos no banco. Mesmo override persistente e guardas da versão instalada.
+- Typecheck aprovado; override reaplicado sem nova modificação. Chromium em `/AUG/dashboard`, desktop 1440×1000 e mobile 390×844: card `3.5M / Monthly tokens`, zero ocorrências do rótulo antigo, nenhum `pageerror` ou overflow horizontal. Capturas `dashboard-backup/monthly-tokens-desktop.png` e `monthly-tokens-mobile.png` preservadas; desktop aberta na sessão. Sem nova suíte funcional, pois o ajuste de exibição foi validado no navegador; sem Impeccable ou chamada de modelo/agente.
+- README local, contrato e backlog atualizados; vistas regeneradas, links/diff conferidos. Sem retomada de hero, aprovação dos pilotos, commit, push ou publicação. Abas antigas precisam de recarga forçada devido ao cache imutável upstream.
+
+## Contexto selecionado e executor único com verificação — 2026-10-17
+
+- Autorização: implementar somente os pontos 1–2; Luca definirá a próxima tarefa específica. Antes da mudança, sete tickets sem run ativo, agentes idle e nenhum novo executor iniciado. Skill `augeo-context` aplicada; Git, fontes e configuração conferidos. Backup dos módulos/guia/configuração anteriores em `context-efficiency-backup/` no estado privado; não é backup integral da instalação.
+- `task-policy.ts` seleciona fontes essenciais e acréscimos explícitos no bloco opcional `augeo-task` da descrição, sem heurística por palavras-chave ou chamada de modelo. Campos permitidos: `contextSources` e checks por `id`/`reason`. Fonte/comando não registrado, metadados inválidos ou check duplicado são recusados antes de checkout/modelo. Governança e AGENTS preservados; configuração local inclui registro global do website e BACKLOG. CLI `context` retorna base mais catálogo; `--source` acrescenta fonte registrada, `--all` exige consulta integral deliberada.
+- Ponte mantém `context.json` integral e confere todas as fontes/manifesto/HEAD/diff, inclusive fontes omitidas. `execution-plan.json` registra seleção e checks; prompt só recebe os textos escolhidos e catálogo sem conteúdo dos demais. ORCHESTRATION adicionada às fontes autorizadas; vistas passam de sete a oito. Sessões antigas conservam contexto prévio; a mudança reduz novos inputs, sem afirmar economia real medida nesta etapa.
+- `verify.ts` executa os checks nomeados da configuração local depois que o executor para, sem outro modelo. `build` e `test` registrados como opções, sem execução por reflexo ou autorização de shell pelo texto da tarefa. Modelo/checks compartilham os prazos de 3/10 minutos; saída e falha em `verification.json`. Falha/timeout interrompe a sequência e bloqueia a mesma tarefa para correção explícita, sem repetir mutações/checks automaticamente ou relaxar asserções. Checks são subprocessos confiáveis do wrapper no host, com credenciais Paperclip removidas e conferência posterior de integridade; não passam a ser exceções de escrita do agente.
+- `handoff` requer `--reason` com motivo/foco técnico; sem argumento recusa antes de operar. Passagem mantém fontes escolhidas, resultado e evidências/checks da origem; revisão recebe `checks: []` por padrão e instrução de só repetir se houver mudança/falha/preocupação concreta. Resultado citado como dados para evitar interpretar exemplo de bloco no output como política da nova tarefa. Reutilização de passagem e guardas de revisão/integridade mantidas. Nenhum handoff automático ao concluir; estado de sucesso continua `in_review`, interação `human_only`/`none`.
+- Testes finais: `bun test` 28/28, 125 asserções em seis arquivos, 5,08 s; `bun run typecheck` aprovado. Cobrem omissão de conteúdo irrelevante, manutenção da autoridade, seleção explícita/registro, metadados inválidos, integridade de fonte omitida, check executado uma vez sem credenciais, falha interrompendo sequência, ausência de criação automática de revisão, exigência de motivo e passagem explícita reutilizável. API/CLIs simulados; não chamar isso de novo piloto real ou validação de economia financeira. CLI de contexto real conferido sem modelo, inclusive acréscimo de fonte individual e consulta integral explícita.
+- README operacional, skill compartilhada, AGENTS/ORCHESTRATION/BACKLOG atualizados. Registros/vistas/links/diff conferidos. Nenhuma tarefa do site criada/atribuída/disparada; AUG-7 preservada em backlog e pilotos continuam aguardando avaliação humana. Sem concessão de escrita, alteração da landing/fixture/PNGs, commit, push ou publicação. Próxima ação: aguardar tarefa específica de Luca.
+
+## Referência de custo do piloto para comparação futura — 2026-10-17
+
+Registro solicitado por Luca para comparar com a próxima tarefa, após contexto enxuto e fluxo de executor único. **Referência: US$ 1,63 em custo equivalente de API, não cobrança efetiva.** O valor normaliza os contadores de AUG-5 e AUG-6 para GPT-6.1 Sol Standard/contexto curto, mesmo que o Antigravity tenha usado outro provedor. Cobrança real e consumo de assinatura continuam desconhecidos; não lançar esta estimativa como débito no Paperclip.
+
+| Etapa | Entrada sem cache | Entrada em cache | Saída, incluindo raciocínio | Equivalente API |
+| --- | ---: | ---: | ---: | ---: |
+| AUG-5 — snapshot cumulativo final Antigravity, incluindo retomadas registradas | 459.804 | 2.095.139 | 24.768 | US$ 1,376802 |
+| AUG-6 — revisão Codex, GPT-6.1 Sol medium confirmado na sessão | 81.579 | 569.088 | 2.828 | US$ 0,248347 |
+| **Total de referência** | **541.383** | **2.664.227** | **27.596** | **US$ 1,625149 ≈ US$ 1,63** |
+
+- Fórmula fixa para esta referência: `(entrada sem cache × 2 + entrada em cache × 0,10 + saída × 10) / 1.000.000`, em dólares. Tarifas consultadas nesta conversa em 17/10: [preços oficiais de API](https://developers.openai.com/api/docs/pricing). Preservar essa tarifa para comparação normalizada, mesmo se preços futuros mudarem; faturamento/assinaturas são medidas separadas.
+- Evidências: `stdout.log` dos runs `34205410-5b30-4c94-874c-ef065252de59` (AUG-5) e `364fa0ae-972e-4788-b038-f1f209650fa3` (AUG-6), no estado privado da ponte. Codex informou 650.667 tokens de entrada incluindo 569.088 em cache: entrada sem cache = 81.579. Não adicionar novamente thinking/reasoning já incluídos na saída. Snapshot final cumulativo Antigravity usado uma vez, sem somar os snapshots das retomadas. **Total observado dessas duas etapas: 3.233.206 tokens**, incluindo cache; não confundir com o total mensal do painel, que também inclui outros pilotos.
+- Escopo: troca de um rótulo na fixture, tentativas/retomadas técnicas e inspeção Chromium no Antigravity, seguida de revisão Codex. Não inclui esta conversa principal, implantação/manutenção da ponte, todos os testes operacionais ou cobrança completa do projeto. A normalização do uso Antigravity é hipotética e depende da interpretação dos contadores preservados; não certifica valor faturado pelo provedor.
+- Próxima comparação: usar os eventos dos runs da tarefa no Paperclip e as evidências técnicas existentes, aplicar a mesma fórmula aos contadores sem duplicação e distinguir execução principal/revisão/retomadas. Informar escopo entregue e critérios atendidos junto do consumo: uma hero/seção maior não tem complexidade equivalente à troca de rótulo. Não prometer economia percentual a partir de tarefas de escopos distintos. Nenhuma nova tarefa iniciada neste registro.
+
+## Piloto comparativo dos pontos 3–4 — 2026-10-18
+
+- Pedido de Luca: continuar pontos 3–4, substituindo temporariamente a entrega real por escopo similar ao piloto para comparar gasto/eficiência. Reconciliados Git e registros; skill augeo-context aplicada. As regras de revisão explícita e consumo já estavam implementadas; esta rodada exercitou-as em novo piloto, sem tarefa de produto. Paperclip estava indisponível após a mudança de dia e foi reiniciado em foreground. Operações fora do workspace/sandbox tiveram aprovação do executor. AUG-7 preservado em backlog; pilotos anteriores sem aceite humano.
+- **AUG-8** `b3afd76e-f678-4aa8-88ba-8cd2dafc218d`: Antigravity alterou apenas `.orchestration-pilot/index.html`, h1 “Contexto compartilhado” → “Contexto compartilhado — piloto comparativo”. Layout, botão e lógica preservados. Concessão por UUID/arquivo com Bubblewrap; regra exclusiva do helper temporária. Novo contexto: governança, registro global, AGENTS, WORKFLOW e BACKLOG; 29.175 de 93.248 caracteres canônicos selecionados, catálogo e snapshot integral preservados. Essa proporção não mede tokens de inferência.
+- Primeiro run `855c2135-b5ae-43e7-896b-593aef9ed09c`, sessão `f32da772-efad-441d-9159-489a1b134c24`: edição completou, `git status --short` executou e `git diff` foi negado. CLI SUCCESS sem resposta com denied_actions foi recusado corretamente. Não ampliar permissões; conteúdo comparado ao before-files, hashes dos demais arquivos preservados. `operator-reconciliation.json` e sessão observada salvos; recuperação explícita via API e comentário retomou a mesma conversa, sem repetir edição.
+- Segundo run `e4714a38-0a77-4e02-8775-396f752ab595`: helper existente `inspect-pilot.ts` executado uma vez, exit 0. Chromium 1440×900, 390×844 e 780×900 com CSS 200%: foco BUTTON após Tab, clique/status correto, sem overflow horizontal/pageerror. `artifacts/browser.json`, desktop.png, mobile.png e zoom.png preservados no estado privado. Transcrição confirma as três capturas abertas pelo Antigravity; também abertas nesta sessão e pelo revisor. Sem novos build/suíte de landing, detector/playbook Impeccable ou navegador na revisão. CSS 200% não prova zoom nativo, aparelhos físicos, outros motores, Enter/Espaço ou leitor de tela.
+- O provedor respondeu 503, `No capacity available for model gemini-3.8-flash-high on the server`, durante inspeção das imagens. O CLI retomou internamente e produziu resposta final, mas JSON terminou status ERROR conservando o erro. A ponte recusou sucesso; não há result.json aceito nos dois runs. Logs indicam Gemini 3.8 Flash High nesta sessão; isso difere da configuração nominal lida e a conferência posterior da transcrição antiga confirmou o mesmo modelo nominal no piloto anterior. Nenhuma alteração de modelo feita pelo operador.
+- Recuperação do estado por API recusou 409: primeiro exigiu todo para reabrir disposição automática encerrada; segunda tentativa, após retirar executor para impedir outra inferência, exigiu agente de origem. Nenhuma nova chamada de modelo feita para resolver o estado. Fonte permanece **blocked**, atribuída a local-board, com pedido **human_only/none** e resultado visível em `http://127.0.0.1:4174` (servidor temporário que só lê a fixture). Inspeção do operador registrada, sem falsificar sucesso do CLI ou afirmar recuperação concluída. Corrigir o estado é pendência operacional.
+- **AUG-9** `7b92d51e-1a5b-45e7-a7c2-69e687ee7a10`, run `3ccbcab8-a183-42fe-a0f4-4a8fdd48e091`, sessão Codex `01a14e95-7a72-75c3-ab6f-5baad42edff7`: revisão filha criada explicitamente com motivo técnico (integridade e efeitos parciais após falhas), sem passar pelo handoff normal, que exige resultado aceito. Conferiu task original, before-files, manifestos, logs, transcrição, helper/JSON e três imagens. Aceite técnico da fixture atingido, sem achados de integridade: substituição exata, outros 82 arquivos intactos, conjunto de 83 sem adições/remoções. Achado alto: recuperação/publicação operacional incompleta. Retornou **in_review**, sem executar navegador/checks nem alterar arquivos. Revisão técnica não é aceite humano ou recuperação da origem.
+
+| Etapa | Entrada sem cache | Entrada em cache | Saída, incluindo raciocínio | Tokens totais | Equivalente API fixo |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| AUG-8 — cumulativo final das duas tentativas Antigravity | 58.935 | 273.256 | 4.654 | 336.845 | US$ 0,1917356 |
+| AUG-9 — revisão Codex | 49.206 | 180.096 | 2.325 | 231.627 | US$ 0,1396716 |
+| **Novo total** | **108.141** | **453.352** | **6.979** | **568.472** | **US$ 0,3314072** |
+| Referência AUG-5/AUG-6 | 541.383 | 2.664.227 | 27.596 | 3.233.206 | US$ 1,625149 |
+
+- Mesma fórmula histórica: `(2 × entrada sem cache + 0,10 × cache + 10 × saída) / 1.000.000`. **Reduções observadas: 82,4% em tokens e 79,6% no equivalente.** Não são cobrança efetiva nem efeito causal isolado de contexto: o tipo de alteração e o helper são similares, mas título versus botão, ferramentas já preparadas, retomadas e falhas diferem; o novo fluxo principal permanece blocked. Esta conversa, preparação/recuperação manual e manutenção da ponte estão fora dos contadores, assim como no limite da referência; não confundir com custo operacional completo ou economia garantida.
+- Paperclip recebeu automaticamente três eventos, inclusive os dois runs com falha, por deltas da mesma sessão Antigravity e uso Codex sem somar cache/raciocínio novamente. Recibos `cost-publication.json` published nos três runs; eventos Antigravity `164760a9-8b46-45db-948e-c20bc6119fde` e `2519d291-bf98-464c-88d7-3b2e4827cdaa`. `GET /issues/<AUG-8 UUID>/cost-summary` inclui descendentes: já retorna 568.472 tokens; AUG-9 isolado retorna 231.627. Não adicionar a revisão novamente à árvore. Equivalente não foi lançado como custo no backend; uso continua unpriced. Comparação registrada também no ticket, sem dashboard/planilha/relatório paralelo.
+- **Correção adicional da ponte:** os dois `publication-failure.json` revelaram 403, `Agents may only name themselves as an unblock owner`, separado do 503. `src/paperclip.ts` usava owner board no impedimento; agora usa `{agentId: PAPERCLIP_AGENT_ID}`. API simulada em `tests/integration.test.ts` passou a recusar owner incompatível; teste existente confere bloqueio sem falha de publicação. Correção e testes ficam no pacote irmão, sem rerun pago ou alegação de validação real posterior. Não resolve retroativamente AUG-8.
+- **Verificação da correção:** `bun test` no sandbox: 19 pass/9 fail, 78 asserções, 1,125 s; nove falhas por EPERM ao abrir API simulada. Repetição autorizada fora do sandbox: **28 pass/0 fail, 126 asserções, seis arquivos, 5,03 s**. `bun run typecheck`: aprovado. Sem testes novos da landing por alteração isolada na fixture. Concessão e regra exclusiva do helper revogadas; nenhum executor/trava de tarefa ativo ao fechar. Documentos, guias e vistas atualizados; alterações anteriores e PNGs preservados, sem commit/push/publicação.
+- **Esclarecimento posterior, solicitado por Luca:** a ressalva inicial de modelos diferentes foi imprecisa. A transcrição da sessão antiga `ef449ed2-aedd-4771-a940-6799e4e9de74` e a nova identificam Gemini 3.8 Flash High. Os turn_context das duas revisões Codex confirmam GPT-6.1 Sol, esforço medium. AUG-5 tem quatro diretórios de run preservados (incluindo um sem contadores); AUG-8 tem dois. O dado anterior continua limitado aos contadores recuperáveis. Diferenças comprovadas: rótulo do botão versus h1, contexto integral versus selecionado, preparação/retomadas e uso indevido de Impeccable no piloto antigo. Não atribuir a redução a troca de modelo.
+- **Próxima ação:** avaliar o resultado e reconciliar o bloqueio nativo de AUG-8 sem repetir trabalho; correção do 403 permanece verificada em testes simulados. Não declarar ciclo automático integral concluído, fechar avaliação dos pilotos anteriores ou iniciar AUG-7/hero por continuidade.
+
+## Pesquisa e proposta de orquestração arquivadas — 2026-10-17
+
+Transferidas de ORCHESTRATION durante a consolidação documental. O conteúdo abaixo preserva a pesquisa e o contrato proposto antes da implantação, inclusive opções descartadas, estados e critérios daquela fase. Não é o contrato operacional vigente; consultar [ORCHESTRATION](../ORCHESTRATION.md). Títulos e links relativos foram ajustados à localização; texto substantivo preservado.
+
+### Entendimento e delegação
+
+A modularização publicada em `f368281` preparou contexto local e continuidade. O objetivo seguinte é compartilhar conhecimento e procedimentos, coordenar Antigravity e Codex e validar entregas com pouca intervenção operacional de Luca.
+
+As referências [Stack em quatro camadas](../refs/stack-referencia-4-camadas.md) e [Architecture Reference](../architecture-reference.md) descrevem essencialmente a mesma topologia: contexto global, skills, orquestrador/juiz com Codex executor e ferramentas externas. Ambas deixam Antigravity para integração futura. Atribuir agora a coordenação ao Antigravity é uma adaptação proposta, não uma decisão documentada nem uma superioridade de modelo demonstrada.
+
+| Responsável | Papel proposto |
+| --- | --- |
+| Luca | Direção geral e criativa, prioridades, escolha de caminhos e aprovação final. Autorizações já dadas acompanham a tarefa. |
+| Antigravity | Executor de frontend/visual: componentes, CSS, layout, responsividade, motion, implementação e iteração no navegador. Também é o coordenador inicial proposto para briefing, pesquisa, decomposição e revisão criativa. |
+| Codex | Executor de arquitetura, backend, integrações, automações e refatorações estruturais; revisão técnica e verificações. Pode contribuir em frontend quando a tarefa pedir, sem exclusividade sobre escrita de código. |
+
+**Correção do usuário:** Antigravity tem capacidade de execução e deve ser responsável também por frontend/visual. A formulação anterior o restringia excessivamente a coordenação/revisão. A divisão por domínio incorpora esta preferência; a escolha de Antigravity como coordenador inicial continua proposta. Cada tarefa tem um responsável por escrita, que pode ser qualquer um dos dois. A recomendação de aceitação do coordenador não substitui aprovação criativa de Luca.
+
+Early/late fusion descreve arquitetura de modelo, enquanto Antigravity, Codex e ChatGPT são ambientes/produtos. O [Google descreve Gemini como multimodal desde o treinamento](https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/); a [OpenAI também documenta modelos com processamento nativo de modalidades](https://developers.openai.com/blog/updates-audio-models). Isso não comprova a generalização de que todo Codex/ChatGPT seja late fusion, nem identifica a arquitetura exata do modelo ativo em cada ambiente. A decisão operacional de dar frontend/visual ao Antigravity não depende dessa generalização.
+
+### Contrato revisável v0.1
+
+#### Coordenação e responsabilidade de escrita
+
+Antigravity é a entrada principal proposta para demandas criativas e o coordenador inicial: prepara escopo, resolve contexto, divide trabalho e reúne evidências. Pode executar a tarefa visual inteira; não precisa delegar código visual ao Codex. Codex recebe tarefas estruturais/técnicas ou revisão, delimitadas pelo resultado pretendido. Lógica dentro de um componente não muda automaticamente a autoria: a tarefa declara seu responsável e seus arquivos, inclusive dependências compartilhadas.
+
+Cada demanda possui um coordenador, e cada tarefa possui um executor. O coordenador pode executar uma tarefa própria, mas não abrir outro processo de si mesmo por padrão. Delegados retornam resultado ou impedimento ao coordenador, sem delegação circular. Um pedido iniciado no Codex pode ser preparado ali; transferir a coordenação exige registrar a troca e o mesmo ID da demanda, sem dois coordenadores ativos. Luca mantém direção e decisões materiais, recebendo perguntas somente quando faltarem informações necessárias, houver conflito de direção ou a ação exceder a autorização existente.
+
+O executor verifica sua entrega; o outro agente pode revisá-la em leitura. No piloto, um escritor ativo por projeto, com passagem explícita de posse entre tarefas. Alterar escopo, código compartilhado ou decisões exige atualizar a tarefa antes de continuar. Não iniciar trabalhos paralelos sobre um checkout com alterações pendentes sem resolver a base. Commit, push e publicação conservam a exigência de pedido explícito do projeto.
+
+#### Interface, transporte e conhecimento
+
+São três funções independentes: a interface mostra sessões e tarefas; o transporte entrega pedidos/resultados; o conhecimento permanece em Markdown com IDs e revisão. Um canvas de terminais não substitui o grafo do contexto. O vault de conhecimento tampouco executa os agentes. O contrato deve poder operar via TUI ou interface gráfica, preservando acesso aos arquivos, evidências, autorizações e responsabilidades.
+
+Antes de construir uma ponte própria, testar se uma interface existente entrega a passagem entre os agentes e permite preservar esse contrato. Reutilizar o transporte disponível quando satisfizer os critérios; escrever somente o adaptador necessário para contexto/rastreabilidade. Não manter dois mecanismos concorrentes controlando estados ou encaminhando a mesma tarefa.
+
+#### Comparação de interfaces — pesquisa de 17/10
+
+Ambiente desta sessão confirmado como Linux por `uname -s`. “Gratuito” nesta comparação refere-se à interface; contas, assinaturas ou consumo dos agentes continuam separados. Avaliação documental, sem instalação, benchmark ou integração testada. Maestri é considerado aqui o produto de `themaestri.app`, encontrado na pesquisa; a pergunta de identificação foi apresentada ao usuário, sem resposta registrada nesta versão.
+
+| Opção | Evidência primária | Adequação ao contrato |
+| --- | --- | --- |
+| Maestri Free | [Página oficial](https://www.themaestri.app/en): um workspace gratuito e agentes ilimitados. [Linux](https://www.themaestri.app/en/linux): canvas, conexão de terminais e shell. | Viável como avaliação isolada de um projeto; não recomendado como base gratuita da operação entre projetos. Confirmar uso de `agy`, acesso ao contexto e retorno; CLI não comprova paridade com IDE. |
+| TUIs nativas | CLIs Codex e `agy` já encontrados localmente; interfaces conferidas na pesquisa anterior. | Alternativa inicial viável, sem outra interface. A passagem entre tarefas ainda requer procedimento ou transporte; duas janelas não implementam orquestração automaticamente. |
+| RunMaestro | [README](https://github.com/RunMaestro/Maestro): aplicativo aberto com licença AGPL e suporte a Codex; Antigravity não aparece na lista de provedores. | Não selecionar para esta dupla sem confirmar um adaptador funcional. |
+| ShellX | [README](https://github.com/martinsbrezauckis/shellx): MIT, beta, Linux experimental, Codex/Antigravity; Host MCP desabilitado para Antigravity e execução Full Auto padrão. | Candidato secundário; declarar suporte aos dois não prova ferramentas equivalentes ou aderência às autorizações. |
+| Octomynd Maestro | [README](https://github.com/Octomynd/octomynd-maestro): suporta a dupla e descreve commit/push/PR após revisão. | O fluxo publicado conflita com a política Git vigente se executado sem adaptação. Não adotar por padrão. |
+| Paperclip | [Projeto MIT](https://github.com/paperclipai/paperclip): painel e servidor de gestão/orquestração, com projetos e agentes por organização. | Alternativa de plataforma, não só interface. Candidato em avaliação; Gemini CLI pode reduzir a necessidade de adaptador próprio, conforme análise abaixo. |
+
+Outro canvas examinado, [Unity Agent Orchestrator](https://github.com/xnoname79/unity-agent-orchestrator), declara que ainda não escolheu licença. Não foi promovido a alternativa livre. Maestri e os produtos chamados Maestro são projetos distintos.
+
+**Recomendação revisada após análise de viabilidade:** usar interfaces nativas e arquivos portáveis como base proposta; Maestri Free permanece apenas uma avaliação opcional de projeto único. O limite por workspace pesa contra sua adoção para a operação entre projetos. Isso substitui a recomendação anterior de priorizar seu piloto; não representa adoção de outra interface ou autorização para construir todo o transporte. Antes de implementar, conferir as capacidades reais das interfaces e definir o transporte mínimo. Antigravity mantém execução frontend/visual no ambiente apropriado; TUI não obriga abandonar IDE/navegador.
+
+#### Viabilidade do Maestri Free e custo de saída
+
+Análise documental de 17/10, solicitada pelo usuário antes de assumir dependência. A [página Linux](https://www.themaestri.app/en/linux) confirma Free com um workspace e Pro com workspaces ilimitados, anunciado a US$ 18 em pagamento único nesta consulta. Não há compra autorizada. Segundo [Workspaces](https://www.themaestri.app/en/docs/workspaces), o workspace associa um projeto a diretório, layout, agentes e configurações. Portanto, agentes ilimitados não equivalem a projetos com ambientes salvos ilimitados.
+
+| Uso pretendido | Avaliação para AUGEO |
+| --- | --- |
+| Este website, Codex e Antigravity | O limite de workspace comporta essa avaliação; integração efetiva ainda precisa ser testada. |
+| Vários projetos/clientes com retorno ao ambiente de cada um | O Free não oferece múltiplos workspaces salvos. Isso conflita com a ergonomia desejada da operação entre projetos. |
+| Vários diretórios dentro de um canvas | Não foi comprovada impossibilidade técnica; tampouco foi validado como solução adequada. Não recomendar um diretório pai compartilhado ou troca manual de diretórios apenas para contornar o limite. |
+| Manter conhecimento fora do aplicativo | Viável como desenho: [Notes](https://www.themaestri.app/en/docs/notes) documenta arquivos Markdown em localização própria. Mesmo assim, testar acesso/remoção no Linux antes de anexar fontes canônicas. |
+| Sair preservando automação e histórico | Exige trabalho: [Connections](https://www.themaestri.app/en/docs/connections) usa skill/CLI do aplicativo; o transporte precisa ser substituído se depender dela. |
+
+As [partituras](https://www.themaestri.app/en/docs/partituras) podem exportar configurações/roles/conexões, mas excluem scrollback, estado em execução, exit codes e outras informações do runtime. Preservam um arranjo do Maestri, não uma migração executável para qualquer TUI. Histórico/resultados relevantes precisam de registro independente; a saída completa não foi testada.
+
+Conclusão de engenharia: dependência dos dados pode ser pequena mantendo originais externos; dependência do fluxo pode ser significativa se delegação, papéis e evidências existirem só no aplicativo. O preço pago anunciado é limitado hoje, mas adotá-lo implicaria aceitar um produto comercial e suas condições futuras. Se operar sem pagar é critério, a base não deve exigir a edição Pro conforme a agência adicione projetos. Interfaces nativas também têm custo de operação/manutenção do transporte; a proposta é manter esse componente pequeno, sem construir um novo canvas.
+
+Critério de saída para qualquer interface futura: encerrar o aplicativo e conseguir continuar uma tarefa por seus arquivos, fontes e resultado, sem reescrever contexto ou perder decisões. Conhecimento em Markdown, IDs e contratos permanecem independentes; somente a integração da interface é substituível. Nenhuma candidata entra no contexto global como ferramenta adotada.
+
+#### Paperclip e alternativa Gemini CLI — avaliação de 17/10
+
+**Pedidos do usuário:** explorar `paperclip.ing` e distinguir sua função de uma solução intermediária; considerar Gemini CLI para a frente visual se puder executar Gemini 3.1 Pro com integração comprovada. Isso abre uma alternativa de runtime, não autoriza substituição imediata de Antigravity, instalação ou escolha de banco.
+
+O [Paperclip](https://paperclip.ing/) reúne interface de gestão, tarefas, projetos, histórico, orçamento, aprovação e disparo de agentes. Classificação: plataforma de coordenação com backend e adaptadores. Pode ocupar a camada 3 e substituir parte do transporte/registro próprios, mas não fornece por si só o modelo, a execução visual ou o grafo do contexto. O desenho não exige reproduzir o organograma humano da agência nem instalar um conjunto de agentes “CEO/CTO” de exemplo.
+
+| Aspecto | Evidência e implicação para AUGEO |
+| --- | --- |
+| Projetos e custo | O [projeto aberto MIT](https://github.com/paperclipai/paperclip) documenta múltiplas organizações/projetos; não apresenta a restrição comercial de um workspace do Maestri Free. A edição self-hosted não elimina custos dos agentes e da operação. |
+| Infraestrutura | A [instalação](https://docs.paperclip.ing/guides/getting-started/installation/) requer Node e serviço local/web. A [persistência](https://docs.paperclip.ing/reference/deploy/database/) usa PostgreSQL, inclusive embutido no caminho local. Esse banco seria dependência interna da plataforma, não banco escolhido para o website ou contexto semântico; adoção ainda não ocorreu. |
+| Codex | Existe [adaptador específico](https://docs.paperclip.ing/reference/adapters/codex/) para execução e continuidade. Compatibilidade com nosso CLI/configuração precisa de teste, incluindo instruções/skills e permissões. |
+| Antigravity | A lista de [adaptadores](https://docs.paperclip.ing/reference/adapters/overview/) e as árvores completas de `master` e `v2026.1012.0` não trouxeram adaptador/caminho com esse nome. Isso não prova impossibilidade, mas não é suporte específico comprovado. |
+| Extensão genérica | [Process](https://docs.paperclip.ing/reference/adapters/process/) inicia comandos, coleta logs/saída, sem continuidade de sessão nativa. A documentação o disponibiliza por API/importação, ainda sem seleção direta no dropdown. Um wrapper de `agy` continuaria sendo trabalho nosso. |
+| Saída e recuperação | [Export/import](https://raw.githubusercontent.com/paperclipai/paperclip/master/docs/guides/board-operator/importing-and-exporting.md) inclui instruções, skills, projetos e tarefas selecionados, mas não preserva tudo: aprovações, custos e atividade têm limitações. A [recuperação integral](https://docs.paperclip.ing/how-to/back-up-and-restore-a-company/) exige banco e filesystem, além dos pacotes exportados. |
+
+**Gemini CLI com o modelo pedido:** o [adaptador Paperclip](https://docs.paperclip.ing/reference/adapters/gemini-cli/) documenta `gemini_local`, seleção de `gemini-3.1-pro-preview`, retomada de sessão, skills e engines ACP/CLI. A interface documentada é uma integração específica, diferente de executar um comando genérico. Permissões, autenticação, quota e ferramentas da configuração efetiva ainda precisam ser conferidas; não transportar exemplos de `yolo`/sandbox sem avaliar o contrato vigente.
+
+No [código oficial Gemini CLI v0.64.0](https://github.com/google-gemini/gemini-cli/blob/v0.64.0/packages/core/src/config/models.ts), `gemini-3.1-pro-preview` consta entre os modelos reconhecidos; há resolução por acesso/preview e alternativas de modelo. A [ficha Google](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) confirma esse ID como preview e entrada de imagem, com saída textual. Acesso na conta não é comprovado pela existência do ID. Solicitar explicitamente o modelo e verificar o modelo efetivamente usado; troca não satisfaz o critério do usuário sem nova decisão.
+
+O [CLI documenta leitura de imagens](https://github.com/google-gemini/gemini-cli/blob/v0.64.0/docs/tools/file-system.md) e [modo headless com eventos](https://github.com/google-gemini/gemini-cli/blob/v0.64.0/docs/cli/headless.md). Isso não replica automaticamente navegador, capturas e ferramentas de Antigravity. Plugins de conhecimento também não são requisito: o [LLM Wiki do Paperclip](https://docs.paperclip.ing/reference/plugins/llm-wiki/) está em alpha; não foi escolhido para substituir o store/vault e não comprova visualização equivalente ao grafo pretendido.
+
+#### Encaixe condicional e teste necessário
+
+**Correção após pergunta do usuário:** ausência de adaptador específico não impede integrar Antigravity CLI. Paperclip pode iniciar `agy` pelo adaptador `process` ou por um adaptador externo próprio. Codex tem integração específica pronta; Antigravity exige completar esse elo. A opção Gemini CLI é alternativa de conveniência de integração, não pré-requisito para usar Paperclip nem motivo suficiente para substituir Antigravity.
+
+O [`process` documentado](https://docs.paperclip.ing/reference/adapters/process/) aceita executável, argumentos e diretório; sua [implementação](https://github.com/paperclipai/paperclip/blob/master/server/src/adapters/process/execute.ts) inicia o processo e devolve stdout/stderr e exit status. O [`agy` headless](https://antigravity.google/docs/cli/headless/) oferece JSON/stream JSON, `conversation_id` e retomada por `--conversation`; a interface instalada foi reconferida por `agy --help`. Portanto, o CLI já oferece mecanismos para execução e continuidade; falta conectá-los ao ciclo de tarefas do Paperclip, não inventar essas capacidades no agente.
+
+Integração mínima proposta: `Paperclip → process → wrapper → agy → resultado/tarefa Paperclip`. O wrapper resolveria o pedido/contexto, chamaria `agy` no projeto correto, registraria o `conversation_id` por tarefa, retomaria pelo ID explícito e devolveria resultado/erro/artefatos ao ticket. Não usar `--continue` global para tarefas distintas. Um adaptador específico posterior poderia mapear eventos, uso e retomada para os campos nativos do Paperclip. O adaptador genérico não interpreta automaticamente o JSON do `agy` nem estabelece esse protocolo por iniciar o processo.
+
+Recomendação: conferir primeiro esse caminho com Antigravity CLI + Codex, preservando a preferência original de executor visual. Comparar o custo real do wrapper com `gemini_local` se necessário. Configuração inicial de `process` exige API/importação segundo a documentação atual. Isso é viabilidade técnica fundamentada, sem teste autenticado ou integração executada; modelo, permissões e ferramentas visuais continuam sujeitos ao teste próprio. Paperclip inicia um CLI, não incorpora a janela IDE do Antigravity.
+
+No caminho alternativo com Gemini CLI, se validado, o desenho seria: Luca acompanha tarefas no Paperclip; Paperclip mantém estado operacional e chama `gemini_local` para a frente visual e `codex_local` para engenharia/revisão; os dois recebem o mesmo recorte autorizado dos Markdown globais/locais. O store/vault continua como conhecimento e visualização próprios; o PostgreSQL do Paperclip guarda sua operação. Não manter uma segunda ponte autônoma concorrendo pelo estado das tarefas. O adaptador de contexto pode continuar necessário.
+
+Essa alternativa muda a base proposta e adiciona infraestrutura; não é adotada pela simples menção do usuário. A opção original em arquivos/interfaces nativas permanece disponível. Antigravity pode continuar como ambiente visual complementar; substituí-lo como executor principal requer equivalência demonstrada no ciclo de trabalho relevante.
+
+Critérios de uma prova de conceito futura, antes de migração:
+
+1. Versões fixadas, login e execução real do Gemini 3.1 Pro solicitado, com confirmação do modelo e custo/quota observáveis. Nenhum fallback silencioso aceito como sucesso.
+2. Gemini e Codex leem as mesmas fontes e respeitam decisões/escopos, inclusive contexto fora do workspace e skills aplicáveis.
+3. Uma tarefa passa de um agente ao outro, retorna evidência e retoma após interrupção, sem duplicar escrita ou exigir contexto recontado pelo usuário.
+4. O executor visual lê captura real, edita uma superfície de teste isolada e inspeciona o resultado no navegador com as ferramentas configuradas. Produzir HTML sozinho não comprova esse ciclo.
+5. Autorizações Git/publicação e execução por demanda são preservadas; horários/heartbeats não iniciam trabalho extra por padrão. Aprovação dentro do Paperclip não é garantia de restrição dos comandos do executor.
+6. Exportação e backup/restore preservam o necessário; fontes continuam acessíveis fora do Paperclip. Não confundir pacote de configuração com histórico operacional completo.
+
+Estado da pesquisa: GitHub confirmou Paperclip MIT e última release `v2026.1012.0`; Gemini CLI aberto/ativo com release `v0.64.0`. `gemini` não foi localizado no PATH desta sessão; `agy` e `codex` foram encontrados. Nenhum aplicativo, banco ou modelo foi iniciado. Suporte documentado e código consultado tornam a opção concreta para teste; não constituem implementação garantida.
+
+### Pesquisa e implicações
+
+- **Autoridade criativa:** [Imagining Design Workflows in Agentic AI Futures](https://arxiv.org/abs/2509.20731) consultou dez designers sobre agentes para referências e ideação, discutindo autoridade e expressão de intenção além do prompt. É um estudo exploratório; não compara esta stack nem comprova sua produtividade. Aplicação proposta: briefing visual e critérios explícitos, com escolha estética humana.
+- **Produção por artefatos:** o [Adobe Run-Workflow MCP](https://helpx.adobe.com/firefly/web/work-with-enterprise-features/creative-production/run-workflow-mcp-overview.html) documenta submissão, ID de acompanhamento, monitoramento e resultados assíncronos. Aproveitar esse padrão para assets e versões. Não pressupor assinatura, conexão ou suporte homologado a Codex/Antigravity; a página lista outros clientes.
+- **Complexidade progressiva:** [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) diferencia workflows previsíveis de agentes com roteamento dinâmico e recomenda começar simples. Aplicação: sequência explícita com retornos delimitados; paralelismo apenas com tarefas independentes e ganho observado.
+- **Revisão:** os [artefatos do Antigravity](https://antigravity.google/docs/artifacts/) incluem planos, diffs, imagens e gravações de navegador. Isso sustenta sua candidatura para coordenação/revisão; a adequação concreta depende de piloto.
+- **Interoperabilidade:** [skills do Codex](https://learn.chatgpt.com/docs/build-skills) e [skills do Antigravity](https://antigravity.google/docs/skills/) usam `SKILL.md` e suportam `.agents/skills` no projeto. As [regras do Antigravity](https://antigravity.google/docs/rules/) incluem descoberta de `AGENTS.md`. Compartilhar conteúdo canônico, conferindo descoberta nos dois ambientes; formato comum não garante ferramentas e permissões equivalentes.
+- **Ponte inicial:** [Codex não interativo](https://learn.chatgpt.com/docs/non-interactive-mode) oferece `codex exec`, eventos JSONL e resposta por JSON Schema. O [Antigravity headless](https://antigravity.google/docs/cli/headless/) também oferece JSON e schema. Adaptadores locais e arquivos podem conectar os ambientes sem um terceiro orquestrador inicial.
+- **Integração retirada:** a [documentação atual do Codex](https://learn.chatgpt.com/docs/mcp-server) informa a remoção de `codex mcp-server`. O App Server usa protocolo próprio, não substitui MCP diretamente e está experimental. Codex continua consumindo MCPs externos; esses dois sentidos de MCP são distintos.
+- **Migração iminente:** o [Antigravity](https://antigravity.google/docs/migration/workflows-to-skills/) anuncia o fim da descoberta/execução dos diretórios legados de workflows em 19/10/2026. Preferir skills e conferir a versão instalada na implementação.
+
+### Adaptação das quatro camadas
+
+| Camada | Manter da referência | Adaptação para AUGEO |
+| --- | --- | --- |
+| 1 — Contexto | Conhecimento durável, indexado e carregado por necessidade | Preservar AGENTS e módulos. Índice privado entre projetos pode inicialmente apontar às fontes existentes. Extrair apenas conhecimento reutilizável, atualizando consumidores e evitando duas fontes normativas. |
+| 2 — Procedimentos | Skills com passos, restrições e validação | `SKILL.md` com núcleo compartilhado e adaptações por executor onde necessárias. Três repetições são heurística, não obrigação. Preservar fluxos completos Impeccable prescritos. |
+| 3 — Orquestração | Decomposição, executores e revisão | Antigravity coordena e executa frontend/visual; Codex executa engenharia estrutural e revisão técnica; Luca dirige e aprova. Estado fora dos chats e responsabilidade de escrita por tarefa. |
+| 4 — Ferramentas | Interfaces MCP, CLI e APIs por necessidade | A proposta inicial usa arquivos, Git, Bun e navegador, com acesso verificado por executor. Nenhum banco ou serviço externo é herdado da referência. Conectores futuros dependem de necessidade e escolha próprias. |
+
+Contexto global privado, configurável e sem depender dos caminhos desta máquina. Dados comerciais de clientes não vão automaticamente para este repositório. AGENTS roteia; o índice não injeta todos os clientes/skills em cada sessão. Acesso local do Codex não comprova acesso do Antigravity.
+
+### Estrutura global proposta e adaptação das referências
+
+A referência separa conhecimento global de código local. A adaptação acrescenta duas separações necessárias: código da ponte fora dos sites e estado das execuções fora do conhecimento normativo. A árvore abaixo preserva o desenho de referência; os destinos efetivos foram implantados conforme o bloco de estado atual, com Paperclip no lugar de uma fila própria. O projeto atual permanece onde está, sem migração obrigatória para `~/projects`.
+
+```text
+~/augeo/
+├── global-context-store/                 # privado; conhecimento e procedimentos
+│   ├── .obsidian/                       # configurações do vault; interface humana
+│   ├── index.md                         # mapa por assunto, cliente e projeto
+│   ├── governance.md                    # autoridade, revisão e atualização de fontes
+│   ├── entities/augeo.md                # identidade, equipe e posicionamento
+│   ├── business/augeo.md                # oferta, operação e pendências comerciais
+│   ├── brandings/augeo.md               # linguagem e diretrizes de marca
+│   ├── projects/augeo-website.md        # relações deste projeto com fontes globais
+│   └── skills/                         # somente procedimentos reutilizáveis adotados
+├── agent-orchestrator/                  # se necessário após avaliar transporte existente
+│   ├── src/context.ts                  # resolve projeto/fontes e monta pacote
+│   ├── src/tasks.ts                    # estados, posse da escrita, tentativas e retomada
+│   ├── src/adapters/codex.ts            # subprocesso codex exec
+│   ├── schemas/                        # contratos task/result/context
+│   └── tests/                          # integridade da passagem e recuperação
+└── modular-bw-landing/                  # este projeto, preservado
+    ├── AGENTS.md                       # entrada e regras específicas do projeto
+    ├── .agents/skills/                 # somente procedimentos próprios deste projeto
+    ├── docs/                           # especificação, HERO, WORKFLOW, fila e histórico
+    └── src/                            # implementação do site
+
+~/.config/augeo-orchestrator/config.json # caminhos, projetos e executores; sem segredos
+~/.local/state/augeo-orchestrator/
+└── runs/<id>/                          # task.json, context.json, events.jsonl,
+                                       # result.json e artifacts/
+```
+
+Os nomes da árvore representam o desenho original; os módulos efetivos da ponte estão descritos no estado atual e em seu README. Não são recursos nativos dos produtos. Configuração local associa um ID de projeto ao diretório real, cliente, fontes permitidas, skills e executores disponíveis. Assim, outra máquina usa a mesma arquitetura com caminhos diferentes. Credenciais continuam nos mecanismos de cada ferramenta, não no contexto nem no arquivo de projetos.
+
+Esta é a árvore mínima proposta, não um conjunto de pastas a criar antecipadamente. `.obsidian` existirá se Obsidian for adotado. `clients`, `views` e `maps` só serão criados quando houver conteúdo ou vista concreta; não são pré-requisitos do piloto. A ponte própria e seus caminhos de estado/configuração são condicionais à escolha do transporte. O ID `augeo-website` identifica o projeto sem renomear seu repositório/diretório.
+
+`index.md` relaciona assuntos e fontes; `governance.md` contém apenas regras comuns efetivamente adotadas de autoridade, atualização e aprovação. Os arquivos de empresa, negócio e marca mantêm responsabilidades separadas; `projects/augeo-website.md` relaciona essas fontes às rotas locais, sem copiar o backlog. Não criar um AGENTS genérico em `~/augeo` que injete regras nos demais projetos por herança acidental.
+
+### Obsidian, grafo e recuperação semântica
+
+**Requisito explicitado pelo usuário:** visualizar as relações do contexto é parte essencial do escopo, não acabamento posterior. Proposta: abrir `global-context-store` diretamente como vault Obsidian. O [vault é uma pasta local](https://help.obsidian.md/Files+and+folders/Manage+vaults); os agentes e Obsidian leem os mesmos Markdown. Não é necessária API/MCP para o acesso básico aos arquivos. Obsidian não coordena processos nem transmite automaticamente uma edição ao chat de um agente.
+
+O [Graph View](https://help.obsidian.md/Plugins/Graph+view) mostra notas e seus links explícitos. [Canvas](https://help.obsidian.md/Plugins/Canvas) pode organizar briefings e mapas de trabalho. O desenho canônico de relações permanece em notas e links, pois a disposição espacial de cartões não é um contrato suficiente para o agente. Usar links Markdown compatíveis com repositórios e Obsidian; o [Obsidian suporta esse formato](https://help.obsidian.md/Linking+notes+and+files/Internal+links).
+
+Relações mínimas úteis: projeto → cliente → marca; projeto → requisitos/decisões; procedimento → fontes que consome. Notas têm ID estável, tipo, responsável, estado e revisão/data; links representam relações deliberadas, não proximidade gerada por IA. Separar no grafo propostas, fontes vigentes e histórico; nenhuma ligação visual significa aprovação. Grafo local por projeto/cliente evita depender de um mapa global ilegível.
+
+#### Conexão com os documentos do projeto
+
+Os documentos locais continuam canônicos no Git do projeto. A nota `projects/<projeto>/index.md` relaciona o projeto às fontes globais. Para visualizar também requisitos/decisões locais no mesmo grafo, a ponte gera recortes selecionados em `views/<projeto>/`, com origem, ID, revisão/hash e aviso de somente leitura. Os links internos dessas vistas são resolvidos para as notas correspondentes dentro do vault. Links a arquivos externos não se tornam automaticamente nós completos do grafo.
+
+Editar contexto global no Obsidian altera a própria fonte. Editar especificação/HERO deve ocorrer na fonte do repositório, depois regenerar a vista. Se uma vista for editada, a ponte detecta divergência e impede tratá-la como fonte aprovada; não sobrescreve silenciosamente. Antes de montar tarefa, conferir hashes das fontes e atualizar vistas desatualizadas. Mudança humana durante tarefa em andamento invalida o contexto afetado e exige reconciliação. Os agentes consultam os originais resolvidos, não usam o snapshot do grafo como autoridade superior.
+
+#### Grafo visual e vetores têm funções distintas
+
+O Graph View padrão representa links, não embeddings. Busca vetorial encontra proximidade de significado, inclusive sem link explícito. Ambas pertencem ao desenho de contexto, mas a segunda exige indexador/modelo e mecanismo de consulta. Não instalar um plugin de IA apenas para obter o grafo nativo.
+
+Possibilidade conceitual futura, fora da implantação inicial: `fontes autorizadas → trechos + IDs/hashes/metadados → embeddings → índice → consulta → leitura do trecho original`. Caso essa capacidade venha a ser necessária, resultados deverão incluir origem/revisão e filtros de projeto/cliente e estado. Decisões obrigatórias continuam no roteamento explícito; similaridade não decide vigência. O índice seria derivado e reconstruível, com invalidação por alteração/exclusão.
+
+A implantação inicial propõe Markdown, índice explícito e links, com visualização do conhecimento. Não exige banco, embeddings ou serviço de busca. Uma eventual busca semântica exige primeiro justificar a necessidade; só então comparar opções e escolher armazenamento, modelo e forma de execução. A lista de ferramentas da referência não antecipa essa escolha.
+
+Critérios da integração visual: Luca consegue navegar marca → projeto → decisão/procedimento; os dois agentes recuperam a mesma fonte; edição global aparece na próxima tarefa; renomeação, exclusão e vista desatualizada são detectadas. Se busca semântica for adotada futuramente, sua especificação deverá exigir origem/revisão, isolamento de cliente e invalidação de conteúdo removido. Uma eventual projeção espacial dos embeddings exigiria visualização adicional; não é capacidade presumida do grafo nativo.
+
+#### O que migra e o que permanece
+
+| Fonte atual | Destino proposto e tratamento |
+| --- | --- |
+| AUGEO: nome/descrição, público, posicionamento e equipe | `entities/augeo.md`; identidade e operação humana, sem converter sócios em papéis de agentes. |
+| AUGEO: oferta, comercial/precificação, processo comercial, triagem e limites operacionais | `business/augeo.md`; conservar estimativas, faixa de referência e pendências sem transformá-las em promessas. |
+| AUGEO: origem do nome, princípios de design/visual, direção de linguagem e restrições de marca | `brandings/augeo.md`; não promover valores específicos do hero a regra universal. Recursos criativos são repertório, não entregas contratadas. |
+| AUGEO: julgamento humano e autoridade de decisão | `governance.md` para a regra comum; identidade da liderança permanece em `entities/augeo.md`, com vínculo explícito. |
+| AUGEO: objetivo/prioridade e aplicação ao website | Permanecem locais, reconciliados com a especificação/backlog. |
+| Especificação, HERO, backlog e histórico | Permanecem neste repositório. Contexto global não vira cópia da cronologia do site. |
+| WORKFLOW | Bun e procedimentos próprios do repo permanecem. Método reutilizável pode virar skill global, mantendo instruções locais como complemento. |
+| PRODUCT | Preservar caminho/schema; manter resumo da skill a partir das fontes resolvidas, com rastreabilidade. |
+| Duas referências externas | Preservar como referência; esta proposta contém a adaptação, sem reescrever o benchmark como decisão aprovada. |
+
+Na migração efetiva, auditar consumidores de AUGEO, separar os trechos, atualizar links/rotas e retirar o conteúdo global duplicado. Durante a transição, o AUGEO local continua normativo até a troca explícita de autoridade. Depois, o acesso privado ocorre pelo contexto resolvido. Para execução sem acesso ao store, exportar somente o recorte autorizado com origem/revisão e indicação de snapshot não editável como fonte; não copiar o store privado para o Git. Se execução exigir dado ausente, reportar a lacuna.
+
+Consumidores já identificados para essa troca: AGENTS, PRODUCT e os links de operação interna/triagem na especificação. Reconciliar o objetivo/prioridade do website com especificação/backlog e então retirar AUGEO local como fonte concorrente; a remoção só ocorre após cobertura de todo o conteúdo e atualização dos consumidores. Evidências históricas continuam descrevendo seus caminhos originais. Material pessoal ignorado permanece privado e fora da migração automática.
+
+Fontes globais terão ID estável, assunto/escopo, estado e responsável. Referências a fontes locais incluem projeto e caminho relativo; caminhos físicos são resolvidos na configuração do ambiente. Snapshots exportados carregam origem, hash e indicação de derivação; não recebem autoridade própria nem atualizações independentes. Acesso ausente é reportado como lacuna. Registro de ferramentas só inclui ferramenta adotada e capacidade verificada, nunca catálogo de exemplos.
+
+#### Como os agentes descobrem o global
+
+1. Registrar a raiz do store e projetos na configuração da ponte. Índice/contexto não dependem de variáveis exportadas herdadas por um aplicativo gráfico.
+2. Instalar uma skill pequena de entrada/delegação em cada superfície usada. Ela chama a ponte pelo caminho resolvido na instalação. O AGENTS local continua independente da máquina; a instalação global fornece o ponto de acesso local.
+3. Expor apenas skills reutilizáveis selecionadas a cada executor por links simbólicos gerenciados e verificados, sem substituir skills existentes. Fonte única em `global-context-store/skills`; destinos de descoberta conforme tabela abaixo. Se uma superfície não resolver links corretamente, usar cópia gerada com revisão e verificação de sincronização, sem edição independente.
+4. Antes de executar, a ponte lê AGENTS e o índice, resolve o recorte permitido, registra revisão/hash das fontes em `context.json` e fornece os caminhos/arquivos necessários ao executor. Markdown não é carregado automaticamente apenas por estar no store.
+
+| Superfície | Destino de descoberta global das skills |
+| --- | --- |
+| Codex | `~/.agents/skills/<nome>/` |
+| Antigravity App/IDE | `~/.gemini/config/skills/<nome>/` |
+| Antigravity CLI | `~/.gemini/antigravity-cli/skills/<nome>/` |
+
+Locais conforme [Codex](https://learn.chatgpt.com/docs/build-skills) e [Antigravity](https://antigravity.google/docs/skills/). Descoberta, leitura do store fora do workspace e permissões precisam ser verificadas em cada superfície efetivamente utilizada. Skills orientam; o adaptador controla estados/processos; o sandbox e as ferramentas disponíveis definem acesso efetivo.
+
+### O que pluga aonde
+
+- **Luca → Antigravity:** interface principal proposta; conversa, direção, aprovação e acompanhamento visual. O agente mantém a coordenação sem precisar de outro modelo gerente.
+- **Antigravity → frontend:** trabalha diretamente no checkout do projeto, usa dev server/navegador e ferramentas criativas disponíveis, executa os procedimentos prescritos e entrega código e capturas.
+- **Antigravity → ponte Bun → Codex CLI:** quando precisa de engenharia estrutural/revisão, submete uma tarefa. A ponte resolve contexto, valida escopo, registra a execução e inicia `codex exec` no diretório correto. Captura eventos e resposta estruturada e devolve o resultado ao coordenador.
+- **Ponte → store + projeto:** lê apenas as fontes autorizadas para aquela tarefa; o estado vai para `runs/<id>`, não para o índice de conhecimento. O resultado só atualiza uma fonte normativa quando a tarefa e o responsável autorizam essa mudança.
+- **Luca → Obsidian → store:** navega o grafo e edita fontes globais. A ponte resolve os arquivos atualizados no início de cada tarefa, sem exigir Obsidian aberto. Vistas de documentos locais são regeneradas a partir dos originais.
+- **Executor → MCP/API/CLI de ferramenta:** Figma e ferramentas criativas no executor visual; GitHub, banco e infraestrutura no executor da tarefa técnica, conforme conexão verificada. Configurar conector em um aplicativo não o instala no outro. MCP conecta ferramentas; por si só não resolve o contrato de delegação entre ambientes.
+
+Na implantação Paperclip, a ponte é um programa local determinístico chamado pelo adaptador `process`. A CLI resolve contexto/vistas, executa a tarefa exata e cria uma passagem vinculada. O servidor Paperclip submete/consulta tarefas e mantém o estado; não foi implementada uma segunda CLI de fila. O servidor roda em foreground; não há serviço de boot instalado.
+
+| Capacidade | Ligação conceitual | Estado |
+| --- | --- | --- |
+| Visualização do contexto | Interface humana sobre os mesmos arquivos de conhecimento | Requisito; Obsidian proposto. |
+| Ferramentas de criação e inspeção | Executor visual usa os conectores de que realmente dispõe | Inventariar por ambiente; não copiar conexões presumidas. |
+| Armazenamento operacional | Produto que precisar persistir dados define seu próprio contrato | Nenhum banco escolhido para a orquestração; não é dependência do piloto. |
+| Recuperação semântica | Consulta ao conhecimento, se índice/links se mostrarem insuficientes | Possibilidade futura; sem tecnologia ou implementação definida. |
+| Transcrição, eventos e comunicação | Entradas/saídas externas, se houver demanda | Fora da implantação inicial; serviços não escolhidos. |
+| Versionamento e publicação | Ferramentas do projeto conforme configuração e autorização reais | Preservar o ambiente existente; a proposta não define novas integrações. |
+
+As quatro camadas são responsabilidades lógicas: uma interface visual dá acesso humano à camada 1; uma eventual integração de armazenamento atende a uma necessidade específica. A referência conceitual não constitui catálogo operacional nem obrigação de implantação.
+
+#### Exemplos externos preservados apenas como referência
+
+As duas referências citam Supabase, Fathom, NotebookLM, n8n/Make e Evolution API; a pesquisa também examinou pgvector. Essas menções ilustram possibilidades e não selecionam fornecedores, banco, dependências ou tarefas futuras obrigatórias. Não exportar esses exemplos como ferramentas adotadas para o contexto global. A pesquisa não autoriza configuração nem uso desses serviços.
+
+Cada demanda segue o coordenador registrado no contrato v0.1. Um futuro adaptador `agy` poderia permitir execução frontend delegada a partir de outra interface, após validação específica. `agy -p` cria/usa execução CLI, não envia automaticamente mensagem a um chat IDE já aberto. Navegador e ferramentas do IDE não são presumidos no modo headless. No caminho de ponte própria, a primeira direção proposta é Antigravity interativo → ponte → Codex, com execução visual no próprio Antigravity; no caminho de canvas, verificar a comunicação real entre as sessões escolhidas.
+
+#### Exemplo de ponta a ponta
+
+Pedido hipotético: uma seção visual com formulário. Antigravity resolve briefing/marca e implementa a seção, componentes, estados e responsividade. Define o contrato dos campos junto com Codex. Delega validação de servidor, recebimento e armazenamento ao Codex pela ponte. Codex devolve implementação técnica e verificações; Antigravity integra a experiência, testa no navegador e apresenta a Luca. Revisão técnica de alterações visuais também pode ser delegada ao Codex. Publicação continua condicionada à autorização específica vigente.
+
+O contrato UI/API deve ser definido antes das duas implementações. No piloto, executar sequencialmente no mesmo checkout para que o segundo executor veja os arquivos locais. Se paralelo, worktrees e integração explícita são necessários; separar por nomes de pastas não basta quando há componentes e contratos compartilhados.
+
+### Contrato mínimo
+
+Contrato v0.1 de referência, independente da interface. A ponte atual implementa o subconjunto de leitura descrito no estado atual; não valida integralmente todos os campos desta tabela por JSON Schema nem habilita escrita. Os schemas nativos Paperclip validam seus próprios registros.
+
+| Registro | Campos obrigatórios e regra |
+| --- | --- |
+| Identificação | Versão do contrato, ID da demanda, ID da tarefa, tentativa e ID do projeto. Uma demanda pode conter várias tarefas. |
+| Responsabilidade | Coordenador, executor e revisor quando aplicável. Declarar se o aceite é técnico pelo coordenador ou exige decisão criativa de Luca. |
+| Pedido | Objetivo, entregável, exclusões e critérios de aceite observáveis. Não enviar apenas “continue” ou todo o histórico de chats. |
+| Contexto | IDs das fontes, caminhos resolvidos, revisão/hash, estado de aprovação e decisões relevantes. Incluir referências visuais reais quando a tarefa depender delas. |
+| Base | HEAD do Git e manifesto dos arquivos relevantes, incluindo diferenças locais não commitadas. SHA sozinho não descreve um checkout sujo. |
+| Acesso | Modo leitura/escrita, arquivos permitidos e autorizações já concedidas. Permissões do runtime devem corresponder; texto no prompt não substitui controle efetivo. |
+| Limites | Prazo/timeout, orçamento quando definido e máximo de correções. Não herdar liberdade irrestrita da interface escolhida. |
+| Resultado | Mesmos IDs/tentativa, estado final, arquivos alterados/diff, critérios atendidos/falhos e verificações realmente executadas. Comando, resultado e contexto devem ser rastreáveis. |
+| Evidência | Artefatos/capturas, viewport/tema/movimento quando pertinentes, limitações, alterações parciais e questão necessária se houver impedimento. |
+| Revisão | Responsável, decisão, critérios e revisão exata do resultado. Aprovado tecnicamente não significa aprovado visualmente ou autorizado para publicação. |
+
+Fluxo: coordenador prepara pedido → verifica fontes/base/acesso → registra tarefa pronta → concede escrita ao executor → recebe resultado → revisa critérios/evidências → registra aceite ou correção. A execução própria de frontend pelo Antigravity usa o mesmo registro, sem precisar passar pelo Codex.
+
+| Estado | Condição para entrar/sair |
+| --- | --- |
+| `briefing` | Objetivo ou contexto em preparação; não executar mutações. |
+| `pronta` | Critérios, fontes, responsável, base e autorizações resolvidos. |
+| `execucao` | Executor único ativo, com escopo de escrita concedido. |
+| `revisao` | Processo terminou, resultado identificado e evidências disponíveis; revisor confere a base correspondente. |
+| `aguardando_decisao` | Falta decisão necessária; registrar questão e quem decide. Não avançar por tempo decorrido. |
+| `concluida` | Aceite previsto para a tarefa registrado; passar posse da escrita à próxima tarefa. |
+| `falhou` / `cancelada` | Registrar motivo e alterações parciais; confirmar parada do processo antes de liberar escrita. |
+
+Revisão pode retornar à execução com nova tentativa vinculada ao resultado anterior. Proposta inicial: até duas rodadas de correção no mesmo escopo; divergência persistente vai ao coordenador/Luca conforme natureza da decisão. Falta de ferramenta vira lacuna, sem troca silenciosa do método ou relaxamento do aceite.
+
+Um componente mantém o estado: o transporte escolhido ou a ponte, nunca ambos de forma independente. Coordenador pede transições; executor fornece resultado. Registrar arquivos finais atomicamente. Após interrupção, inspecionar processo, base e alterações parciais antes de retomar; não repetir mutações nem reverter trabalho humano automaticamente. Mudança de fonte/base relevante invalida o aceite anterior e requer reconciliação.
+
+#### Critérios de aceite do contrato e da estrutura
+
+1. Duas sessões independentes encontram a mesma regra de marca, requisito local e decisão vigente usando o registro do projeto e o índice; nenhuma depende de o usuário repetir contexto.
+2. Uma tarefa pode executar só no Antigravity ou ser delegada ao Codex com objetivo, arquivos, base e resultado reconhecíveis, sem exclusividade de autoria por produto.
+3. Mesmo desligando a interface gráfica, é possível localizar pedido, fontes e resultado pelos arquivos/exportação; informação essencial não fica apenas em posições no canvas.
+4. Alterar uma fonte global aparece na próxima resolução de contexto; edição durante execução e snapshot desatualizado geram reconciliação, sem promover derivação a fonte normativa.
+5. O grafo permite navegar agência/marca → website → procedimento/decisão. Documentos locais preservam autoridade; vistas selecionadas indicam origem e revisão.
+6. Interrupção, tarefa duplicada, fonte inacessível e mudança concorrente de arquivo não geram dois escritores ou conclusão sem evidência.
+7. As referências e seu catálogo de serviços permanecem fora das ferramentas adotadas. O piloto funciona sem banco, embeddings ou transcrição.
+
+Esses são critérios de verificação futura, ainda não testes executados. O aceite desta entrega é documental: contrato compreensível, destinos e consumidores mapeados, escolhas propostas separadas de decisões e limites preservados.
+
+### Implantação gradual
+
+| Etapa | Entrega | Critério para avançar |
+| --- | --- | --- |
+| 1. Contrato e interface | Rever contrato/estrutura; inventariar interfaces nativas e permissões; definir transporte mínimo. Maestri Free fica opcional para avaliação isolada | Recomendação de base sem dependência do Maestri; nenhuma interface adicional adotada ou piloto comprovado. |
+| 2. Contexto global e Obsidian | Migrar conteúdos conforme tabela; índice, links, propriedades, vault e vistas; expor skills selecionadas aos executores | Navegação visual útil e leitura da mesma revisão pelos agentes; ausência, mudança e vista desatualizada detectadas. |
+| 3. Transporte e piloto | Reutilizar transporte validado da interface ou construir adaptador mínimo em Bun; Antigravity executa visual e delega tarefa técnica/revisão | Ida e volta e recuperação conforme contrato; não duplicar uma orquestração que a interface já cumpra. |
+| 4. Avaliação do piloto | Comparar tempo ativo de Luca, qualidade aceita, retrabalho e falhas; identificar necessidades reais de expansão | Cada necessidade tem justificativa e decisão próprias; sem contratação, banco ou busca semântica previstos por padrão. |
+
+Primeiro piloto recomendado: auditoria somente leitura de superfície existente, com capturas e correções propostas. Depois, pequena mudança isolada escolhida por Luca para comprovar escrita e retorno. Isso não autoriza retomar blocos do hero. Trabalho visual futuro deve executar os fluxos Impeccable aplicáveis; esta pesquisa não executa esses fluxos.
+
+Antigravity pode inicialmente chamar o adaptador pelo terminal conforme permissões verificadas. Adicionar MCP próprio apenas se descoberta de ferramentas/acompanhamento de jobs justificar: seria adaptador nosso sobre interface suportada, não o removido servidor Codex. Avaliar SDK/App Server quando sessões persistentes, eventos e aprovações justificarem a complexidade.
+
+#### Concorrência e recuperação
+
+Começar sequencialmente: Antigravity escreve frontend/visual e Codex escreve a parte técnica delegada ou revisa, conforme tarefa. O revisor não altera simultaneamente os arquivos do executor. Trabalho paralelo exige diretórios/worktrees isolados e responsável por integração. Worktrees de HEAD não incluem alterações locais pendentes: reconciliar a base antes de delegar. Não criar commits automaticamente para facilitar isolamento. Base ou arquivos relevantes alterados durante execução exigem nova revisão antes de aplicar o resultado.
+
+Logs brutos e transitórios ficam fora da documentação normativa; histórico preserva evidências e decisões necessárias. Assets precisam de origem, versão, finalidade e aprovação. Preservar resultados de links temporários antes de tratá-los como evidência durável. Falha de executor permite retomada manual pelo mesmo contrato.
+
+### Evidências históricas da pesquisa — antes da implantação
+
+- HEAD conferido: `f368281`. Alterações preexistentes em AGENTS, BACKLOG e histórico, além de PNGs não rastreados, preservadas.
+- `command -v`: Codex, `agy`, Bun e gh disponíveis. `codex --version`: `0.163.0`. `codex --help`: antigo MCP server ausente; App Server experimental.
+- `codex exec --help`: JSONL, JSON Schema, arquivo de resultado e diretório. `agy --help`: modo não interativo, JSON/stream JSON e schema. Isso verifica interfaces, não execução autenticada ou integração funcional. Versão do `agy` não determinada nesta rodada.
+- Sem agentes filhos, tarefas de modelo nos CLIs, login, instalação, conexão, configuração global, serviço, alteração de aplicação, commit, push ou publicação. Navegador, acesso às contas, descoberta compartilhada e permissões efetivas ficam para o piloto.
+- Nesta entrega: contrato v0.1 e árvore/migração concretizados para revisão. Os quatro destinos de contexto, ponte, configuração e estado foram consultados e estavam ausentes. Linux confirmado; pesquisa de interfaces e metadados/licenças/releases via web e `gh`, sem instalação ou execução dos aplicativos candidatos.
+- Próxima ação proposta: avaliar contrato/interface e conferir capacidades nas superfícies escolhidas; então implantar contexto e transporte necessário e executar piloto. Expansões seguem por necessidade. Nenhuma ferramenta candidata foi incorporada ao contexto global.
+
+## Registros anteriores retirados da fila ativa — 2026-10-17
+
+Transferidos do BACKLOG na consolidação. Descrevem entregas e preparação de publicação anteriores; não são próximos passos ou nova autorização. O último commit documental local conferido nesta consolidação foi `f061462`.
+
+### Entrega anterior — implantação local da orquestração — 2026-10-17
+
+- Fontes reutilizáveis de AUGEO migradas com conferência de cobertura; AUGEO local contém aplicação ao website; PRODUCT preserva caminho/schema. AGENTS, especificação e consumidores atualizados. Guia pessoal e mudanças preexistentes preservados.
+- Guia humano integrado ao README da integração: entrada pelo painel, instância/processos, passagem explícita, árvore e navegação Obsidian/Graph View/Canvas. Sem novo documento concorrente; detalhes técnicos preservados.
+- Integração e dependências fora da landing. `augeo-orchestrator` resolve contexto, atualiza/confere vistas e passa resultados entre executores. `augeo-paperclip` inicia o painel local em foreground; sem serviço de boot. Código e operação no README local da integração.
+- **Verificação:** 12 testes da ponte e TypeScript aprovados; painel Paperclip inspecionado em Chromium sem erro de página; ambos CLIs executados; passagem vinculada e retomada real verificadas; backup PostgreSQL restaurado em banco descartável com 1 organização, 2 agentes e 3 tarefas (snapshot inicial), depois removido. Exportação inicial gerou 12 arquivos e duas ressalvas de fidelidade.
+- Falhas reais encontradas e corrigidas: extração opcional musl, hidratação upstream de symlinks Postgres, status `SUCCESS`, exigência de responsável pela revisão e cancelamento do próprio processo por reassinação. Recuperações preservaram saída e evidências; nenhuma repetição de ação de produto. Resultados finais de Antigravity/Codex estão em revisão, com interação humana e sem trava pendente.
+- **Limitações:** escrita/ciclo visual do executor não validados; descoberta da skill em cada superfície gráfica não comprovada só pela instalação; custo do adaptador process não normalizado no painel. Backup do banco testado não é teste de desastre de toda a instalação. Sem alteração da aplicação, fluxo visual Impeccable, commit, push ou publicação.
+
+### Entrega anterior — modularização documental — 2026-10-17
+
+- Separados contexto da agência e resumo da skill; requisitos da landing mantidos na especificação. Estado/decisões/propostas do hero consolidados; procedimentos retirados da cronologia; fila separada do histórico.
+- Históricos e auditoria preservados em archive, com estado explícito e links atualizados. Referências externas e guia privado preservados. Estrutura anterior substituída sem correspondência 1:1 e sem limite fixo de arquivos.
+- Verificação aprovada: 88 links locais, 14 âncoras e seis referências do moodboard; preservação textual de auditoria, cronologia, implementação, decisões e contexto da agência. Caminho/schema de PRODUCT e referências externas preservados; nenhum consumidor ativo dos nomes removidos. `git diff --check` aprovado. Compatibilidade da skill conferida estaticamente, sem executar launcher. Sem alteração de aplicação, teste funcional, fluxo Impeccable, commit, push ou publicação nesta etapa.
+- Próxima ação: definir escopo, responsabilidades e mecanismo da arquitetura de orquestração Antigravity/Codex sobre a modularização publicada. Nenhum bloco visual retomado.
+
+
+### Preparação de publicação documental — 2026-10-17
+
+Usuário autorizou staging, commit e push após o showcase. GitHub CLI confirmou autenticação, repositório `lucavalente93/augeo-v1-landing` e main remota em `aa12d8a`, mesma base local. Referências já estavam movidas para `docs/refs/`; links ativos ajustados e SHA-256 do ZIP/captura comparados aos blobs anteriores, idênticos. Conferidos 88 links locais, 14 âncoras e schema de PRODUCT. Publicação reúne documentação e renomes relacionados; PNGs Figma e guia privado ficam fora. Resultado do envio e SHA remoto serão conferidos por gh e informados na entrega. Sem nova suíte/build ou verificação de deploy por esta mudança documental.
+
+
+## Consolidação documental da integração — 2026-10-17
+
+- Usuário esclareceu que desejava uma explicação simples, e autorizou concluir a reorganização documental já iniciada. ORCHESTRATION passou a conter o contrato vigente, sem propostas antigas concorrendo com o estado implantado; pesquisa/contrato anteriores e entregas antigas do backlog foram transferidos para este histórico, com texto substantivo preservado e links ajustados.
+- AGENTS atualiza a entrada para a integração já implantada e identifica a fonte do contrato. BACKLOG mantém fila/estado e síntese da última entrega. README local preserva operação diária, Obsidian, comandos, instalação, permissões e recuperação; detalhes históricos remetem às fontes existentes. Nenhum documento concorrente criado.
+- Originais anteriores à consolidação e manifesto SHA-256 preservados no estado privado, em `consolidation-20261017`. Alterações de código, fixture e PNGs preexistentes preservadas. Esta etapa é documental: não executa novos modelos, fluxos Impeccable, testes funcionais, aprovação, commit, push ou publicação.
+
+- Conferência documental: pesquisa e entregas transferidas comparadas integralmente com os originais, permitindo somente ajuste de títulos/links; 29 links locais e quatro âncoras válidos. Sete vistas Obsidian regeneradas e conferidas; `git diff --check` aprovado. Contrato ativo reduzido de cerca de 65 KB para 9 KB, mantendo estados, permissões, limites e próxima ação.
