@@ -1,251 +1,251 @@
-# AUGEO Website: Especificação
+# AUGEO Website - Specification
 
-Revisão de requisitos e implementação em 2026-10-13; referências de publicação reconciliadas em 2026-10-17 com os registros locais e o endereço informado pelo usuário, sem nova consulta remota. Esta especificação define a landing completa e distingue seus requisitos do estado publicado. Composição, decisões e propostas do hero: [HERO.md](HERO.md). Fila e última entrega: [BACKLOG.md](BACKLOG.md). Procedimentos: [WORKFLOW.md](WORKFLOW.md). Evidências datadas: [histórico](archive/EXECUTION_HISTORY.md).
+Requirements and implementation reviewed on 2026-10-13; publication references reconciled on 2026-10-17 against local records and the address provided by the user, without a new remote lookup. This specification defines the complete landing and distinguishes requirements from published state. Hero composition, decisions and proposals: [HERO.md](HERO.md). Queue and latest delivery: [BACKLOG.md](BACKLOG.md). Procedures: [WORKFLOW.md](WORKFLOW.md). Dated evidence: [history](archive/EXECUTION_HISTORY.md).
 
-## 1. Papel do Site
+## 1. Website role
 
-Landing page institucional e comercial da AUGEO Creative. Ela deve:
+Institutional and commercial landing page for AUGEO Creative. It must:
 
-- apresentar a agência de forma inequívoca;
-- demonstrar critério, direção e capacidade de execução pelo próprio website;
-- explicar o modelo comercial baseado em entendimento do contexto antes da proposta;
-- converter negócios adequados em contatos qualificados.
+- introduce the agency unambiguously;
+- demonstrate judgment, direction and execution capability through the website itself;
+- explain the commercial model based on understanding context before proposing work;
+- convert suitable businesses into qualified contacts.
 
-O site não deve tentar compensar a ausência de cases públicos com projetos fictícios, números, depoimentos ou sinais artificiais de validação social. Até existirem trabalhos publicados, a prova é dada pela qualidade da página, pela clareza do processo e pela precisão da entrada comercial.
+The website must not compensate for missing public case studies with fictional projects, numbers, testimonials or artificial social validation. Until published work exists, evidence comes from page quality, process clarity and precise sales intake.
 
-## 2. Escopo da Primeira Versão
+## 2. First-version scope
 
-### Incluído na landing completa
+### Included in the complete landing
 
 - Header
 - Hero
-- Processo
-- Formulário de entrada e triagem
-- Footer visual mobile, integrado à composição do hero
+- Process
+- Intake and screening form
+- Mobile visual footer integrated into the hero composition
 
-### Fora do escopo nesta versão
+### Outside this version's scope
 
-- Seção autônoma de serviços ou capacidades
-- Portfólio, cases, clientes, métricas e depoimentos
-- Seção institucional de “sobre” ou equipe
+- Standalone services or capabilities section
+- Portfolio, case studies, clients, metrics and testimonials
+- Institutional about/team section
 - FAQ
-- Páginas internas, blog e área de cliente
+- Internal pages, blog and client area
 
-**Estado publicado:** cabeçalho, hero com copy e botão de conversão “Apresentar negócio”, matriz reativa em hover e indicativo desktop. No mobile, o componente inteiro da matriz foi reposicionado como footer visual, abaixo da copy e do CTA. Processo e formulário de entrada ainda estão previstos.
+**Published state:** Header, hero with copy and “Apresentar negócio” conversion button, hover-reactive matrix and desktop cue. On mobile, the entire matrix component was repositioned as a visual footer below copy and CTA. Process and intake form remain planned.
 
-## 3. Arquitetura e Fluxo
+## 3. Architecture and flow
 
-| Camada | Função e estado |
+| Layer | Function and state |
 |---|---|
-| Header | Marca com retorno ao início; implementado. |
-| Hero | Posicionamento, assinatura interativa e botão de conversão; implementado. |
-| Footer mobile | Matriz e lettering encerram a composição abaixo da copy e do CTA; implementado. |
-| Processo | Explicar entendimento, direcionamento e proposta; previsto. |
-| Formulário | Receber o contexto do negócio para triagem; previsto em `#entrada`. |
+| Header | Brand with return to top; implemented. |
+| Hero | Positioning, interactive signature and conversion button; implemented. |
+| Mobile footer | Matrix and lettering close the composition below copy and CTA; implemented. |
+| Process | Explain understanding, direction and proposal; planned. |
+| Form | Receive business context for screening; planned at `#entrada`. |
 
-“Apresentar negócio” é a entrada de conversão já presente na composição. A etapa seguinte é conectar seu destino ao formulário real; o código atual usa `href="#entrada"`.
+“Apresentar negócio” is the conversion entry already present in the composition. The next step is connecting its destination to the real form; current code uses `href="#entrada"`.
 
 ## 4. Hero
 
-### Função
+### Function
 
-Apresentar o posicionamento da AUGEO, demonstrar direção pela própria composição e oferecer a ação “Apresentar negócio”. No desktop, texto e matriz se contrapõem em duas colunas. No mobile, a matriz foi levada para o footer para preservar a ordem **mensagem → CTA → assinatura visual**.
+Present AUGEO's positioning, demonstrate direction through composition and offer the “Apresentar negócio” action. On desktop, text and matrix counterbalance each other in two columns. On mobile, the matrix moved to the footer to preserve the order **message → CTA → visual signature**.
 
-### Campo visual interativo
+### Interactive visual field
 
-A composição reativa já está implementada: grade em canvas e lettering SVG listrado respondem juntos ao hover/ponteiro em todo o hero, inclusive na coluna textual. Clique ou toque gera ondas; ao encerrar a interação, a deformação retorna ao repouso.
+The reactive composition is implemented: canvas grid and striped SVG lettering respond together to hover/pointer throughout the hero, including the text column. Click or touch generates waves; deformation returns to rest at interaction end.
 
-No desktop, a matriz ocupa a coluna direita do split 44/56. No mobile, o mesmo componente inteiro forma o footer retangular de largura integral, com lettering centralizado e rolagem vertical permitida pela área interativa. Essa mudança é uma escolha de composição e ergonomia, não a criação de outro componente.
+On desktop, the matrix fills the right column of the 44/56 split. On mobile, the same entire component forms the full-width rectangular footer, with centered lettering and vertical scrolling allowed through the interactive area. This is a composition and ergonomics choice, not another component.
 
-Os temas claro/escuro abrangem texto e matriz. A interação pausa fora da tela e com aba oculta; `prefers-reduced-motion` mantém a composição estática. Os pulsos automáticos atuais continuam; introdução finita e otimização do warp são refinamentos registrados em HERO.md.
+Light/dark themes cover text and matrix. Interaction pauses off-screen and with a hidden tab; `prefers-reduced-motion` keeps composition static. Current automatic pulses continue; finite introduction and warp optimization are refinements recorded in HERO.md.
 
-### Continuidade e conversão
+### Continuation and conversion
 
-Os dois triângulos desktop indicam continuidade por scroll e permanecem decorativos. A integração com `#processo` depende da seção prevista. O botão **“Apresentar negócio”** tem função distinta: conversão para a entrada comercial `#entrada`, com o formulário ainda por implementar.
+The two desktop triangles indicate scroll continuation and remain decorative. Integration with `#processo` depends on the planned section. The **“Apresentar negócio”** button has a distinct role: conversion to sales intake `#entrada`, whose form remains to be implemented.
 
-## 5. Processo Público
+## 5. Public process
 
-O processo é a principal peça comercial da landing. Sua função é mostrar que uma demanda inicial recebe leitura e priorização antes de virar escopo e proposta — sem comunicar que a agência impede o cliente de escolher uma solução.
+The process is the landing's main commercial element. It shows that an initial request is read and prioritized before becoming scope and proposal, without suggesting the agency prevents clients from choosing a solution.
 
-### Etapas públicas
+### Public steps
 
-1. **Entrada** — o negócio apresenta o momento atual, o objetivo e a demanda inicial.
-2. **Entendimento do cenário** — a AUGEO lê o contexto, relações, prioridades e pontos que exigem intervenção.
-3. **Direcionamento e proposta** — a AUGEO devolve um caminho com escopo, etapas e investimento para o cliente decidir se faz sentido seguir.
+1. **Entrada** - the business presents its current situation, goal and initial request.
+2. **Entendimento do cenário** - AUGEO reads context, relationships, priorities and points requiring intervention.
+3. **Direcionamento e proposta** - AUGEO returns a path with scope, stages and investment so the client can decide whether to proceed.
 
-### Limite de exposição
+### Disclosure boundary
 
-O site comunica o modelo de trabalho, não o procedimento interno completo. Call inicial, estruturação de briefing, handoffs, validação e segunda call pertencem à operação e estão documentados na fonte global `business/augeo.md`, resolvida por `augeo-orchestrator context augeo-website`; só devem aparecer publicamente se contribuírem para a decisão do lead.
+The website communicates the working model, not the full internal procedure. Initial call, brief structuring, handoffs, validation and second call belong to operations and are documented in registered global source `global:business/augeo.md`, resolved through `augeo-orchestrator context augeo-website`; show them publicly only when they help the lead decide.
 
-## 6. Entrada Comercial e Formulário
+## 6. Sales intake and form
 
-A landing completa terá um único formulário de entrada, ainda não implementado. Ele não cria duas jornadas separadas nem obriga o visitante a já saber qual serviço comprar.
+The complete landing will have one intake form, not yet implemented. It does not create two separate journeys or require visitors to know which service to buy.
 
-### Papel do formulário
+### Form role
 
-- captar informações suficientes para uma triagem inicial;
-- permitir que o lead apresente uma demanda objetiva ou uma necessidade ainda indefinida;
-- preparar a conversa inicial sem antecipar uma promessa de proposta ou contratação.
+- Collect enough information for initial screening.
+- Allow leads to present an objective request or a still-undefined need.
+- Prepare the initial conversation without preemptively promising a proposal or engagement.
 
-### Estrutura mínima
+### Minimum structure
 
-- identificação e canal de retorno;
-- nome e contexto do negócio;
-- objetivo ou problema que motivou o contato;
-- estágio/momento atual;
-- links, referências ou materiais existentes, quando houver;
-- campo para selecionar ou descrever a demanda inicial;
-- orçamento/faixa de investimento, somente se a decisão comercial posterior confirmar que essa informação deve ser coletada na entrada.
+- Identification and return contact channel.
+- Business name and context.
+- Goal or problem motivating contact.
+- Current stage/situation.
+- Existing links, references or materials, if available.
+- Field to select or describe the initial request.
+- Budget/investment range only if a later commercial decision confirms it should be collected at intake.
 
-### Demandas que o formulário deve acomodar
+### Requests the form must accommodate
 
-- identidade ou direção visual;
-- website;
-- aquisição via Meta Ads;
-- CRM, automação ou integração;
-- necessidade de entender qual caminho faz sentido.
+- Identity or visual direction.
+- Website.
+- Acquisition through Meta Ads.
+- CRM, automation or integration.
+- Help understanding which path makes sense.
 
-Essas opções qualificam o contato; não constituem catálogo, pacote fechado ou compromisso de contratação avulsa.
+These options qualify contact; they are not a catalog, fixed package or commitment to standalone engagement.
 
-### Pós-envio previsto
+### Planned post-submission behavior
 
-Após o envio, a interface confirma o recebimento e informa que a AUGEO fará a leitura inicial antes do retorno. A mensagem deve seguir a política de triagem e retorno da mesma fonte global `business/augeo.md`, sem assumir prazo, orçamento automático ou reunião garantida.
+After submission, the interface confirms receipt and explains that AUGEO will perform an initial review before responding. The message must follow the screening/response policy in the same registered global source `global:business/augeo.md`, without assuming a deadline, automatic quote or guaranteed meeting.
 
-## 7. Direção Visual
+## 7. Visual direction
 
-### Princípio
+### Principle
 
-**Estrutura precisa, comportamento instável.** A linguagem combina sistemas controlados — grades, vetores, módulos, notações e tipografia — com deformação, interferência e formas orgânicas condicionadas por regras.
+**Precise structure, unstable behavior.** The language combines controlled systems - grids, vectors, modules, notation and typography - with deformation, interference and organic forms conditioned by rules.
 
-### Fundamentos já definidos
+### Established foundations
 
-- Base cromática implementada: claro com fundo `#f7f7f5`/texto `#111111`; escuro com fundo `#06070a`/texto `#f7f7f5`.
-- Cor de ênfase implementada: laranja-cereja `#ff482c`, usada pontualmente, inclusive em foco. Uso em futuras superfícies deve preservar contraste adequado.
-- Tipografia atual: Hanken Grotesk local na landing, título com peso 620; Archivo como alternativa declarada e Share Tech Mono no componente/demo. O sistema completo para as seções futuras ainda precisa ser consolidado.
-- Temas seguem a preferência do sistema, com suporte às classes explícitas `.light`/`.dark`; não há seletor de tema na landing.
-- A marca e o símbolo existentes não devem ser redesenhados.
-- A hero usa contraste entre presença humana/comercial e campo técnico; essa divisão não deve ser repetida mecanicamente no restante da página.
-- A tipografia deve sustentar impacto e clareza comercial; experimentação não pode comprometer leitura de conteúdo, formulários ou navegação.
+- Implemented color baseline: light with background `#f7f7f5`/text `#111111`; dark with background `#06070a`/text `#f7f7f5`.
+- Implemented accent: cherry-orange `#ff482c`, used selectively, including focus. Future surfaces must preserve adequate contrast.
+- Current typography: local Hanken Grotesk on the landing, heading weight 620; Archivo as declared alternative and Share Tech Mono in component/demo. The full system for future sections still needs consolidation.
+- Themes follow system preference with support for explicit `.light`/`.dark` classes; no theme selector on the landing.
+- Do not redesign the existing brand and symbol.
+- Hero contrasts human/commercial presence with the technical field; do not mechanically repeat this split throughout the page.
+- Typography must support impact and commercial clarity; experimentation must not compromise content, form or navigation readability.
 
-### Uso do grid e da abstração
+### Grid and abstraction use
 
-Grades e sistemas gráficos devem funcionar como linguagem de estrutura, resposta e transição — não como textura repetida em todas as seções. A abstração visual deve reforçar composição e ritmo, sem tentar demonstrar artificialmente uma capacidade técnica.
+Grids and graphic systems should act as a language of structure, response and transition, not a repeated texture in every section. Visual abstraction must reinforce composition and rhythm without artificially demonstrating technical capability.
 
-### Evitar
+### Avoid
 
-- tipografia deteriorada ou ilegível em conteúdo comercial;
-- visual de dashboard SaaS, bento grid genérico e cards de serviço padronizados;
-- 3D, wireframes, fashion, carros futuristas ou imagens editoriais usados como decoração genérica de agência;
-- excesso de linhas finas, grades pretas repetidas ou cinética de scroll sem função;
-- gradientes neon, Memphis corporativo, minimalismo sem construção tipográfica e estética genérica de IA;
-- qualquer redução de contraste, acessibilidade ou performance para preservar efeito visual.
+- Deteriorated or illegible typography in commercial content.
+- SaaS dashboard appearance, generic bento grids and standardized service cards.
+- 3D, wireframes, fashion, futuristic cars or editorial images as generic agency decoration.
+- Excessive thin lines, repeated black grids or purposeless scroll kinetics.
+- Neon gradients, corporate Memphis, minimalism without typographic construction and generic AI aesthetics.
+- Any reduction in contrast, accessibility or performance to preserve an effect.
 
-### Consolidação visual ainda pendente
+### Visual consolidation still pending
 
-- Estender os papéis tipográficos e tokens existentes a Processo e formulário.
-- Estruturar e avaliar a composição dessas seções, sem repetir mecanicamente o hero.
-- Registrar o sistema em `DESIGN.md`, conforme a frente prevista do hero.
-- Definir motion fora do hero e necessidade de assets complementares quando houver função concreta.
-- Concluir as avaliações e refinamentos do hero registrados em HERO.md.
+- Extend existing typographic roles and tokens to Process and form.
+- Structure and evaluate those sections without mechanically repeating the hero.
+- Record the system in `DESIGN.md` per the planned hero workstream.
+- Define motion outside the hero and additional assets when they have a concrete purpose.
+- Complete hero evaluations and refinements recorded in HERO.md.
 
-Fontes, cores e composição atuais são a base existente, não escolhas iniciais em aberto. Isso não equivale a aprovação visual global nem à conclusão do sistema para toda a landing.
+Current fonts, colors and composition are the existing baseline, not open initial choices. This does not equal global visual approval or completion of the system for the full landing.
 
 ## 8. Assets
 
-### Diretriz
+### Direction
 
-Marca, lettering, fontes locais e matriz já estão incorporados ao hero. O moodboard informa direção e geometria; suas imagens não são decoração a importar para a página. Assets adicionais devem ser definidos conforme as necessidades das seções futuras. Não há exigência de preencher a página com objetos 3D para compensar a ausência de portfólio.
+Brand, lettering, local fonts and matrix are incorporated into the hero. The moodboard informs direction and geometry; its images are not decoration to import into the page. Define additional assets according to future section needs. There is no requirement to fill the page with 3D objects to compensate for a missing portfolio.
 
-### Prioridades
+### Priorities
 
-1. Preservar o componente interativo e os assets de marca já implementados no hero; refinamentos pendentes devem respeitar essa base.
-2. Sistema gráfico que acompanhe a leitura do processo, se ele se mostrar necessário ao design.
-3. Assets pontuais para sustentação de composição e ritmo.
+1. Preserve the interactive component and brand assets implemented in the hero; pending refinements must respect this baseline.
+2. A graphic system accompanying process reading, if needed by the design.
+3. Selective assets supporting composition and rhythm.
 
-### Possibilidades compatíveis
+### Compatible possibilities
 
-- gráficos cinéticos e diagramáticos;
-- objetos ou formas abstratas submetidas a regras do sistema visual;
-- tipografia em escala e interfaces modulares;
-- imagem editorial única e controlada, quando tiver função concreta.
+- Kinetic and diagrammatic graphics.
+- Abstract objects or shapes subject to visual-system rules.
+- Large-scale typography and modular interfaces.
+- A single controlled editorial image with a concrete purpose.
 
-Cada asset precisa ter função de composição, narrativa ou interação, atender contraste e acessibilidade e ter custo de carregamento proporcional ao benefício visual.
+Each asset needs a compositional, narrative or interactive purpose, must satisfy contrast and accessibility, and must have loading cost proportional to visual benefit.
 
-## 9. Copy e Conteúdo
+## 9. Copy and content
 
-A copy do hero já está aplicada:
+Hero copy is already applied (Portuguese, preserved):
 
-- Título: **“Presença digital com direção.”**
-- Apoio: **“O contexto do seu negócio define como conectamos marca, website, aquisição e operação digital.”**
+- Heading: **“Presença digital com direção.”**
+- Supporting text: **“O contexto do seu negócio define como conectamos marca, website, aquisição e operação digital.”**
 - CTA: **“Apresentar negócio”.**
 
-Processo e formulário ainda precisam de copy própria, incluindo estados de envio; rascunhos estão ao final deste documento. A mensagem deve deixar claro que a AUGEO atua em direção, presença e operação digital, sem transformar o site em uma lista de serviços. O processo deve mostrar que o cliente mantém a decisão de seguir ou não; a AUGEO agrega critério para que essa decisão e o escopo tenham coerência.
+Process and form still need dedicated copy, including submission states; drafts are at the end of this document. Messaging must clarify that AUGEO handles direction, presence and digital operations without turning the website into a service list. The process must show the client retains the decision to proceed; AUGEO adds judgment so that decision and scope are coherent.
 
-Evitar promessas de resultado, retorno rápido, fórmula, solução total sem contexto e qualquer alegação de cases, clientes ou métricas inexistentes.
+Avoid promises of results, quick returns, formulas, total solutions without context, and any claims about nonexistent case studies, clients or metrics.
 
-## 10. Implementação
+## 10. Implementation
 
-### Requisitos confirmados
+### Confirmed requirements
 
-- Landing responsiva, acessível e performática.
-- Interação de hero adaptada a mouse, touch e redução de movimento.
-- Formulário com validação, confirmação de envio e encaminhamento para a triagem comercial.
-- Estrutura preparada para adicionar cases e páginas futuras sem reescrever o fluxo principal.
+- Responsive, accessible and performant landing.
+- Hero interaction adapted to mouse, touch and reduced motion.
+- Form with validation, submission confirmation and routing to sales screening.
+- Structure prepared to add future case studies and pages without rewriting the main flow.
 
-### Base técnica implementada
+### Implemented technical baseline
 
-- Front-end: React 19 e TypeScript, com Vite 8; aplicação de uma página, sem roteador ou CMS implementado.
-- Estilos: Tailwind CSS 4 integrado ao Vite e CSS próprio em `src/styles.css`, com fontes locais, tokens e temas.
-- Hero: `KineticMatrix` compartilhado entre landing e demo `?demo=matrix`, com física/warp em `lib/matrix-motion.ts`; indicador em `ScrollCue`.
-- Tooling: Bun para instalação e execução, com `bun.lock` e `bunfig.toml`. Build por `bun run build`; regressões por `bun run test` com Playwright/Chromium; inspeção visual/interativa por `dev-browser`.
-- Hospedagem: Vercel, equipe `augeocreative`, com produção na `main` e integração de deploy por push. O registro de 16/10 identifica o repositório GitHub como `lucavalente93/augeo-v1-landing`; o remoto local ainda usa o nome anterior `lucavalente93/augeo-grid-hero`. O projeto Vercel era identificado como `augeo-grid-hero` nos registros de 13/10; o nome atual do projeto não foi reconfirmado nesta revisão. Nenhuma configuração ou remoto foi alterado.
-- Domínio próprio: endereço atual informado pelo usuário em 17/10, `https://www.augeocreative.com`. Os registros históricos confirmam HTTPS nos endereços raiz e `www`; evidências de DNS/HTTPS e publicação pertencem ao [histórico](archive/EXECUTION_HISTORY.md). O alias antigo `augeo-grid-hero.vercel.app` é uma referência histórica, sem disponibilidade reconfirmada nesta revisão.
-- DNS gerenciado na Hostinger; e-mail comercial existente `hello@augeocreative.com`, independente do deploy. Preservar os registros de e-mail ao alterar o apontamento do site.
-- Plano Vercel atual mantido por decisão do usuário; contratação do Pro e configuração do WhatsApp Business adiadas até concluir o site. Não são bloqueios para o desenvolvimento nem tarefas autorizadas nesta revisão.
+- Frontend: React 19 and TypeScript with Vite 8; single-page application without implemented router or CMS.
+- Styles: Tailwind CSS 4 integrated with Vite and custom CSS in `src/styles.css`, with local fonts, tokens and themes.
+- Hero: `KineticMatrix` shared between landing and `?demo=matrix` demo, with physics/warp in `lib/matrix-motion.ts`; cue in `ScrollCue`.
+- Tooling: Bun for installation and execution, with `bun.lock` and `bunfig.toml`. Build through `bun run build`; regression tests through `bun run test` using Playwright/Chromium; visual/interactive inspection through `dev-browser`.
+- Hosting: Vercel, team `augeocreative`, production on `main` with push-triggered deployment integration. The 16/10 record identifies GitHub repository `lucavalente93/augeo-v1-landing`; the local remote still uses earlier name `lucavalente93/augeo-grid-hero`. Vercel project was identified as `augeo-grid-hero` in 13/10 records; its current name was not reconfirmed in that review. No configuration or remote was changed.
+- Custom domain: current address supplied by user on 17/10, `https://www.augeocreative.com`. Historical records confirm HTTPS on root and `www`; DNS/HTTPS and publication evidence belong in [history](archive/EXECUTION_HISTORY.md). Earlier alias `augeo-grid-hero.vercel.app` is a historical reference without availability reconfirmed in that review.
+- DNS managed at Hostinger; existing business email `hello@augeocreative.com`, independent of deployment. Preserve email records when changing website routing.
+- Current Vercel plan retained by user decision; Pro purchase and WhatsApp Business setup postponed until website completion. They do not block development or constitute authorized tasks in that review.
 
-### Decisões e integrações técnicas ainda abertas
+### Open technical decisions and integrations
 
-- Campos obrigatórios e validação do formulário; backend/serviço de recebimento, armazenamento, proteção contra abuso e tratamento de falhas.
-- Tratamento de dados, informações de privacidade e parâmetros operacionais de triagem/retorno.
-- CMS somente se surgir necessidade real de edição de conteúdo; não há adoção decidida.
-- Analytics e rastreamento, quando houver objetivo de medição definido, respeitando privacidade e consentimento aplicáveis.
-- Endereço canônico e redirecionamento entre domínio raiz e `www`, ainda sem configuração confirmada.
-- Responsável técnico por manutenção/publicação, ainda não definido pela operação.
+- Required form fields and validation; receiving backend/service, storage, abuse protection and failure handling.
+- Data processing, privacy information and operational screening/response parameters.
+- CMS only if a real content-editing need arises; no adoption decided.
+- Analytics and tracking when a measurement goal is defined, respecting applicable privacy and consent.
+- Canonical address and redirection between root domain and `www`, without confirmed configuration yet.
+- Technical owner for maintenance/publication, not yet defined operationally.
 
-A stack, a hospedagem, o domínio e a interação inicial da matriz já foram definidos e implementados. Integrações comerciais futuras devem ser escolhidas conforme o fluxo de entrada e a operação, sem reabrir essas bases por padrão.
+Stack, hosting, domain and initial matrix interaction were defined and implemented. Choose future commercial integrations according to intake flow and operations without reopening these foundations by default.
 
-## 11. Estado e Próximas Decisões
+## 11. State and next decisions
 
-### Base já implementada e publicada
+### Implemented and published baseline
 
-- Cabeçalho com marca, hero responsivo, copy aplicada, botão de conversão, composição reativa em hover e indicativo desktop.
-- Footer mobile implementado com a matriz e o lettering abaixo da copy e do CTA.
-- Temas, fontes locais, cor de ênfase e tokens do hero presentes no código.
-- Stack React/TypeScript/Vite/Tailwind, tooling Bun e testes Playwright existentes.
-- Deploy de produção na Vercel e domínio próprio conectado; primeira publicação já realizada.
+- Branded header, responsive hero, applied copy, conversion button, hover-reactive composition and desktop cue.
+- Mobile footer implemented with matrix and lettering below copy and CTA.
+- Themes, local fonts, accent and hero tokens present in code.
+- Existing React/TypeScript/Vite/Tailwind stack, Bun tooling and Playwright tests.
+- Vercel production deployment and connected custom domain; initial publication complete.
 
-Publicação não equivale a conclusão da landing, aprovação visual global ou fechamento dos fluxos metodológicos do hero. Resultados de testes e limitações de cobertura ficam no histórico, com síntese no backlog, sem tratar evidências históricas como validação automática de versões futuras.
+Publication does not equal landing completion, global visual approval or closure of hero methodology. Test results and coverage limitations belong in history, summarized in the backlog, without treating historical evidence as automatic validation of future versions.
 
-### Para concluir a landing completa
+### To finish the complete landing
 
-- Concluir as avaliações e refinamentos autorizados do hero conforme os pontos de avaliação existentes; introdução finita, desempenho, extração do sistema e acabamento integrado permanecem frentes específicas.
-- Estruturar Processo e formulário com copy coerente com o posicionamento. Preservar o footer mobile já implementado.
-- Fechar campos obrigatórios, ferramenta de recebimento, tratamento de dados, responsável pela triagem e mensagens de sucesso/erro.
-- Implementar `#processo` e `#entrada`, integrar navegação/continuidade e conectar o CTA ao formulário funcional.
-- Definir onde apresentar os canais públicos, usando o e-mail existente; WhatsApp Business depende de configuração futura.
-- Validar a experiência completa: responsividade, teclado/foco, contraste, movimento reduzido, carregamento, envio, falhas e recebimento real para triagem.
-- Definir a política de redirecionamento/canonical dos domínios e metadados de publicação/indexação; manter HTTPS válido nos dois endereços antes de encerrar a entrega completa.
+- Complete authorized hero evaluations/refinements according to existing review points; finite introduction, performance, system extraction and integrated finishing remain distinct workstreams.
+- Structure Process and form with copy consistent with positioning. Preserve the implemented mobile footer.
+- Finalize required fields, receiving tool, data handling, screening owner and success/error messages.
+- Implement `#processo` and `#entrada`, integrate navigation/continuation and connect CTA to the working form.
+- Define placement of public channels using the existing email; WhatsApp Business depends on future setup.
+- Validate the complete experience: responsiveness, keyboard/focus, contrast, reduced motion, loading, submission, failures and actual receipt for screening.
+- Define domain redirection/canonical policy and publication/indexing metadata; maintain valid HTTPS on both addresses before closing the complete delivery.
 
-Essas pendências não autorizam avanço automático de bloco nem contratação de serviços. A sequência operacional e as autorizações ficam no backlog; propostas e avaliações do hero ficam em [HERO.md](HERO.md#avaliações-e-decisões-ainda-abertas).
+These pending items do not authorize automatic block advancement or service purchases. Operational sequence and authorizations are in the backlog; hero proposals/evaluations are in [HERO.md](HERO.md#evaluations-and-decisions-still-open).
 
-### Futuro, após a primeira versão completa
+### Future, after the first complete version
 
-- Avaliar inclusão de cases, portfólio, prova social, FAQ e páginas internas a partir de trabalhos e objeções reais.
-- Complementar abstrações visuais com evidências de trabalho publicado quando houver material adequado, preservando a assinatura gráfica que já foi construída.
+- Evaluate case studies, portfolio, social proof, FAQ and internal pages based on real work and objections.
+- Complement visual abstractions with published-work evidence when suitable material exists, preserving the graphic signature already built.
 
-## Rascunhos de copy das seções futuras
+## Copy drafts for future sections
 
-Material anteriormente em `copywriting.md`, ainda não aplicado ao site nem registrado como copy final aprovada. Preservado como ponto de partida para Header, Processo, entrada comercial e footer; não substitui a copy implementada do hero na seção 9.
+Material previously in `copywriting.md`, not yet applied to the website or recorded as approved final copy. Preserved in Portuguese as a starting point for Header, Process, sales intake and footer; does not replace implemented hero copy in section 9.
 
 ### Header
 

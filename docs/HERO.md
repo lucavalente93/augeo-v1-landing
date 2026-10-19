@@ -1,147 +1,146 @@
-# Hero — estado, decisões e continuidade
+# Hero - state, decisions and continuity
 
-Implementação conferida no código em 2026-10-16; documentação reorganizada em 2026-10-17. As seções de composição descrevem o que existe; decisões e propostas têm estados explícitos. Execução e fila: [BACKLOG.md](BACKLOG.md). Procedimentos: [WORKFLOW.md](WORKFLOW.md). Requisitos da landing: [especificação](02-WEBSITE_SPEC.md).
+Implementation checked against code on 2026-10-16; documentation reorganized on 2026-10-17. Composition sections describe what exists; decisions and proposals have explicit states. Execution and queue: [BACKLOG.md](BACKLOG.md). Procedures: [WORKFLOW.md](WORKFLOW.md). Landing requirements: [specification](02-WEBSITE_SPEC.md).
 
-## Conceito e hierarquia
+## Concept and hierarchy
 
-A AUGEO se apresenta pelo contexto do negócio e pela conexão entre marca, website, aquisição e operação digital. O hero cumpre o papel Persuade: mensagem editorial à esquerda e assinatura AUGEO no campo da matriz à direita. A própria composição demonstra direção e execução, sem acrescentar clientes, métricas ou promessas não documentadas.
+AUGEO presents itself through business context and the connection between brand, website, acquisition and digital operations. The hero fulfills the Persuade role: editorial message on the left and AUGEO signature in the matrix field on the right. The composition itself demonstrates direction and execution without adding undocumented clients, metrics or promises.
 
-A linguagem combina **estrutura precisa e comportamento instável**: título sólido e legível, lettering listrado, grade modular e deformação localizada. Símbolo, lettering e fontes locais sustentam a identidade. O moodboard orienta geometria, ritmo e hierarquia; suas imagens não são decoração a ser incorporada à página. As referências estão no [anexo do plano](archive/HERO_AUDIT_2026-10-07.md#anexo-c--moodboard-e-rastreabilidade).
+The language combines **precise structure and unstable behavior**: solid, legible heading, striped lettering, modular grid and localized deformation. Symbol, lettering and local fonts support the identity. The moodboard guides geometry, rhythm and hierarchy; its images are not decoration to incorporate into the page. References are in the [plan appendix](archive/HERO_AUDIT_2026-10-07.md#anexo-c--moodboard-e-rastreabilidade).
 
-Copy aplicada:
+Applied copy (Portuguese, preserved):
 
-- Título: “Presença digital com direção.”, em três linhas.
-- Apoio: “O contexto do seu negócio define como conectamos marca, website, aquisição e operação digital.”
-- Botão de conversão: “Apresentar negócio”, com destino `#entrada`.
+- Heading: “Presença digital com direção.”, in three lines.
+- Supporting text: “O contexto do seu negócio define como conectamos marca, website, aquisição e operação digital.”
+- Conversion button: “Apresentar negócio”, targeting `#entrada`.
 
-A assinatura gráfica contrapõe o título; o apoio fica agrupado à mensagem, e o indicativo de continuidade ocupa a borda inferior esquerda no desktop. A composição estática mantém a leitura da marca quando o visitante prefere movimento reduzido.
+The graphic signature counterbalances the heading; supporting text is grouped with the message, and the continuation cue occupies the lower left edge on desktop. The static composition preserves brand readability when the visitor prefers reduced motion.
 
-## Composição desktop
+## Desktop composition
 
-A partir de 768 px, o hero usa duas colunas **44/56**, com altura mínima de 100dvh. A coluna textual concentra símbolo, título, apoio e CTA; a matriz ocupa todo o painel direito. Marca, texto, CTA e triângulos compartilham o recuo de **48 px**. O cabeçalho fica absoluto sobre a coluna textual, com altura de 96 px e símbolo de 66 px.
+From 768 px, the hero uses two **44/56** columns with a minimum height of 100dvh. The text column contains symbol, heading, supporting text and CTA; the matrix fills the right panel. Brand, text, CTA and triangles share a **48 px** inset. The header is absolutely positioned over the text column, with height 96 px and symbol 66 px.
 
-O título usa Hanken Grotesk local, peso **620**, entrelinha **1,02** e tracking **−0,035em**. A escala responde à largura útil da coluna (`clamp(2rem, 19.5cqw, 6rem)`), com três spans, largura máxima de 11ch e 2 px inferiores para os descendentes. O apoio usa entrelinha 1,5, largura máxima de 34ch e escala de 18–24 px; janelas curtas têm ajustes próprios de escala e espaçamento.
+The heading uses local Hanken Grotesk, weight **620**, line-height **1.02** and tracking **−0.035em**. Scale responds to the column's usable width (`clamp(2rem, 19.5cqw, 6rem)`), with three spans, maximum width 11ch and 2 px below for descenders. Supporting text uses line-height 1.5, maximum width 34ch and 18–24 px scale; short windows have dedicated scale and spacing adjustments.
 
-O painel textual tem iluminação radial branca de 2% sobre o fundo do tema, com divisória vertical de 1 px. O CTA usa cores invertidas do tema, foco laranja, brilho no hover e redução de escala ao pressionar. Permanece em linha única no desktop.
+The text panel has 2% white radial illumination over the theme background, with a 1 px vertical divider. The CTA uses inverted theme colors, orange focus, hover glow and scale reduction on press. It stays on one line on desktop.
 
-## Composição mobile
+## Mobile composition
 
-Abaixo de 768 px, cabeçalho e hero seguem fluxo vertical. O cabeçalho tem 70 px, símbolo de 58 px e recuo de 20 px. A copy usa recuos simétricos de 20 px; título, apoio e CTA antecedem a matriz. O CTA fica visível, com altura mínima de 44 px e margem superior de 24 px.
+Below 768 px, header and hero follow vertical flow. The header is 70 px high with a 58 px symbol and 20 px inset. Copy uses symmetric 20 px insets; heading, supporting text and CTA precede the matrix. The CTA remains visible with minimum height 44 px and top margin 24 px.
 
-A matriz inteira foi reposicionada como **footer visual do hero mobile**, de largura integral e altura `clamp(140px, 22dvh, 180px)`, com divisória superior de 1 px e margem automática acima. O lettering fica centralizado nesse painel e usa `min(85%, 360px)`. `touch-action: pan-y` permite rolagem vertical pela área da matriz.
+The entire matrix was repositioned as the **mobile hero's visual footer**, full width with height `clamp(140px, 22dvh, 180px)`, a 1 px top divider and automatic margin above. Lettering is centered in this panel and uses `min(85%, 360px)`. `touch-action: pan-y` allows vertical scrolling through the matrix area.
 
-A superfície da copy se estende pelos 70 px do cabeçalho: um único fundo cobre símbolo e texto até a matriz, sem reiniciar a iluminação na divisão entre cabeçalho e hero. O indicativo de triângulos fica oculto no mobile.
+The copy surface extends across the header's 70 px: a single background covers symbol and text down to the matrix without restarting illumination at the header/hero boundary. The triangle cue is hidden on mobile.
 
-## Temas e marca
+## Themes and brand
 
-| Elemento | Claro | Escuro |
+| Element | Light | Dark |
 | --- | --- | --- |
-| Fundo | `#f7f7f5` | `#06070a` |
-| Texto | `#111111` | `#f7f7f5` |
-| Apoio/repouso do indicativo | `#61615d` | `#9e9ea2` |
-| Bordas | preto a 8% | branco a 8% |
-| Acento/foco | `#ff482c` | `#ff482c` |
+| Background | `#f7f7f5` | `#06070a` |
+| Text | `#111111` | `#f7f7f5` |
+| Supporting text/cue at rest | `#61615d` | `#9e9ea2` |
+| Borders | black at 8% | white at 8% |
+| Accent/focus | `#ff482c` | `#ff482c` |
 
-A preferência do sistema e as classes explícitas `.light`/`.dark` controlam os temas. No escuro, o símbolo é invertido com opacidade 0,92 e o lettering com opacidade 0,88. O fundo CSS da matriz usa o token do tema; o canvas desenha sua superfície correspondente. A camada CRT do hero tem scanlines mais discretas que as da demo: 0,03 no claro e 0,0567 no escuro.
+System preference and explicit `.light`/`.dark` classes control themes. In dark mode, the symbol is inverted at opacity 0.92 and lettering at 0.88. The matrix CSS background uses the theme token; canvas draws its corresponding surface. The hero CRT layer has subtler scanlines than the demo: 0.03 in light and 0.0567 in dark.
 
-O lettering preserva geometria, proporção, listras e contra-formas. No SVG, “A” e “O” declaram `fill-rule="evenodd"` diretamente nos caminhos preenchidos pelo padrão CRT. No desktop, sua largura é `min(88%, 680px)`; o centro vertical acompanha o centro do título, medido no hero e publicado em `--hero-heading-center-y`. O alinhamento observa hero, título, apoio e CTA. No mobile, o centro é o da matriz.
+Lettering preserves geometry, proportions, stripes and counters. In the SVG, “A” and “O” declare `fill-rule="evenodd"` directly on paths filled by the CRT pattern. Desktop width is `min(88%, 680px)`; vertical center follows the heading center, measured in the hero and published as `--hero-heading-center-y`. Alignment observes hero, heading, supporting text and CTA. On mobile, the center is the matrix center.
 
-## Matriz e interação persistentes
+## Persistent matrix and interaction
 
-`KineticMatrix` continua um componente compartilhado, com demo em `?demo=matrix`. O hero passa `title="AUGEO"`, `titleArtworkSrc`, `enableArtworkMotion` e `gridSpacing={72}`; o padrão da demo é 58 px. A grade adapta o espaçamento às dimensões disponíveis, preservando nós e ligações no campo visível.
+`KineticMatrix` remains a shared component with demo at `?demo=matrix`. The hero passes `title="AUGEO"`, `titleArtworkSrc`, `enableArtworkMotion` and `gridSpacing={72}`; the demo default is 58 px. The grid adapts spacing to available dimensions, preserving nodes and links within the visible field.
 
-A composição reativa em hover já está implementada: grade e lettering respondem ao mesmo campo de ponteiro e ondas, com escala própria para a imagem. O ponteiro também é acompanhado no ancestral `.hero`, incluindo a coluna esquerda; clique/toque produz uma onda. Ao encerrar a interação, a deformação converge ao repouso sem rebote. O warp usa um mapa horizontal comum às scanlines para evitar ruptura das letras, com deslocamento máximo de 6 px e diferença máxima de 2 px entre amostras de 8 px.
+The hover-reactive composition is already implemented: grid and lettering respond to the same pointer/wave field, with an independent scale for the image. Pointer tracking also operates on the `.hero` ancestor, including the left column; click/touch creates a wave. At interaction end, deformation converges to rest without rebound. Warp uses a horizontal map shared by scanlines to avoid breaking letters, with maximum displacement 6 px and maximum difference 2 px between samples 8 px apart.
 
-O ciclo atual da matriz mantém pulsos automáticos contínuos, além das respostas pontuais. Pausa fora da tela e com documento oculto; movimento reduzido mantém grade e lettering estáticos. Rótulos técnicos `0x…` ainda aparecem após inspeção prolongada de um nó.
+The current matrix lifecycle maintains continuous automatic pulses alongside discrete responses. It pauses off-screen and when the document is hidden; reduced motion keeps grid and lettering static. Technical `0x…` labels still appear after prolonged node inspection.
 
-## Indicativo de continuidade
+## Continuation cue
 
-Dois triângulos sólidos transmitem direção descendente no desktop: cada um mede 36×27 px, com o segundo 18 px abaixo do primeiro e sobreposição de 9 px. O conjunto de 36×45 px fica centralizado no contêiner de 36×63 px. SVGs separados garantem que a ponta ativa seja pintada integralmente na interseção.
+Two solid triangles communicate downward direction on desktop: each measures 36×27 px, the second 18 px below the first with 9 px overlap. The 36×45 px pair is centered in a 36×63 px container. Separate SVGs ensure the active tip is fully painted at the intersection.
 
-Uma passagem ocorre a cada **2,8 s**, com defasagem de **980 ms** entre os triângulos. O ciclo CSS de 5,6 s contém duas passagens: superior claro/inferior escuro, depois superior escuro/inferior claro, usando `#e2e2df` e `#20201f`. Os atrasos iniciais são 300/1280 ms. A mudança afeta fill e ordem de pintura, mantendo a geometria imóvel. Pausa fora da tela/aba oculta conserva tempo e fase; movimento reduzido usa cinza estático.
+One pass occurs every **2.8 s**, with a **980 ms** offset between triangles. The 5.6 s CSS cycle contains two passes: light upper/dark lower, then dark upper/light lower, using `#e2e2df` and `#20201f`. Initial delays are 300/1280 ms. The change affects fill and paint order while keeping geometry stationary. Pausing off-screen/with a hidden tab preserves time and phase; reduced motion uses static gray.
 
-No desktop, o indicativo participa do fluxo da `.hero-copy`, depois do grupo `.hero-content` (título, apoio e CTA). Margens verticais automáticas centralizam esse grupo no espaço disponível; o indicativo fica junto à base do painel, com margem superior mínima de 32 px e recuo inferior de 28 px. Sua dimensão não encolhe no flex: variantes maiores ou com conteúdo intrínseco reservam o próprio espaço. Quando o conteúdo não cabe na altura da janela, o hero cresce e a página permite rolagem; não há coordenada vertical baseada no viewport nem altura do indicativo duplicada no cálculo de afastamento. A matriz acompanha a altura do hero.
+On desktop, the cue participates in `.hero-copy` flow after the `.hero-content` group (heading, supporting text and CTA). Automatic vertical margins center this group in available space; the cue sits near the panel base with minimum top margin 32 px and bottom inset 28 px. It does not shrink in flex: larger or intrinsically sized variants reserve their own space. When content exceeds window height, the hero grows and the page scrolls; no viewport-based vertical coordinate or duplicated cue height in clearance calculations. The matrix follows hero height.
 
-O indicativo atual é decorativo, `aria-hidden`, sem clique ou foco. Seu sentido é continuidade por scroll; o CTA comercial tem outra função. EXPLORE e a seta anterior não fazem parte do hero implementado. O CTA aponta para `#entrada`; essa seção ainda não existe na aplicação atual.
+The current cue is decorative, `aria-hidden`, without click or focus. It signals scroll continuation; the commercial CTA serves a different purpose. EXPLORE and the earlier arrow are not part of the implemented hero. The CTA targets `#entrada`; that section does not yet exist in the current application.
 
-## Fontes da implementação
+## Implementation sources
 
-- [src/App.tsx](../src/App.tsx): estrutura, copy, CTA, props e alinhamento.
-- [src/styles.css](../src/styles.css): composição, temas, tipografia e animação do indicativo.
-- [src/components/ScrollCue.tsx](../src/components/ScrollCue.tsx): triângulos e pausa/retomada.
-- [components/ui/kinetic-matrix.tsx](../components/ui/kinetic-matrix.tsx) e [lib/matrix-motion.ts](../lib/matrix-motion.ts): grade, campo de interação e warp.
-- [src/assets/augeo-lettering.svg](../src/assets/augeo-lettering.svg): marca listrada e contra-formas.
+- [src/App.tsx](../src/App.tsx): structure, copy, CTA, props and alignment.
+- [src/styles.css](../src/styles.css): composition, themes, typography and cue animation.
+- [src/components/ScrollCue.tsx](../src/components/ScrollCue.tsx): triangles and pause/resume.
+- [components/ui/kinetic-matrix.tsx](../components/ui/kinetic-matrix.tsx) and [lib/matrix-motion.ts](../lib/matrix-motion.ts): grid, interaction field and warp.
+- [src/assets/augeo-lettering.svg](../src/assets/augeo-lettering.svg): striped brand and counters.
 
-## Decisões incorporadas à base atual
+## Decisions incorporated into the current baseline
 
-| Decisão | Origem e efeito | Estado |
+| Decision | Origin and effect | State |
 | --- | --- | --- |
-| Preservar a identidade | Refinar símbolo original, lettering listrado, fontes locais e campo modular; o moodboard informa princípios, não uma identidade substituta | Incorporada |
-| Revisar título e apoio | Mensagem adotada: “Presença digital com direção.”; contexto do negócio conecta marca, website, aquisição e operação digital | Incorporada |
-| Manter desktop 44/56 | Campo da matriz como contraponto gráfico ao texto; restauração após rejeição da experiência 38/62 | Incorporada |
-| Dimensionar o título pela coluna | Peso inicial 750/entrelinha 0,98 substituído por Hanken 620/1,02; escala pela largura útil | Incorporada |
-| Ampliar a assinatura | Lettering passou do limite de 527 px para `min(88%, 680px)` no hero desktop, preservando SVG e proporção | Incorporada |
-| Alinhar título e assinatura | Centro do lettering acompanha o centro do heading desktop; no mobile acompanha a matriz | Incorporada |
-| Reunir elementos no eixo de 48 px | Em 09/10, recuo de aproximadamente 32 px foi considerado próximo demais da borda; usuário autorizou 48 px para marca, título, apoio e triângulos | Incorporada |
-| Dar mais presença ao apoio | Escala 18–24 px e recuos mobile de 20 px; posteriormente medida condensada a 34ch e margem desktop de 28 px | Incorporada |
-| Retirar EXPLORE | Após restaurar a composição, usuário pediu remover a palavra e sua seta, preservando os triângulos | Incorporada |
-| Alternar contraste dos triângulos | Aumentar a geometria em 50%, reduzir frequência para 2,8 s por passagem, preservar ponta e trocar cores a cada passagem | Incorporada |
-| Unificar temas e ampliar o campo de ponteiro | Tema escuro também na coluna textual; listeners no hero permitem alcançar a matriz a partir do painel esquerdo | Incorporada |
-| Materialidade do painel e CTA | Iluminação radial sutil, divisória de 1 px e CTA comercial no painel textual | Incorporada |
-| Expor CTA e transformar o mobile | Matriz inteira como footer visual retangular abaixo da copy e do botão de conversão, com recuos simétricos e rolagem vertical pela área da matriz | Incorporada; nomenclatura reafirmada pelo usuário em 13/10 |
-| Manter fundo contínuo no mobile | Correção do fundo atrás do cabeçalho aprovada pelo usuário; um único painel cobre símbolo e texto | Incorporada e aprovada |
-| Preservar contra-formas | Preenchimento direto dos caminhos A/O com `evenodd`, sem alterar geometria ou interação | Incorporada |
+| Preserve identity | Refine original symbol, striped lettering, local fonts and modular field; moodboard informs principles rather than a replacement identity | Incorporated |
+| Revise heading and supporting text | Adopted message: “Presença digital com direção.”; business context connects brand, website, acquisition and digital operations | Incorporated |
+| Keep desktop 44/56 | Matrix field as a graphic counterpoint to text; restored after rejection of the 38/62 experiment | Incorporated |
+| Size heading by column | Initial weight 750/line-height 0.98 replaced by Hanken 620/1.02; scale by usable width | Incorporated |
+| Enlarge signature | Lettering moved from a 527 px limit to `min(88%, 680px)` in desktop hero, preserving SVG and proportions | Incorporated |
+| Align heading and signature | Lettering center follows desktop heading center; on mobile it follows the matrix | Incorporated |
+| Align elements on the 48 px axis | On 09/10, approximately 32 px inset was deemed too close to the edge; user authorized 48 px for brand, heading, supporting text and triangles | Incorporated |
+| Increase supporting text presence | 18–24 px scale and 20 px mobile insets; subsequently measure condensed to 34ch and desktop margin to 28 px | Incorporated |
+| Remove EXPLORE | After restoring composition, user requested removal of the word and its arrow, retaining triangles | Incorporated |
+| Alternate triangle contrast | Enlarge geometry by 50%, reduce frequency to 2.8 s per pass, preserve tip and switch colors each pass | Incorporated |
+| Unify themes and extend pointer field | Dark theme also covers text column; hero listeners allow reaching the matrix from the left panel | Incorporated |
+| Panel materiality and CTA | Subtle radial illumination, 1 px divider and commercial CTA in the text panel | Incorporated |
+| Expose CTA and transform mobile | Entire matrix as rectangular visual footer below copy and conversion button, with symmetric insets and vertical scrolling through the matrix | Incorporated; naming reaffirmed by user on 13/10 |
+| Keep continuous mobile background | Background correction behind header approved by user; one panel covers symbol and text | Incorporated and approved |
+| Preserve counters | Direct A/O path filling with `evenodd` without changing geometry or interaction | Incorporated |
 
-Implementação não equivale a aprovação visual global. A aprovação da correção do fundo mobile é específica; não encerra todo o bloco 2.
+Implementation does not equal global visual approval. Approval of the mobile background correction is specific and does not close all of block 2.
 
-## Avaliações e decisões ainda abertas
+## Evaluations and decisions still open
 
-| Tema | O que falta decidir ou avaliar | Limite |
+| Topic | Remaining decision or evaluation | Limit |
 | --- | --- | --- |
-| Composição desktop | Avaliação do usuário após alinhamento, apoio maior, painel e indicador | Sem fechamento visual global registrado |
-| Hero mobile | Conferência da versão publicada no dispositivo do usuário | Correção do fundo aprovada; avaliação em aparelho é distinta |
-| Contra-forma no deploy | Confirmar visualmente A/O no navegador e viewport do relato de 11/10 | Correção SVG já publicada; não há nova publicação pendente por esse motivo |
-| Integração de continuidade | Quando Processo existir, usar link nativo para `#processo` com foco/nome acessível coerentes | Indicativo atual permanece decorativo; não restaurar EXPLORE |
-| Entrada comercial | Conectar “Apresentar negócio” ao formulário real de `#entrada` | CTA e continuidade têm destinos diferentes; seção ainda ausente |
-| Introdução da matriz | Entrada concluída em até quatro segundos, depois repouso e respostas pontuais | Bloco 3 ainda não implementado; loops atuais continuam. Não estender essa proposta aos triângulos sem decisão própria |
-| Desempenho do warp | Otimizar e comparar em DPR 2 preservando imagem | Bloco 4 depende da avaliação do anterior |
-| Registro do sistema | Extrair `DESIGN.md` da implementação | Bloco 5 ainda não iniciado; não substituir por um relatório histórico |
-| Acabamento | Validação integrada e fluxo completo de `polish` | Bloco 6 ainda não iniciado |
-| Escala em 4K | Limites de título/assinatura deixaram a composição esparsa na reiteração histórica | Observação, sem nova direção autorizada |
+| Desktop composition | User evaluation after alignment, larger supporting text, panel and cue | No recorded global visual closure |
+| Mobile hero | Check published version on the user's device | Background correction approved; device evaluation is distinct |
+| Deployed counters | Visually confirm A/O in the browser and viewport reported on 11/10 | SVG correction already published; no new publication pending for this reason |
+| Continuation integration | When Process exists, use a native link to `#processo` with coherent focus and accessible name | Current cue remains decorative; do not restore EXPLORE |
+| Sales intake | Connect “Apresentar negócio” to the real `#entrada` form | CTA and continuation have different destinations; section still absent |
+| Matrix introduction | Entry completed within four seconds, then rest and discrete responses | Block 3 not yet implemented; current loops continue. Do not extend this proposal to triangles without a separate decision |
+| Warp performance | Optimize and compare at DPR 2 while preserving the image | Block 4 depends on evaluation of the previous block |
+| System record | Extract `DESIGN.md` from implementation | Block 5 not started; do not replace it with a historical report |
+| Finishing | Integrated validation and full `polish` workflow | Block 6 not started |
+| 4K scale | Heading/signature limits made composition sparse in the historical iteration | Observation, no new direction authorized |
 
-O bloco 1 foi registrado como concluído. O bloco 2 foi implementado e reiterado, com pendências visuais e metodológicas. Não há autorização para avançar automaticamente ao bloco 3. A auditoria de 07/10 é um baseline histórico; seus achados precisam ser reconciliados com a implementação antes de orientar nova tarefa.
+Block 1 was recorded as complete. Block 2 was implemented and iterated, with visual and methodological items pending. No authorization to automatically advance to block 3. The 07/10 audit is a historical baseline; findings must be reconciled with implementation before guiding a new task.
 
-## Propostas de Figma — frente independente
+## Figma proposals - independent workstream
 
-Pedido de 10/10: inverter a hierarquia da referência [AUGEO HERO](https://www.figma.com/design/wtc641vxh05ubxXIgrtzMy/AUGEO-HERO?node-id=5-45), com coluna esquerda dark, matriz light e marca/tipografia invertidas. Dimensões, divisão 44/56, posições, tipografia e máscaras seriam preservadas. Essa edição não determinava mudança permanente na landing.
+Request on 10/10: invert the hierarchy of the [AUGEO HERO](https://www.figma.com/design/wtc641vxh05ubxXIgrtzMy/AUGEO-HERO?node-id=5-45) reference, with dark left column, light matrix and inverted brand/typography. Dimensions, 44/56 split, positions, typography and masks would be preserved. This edit did not mandate a permanent landing change.
 
-A proposta de dois tons claros de intensidades diferentes nos triângulos do Figma não foi aplicada nem avaliada. Não autoriza uma nova animação web. A prévia local usou esquerda `#111111`, título `#f7f7f5`, apoio `#b7b7b2`, marca invertida e triângulos `#e2e2df`/`#858580`. O lettering do Figma é vetorial próprio; a prévia web não comprova equivalência pixel a pixel.
+The proposal for two light tones of different intensities in the Figma triangles was neither applied nor evaluated. It does not authorize a new web animation. Local preview used left `#111111`, heading `#f7f7f5`, supporting text `#b7b7b2`, inverted brand and triangles `#e2e2df`/`#858580`. Figma lettering is its own vector; the web preview does not prove pixel-perfect equivalence.
 
-O usuário autorizou preparar snapshots locais para importação manual, esclarecendo que o limite MCP não impedia esse caminho. Os PNGs, ausentes na conferência anterior, estão presentes localmente na conferência de 17/10: `docs/refs/figma/augeo-matrix-light-2x.png` e `docs/refs/figma/augeo-hero-dark-left-light-matrix-preview-2x.png`, ainda não rastreados pelo Git. Disponibilidade local não comprova origem, equivalência visual, importação no fill `5:30`, inversão dos vetores, avaliação ou conclusão da edição. Conferir adequação dos artefatos antes de retomar a via manual; evidências técnicas ficam no [histórico](archive/EXECUTION_HISTORY.md).
+The user authorized preparing local snapshots for manual import, clarifying that the MCP limit did not prevent this route. PNGs missing at the previous check were present locally on 17/10: `docs/refs/figma/augeo-matrix-light-2x.png` and `docs/refs/figma/augeo-hero-dark-left-light-matrix-preview-2x.png`, still untracked by Git. Local availability does not prove provenance, visual equivalence, import into fill `5:30`, vector inversion, evaluation or edit completion. Check artifact suitability before resuming the manual route; technical evidence is in [history](archive/EXECUTION_HISTORY.md).
 
+## Current block plan
 
-## Plano vigente por blocos
+This sequence preserves original plan workflows without reviving superseded choices. Read the applicable playbook in full during execution, per [WORKFLOW.md](WORKFLOW.md#impeccable). Do not execute pending blocks merely because they are documented.
 
-Esta sequência mantém os fluxos do plano original sem recuperar suas escolhas superadas. Ler integralmente o playbook aplicável na execução, conforme [WORKFLOW.md](WORKFLOW.md#impeccable). Não executar blocos pendentes só porque estão documentados.
-
-| Bloco | Fluxos e trabalho | Estado e condição de saída |
+| Block | Workflows and work | State and exit condition |
 | --- | --- | --- |
-| 1 — Mensagem e integridade | `clarify`, `harden`: copy verdadeira e retirada da falsa ação EXPLORE | Conclusão histórica para aquele alvo; não certifica o CTA comercial atual, cuja seção ainda não existe. |
-| 2 — Evolução visual | `shape`, `bolder`, `layout`, `typeset`, `adapt`: hierarquia, tipografia e composição responsiva | Implementado e reiterado; avaliação visual global e reconciliação das etapas metodológicas continuam pendentes. |
-| 3 — Movimento | `animate`: entrada da matriz em até quatro segundos, incluindo término dos pulsos; depois repouso com respostas locais | Não implementado. Não aplicar esse limite aos triângulos sem decisão específica; preservar a demo ambiente e permitir interação após a introdução. |
-| 4 — Desempenho | `optimize`: localizar gargalo e comparar antes/depois no mesmo cenário DPR 2, 1440×900, ponteiro sobre lettering + clique | Pendente, após avaliação do bloco anterior. Registrar mediana/p95 dos callbacks e long tasks; preservar resolução, listras, contra-formas, interpolação e retorno ao repouso. |
-| 5 — Sistema visual | `document`: extrair sistema da implementação, com confirmação/refinamento e artefatos exigidos pelo playbook | DESIGN.md, sidecar e briefing formal da superfície pendentes. Este arquivo não os substitui. `extract` somente quando houver trabalho real de reutilização. |
-| 6 — Acabamento | `polish`: verificar o caminho em escopo e os achados ainda assumidos | Pendente. Sem snapshot formal de critique; usar achados manuais e evidências válidas, sem fabricar fluxos ou nota de auditoria. |
+| 1 - Message and integrity | `clarify`, `harden`: truthful copy and removal of the false EXPLORE action | Historical completion for that target; does not certify the current commercial CTA, whose section does not yet exist. |
+| 2 - Visual evolution | `shape`, `bolder`, `layout`, `typeset`, `adapt`: hierarchy, typography and responsive composition | Implemented and iterated; global visual evaluation and reconciliation of methodological stages remain pending. |
+| 3 - Motion | `animate`: matrix entry within four seconds, including pulse termination; then rest with local responses | Not implemented. Do not apply this limit to triangles without a specific decision; preserve ambient demo and allow interaction after introduction. |
+| 4 - Performance | `optimize`: locate bottleneck and compare before/after in the same DPR 2, 1440×900 scenario, pointer over lettering + click | Pending after previous block evaluation. Record callback median/p95 and long tasks; preserve resolution, stripes, counters, interpolation and return to rest. |
+| 5 - Visual system | `document`: extract system from implementation, with confirmation/refinement and playbook-required artifacts | DESIGN.md, sidecar and formal surface brief pending. This file does not replace them. `extract` only for actual reuse work. |
+| 6 - Finishing | `polish`: verify in-scope path and findings still accepted | Pending. No formal critique snapshot; use manual findings and valid evidence without fabricating workflows or an audit score. |
 
-Para o movimento, `motionMode?: 'ambient' | 'intro'` era uma proposta de interface; não existe no componente atual e sua adoção deve ser avaliada na implementação. Para o warp, pré-cálculo do mapa horizontal e reutilização de buffers são hipóteses a medir, não ganhos já demonstrados.
+For motion, `motionMode?: 'ambient' | 'intro'` was an interface proposal; it does not exist in the current component and adoption must be evaluated during implementation. For warp, precomputing the horizontal map and reusing buffers are hypotheses to measure, not demonstrated gains.
 
-### Critérios atuais de verificação
+### Current verification criteria
 
-- Preservar identidade, divisão 44/56, temas unificados, copy legível, mobile com matriz inferior/CTA visível e indicativo decorativo. Não restaurar EXPLORE, faixa lateral mobile, tema dividido, CTA oculto ou experiência 38/62 rejeitada.
-- Comparar composição em repouso, claro/escuro e movimento reduzido, antes de avaliar animação. Cobrir 1440×900, 900×600, 768×600, 390×844 e 320×740, além dos extremos pertinentes ao alvo.
-- Conteúdo e indicativo permanecem separados; desktop pode crescer e permitir rolagem. Ampliação de texto não deve recortar conteúdo nem gerar overflow horizontal. Fonte raiz aumentada não equivale a zoom real.
-- No mobile normal, preservar a assinatura inteira na primeira tela nos contextos de teste existentes; com texto ampliado, priorizar leitura e fluxo natural.
-- Para mudanças de movimento, verificar introdução/repouso/interação, cancelamento, retorno exato, mudança de preferência reduzida, saída de tela e aba oculta. Preservar touch/scroll, letras e contra-formas.
-- Para alterações funcionais, executar build e suíte pertinentes conforme WORKFLOW; para visual, usar inspeção renderizada e detector aplicável. Resultados em Chromium/emulação não comprovam aparelhos físicos ou outros motores.
+- Preserve identity, 44/56 split, unified themes, legible copy, mobile with lower matrix/visible CTA and decorative cue. Do not restore EXPLORE, mobile side strip, split theme, hidden CTA or rejected 38/62 experiment.
+- Compare composition at rest, light/dark and reduced motion before evaluating animation. Cover 1440×900, 900×600, 768×600, 390×844 and 320×740, plus extremes pertinent to the target.
+- Content and cue remain separate; desktop may grow and scroll. Text enlargement must not clip content or cause horizontal overflow. Enlarged root font is not native zoom.
+- On normal mobile, preserve the full signature on the first screen in existing test contexts; with enlarged text, prioritize reading and natural flow.
+- For motion changes, verify introduction/rest/interaction, cancellation, exact return, reduced-motion preference changes, off-screen and hidden-tab states. Preserve touch/scroll, letters and counters.
+- For functional changes, run pertinent build and suite per WORKFLOW; for visuals, use rendered inspection and the applicable detector. Chromium/emulation results do not prove physical devices or other engines.
 
-Os critérios antigos e a nota 13/20 pertencem à [auditoria histórica](archive/HERO_AUDIT_2026-10-07.md). Alternativas e sua rejeição estão no [histórico](archive/EXECUTION_HISTORY.md#alternativas-visuais-superadas). A correção de colisão de 16/10 está implementada/publicada, com avaliação visual do usuário ainda pendente; não encerra o bloco 2.
+Old criteria and the 13/20 score belong to the [historical audit](archive/HERO_AUDIT_2026-10-07.md). Alternatives and their rejection are in [history](archive/EXECUTION_HISTORY.md#alternativas-visuais-superadas). The 16/10 collision correction is implemented/published with user visual evaluation still pending; it does not close block 2.

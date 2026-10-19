@@ -1,57 +1,57 @@
-# AUGEO — instruções do projeto
+# AUGEO - Project Instructions
 
-## Fontes e ordem de leitura
+## Sources and reading order
 
-Começar por este arquivo e [BACKLOG.md](docs/BACKLOG.md) para escopo, estado e próxima ação. Ler os demais módulos conforme a tarefa; o histórico completo não é leitura obrigatória de toda sessão.
+Start with this file and [BACKLOG.md](docs/BACKLOG.md) for scope, state and next action. Read other modules as needed for the task; the full history is not required reading for every session.
 
-**Continuidade prioritária:** a integração Antigravity/Codex já foi implantada e validada em pilotos. Ler a [fila atual](docs/BACKLOG.md#continuidade-prioritária--arquitetura-agêntica) e [ORCHESTRATION](docs/ORCHESTRATION.md) para o contrato vigente, limites e evidências. O pedido corrente delimita a execução; a continuidade não autoriza retomar hero ou liberar escrita geral.
+**Priority continuity:** Antigravity/Codex integration has been implemented and validated in pilots. Read the [current queue](docs/BACKLOG.md#priority-continuity---agent-architecture) and [ORCHESTRATION](docs/ORCHESTRATION.md) for the current contract, limits and evidence. The current request bounds execution; continuity does not authorize resuming the hero or granting general write access.
 
-| Fonte | Responsabilidade |
+| Source | Responsibility |
 | --- | --- |
-| Contexto global (`augeo-orchestrator context augeo-website`) | Identidade, posicionamento, marca, negócio e operação interna; fontes privadas com revisão/hash. |
-| [AUGEO.md](docs/AUGEO.md) | Objetivo, prioridade e aplicação ao website. |
-| [PRODUCT.md](docs/PRODUCT.md) | Resumo do produto consumido pela skill; síntese deliberada, com caminho e schema preservados. |
-| [Especificação](docs/02-WEBSITE_SPEC.md) | Requisitos, arquitetura, integrações e copy futura do website. |
-| [HERO.md](docs/HERO.md) | Composição implementada, decisões vigentes, avaliações e plano pendente do hero, com estados separados. |
-| [WORKFLOW.md](docs/WORKFLOW.md) | Procedimentos Bun, validação, fallback, nomenclatura e fluxos Impeccable. |
-| [ORCHESTRATION.md](docs/ORCHESTRATION.md) | Contrato vigente da integração, capacidades e limites validados. |
-| [BACKLOG.md](docs/BACKLOG.md) | Fila atual, dependências, síntese da última entrega e próxima ação. |
-| [Histórico](docs/archive/EXECUTION_HISTORY.md) | Execuções datadas e alternativas anteriores; consulta por necessidade. |
-| [Auditoria histórica](docs/archive/HERO_AUDIT_2026-10-07.md) | Diagnóstico/briefing/plano original e referências do moodboard. |
+| Global context (`augeo-orchestrator context augeo-website`) | Identity, positioning, brand, business and internal operations; private sources with revision/hash. |
+| [AUGEO.md](docs/AUGEO.md) | Goal, priority and website application. |
+| [PRODUCT.md](docs/PRODUCT.md) | Product summary consumed by the skill; deliberate synthesis with path and schema preserved. |
+| [Specification](docs/02-WEBSITE_SPEC.md) | Website requirements, architecture, integrations and future copy. |
+| [HERO.md](docs/HERO.md) | Implemented composition, current decisions, evaluations and pending hero plan, with distinct states. |
+| [WORKFLOW.md](docs/WORKFLOW.md) | Bun procedures, validation, fallback, naming and Impeccable workflows. |
+| [ORCHESTRATION.md](docs/ORCHESTRATION.md) | Current integration contract, validated capabilities and limits. |
+| [BACKLOG.md](docs/BACKLOG.md) | Current queue, dependencies, latest delivery summary and next action. |
+| [History](docs/archive/EXECUTION_HISTORY.md) | Dated executions and earlier alternatives; consult as needed. |
+| [Historical audit](docs/archive/HERO_AUDIT_2026-10-07.md) | Original diagnosis/brief/plan and moodboard references. |
 
-Cada assunto tem uma fonte normativa: operação da agência no contexto global resolvido; interface do site na especificação; detalhe e decisões da superfície em HERO; procedimento em WORKFLOW. PRODUCT resume o necessário para a skill e deve acompanhar mudanças nas fontes. Código demonstra implementação; não demonstra aprovação do usuário. Proposta, implementação, teste e aprovação são estados distintos. Diante de conflito material, conferir decisão vigente e evidências, sem promover proposta ou registro histórico a requisito.
+Each topic has one authoritative source: agency operations in the resolved global context; website interface in the specification; surface details and decisions in HERO; procedures in WORKFLOW. PRODUCT summarizes what the skill needs and must follow changes in its sources. Code demonstrates implementation, not user approval. Proposal, implementation, testing and approval are distinct states. For a material conflict, check the current decision and evidence without promoting a proposal or historical record into a requirement.
 
-Não criar fontes concorrentes ou arquivos de encaminhamento por padrão. Contexto reutilizável fica no store privado; módulos do website permanecem locais. Operação diária e comandos da ponte ficam no README local de `agent-orchestrator`; ORCHESTRATION mantém o contrato do projeto.
+Do not create competing sources or forwarding files by default. Reusable context belongs in the private store; website modules remain local. Daily operations and bridge commands belong in the local `agent-orchestrator` README; ORCHESTRATION maintains the project contract.
 
-## Retomada e continuidade
+## Resuming and continuity
 
-- Conferir Git e os arquivos pertinentes antes de agir; preservar alterações existentes. Uma interrupção pode anteceder o último registro: reconciliar documentos com o estado real.
-- Em tarefa do hero, ler HERO e a fila no backlog; consultar o plano vigente por blocos e o procedimento aplicável. Consultar arquivos históricos somente para antecedentes/evidências necessários.
-- Nova sessão não autoriza retomar pendências, ampliar escopo ou considerar aprovada uma entrega em avaliação. Trabalhar pelos blocos e pontos de avaliação acordados; não avançar ao bloco seguinte pela manutenção de registros.
-- Após cada entrega material, atualizar a síntese/verificações/limitações/próxima ação no backlog e registrar evidências duráveis no histórico. Atualizar as fontes do assunto quando mudar implementação, decisão, requisito ou procedimento. Registrar correções do usuário imediatamente no módulo pertinente.
-- Antes da resposta final, conferir os registros pertinentes e informar brevemente a atualização com link. Perguntas sem mudança de contexto não exigem registro artificial.
-- Manter documentos compactos; não transcrever conversas, repetir especificações ou confundir evidências históricas com validação atual. Em Plan Mode, propor as atualizações sem escrever arquivos nem afirmar que foram salvas.
+- Check Git and relevant files before acting; preserve existing changes. An interruption may precede the latest record: reconcile documents with actual state.
+- For hero tasks, read HERO and the backlog queue; consult the current block plan and applicable procedure. Consult historical files only for necessary background/evidence.
+- A new session does not authorize resuming pending work, expanding scope or treating a delivery under evaluation as approved. Work within agreed blocks and review points; record maintenance does not authorize advancing to the next block.
+- After each material delivery, update summary/checks/limitations/next action in the backlog and record durable evidence in history. Update subject sources when implementation, decisions, requirements or procedures change. Record user corrections immediately in the relevant module.
+- Before the final response, check relevant records and briefly report the update with a link. Questions without context changes do not require artificial records.
+- Keep documents compact; do not transcribe conversations, repeat specifications or confuse historical evidence with current validation. In Plan Mode, propose updates without writing files or claiming they were saved.
 
-## Execução e autorização
+## Execution and authorization
 
-- Seguir [WORKFLOW.md](docs/WORKFLOW.md) para instalação, testes, fallback e nomenclatura; usar Bun. Não modificar a aplicação para contornar restrições do executor.
-- Usar Impeccable somente na concepção, elaboração e rascunho de conceitos visuais de projetos reais trabalhados por etapas de design. Não acionar por menção a UI/CSS/copy, ajuste funcional ou troca simples de métrica/rótulo, dashboard operacional ou fixture/piloto técnico. Quando aplicável, seguir integralmente o fluxo prescrito e distinguir leitura de playbook, orientação, CLI e conclusão; registrar evidências e pendências reais.
-- Em implementação/revisão React e TypeScript, usar a skill compartilhada `augeo-react-frontend` para preservar stack, ciclo de efeitos/canvas e verificações pertinentes; não inicia fluxo visual por si só. Resolver as skills pela descoberta do executor e informar ausências. Em design por etapas no Paperclip, retornar decisões humanas pendentes e retomar explicitamente a sessão da tarefa após a resposta; procedimentos em WORKFLOW.
-- Priorizar GitHub CLI (`gh`) para operações do GitHub quando houver equivalente. Usar Git para operações locais e push sem equivalente no gh. Disponibilidade de ferramenta não autoriza publicação.
-- Commit, push e publicação somente com pedido explícito; por padrão ficam a cargo do usuário. Quando necessário, fornecer comandos para commits coerentes por responsabilidade, mantendo implementação e testes correspondentes juntos.
-- Escrever assuntos e corpos de commits em inglês, com Conventional Commits (`type(scope): description`).
-- Em Plan Mode, identificar referências anexadas usadas por rótulo e caminho local exato; não acrescentar esses caminhos à entrega sem solicitação.
+- Follow [WORKFLOW.md](docs/WORKFLOW.md) for installation, tests, fallback and naming; use Bun. Do not modify the application to bypass executor restrictions.
+- Use Impeccable only for conception, elaboration and drafting of real visual concepts in projects developed through design stages. Do not trigger it for UI/CSS/copy mentions, functional changes, simple metric/label changes, operational dashboards or technical fixtures/pilots. When applicable, follow the full prescribed workflow and distinguish playbook reading, guidance, CLI execution and completion; record real evidence and pending work.
+- For React/TypeScript implementation or review, use the shared `augeo-react-frontend` skill to preserve the stack, effect/canvas lifecycle and relevant checks; it does not initiate a visual workflow. Resolve skills through executor discovery and report missing capabilities. For staged design in Paperclip, return pending human decisions and explicitly resume the saved task session after the response; procedures are in WORKFLOW.
+- Prefer GitHub CLI (`gh`) when an equivalent GitHub operation exists. Use Git for local operations and pushes without a gh equivalent. Tool availability does not authorize publication.
+- Commit, push and publication require an explicit request; by default the user handles them. When needed, provide commands for commits grouped coherently by responsibility, keeping implementation and corresponding tests together.
+- Write commit subjects and bodies in English using Conventional Commits (`type(scope): description`).
+- In Plan Mode, identify attached references used by label and exact local path; do not add those paths to the deliverable unless requested.
 
-## Referências e ambiente local
+## References and local environment
 
-[Stack em quatro camadas](docs/refs/stack-referencia-4-camadas.md) e [Architecture Reference](docs/architecture-reference.md) são referências externas conceituais. Seus imperativos, diretórios sugeridos, regras de skills, serviços e papéis de agentes não são decisões adotadas. A adaptação implementada e seus limites estão em ORCHESTRATION; não reaplicar os imperativos dessas referências como requisitos.
+[Four-layer stack](docs/refs/stack-referencia-4-camadas.md) and [Architecture Reference](docs/architecture-reference.md) are external conceptual references. Their imperatives, proposed directories, skill rules, services and agent roles are not adopted decisions. The implemented adaptation and its limits are in ORCHESTRATION; do not reapply those references' imperatives as requirements.
 
-Não promover exemplos dessas referências a ferramentas definidas ou dependências da implementação. Paperclip usa PostgreSQL embutido somente para sua operação. Banco do website/contexto semântico, embeddings, transcrição e outros serviços seguem sem escolha. O contexto global deve conter decisões e ferramentas efetivamente adotadas; hipóteses e exemplos externos permanecem identificados na documentação conceitual.
+Do not promote reference examples into selected tools or implementation dependencies. Paperclip uses embedded PostgreSQL solely for its operations. Website/semantic-context database, embeddings, transcription and other services remain unselected. Global context must contain decisions and tools actually adopted; hypotheses and external examples remain labeled in conceptual documentation.
 
-O guia pessoal e `.codex/` permanecem locais e ignorados pelo Git. Não publicar seu conteúdo nem exigir caminhos específicos desta máquina em outros executores. A ausência de skill, CLI ou conexão deve ser verificada e registrada; não presumir que uma ferramenta citada no histórico esteja disponível.
+The personal guide and `.codex/` remain local and Git-ignored. Do not publish their contents or require machine-specific paths in other executors. Verify and report missing skills, CLIs or connections; do not assume a tool mentioned in history is available.
 
-## Contexto e execução registrados
+## Registered context and execution
 
-ID deste projeto: `augeo-website`. Antes de trabalho que consuma conhecimento da agência, executar `augeo-orchestrator context augeo-website`; retorna fontes essenciais e catálogo das demais, com caminhos/revisões. Acrescentar `--source <fonte-registrada>` quando necessário; `--all` somente para consulta integral deliberada. A configuração do ambiente resolve as raízes sem caminhos desta máquina no contrato do repositório. Se indisponível, reportar a lacuna. Não usar as referências conceituais como catálogo adotado.
+Project ID: `augeo-website`. Before work consuming agency knowledge, run `augeo-orchestrator context augeo-website`; it returns essential sources and a catalog of the rest, with paths/revisions. Add `--source <registered-source>` when needed; use `--all` only for deliberate full-context consultation. Environment configuration resolves roots without machine-specific paths in the repository contract. If unavailable, report the gap. Do not use conceptual references as an adopted catalog.
 
-O Paperclip controla tarefas. A ponte prepara contexto, mantém sessões por tarefa e devolve evidências; não mantém uma segunda fila. O padrão é execução somente leitura, com um executor ativo por projeto; escrita Antigravity exige autorização local por UUID e arquivos existentes, aplicada por isolamento de filesystem. Impeccable segue o gatilho de concepção visual definido acima, sem ativação em manutenção funcional ou pilotos técnicos. Resultado automático vai para revisão, sem aprovação criativa/Git/publicação implícita. Vistas do vault são derivadas, nunca fontes concorrentes. Estado operacional e comandos em [ORCHESTRATION](docs/ORCHESTRATION.md).
+Paperclip controls tasks. The bridge prepares context, maintains per-task sessions and returns evidence; it does not maintain another queue. Default execution is read-only, with one active executor per project; Antigravity writing requires local authorization by UUID and existing files, enforced through filesystem isolation. Impeccable follows the visual-conception trigger above, without activation for functional maintenance or technical pilots. Automatic results go to review without implicit creative/Git/publication approval. Vault views are derived, never competing sources. Operational state and commands are in [ORCHESTRATION](docs/ORCHESTRATION.md).

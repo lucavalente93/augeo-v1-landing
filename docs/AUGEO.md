@@ -1,11 +1,11 @@
-# AUGEO — aplicação ao website
+# AUGEO - Website Context
 
-Contexto específico deste projeto. Identidade, público, equipe, oferta, marca e operação interna foram migrados para o contexto global privado; não manter cópia normativa aqui. Resolver as fontes e revisões com `augeo-orchestrator context augeo-website`, conforme [orquestração](ORCHESTRATION.md).
+Context specific to this project. Identity, audience, team, offering, brand and internal operations have moved to the private global context; do not maintain another authoritative copy here. Resolve sources and revisions with `augeo-orchestrator context augeo-website`, as described in [orchestration](ORCHESTRATION.md).
 
-**Objetivo do website:** Criar o canal comercial inicial da AUGEO, explicar seu modelo de trabalho e demonstrar a qualidade da agência pelo próprio website enquanto ainda não há portfólio publicado.
+**Website goal:** Create AUGEO's initial sales channel, explain its working model and demonstrate agency quality through the website itself while no portfolio has been published.
 
-**Prioridade atual:** Estruturar digitalmente a empresa e preparar a futura captação de leads. O website é a prioridade imediata.
+**Current priority:** Structure the company digitally and prepare future lead acquisition. The website is the immediate priority.
 
-## Aplicação ao website
+## Website application
 
-O escopo da presença institucional está na [especificação](02-WEBSITE_SPEC.md). Requisitos, decisões visuais, procedimentos e fila permanecem neste repositório. [PRODUCT](PRODUCT.md) conserva o resumo de produto e seu schema, derivado dessas fontes e do contexto global.
+The scope of the institutional presence is defined in the [specification](02-WEBSITE_SPEC.md). Requirements, visual decisions, procedures and queue remain in this repository. [PRODUCT](PRODUCT.md) retains the product summary and its schema, derived from these sources and the global context.
