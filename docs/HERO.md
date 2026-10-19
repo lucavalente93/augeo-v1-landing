@@ -62,13 +62,14 @@ Uma passagem ocorre a cada **2,8 s**, com defasagem de **980 ms** entre os triâ
 
 No desktop, o indicativo participa do fluxo da `.hero-copy`, depois do grupo `.hero-content` (título, apoio e CTA). Margens verticais automáticas centralizam esse grupo no espaço disponível; o indicativo fica junto à base do painel, com margem superior mínima de 32 px e recuo inferior de 28 px. Sua dimensão não encolhe no flex: variantes maiores ou com conteúdo intrínseco reservam o próprio espaço. Quando o conteúdo não cabe na altura da janela, o hero cresce e a página permite rolagem; não há coordenada vertical baseada no viewport nem altura do indicativo duplicada no cálculo de afastamento. A matriz acompanha a altura do hero.
 
-O indicativo atual é decorativo, `aria-hidden`, sem clique ou foco. Seu sentido é continuidade por scroll; o CTA comercial tem outra função. EXPLORE e a seta anterior não fazem parte do hero implementado. O CTA aponta para `#entrada`; essa seção ainda não existe na aplicação atual.
+Na `main`, o indicativo permanece decorativo (`aria-hidden`, sem clique ou foco). Na branch `section-process`, com a implementação de `#processo` (`src/components/ProcessSection.tsx`), `ScrollCue` foi ativado no desktop como link nativo `<a className="scroll-cue" href="#processo" aria-label="Conhecer nosso processo">`, preservando geometria, SVGs `aria-hidden="true"`, ciclo Web Animations e ocultação no mobile. Seu sentido continua sendo continuidade por scroll até Processo; o CTA comercial mantém destino `#entrada` (seção ainda não implementada). EXPLORE e a seta anterior não fazem parte do hero.
 
 ## Fontes da implementação
 
-- [src/App.tsx](../src/App.tsx): estrutura, copy, CTA, props e alinhamento.
-- [src/styles.css](../src/styles.css): composição, temas, tipografia e animação do indicativo.
-- [src/components/ScrollCue.tsx](../src/components/ScrollCue.tsx): triângulos e pausa/retomada.
+- [src/App.tsx](../src/App.tsx): estrutura, copy, CTA, props, alinhamento e montagem de `ProcessSection` abaixo de `.hero` em `section-process`.
+- [src/styles.css](../src/styles.css): composição, temas, tipografia, animação do indicativo e estilos `.process-*`.
+- [src/components/ScrollCue.tsx](../src/components/ScrollCue.tsx): triângulos, link nativo `#processo` em `section-process` e pausa/retomada.
+- [src/components/ProcessSection.tsx](../src/components/ProcessSection.tsx): ledger arquitetônico das três etapas de `#processo` na branch `section-process`.
 - [components/ui/kinetic-matrix.tsx](../components/ui/kinetic-matrix.tsx) e [lib/matrix-motion.ts](../lib/matrix-motion.ts): grade, campo de interação e warp.
 - [src/assets/augeo-lettering.svg](../src/assets/augeo-lettering.svg): marca listrada e contra-formas.
 
@@ -101,7 +102,7 @@ Implementação não equivale a aprovação visual global. A aprovação da corr
 | Composição desktop | Avaliação do usuário após alinhamento, apoio maior, painel e indicador | Sem fechamento visual global registrado |
 | Hero mobile | Conferência da versão publicada no dispositivo do usuário | Correção do fundo aprovada; avaliação em aparelho é distinta |
 | Contra-forma no deploy | Confirmar visualmente A/O no navegador e viewport do relato de 11/10 | Correção SVG já publicada; não há nova publicação pendente por esse motivo |
-| Integração de continuidade | Quando Processo existir, usar link nativo para `#processo` com foco/nome acessível coerentes | Indicativo atual permanece decorativo; não restaurar EXPLORE |
+| Integração de continuidade | Avaliar em navegador o link nativo `<a href="#processo">` e a seção `#processo` implementados na branch `section-process` | Implementado em `section-process` (`AUG-12`/`AUG-11`); `main` permanece sem `#processo` até aprovação; não restaurar EXPLORE |
 | Entrada comercial | Conectar “Apresentar negócio” ao formulário real de `#entrada` | CTA e continuidade têm destinos diferentes; seção ainda ausente |
 | Introdução da matriz | Entrada concluída em até quatro segundos, depois repouso e respostas pontuais | Bloco 3 ainda não implementado; loops atuais continuam. Não estender essa proposta aos triângulos sem decisão própria |
 | Desempenho do warp | Otimizar e comparar em DPR 2 preservando imagem | Bloco 4 depende da avaliação do anterior |
