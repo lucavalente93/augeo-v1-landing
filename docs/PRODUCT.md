@@ -8,40 +8,40 @@ web
 
 ## Users
 
-Negócios e profissionais, em qualquer região, que já têm operação, produto, acervo, imagem ou conteúdo real e precisam transformá-los em presença digital coerente e comercialmente útil.
+Businesses and professionals in any region with an existing operation, product, collection, image or real content who need to turn it into a coherent and commercially useful digital presence.
 
 ## Product Purpose
 
-O website é o canal comercial inicial da AUGEO. Deve apresentar a agência, demonstrar seu critério pela própria execução e orientar negócios adequados a uma entrada qualificada.
+The website is AUGEO's initial sales channel. It should introduce the agency, demonstrate its judgment through its own execution and guide suitable businesses to a qualified intake.
 
 ## Positioning
 
-A contratação começa pelo entendimento do cenário do negócio. A AUGEO combina direção, website, aquisição e operação digital conforme o diagnóstico, em vez de oferecer módulos avulsos como catálogo.
+Engagement begins with understanding the business context. AUGEO combines direction, website, acquisition and digital operations according to diagnosis, rather than offering standalone modules as a catalog.
 
 ## Capabilities and Constraints
 
-- A presença inicial é uma landing page comercial. Endereço atual informado pelo usuário em 17/10/2026: `https://www.augeocreative.com`. A base publicada tem cabeçalho, hero, botão de conversão e matriz reativa em hover. No mobile, a matriz inteira forma o footer visual; Processo e formulário de entrada ainda estão previstos na especificação.
-- A interação visual do hero deve manter uma composição válida em touch e com movimento reduzido.
-- E-mail comercial existente: `hello@augeocreative.com`. Pro da Vercel e WhatsApp Business foram adiados pelo usuário até concluir o site.
-- A agência atende remotamente. A entrada comercial, quando implementada, deverá aceitar demandas específicas ou ainda indefinidas.
-- Copy do hero e matriz interativa já estão implementadas. Copy das seções futuras, campos do formulário, solução de envio e parâmetros de triagem seguem em aberto.
+- The initial presence is a commercial landing page. Current address provided by the user on 17/10/2026: `https://www.augeocreative.com`. The published baseline includes a header, hero, conversion button and hover-reactive matrix. On mobile, the entire matrix forms the visual footer; Process and the intake form remain planned in the specification.
+- The hero's visual interaction must preserve a valid composition on touch devices and with reduced motion.
+- Existing business email: `hello@augeocreative.com`. Vercel Pro and WhatsApp Business were postponed by the user until the website is complete.
+- The agency serves clients remotely. When implemented, sales intake must accept specific requests or needs that are still undefined.
+- Hero copy and the interactive matrix are already implemented. Copy for future sections, form fields, submission solution and screening parameters remain open.
 
 ## Brand Commitments
 
-- Nome: AUGEO Creative. Preservar a marca e o símbolo existentes.
-- Voz segura, criteriosa, clara e direta; sem promessas de resultado rápido ou linguagem genérica de agência.
-- A execução deve expressar julgamento humano e decisões intencionais.
+- Name: AUGEO Creative. Preserve the existing brand and symbol.
+- Confident, discerning, clear and direct voice; no promises of quick results or generic agency language.
+- Execution must express human judgment and intentional decisions.
 
 ## Evidence on Hand
 
-- Contexto estratégico, marca e operação interna: fontes privadas resolvidas por `augeo-orchestrator context augeo-website`. Aplicação local: [AUGEO.md](AUGEO.md).
-- Arquitetura e requisitos do site: `docs/02-WEBSITE_SPEC.md`.
-- Marca e exploração tipográfica existentes: `src/assets/logo/`.
-- Ainda não há cases, clientes, métricas ou depoimentos publicados; não inventar prova social.
+- Strategic context, brand and internal operations: private sources resolved through `augeo-orchestrator context augeo-website`. Local application: [AUGEO.md](AUGEO.md).
+- Website architecture and requirements: `docs/02-WEBSITE_SPEC.md`.
+- Existing brand and typographic exploration: `src/assets/logo/`.
+- No published case studies, clients, metrics or testimonials yet; do not invent social proof.
 
 ## Product Principles
 
-1. Explicar o modelo de trabalho antes de solicitar a demanda.
-2. Demonstrar qualidade e critério pela própria página.
-3. Manter a decisão comercial clara, sem prometer resultados que não existem.
-4. Preservar legibilidade, acessibilidade e desempenho em qualquer interação.
+1. Explain the working model before requesting the lead's needs.
+2. Demonstrate quality and judgment through the page itself.
+3. Keep the commercial decision clear without promising nonexistent results.
+4. Preserve legibility, accessibility and performance in every interaction.
