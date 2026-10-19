@@ -1,4 +1,5 @@
 import ScrollCue from './components/ScrollCue';
+import ProcessSection from './components/ProcessSection';
 import KineticMatrix from '@/components/ui/kinetic-matrix';
 import symbol from '@/src/assets/logo/symbol.png';
 import augeoLettering from '@/src/assets/augeo-lettering.svg';
@@ -57,6 +58,7 @@ export default function App() {
             <KineticMatrix title="AUGEO" titleArtworkSrc={augeoLettering} enableArtworkMotion gridSpacing={72} className="hero-matrix" />
           </div>
         </section>
+        <ProcessSection />
       </main>
     </div>
   );

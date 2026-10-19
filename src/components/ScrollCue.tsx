@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 
-/** Decorative continuity hint until a real Processo section exists. */
+/** Desktop continuity link to the Processo section (#processo). */
 export default function ScrollCue() {
-  const cueRef = useRef<HTMLDivElement>(null);
+  const cueRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const cue = cueRef.current;
@@ -25,13 +25,13 @@ export default function ScrollCue() {
   }, []);
 
   return (
-    <div ref={cueRef} className="scroll-cue" aria-hidden="true">
-      <svg className="scroll-cue-triangle" viewBox="0 0 24 42" focusable="false">
+    <a ref={cueRef} className="scroll-cue" href="#processo" aria-label="Conhecer nosso processo">
+      <svg className="scroll-cue-triangle" viewBox="0 0 24 42" aria-hidden="true" focusable="false">
         <path d="M0 6H24L12 24Z" />
       </svg>
-      <svg className="scroll-cue-triangle" viewBox="0 0 24 42" focusable="false">
+      <svg className="scroll-cue-triangle" viewBox="0 0 24 42" aria-hidden="true" focusable="false">
         <path d="M0 18H24L12 36Z" />
       </svg>
-    </div>
+    </a>
   );
 }

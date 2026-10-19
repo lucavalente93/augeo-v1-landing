@@ -67,9 +67,10 @@ for (const colorScheme of ['light', 'dark'] as const) {
       await page.evaluate(() => document.fonts.ready);
       const cue = page.locator('.scroll-cue');
       await expect.poll(() => cue.evaluate(node => node.getAnimations({ subtree: true }).length)).toBe(2);
-      await expect(cue).toHaveAttribute('aria-hidden', 'true');
-      expect(await cue.evaluate(node => node.tabIndex)).toBe(-1);
-      await expect(cue.locator('a, button, [tabindex]')).toHaveCount(0);
+      await expect(cue).toHaveAttribute('href', '#processo');
+      await expect(cue).toHaveAttribute('aria-label', 'Conhecer nosso processo');
+      expect(await cue.evaluate(node => node.tabIndex)).toBe(0);
+      await expect(cue.locator('svg[aria-hidden="true"]')).toHaveCount(2);
       await cue.scrollIntoViewIfNeeded();
       const bounds = (await cue.boundingBox())!;
       const triangles = await cue.locator('path').evaluateAll(nodes => nodes.map(node => {
@@ -119,10 +120,11 @@ for (const colorScheme of ['light', 'dark'] as const) {
       await expect.poll(() => cue.evaluate(node => node.getAnimations({ subtree: true }).length)).toBe(0);
       for (const path of await cue.locator('path').all()) await expect(path).toHaveCSS('fill', rest);
       const staticCue = await cue.screenshot();
-      await cue.click();
-      await page.waitForTimeout(150);
+      await cue.hover();
       expect((await cue.screenshot()).equals(staticCue)).toBe(true);
-      expect(await page.evaluate(() => location.hash)).toBe('');
+      await cue.click();
+      expect(await page.evaluate(() => location.hash)).toBe('#processo');
+      await expect(page.locator('#processo')).toBeInViewport();
       expect(errors).toEqual([]);
     });
   }
@@ -137,3 +139,60 @@ for (const colorScheme of ['light', 'dark'] as const) {
     }
   });
 }
+
+test('process section renders asymmetric architectural composition below hero without overflow', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce', colorScheme: 'dark' });
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  await page.evaluate(() => document.fonts.ready);
+
+  const processSection = page.locator('#processo');
+  await expect(processSection).toBeVisible();
+  await expect(processSection.getByRole('heading', { level: 2 })).toHaveText('Nós estruturamos sua presença digital.');
+  await expect(processSection.locator('.process-lead')).toHaveText(
+    'Conhecemos seu negócio, identificamos o que precisa mudar e propomos um projeto para conectar apresentação e operação.'
+  );
+
+  const steps = processSection.locator('ol.process-ledger > li.process-step');
+  await expect(steps).toHaveCount(3);
+  await expect(processSection.locator('#processo-01')).toBeVisible();
+  await expect(processSection.locator('#processo-02')).toBeVisible();
+  await expect(processSection.locator('#processo-03')).toBeVisible();
+  await expect(steps.nth(0).getByRole('heading', { level: 3 })).toHaveText('Conhecemos seu negócio');
+  await expect(steps.nth(1).getByRole('heading', { level: 3 })).toHaveText('Definimos as prioridades');
+  await expect(steps.nth(2).getByRole('heading', { level: 3 })).toHaveText('Apresentamos o projeto');
+  await expect(steps.nth(2)).toContainText('briefing validado');
+
+  // Verify no AI-slop tags or primitive SVG diagrams inside steps
+  await expect(processSection.locator('.process-step-tag')).toHaveCount(0);
+  await expect(processSection.locator('.process-step-diagram')).toHaveCount(0);
+
+  // Verify asymmetric desktop cadence and externalized CTA
+  const step1Box = (await steps.nth(0).boundingBox())!;
+  const step2Box = (await steps.nth(1).boundingBox())!;
+  const step3Box = (await steps.nth(2).boundingBox())!;
+  expect(step2Box.width).toBeGreaterThan(step1Box.width);
+  expect(step3Box.width).toBeGreaterThan(step2Box.width);
+  const step2HeadingY = (await steps.nth(1).getByRole('heading', { level: 3 }).boundingBox())!.y;
+  const step1HeadingY = (await steps.nth(0).getByRole('heading', { level: 3 }).boundingBox())!.y;
+  expect(step2HeadingY).toBeGreaterThan(step1HeadingY + 24);
+
+  const cta = processSection.locator('a.process-cta');
+  await expect(cta).toHaveAttribute('href', '#entrada');
+  await expect(processSection.locator('ol.process-ledger a.process-cta')).toHaveCount(0);
+  const ledgerBox = (await processSection.locator('ol.process-ledger').boundingBox())!;
+  const ctaBox = (await cta.boundingBox())!;
+  expect(ctaBox.y).toBeGreaterThanOrEqual(ledgerBox.y + ledgerBox.height);
+
+  const heroHeading = (await page.locator('#hero-title').boundingBox())!;
+  const firstStepIndex = (await steps.nth(0).locator('.process-step-index').boundingBox())!;
+  expect(firstStepIndex.x).toBeCloseTo(heroHeading.x, 1);
+  await processSection.screenshot({ path: 'test-results/process-desktop-dark.png' });
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  const matrixPanel = (await page.locator('.hero-matrix-panel').boundingBox())!;
+  const processBounds = (await processSection.boundingBox())!;
+  expect(processBounds.y).toBeGreaterThanOrEqual(matrixPanel.y + matrixPanel.height - 1);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
+  await processSection.screenshot({ path: 'test-results/process-mobile-dark.png' });
+});

@@ -15,8 +15,8 @@ test('landing: canvas draws, reduced motion freezes it, pointer works, triangles
   await expect(page.locator('.kinetic-matrix button')).toHaveCount(0);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.waitForTimeout(100);
-  const frozen = await snapshot();
   await page.screenshot({ path: 'test-results/landing-desktop.png', fullPage: true });
+  const frozen = await snapshot();
   await page.waitForTimeout(200);
   expect(await snapshot()).toBe(frozen);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
