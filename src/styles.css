@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @font-face {
   font-family: "Hanken Grotesk";
   src: url("./assets/fonts/HankenGrotesk-VariableFont_wght.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Libre Franklin";
+  src: url("./assets/fonts/LibreFranklin-VariableFont_wght.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -50,7 +59,9 @@
   --input: #d9d9d4;
   --ring: #ff482c;
   --radius: 0.5rem;
-  font-family: "Hanken Grotesk", "Archivo", Arial, sans-serif;
+  --font-heading: "Hanken Grotesk", sans-serif;
+  --font-subheadline: "Libre Franklin", "Archivo", sans-serif;
+  font-family: var(--font-heading);
   color: var(--foreground);
   background: var(--background);
 }
@@ -144,9 +155,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
   .hero-content { margin-block: auto; }
   .hero-copy { border-right: 1px solid var(--border); }
 }
-.hero-copy h1 { max-width: 11ch; margin: 0; font-size: clamp(2rem, 19.5cqw, 6rem); font-weight: 620; letter-spacing: -.035em; line-height: 1.02; overflow-wrap: anywhere; text-wrap: balance; padding-bottom: 2px; }
+.hero-copy h1 { font-family: var(--font-heading); max-width: 11ch; margin: 0; font-size: clamp(2rem, 19.5cqw, 6rem); font-weight: 620; letter-spacing: -.035em; line-height: 1.02; overflow-wrap: anywhere; text-wrap: balance; padding-bottom: 2px; }
 .hero-copy h1 span { display: block; }
-.hero-description { max-width: 34ch; margin: 28px 0 0; color: var(--muted-foreground); font-size: clamp(1.125rem, 1.6vw, 1.5rem); line-height: 1.5; letter-spacing: -.015em; }
+.hero-description { font-family: var(--font-subheadline); max-width: 34ch; margin: 28px 0 0; color: var(--muted-foreground); font-size: clamp(1.125rem, 1.6vw, 1.5rem); line-height: 1.5; letter-spacing: -.015em; }
 
 .hero-cta {
   display: inline-flex;
