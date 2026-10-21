@@ -57,7 +57,7 @@ test('offscreen and hidden-document suspension resumes elapsed animation time', 
 });
 
 for (const colorScheme of ['light', 'dark'] as const) {
-  for (const [width, height] of [[1440, 900], [900, 600], [768, 600], [844, 390]]) {
+  for (const [width, height] of [[1440, 900], [1024, 768], [1280, 600], [1920, 900]]) {
     test(`overlapping cue contrast descends and rests: ${colorScheme} ${width}x${height}`, async ({ page }) => {
       await page.setViewportSize({ width, height });
       await page.emulateMedia({ colorScheme, reducedMotion: 'no-preference' });
@@ -130,7 +130,7 @@ for (const colorScheme of ['light', 'dark'] as const) {
   }
   test(`mobile cue remains hidden: ${colorScheme}`, async ({ page }) => {
     await page.emulateMedia({ colorScheme });
-    for (const [width, height] of [[390, 844], [320, 740], [320, 600]]) {
+    for (const [width, height] of [[390, 844], [320, 740], [320, 600], [768, 600], [900, 600], [1023, 768]]) {
       await page.setViewportSize({ width, height });
       await page.goto('/');
       await expect(page.locator('.scroll-cue')).toBeHidden();
@@ -140,7 +140,7 @@ for (const colorScheme of ['light', 'dark'] as const) {
   });
 }
 
-test('process section renders asymmetric architectural composition below hero without overflow', async ({ page }) => {
+test('experimental process section preserves content, navigation and responsive bounds', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce', colorScheme: 'dark' });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
@@ -167,15 +167,24 @@ test('process section renders asymmetric architectural composition below hero wi
   await expect(processSection.locator('.process-step-tag')).toHaveCount(0);
   await expect(processSection.locator('.process-step-diagram')).toHaveCount(0);
 
-  // Verify asymmetric desktop cadence and externalized CTA
-  const step1Box = (await steps.nth(0).boundingBox())!;
-  const step2Box = (await steps.nth(1).boundingBox())!;
-  const step3Box = (await steps.nth(2).boundingBox())!;
-  expect(step2Box.width).toBeGreaterThan(step1Box.width);
-  expect(step3Box.width).toBeGreaterThan(step2Box.width);
-  const step2HeadingY = (await steps.nth(1).getByRole('heading', { level: 3 }).boundingBox())!.y;
-  const step1HeadingY = (await steps.nth(0).getByRole('heading', { level: 3 }).boundingBox())!.y;
-  expect(step2HeadingY).toBeGreaterThan(step1HeadingY + 24);
+  // Check usable bounds without prescribing column ratios or an axis shared with hero.
+  for (const width of [768, 900, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const cell of await processSection.locator('.process-header-secondary, .process-step-body, .process-closing-action').all()) {
+      const bounds = (await cell.boundingBox())!;
+      expect(bounds.width).toBeGreaterThan(0);
+      expect(bounds.x).toBeGreaterThanOrEqual(0);
+      expect(bounds.x + bounds.width).toBeLessThanOrEqual(width + 1);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width);
+  }
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await expect(steps.locator('.process-step-stage')).toHaveText([
+    'ENTRADA', 'ENTENDIMENTO DO CENÁRIO', 'DIRECIONAMENTO E PROPOSTA',
+  ]);
+  await steps.first().hover();
+  await expect(steps.first().locator('h3')).toHaveCSS('transform', 'none');
+  await expect(steps.first().locator('.process-step-rule')).toHaveCSS('transform', 'none');
 
   const cta = processSection.locator('a.process-cta');
   await expect(cta).toHaveAttribute('href', '#entrada');
@@ -184,15 +193,28 @@ test('process section renders asymmetric architectural composition below hero wi
   const ctaBox = (await cta.boundingBox())!;
   expect(ctaBox.y).toBeGreaterThanOrEqual(ledgerBox.y + ledgerBox.height);
 
-  const heroHeading = (await page.locator('#hero-title').boundingBox())!;
-  const firstStepIndex = (await steps.nth(0).locator('.process-step-index').boundingBox())!;
-  expect(firstStepIndex.x).toBeCloseTo(heroHeading.x, 1);
+  await expect(processSection.locator('.process-step-index')).toHaveCount(0);
+  const primary = processSection.locator('.process-header-primary');
+  await expect(primary).toHaveCSS('position', 'sticky');
+  const sectionTop = await processSection.evaluate(node => node.getBoundingClientRect().top + window.scrollY);
+  await page.evaluate(y => window.scrollTo(0, y + 250), sectionTop);
+  expect((await primary.boundingBox())!.y).toBeCloseTo(135, 0);
+  // Explicit page theme takes precedence over a later OS preference change.
+  await page.emulateMedia({ colorScheme: 'light' });
+  await expect(processSection).toHaveCSS('background-color', 'rgb(6, 7, 10)');
+  await page.emulateMedia({ colorScheme: 'dark' });
   await processSection.screenshot({ path: 'test-results/process-desktop-dark.png' });
 
-  await page.setViewportSize({ width: 390, height: 844 });
-  const matrixPanel = (await page.locator('.hero-matrix-panel').boundingBox())!;
-  const processBounds = (await processSection.boundingBox())!;
-  expect(processBounds.y).toBeGreaterThanOrEqual(matrixPanel.y + matrixPanel.height - 1);
-  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
+  for (const width of [320, 390]) {
+    await page.setViewportSize({ width, height: 844 });
+    const matrixPanel = (await page.locator('.hero-matrix-panel').boundingBox())!;
+    const processBounds = (await processSection.boundingBox())!;
+    expect(processBounds.y).toBeGreaterThanOrEqual(matrixPanel.y + matrixPanel.height - 1);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width);
+    const datum = (await steps.first().locator('.process-step-datum').boundingBox())!;
+    const body = (await steps.first().locator('.process-step-body').boundingBox())!;
+    expect(body.y).toBeGreaterThanOrEqual(datum.y + datum.height);
+    expect((await cta.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+  }
   await processSection.screenshot({ path: 'test-results/process-mobile-dark.png' });
 });

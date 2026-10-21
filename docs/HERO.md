@@ -137,7 +137,7 @@ For motion, `motionMode?: 'ambient' | 'intro'` was an interface proposal; it doe
 
 ### Current verification criteria
 
-- Preserve identity, 44/56 split, unified themes, legible copy, mobile with lower matrix/visible CTA and decorative cue. Do not restore EXPLORE, mobile side strip, split theme, hidden CTA or rejected 38/62 experiment.
+- Within the hero, preserve identity, 44/56 split, unified themes, legible copy, mobile with lower matrix/visible CTA and decorative cue. Do not restore EXPLORE, mobile side strip, split theme, hidden CTA or rejected 38/62 experiment.
 - Compare composition at rest, light/dark and reduced motion before evaluating animation. Cover 1440×900, 900×600, 768×600, 390×844 and 320×740, plus extremes pertinent to the target.
 - Content and cue remain separate; desktop may grow and scroll. Text enlargement must not clip content or cause horizontal overflow. Enlarged root font is not native zoom.
 - On normal mobile, preserve the full signature on the first screen in existing test contexts; with enlarged text, prioritize reading and natural flow.
@@ -145,3 +145,14 @@ For motion, `motionMode?: 'ambient' | 'intro'` was an interface proposal; it doe
 - For functional changes, run pertinent build and suite per WORKFLOW; for visuals, use rendered inspection and the applicable detector. Chromium/emulation results do not prove physical devices or other engines.
 
 Old criteria and the 13/20 score belong to the [historical audit](archive/HERO_AUDIT_2026-10-07.md). Alternatives and their rejection are in [history](archive/EXECUTION_HISTORY.md#alternativas-visuais-superadas). The 16/10 collision correction is implemented/published with user visual evaluation still pending; it does not close block 2.
+
+## Responsive implementation update — 2026-10-21
+
+At Luca's explicit request on branch `section-process`, the hero's two-column layout now starts at 1024px. Below that breakpoint the existing stacked copy/matrix composition extends to tablets, and the matrix panel uses `clamp(220px, 35dvh, 340px)` with a 220px minimum. The continuation cue now shares the 1024px desktop threshold (updated by the subsequent theme/grid request). These scoped changes supersede earlier panel dimensions/breakpoints; they do not close the pending global hero evaluation.
+
+The supplied Antigravity blueprint and subsequent theme/grid refinement produced the current experiment in `#processo`: adaptive Dark AUGEO / Full White surfaces, proportional grid with intersection nodes, unnumbered stages, theme-calibrated chromatic hover and a desktop 44/56 sticky manifesto beside the scrolling lead and steps. The header now exposes a rudimentary `[DARK]` / `[LIGHT]` button; state initially follows existing root classes or system preference, then applies mutually exclusive root classes. The existing matrix MutationObserver immediately redraws theme colors, including with reduced motion. The grid uses 25cqw below 1024px and 14cqw with a 2cqw horizontal offset on desktop; both section and panel establish inline-size containers so the panel background resolves against actual section width. Real ledger/footer borders replace the simulated divider; the lead receives 12px optical compensation. The footer remains below both columns. Reduced-motion transition suppression and touch scrolling are preserved. This is implementation of the supplied direction, pending human visual evaluation; no new Impeccable conception workflow was initiated.
+
+
+## Open composition scope — 2026-10-21
+
+Luca clarified that all compositions after the hero remain experimental. The current Process proportions and the earlier 12-column alternative are neither final requirements nor templates for the rest of the landing. Hero-specific constraints apply to the hero only; subsequent sections may explore independent proportions, alignments and hierarchy.

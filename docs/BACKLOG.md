@@ -1,6 +1,40 @@
 # Project backlog
 
-Updated on 2026-10-19. Queue, dependencies and latest delivery. Integration contract in [ORCHESTRATION](ORCHESTRATION.md); evidence and earlier deliveries in [history](archive/EXECUTION_HISTORY.md). Requirements, hero and procedures retain their own sources.
+Updated on 2026-10-21. Queue, dependencies and latest delivery. Integration contract in [ORCHESTRATION](ORCHESTRATION.md); evidence and earlier deliveries in [history](archive/EXECUTION_HISTORY.md). Requirements, hero and procedures retain their own sources.
+
+## Latest delivery — proportional Process grid and theme toggle — 2026-10-21
+
+- Applied Luca's supplied Antigravity refinement: rudimentary header theme button, adaptive Dark AUGEO / Full White Process tokens, proportional 25cqw / 14cqw grid with nodes, real desktop ledger/footer dividers, 12px lead compensation and calibrated hover. Cue visibility now starts at 1024px. Preserved existing work and matrix renderer/physics; its existing root-class observer handles immediate theme redraw.
+- Added an inline-size container on the section as well as the panel: the panel's own background must resolve cqw against an ancestor, avoiding viewport/scrollbar drift. Chromium checks cover actual narrower container width, grid/divider alignment, keyboard theme changes and unchanged canvas identity/pixels with reduced motion.
+- Build and diff checks passed. Initial sandbox test attempt hit Vite `listen EPERM`; approved external suite runs progressed from 25/30 (old theme/breakpoint expectations and test fixture) to 29/30 (one null geometry read during resizing). Test expectations/fixture migrated; geometry reads made atomic. Focused layout rerun first timed out waiting for Vite (no tests executed); after starting `bun run dev --port 5173` separately, `bun run test tests/hero-layout.spec.ts --output /tmp/augeo-theme-grid-layout-check` passed **2/2 (15.8s)**. All 30 scenarios now have passing evidence across the full suite and focused rerun; no final full-suite 30/30 run is claimed.
+- Four desktop/mobile Process captures in both themes opened and inspected in temporary `test-results/process-{1440,390}-{light,dark}.png`; hero capture also inspected. Pending human visual evaluation; `#entrada` still planned. No commit, push, publication, Paperclip change or private derived-view regeneration.
+
+## Latest delivery — refreshed Playwright captures — 2026-10-21
+
+- Recreated the local capture set from the current `section-process` working tree in `~/augeo-snapshots/2026-10-21/`; moved the old set intact to `~/augeo-snapshots/archive/2026-10-20/`. Five PNGs (desktop/mobile full page and three desktop details), rendered CSS, DOM snapshots, script, manifest and corrected README: 12 files per set.
+- Reused desktop 1440×1000 and mobile 390×844 settings. `bun /tmp/augeo-snapshots-2026-10-21/capture.cjs` initially failed at Chromium sandbox startup (`Operation not permitted`); approved external execution completed. Both manifest error lists are empty; both full-page images opened and inspected; installed files match staging byte-for-byte.
+- Capture-only delivery; no application/test changes or functional suite. Layout remains experimental. Next action: use the refreshed set for visual review; static images do not validate interaction or approve the design.
+
+## Current direction — open layout experiments — 2026-10-21
+
+- Luca clarified that compositions after the hero remain open on experimental branch `section-process`. Neither the current repeated ratio nor the earlier 12-column rework is a final design requirement. Hero-specific constraints do not prescribe subsequent sections.
+- Removed obsolete Process topology prescriptions from the active specification; scoped HERO preservation guidance to the hero. Process checks now verify responsive bounds without requiring the hero axis, a fixed percentage width or equal heading sizes. Current rendered layout is preserved as an experiment.
+- Validation: targeted Process Chromium test passed **1/1 (4.3s)** after sandbox startup failed with socket EPERM and execution was approved outside it; `git diff --check` passed. No application code changed.
+- Prior deliveries below describe implementation/evaluation at their dates, not binding composition rules. Next action: continue visual exploration when requested; no replacement layout selected, commit, push or publication.
+
+## Latest delivery — supplied Antigravity process blueprint — 2026-10-21
+
+- Implemented Luca's supplied blueprint directly on `section-process`, preserving pre-existing edits: removed visible step numbers; regrouped the lead with the ledger; added the 1024px sticky 44/56 layout, fixed dark process surface/grid, orange stage rules and CRT hover. Footer spans both columns; padding is applied once per content block. Hover motion is limited to fine pointers; existing reduced-motion suppression remains.
+- Hero stacks below 1024px, including tablets; lower canvas uses `clamp(220px, 35dvh, 340px)` and a 220px minimum. Cue visibility remains at 768px. Renderer, simulation and content remain intact.
+- Checks: build passed; initial sandbox Playwright startup blocked by `listen EPERM`; approved external run exposed cue-breakpoint regression and obsolete process geometry assertions (23/27 passed). Corrected cue breakpoint and migrated relevant assertions to the requested behavior. Final full Chromium suite: **27/27 passed (1.2m)**. Verified sticky pinning at 15vh, forced dark surface under light preference, no visible indices, responsive flow/overflow and existing matrix interactions. Desktop/mobile process screenshots opened and inspected in `test-results/process-desktop-dark.png` and `test-results/process-mobile-dark.png` (temporary artifacts).
+- Limits/next action: human visual evaluation; `#entrada` remains planned. Synthetic repeated resizing emitted ResizeObserver-loop warnings; no isolated cause established. No physical-device/other-engine validation, new Impeccable conception, Paperclip state change, commit, push or publication. Existing architecture queue remains separate. Surface/breakpoint record updated in HERO; private derived views were not regenerated in this scoped repository delivery.
+
+## Latest delivery - Codex scoped writing through Paperclip - 2026-10-20
+
+- User requested Codex writing alongside Antigravity. The bridge now accepts `augeo-task.writePaths` for both executors, while explicit operator grants remain bound to task/project/executor. `write-grant` infers an assigned registered executor or accepts `--executor codex` for an unassigned ticket. Existing Antigravity grants are not transferred automatically.
+- Codex uses `workspace-write` inside Bubblewrap with artifacts explicitly added; the outer mount table permits only authorized existing files, artifacts and its validated runtime. Default tasks retain `read-only`. Buffered subprocess stdin fixes prompt loss observed under Bun; Paperclip credentials are still removed. New-agent setup now allows 660 seconds for either process adapter.
+- Verification: `bun test` passed **52/52 tests, 264 assertions** across 11 files; typecheck and shared context skill validation passed. Fake Codex exercised actual Bubblewrap file enforcement, changed-file snapshots, artifacts, correction feedback, saved-session resumption and a separate read-only task. Installed CLI accepted the resume flags. Evidence: bridge state `verification/codex-scoped-write-20261020/result.json`.
+- Limits/next action: no paid model call or live ticket change. The environment denied the local API socket (`FailedToOpenSocket`); existing adapter timeout could not be checked or changed. For the next selected Codex task, declare authorized files in its description and use the existing correction/resumption flow; verify the adapter allows 660 seconds before a long writing run. Earlier local documentation/reference changes are preserved. Contract, operational README and shared context guidance updated; no product edit, commit, push or publication.
 
 ## Latest delivery - English documentation and readable Obsidian names - 2026-10-19
 
@@ -14,7 +48,7 @@ Updated on 2026-10-19. Queue, dependencies and latest delivery. Integration cont
 
 - Bridge updated: new deliveries create a native completion review; **Entrega avaliada** closes as `done`, while submitting **Solicitar correção** returns to `todo` and requests explicit resumption. The reason from run context enters the prompt with the saved session and a new response/review; approval does not authorize publication.
 - `bun test`: 29/29, 139 assertions; typecheck passed. Simulated API and fake executors prove reason propagation, resumption, new response and prevention of execution after completion. An opt-in test of the installed backend was created but blocked by `listen EPERM` before PostgreSQL startup: no end-to-end proof with the real server in that session.
-- Old cards retain their payload. Local receipts identify candidates AUG-1/4/5/6/9/10/11/12/14 without confirming which remain pending; API consultation was blocked by socket restrictions. Next check: `bun run test:paperclip-review` in the bridge with sockets available and individual inspection of legacy cards, without bulk completion. Contract and README updated; no product edit, paid call, commit, push or publication.
+- The historical receipts named AUG-1/4/5/6/9/10/11/12/14 as candidates; they do not establish current ticket state. No legacy-card audit is active. The optional installed-backend test remained blocked by `listen EPERM` before PostgreSQL startup; its resolution path is undecided. Contract and README updated; no product edit, paid call, commit, push or publication.
 
 ## Priority continuity - agent architecture
 

@@ -28,16 +28,33 @@ for (const colorScheme of ['light', 'dark'] as const) {
                 : '';
           document.head.append(style);
         }, variant);
-        const cta = (await page.locator('.hero-cta').boundingBox())!;
-        const cue = (await page.locator('.scroll-cue').boundingBox())!;
-        const hero = (await page.locator('.hero').boundingBox())!;
-        const matrix = (await page.locator('.hero-matrix-panel').boundingBox())!;
+        // Read one layout snapshot after each resize/style change so measurements
+        // cannot straddle separate browser layout updates.
+        const { cta, cue, hero, matrix, brand, heading } = await page.evaluate(() => {
+          const bounds = (selector: string) => document.querySelector(selector)!.getBoundingClientRect().toJSON();
+          const cueNode = document.querySelector('.scroll-cue')!;
+          return {
+            cta: bounds('.hero-cta'),
+            cue: getComputedStyle(cueNode).display === 'none' ? null : bounds('.scroll-cue'),
+            hero: bounds('.hero'), matrix: bounds('.hero-matrix-panel'),
+            brand: bounds('.brand'), heading: bounds('#hero-title'),
+          };
+        });
         const context = `${width}x${height}, ${variant}`;
-        expect(cue.y - (cta.y + cta.height), context).toBeGreaterThanOrEqual(32);
-        expect(cue.x, context).toBe(cta.x);
-        expect(cue.y + cue.height, context).toBeLessThanOrEqual(hero.y + hero.height);
-        expect(cue.x + cue.width, context).toBeLessThanOrEqual(matrix.x);
-        expect(matrix.height, context).toBeCloseTo(hero.height, 1);
+        expect(heading.y, context).toBeGreaterThanOrEqual(brand.y + brand.height);
+        expect(cta.height, context).toBeGreaterThanOrEqual(44);
+        if (width >= 1024) {
+          expect(cue).not.toBeNull();
+          expect(cue!.y - (cta.y + cta.height), context).toBeGreaterThanOrEqual(32);
+          expect(cue!.x, context).toBe(cta.x);
+          expect(cue!.y + cue!.height, context).toBeLessThanOrEqual(hero.y + hero.height);
+          expect(cue!.x + cue!.width, context).toBeLessThanOrEqual(matrix.x);
+          expect(matrix.height, context).toBeCloseTo(hero.height, 1);
+        } else {
+          await expect(page.locator('.scroll-cue')).toBeHidden();
+          expect(matrix.y, context).toBeGreaterThanOrEqual(cta.y + cta.height);
+          expect(matrix.height, context).toBeGreaterThanOrEqual(220);
+        }
         expect(await page.evaluate(() => document.documentElement.scrollWidth), context).toBe(width);
         if (variant === 'current' && [[1440, 900], [1920, 600], [844, 390]].some(size => size[0] === width && size[1] === height)) {
           await page.screenshot({ path: `test-results/hero-layout/${colorScheme}-${width}x${height}.png`, fullPage: true });

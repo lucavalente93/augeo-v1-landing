@@ -44,21 +44,25 @@ test('landing: canvas draws, reduced motion freezes it, pointer works, triangles
 test('symbol and copy align with the triangles at their existing lateral position', async ({ page }) => {
   await page.goto('/');
   await page.evaluate(() => document.fonts.ready);
-  for (const [width, height] of [[1440, 900], [900, 600], [768, 600], [844, 390]]) {
+  for (const [width, height] of [[1440, 900], [1024, 768], [900, 600], [768, 600], [844, 390]]) {
     await page.setViewportSize({ width, height });
-    const cue = (await page.locator('.scroll-cue').boundingBox())!;
+    const cue = await page.locator('.scroll-cue').boundingBox();
     const heading = (await page.locator('#hero-title').boundingBox())!;
-    expect(cue.width).toBe(36);
-    expect(cue.height).toBe(63);
-    const hero = (await page.locator('.hero').boundingBox())!;
-    expect(cue.y + cue.height).toBeLessThanOrEqual(hero.y + hero.height);
+    if (width >= 1024) {
+      expect(cue!.width).toBe(36);
+      expect(cue!.height).toBe(63);
+      const hero = (await page.locator('.hero').boundingBox())!;
+      expect(cue!.y + cue!.height).toBeLessThanOrEqual(hero.y + hero.height);
+      expect(heading.x).toBeCloseTo(cue!.x, 1);
+    } else {
+      await expect(page.locator('.scroll-cue')).toBeHidden();
+    }
     const brand = (await page.locator('.brand').boundingBox())!;
     const descriptionBounds = (await page.locator('.hero-description').boundingBox())!;
     const cta = (await page.locator('.hero-cta').boundingBox())!;
-    expect(heading.x).toBeCloseTo(cue.x, 1);
-    expect(descriptionBounds.x).toBeCloseTo(cue.x, 1);
-    expect(brand.x).toBeCloseTo(cue.x, 1);
-    expect(cta.x).toBeCloseTo(cue.x, 1);
+    expect(descriptionBounds.x).toBeCloseTo(heading.x, 1);
+    expect(brand.x).toBeCloseTo(heading.x, 1);
+    expect(cta.x).toBeCloseTo(heading.x, 1);
     await expect(page.locator('.scroll-cue path')).toHaveCount(2);
     await expect(page.locator('.explore')).toHaveCount(0);
   }
@@ -225,7 +229,7 @@ test('small screens: both pages fit and touch interaction works', async ({ brows
       await page.locator('.matrix-artwork-stack').screenshot({ path: 'test-results/lettering-a-mobile-tap.png' });
       await expect.poll(async () => (await artwork.evaluate((canvas) => canvas.toDataURL())) === resting,
         { timeout: 4000 }).toBe(true);
-      await page.emulateMedia({ colorScheme: 'dark' });
+      await page.locator('.theme-toggle-rudimentary').evaluate(button => button.click());
       await expect(artwork).toHaveCSS('opacity', '0.88');
       await page.touchscreen.tap(tapX, tapY);
       await expect.poll(async () => (await artwork.evaluate((canvas) => canvas.toDataURL())) === resting).toBe(false);
@@ -267,13 +271,13 @@ test('AUGEO artwork aligns with the desktop headline, centers on mobile, and fol
     expect(lightCrt.background).toContain('repeating-linear-gradient');
     expect(lightCrt.pointerEvents).toBe('none');
     await page.screenshot({ path: `test-results/lettering-light-${width}.png`, fullPage: true });
-    await page.emulateMedia({ colorScheme: 'dark' });
+    await page.locator('.theme-toggle-rudimentary').evaluate(button => button.click());
     await expect(artwork).toHaveCSS('filter', 'invert(1)');
     await expect(artwork).toHaveCSS('opacity', '0.88');
     const darkCrt = await matrixPanel.locator('.kinetic-matrix').evaluate((element) => getComputedStyle(element, '::after').backgroundImage);
     expect(darkCrt).not.toBe(lightCrt.background);
     await page.screenshot({ path: `test-results/lettering-dark-${width}.png`, fullPage: true });
-    await page.emulateMedia({ colorScheme: 'light' });
+    await page.locator('.theme-toggle-rudimentary').evaluate(button => button.click());
     await expect(matrixPanel).toBeVisible();
   }
 });
@@ -327,7 +331,7 @@ test('AUGEO lettering shares pointer and click motion, then returns to rest', as
   expect((await countOpaquePixelsByRow()).map((count) => count > 0)).toEqual(restingRows.map((count) => count > 0));
   await expect.poll(async () => (await readArtworkFrame()) === resting, { timeout: 4000 }).toBe(true);
 
-  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.locator('.theme-toggle-rudimentary').evaluate(button => button.click());
   await expect(overlay).toHaveCSS('filter', 'invert(1)');
   await expect(overlay).toHaveCSS('opacity', '0.88');
   await page.emulateMedia({ reducedMotion: 'reduce' });

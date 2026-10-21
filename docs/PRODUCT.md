@@ -21,6 +21,7 @@ Engagement begins with understanding the business context. AUGEO combines direct
 ## Capabilities and Constraints
 
 - The initial presence is a commercial landing page. Current address provided by the user on 17/10/2026: `https://www.augeocreative.com`. The published baseline includes a header, hero, conversion button and hover-reactive matrix. On mobile, the entire matrix forms the visual footer; Process and the intake form remain planned in the specification.
+- On experimental branch `section-process`, Process is implemented for review with adaptive Dark AUGEO / Full White themes and a proportional grid. The header theme button updates the page and canvas immediately; desktop hero/cue layout begins at 1024px. This does not imply publication or final visual approval.
 - The hero's visual interaction must preserve a valid composition on touch devices and with reduced motion.
 - Existing business email: `hello@augeocreative.com`. Vercel Pro and WhatsApp Business were postponed by the user until the website is complete.
 - The agency serves clients remotely. When implemented, sales intake must accept specific requests or needs that are still undefined.
