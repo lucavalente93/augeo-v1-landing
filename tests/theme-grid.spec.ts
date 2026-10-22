@@ -32,16 +32,25 @@ test('Process grid tracks actual container width, divider and responsive breakpo
       const css = getComputedStyle(node);
       const rect = node.getBoundingClientRect();
       const ledger = node.querySelector('.process-ledger-wrapper')!.getBoundingClientRect();
-      const decoration = getComputedStyle(node, '::before');
-      return { decoration: {display: decoration.display, clip: decoration.clipPath}, background: css.backgroundImage, width: rect.width, cell: parseFloat(css.backgroundSize), offset: parseFloat(css.backgroundPositionX), divider: ledger.x - rect.x };
+      return { background: css.backgroundImage, width: rect.width, cell: parseFloat(css.backgroundSize), offset: parseFloat(css.backgroundPositionX), divider: ledger.x - rect.x };
     });
     expect(grid.cell).toBeCloseTo(grid.width * (width >= 1024 ? 0.14 : 1 / 3), 1);
     expect(grid.background).not.toContain('to bottom');
     if (width >= 1024) {
-      expect(grid.decoration.display).toBe('block');
-      expect(grid.decoration.clip).toBe('inset(0px 56% 0px 0px)');
       expect(grid.offset + 1 + grid.cell * 3).toBeCloseTo(grid.divider, 1);
       expect(grid.cell * 4).toBeCloseTo(grid.width - grid.divider, 1);
+      const boundaries = await page.locator('.process-step').evaluateAll(steps => steps.map(step => {
+        const css = getComputedStyle(step, '::after');
+        const row = step.getBoundingClientRect();
+        return { width: parseFloat(css.width), right: css.right, bottom: css.bottom, border: css.borderBottomWidth, rowBottom: row.bottom };
+      }));
+      for (const boundary of boundaries) {
+        expect(boundary.width).toBeCloseTo(grid.width, 1);
+        expect(boundary.right).toBe('0px');
+        expect(boundary.bottom).toBe('0px');
+        expect(boundary.border).toBe('1px');
+      }
+
     }
     const header = (await page.locator('.site-header').boundingBox())!;
     expect(header.width).toBeCloseTo(grid.width * (width >= 1024 ? 0.44 : 1), 1);

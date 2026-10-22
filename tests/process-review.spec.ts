@@ -8,11 +8,7 @@ for (const colorScheme of ['light', 'dark'] as const) {
     await page.evaluate(() => document.fonts.ready);
     const first = page.locator('.process-step').first();
     const title = first.locator('h3');
-    const stage = first.locator('.process-step-stage');
-    expect(await stage.evaluate(node => {
-      const css = getComputedStyle(node);
-      return { family: css.fontFamily, loaded: document.fonts.check('500 12px "IBM Plex Mono"', node.textContent!) };
-    })).toEqual({ family: '"IBM Plex Mono", monospace', loaded: true });
+    await expect(page.locator('.process-step-datum, .process-step-stage, .process-step-rule')).toHaveCount(0);
     const opening = await page.evaluate(() => {
       const top = (selector: string) => document.querySelector(selector)!.getBoundingClientRect().top;
       return Math.abs(top('.process-title') - top('.process-step-title'));
@@ -20,14 +16,9 @@ for (const colorScheme of ['light', 'dark'] as const) {
     expect(opening).toBeLessThan(1);
     await first.scrollIntoViewIfNeeded();
     const titleBefore = await title.boundingBox();
-    const stageBefore = await stage.boundingBox();
     await first.hover();
     expect(await title.boundingBox()).toEqual(titleBefore);
-    expect(await stage.boundingBox()).toEqual(stageBefore);
     await expect(title).toHaveCSS('text-shadow', 'none');
-    await expect(stage).toHaveCSS('transform', 'none');
-    expect(await first.locator('.process-step-datum').evaluate(n => getComputedStyle(n, '::before').transform)).toBe('none');
-    await expect(first).toHaveCSS('box-shadow', 'rgb(255, 72, 44) 2px 0px 0px 0px inset');
 
     for (const selector of ['.hero-cta', '.process-cta']) {
       const cta = page.locator(selector);
@@ -46,7 +37,14 @@ for (const colorScheme of ['light', 'dark'] as const) {
       for (const fontSize of [16, 24]) {
         await page.evaluate(size => { document.documentElement.style.fontSize = `${size}px`; }, fontSize);
         expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width);
-        for (const label of await page.locator('.process-step-stage').all()) {
+        if (width >= 1024) {
+          await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+          const heading = (await page.locator('.process-title').boundingBox())!;
+          const row = (await first.boundingBox())!;
+          expect(row.y + row.height).toBeGreaterThanOrEqual(heading.y + heading.height + 24);
+        }
+
+        for (const label of await page.locator('.process-step-body').all()) {
           const bounds = (await label.boundingBox())!;
           expect(bounds.x).toBeGreaterThanOrEqual(0);
           expect(bounds.x + bounds.width).toBeLessThanOrEqual(width);

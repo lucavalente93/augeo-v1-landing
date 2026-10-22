@@ -1263,3 +1263,11 @@ User authorized implementing the technical rereading and sending a new `v3` bran
 Build passed. Migrated suite: 30/30 in 52.7 s; added Process review checks: 2/2 in 8.6 s, with both themes, font readiness, shared opening, unchanged hover geometry, CTA states, text enlargement and sticky exit. Initial restricted execution hit browser sandbox denial / Vite listen EPERM; approved/unrestricted execution completed the checks. ResizeObserver warnings appeared during resizing without failing assertions; cause not isolated. Chromium/emulation only, with synthetic hidden-document events and enlarged root font rather than physical-device tab/zoom validation.
 
 Eight before/after desktop/mobile PNGs, source font revision/license, implementation decisions and remaining limits are recorded in [delivery evidence](../reviews/2026-10-22-v3/README.md). Applied augeo-context, augeo-react-frontend and relevant React review checklist; no conception workflow or delegation. Commit/push authorization is scoped to v3; no merge or production publication performed. Remaining work: human visual evaluation, lettering-centering direction and real #entrada intake.
+
+## 2026-10-22 — Process correction after user rejection
+
+Luca explicitly rejected the left/right grid mismatch and the point–rule–tag datum as unwanted AI slop already identified before. Removed the complete datum, redundant index/stage data, related CSS and unused font-face. Retained original acquired font/license as source evidence only. Step titles/descriptions and ordered-list semantics remain.
+
+Horizontal borders now belong to the actual steps and cross both desktop columns; removed the independent left and mobile opening horizontals/nodes. First-row minimum reserves room below the manifesto, with responsive/enlarged-text clearance checks. Sticky and footer separation preserved. No new measurements, effects or renderer changes.
+
+Build passed; initial pertinent tests 18/18 (46.1s), then final calibrated Process/theme/grid checks 5/5 (13.4s). Chromium only. Four captures, implementation details and limits: [correction evidence](../reviews/2026-10-22-process-correction/README.md). User visual approval remains pending. This supersedes the datum/grid choices in the earlier rereading and initial v3 delivery.

@@ -138,12 +138,9 @@ test('experimental process section preserves content, navigation and responsive 
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width);
   }
   await page.setViewportSize({ width: 1440, height: 900 });
-  await expect(steps.locator('.process-step-stage')).toHaveText([
-    '01 // ENTRADA', '02 // ENTENDIMENTO DO CENÁRIO', '03 // DIRECIONAMENTO E PROPOSTA',
-  ]);
+  await expect(steps.locator('.process-step-datum, .process-step-stage, .process-step-rule')).toHaveCount(0);
   await steps.first().hover();
   await expect(steps.first().locator('h3')).toHaveCSS('transform', 'none');
-  await expect(steps.first().locator('.process-step-rule')).toHaveCSS('transform', 'none');
 
   const cta = processSection.locator('a.process-cta');
   await expect(cta).toHaveAttribute('href', '#entrada');
@@ -170,9 +167,6 @@ test('experimental process section preserves content, navigation and responsive 
     const processBounds = (await processSection.boundingBox())!;
     expect(processBounds.y).toBeGreaterThanOrEqual(matrixPanel.y + matrixPanel.height - 1);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width);
-    const datum = (await steps.first().locator('.process-step-datum').boundingBox())!;
-    const body = (await steps.first().locator('.process-step-body').boundingBox())!;
-    expect(body.y).toBeGreaterThanOrEqual(datum.y + datum.height);
     expect((await cta.boundingBox())!.height).toBeGreaterThanOrEqual(44);
   }
   await processSection.screenshot({ path: 'test-results/process-mobile-dark.png' });

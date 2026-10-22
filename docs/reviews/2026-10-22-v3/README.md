@@ -1,5 +1,7 @@
 # Audit rereading implementation — v3 — 2026-10-22
 
+**Superseded Process treatment:** Luca rejected the datum/stage labels and independent left grid. See the [subsequent correction](../2026-10-22-process-correction/README.md); the original evidence below records the initial delivery.
+
 Implemented the supplied [technical rereading](../2026-10-22-augeo-audit-releitura.md), items 4.1–4.7 and 4.9. Item 4.8 remains a direction decision: lettering still follows the desktop H1 center; no metadata bar was introduced. `#entrada` remains unimplemented.
 
 ## Result

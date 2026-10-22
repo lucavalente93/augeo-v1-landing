@@ -2,6 +2,10 @@
 
 Updated on 2026-10-22. Queue, dependencies and latest delivery. Integration contract in [ORCHESTRATION](ORCHESTRATION.md); evidence and earlier deliveries in [history](archive/EXECUTION_HISTORY.md). Requirements, hero and procedures retain their own sources.
 
+## Latest delivery — Process grid and datum correction — 2026-10-22
+
+Luca rejected the independent left grid and point–rule–tag datum as unwanted AI slop. Removed the entire datum and redundant stage/index labels; steps begin with their existing titles. One shared vertical grid remains; desktop step boundaries now cross both columns at the same height. First-row opening reserves room below the manifesto. Build passed; pertinent tests 18/18, then final calibrated Process/grid checks 5/5. [Correction evidence](reviews/2026-10-22-process-correction/README.md). Next: Luca's visual evaluation; preserve this rejection rather than restyling the same tag formula.
+
 ## Latest delivery — audit rereading implemented on v3 — 2026-10-22
 
 Implemented the supplied rereading: rail/pulse/node continuation, indexed local IBM Plex Mono labels, removed redundant Process lead, shared opening alignment, separated decorative/structural grid, stable hover, corrected light CTA colors and improved paragraph wrapping. Desktop lettering still follows H1; centering direction and `#entrada` remain pending. Build passed; migrated suite 30/30 and additional Process checks 2/2 passed in Chromium. Before/after captures and limits: [delivery evidence](reviews/2026-10-22-v3/README.md). Next: Luca's visual evaluation of `v3`; no creative approval or production publication inferred. Previous documentation consolidation is preserved separately in the workspace.

@@ -1,8 +1,6 @@
 export type ProcessStep = Readonly<{
   id: 'entrada' | 'entendimento' | 'proposta';
   domId: 'processo-01' | 'processo-02' | 'processo-03';
-  index: '01' | '02' | '03';
-  stageLabel: string;
   title: string;
   description: string;
 }>;
@@ -11,24 +9,18 @@ export const PROCESS_STEPS: readonly ProcessStep[] = [
   {
     id: 'entrada',
     domId: 'processo-01',
-    index: '01',
-    stageLabel: 'ENTRADA',
     title: 'Conhecemos seu negócio',
     description: 'Investigamos seu momento atual e os obstáculos que motivaram o contato.',
   },
   {
     id: 'entendimento',
     domId: 'processo-02',
-    index: '02',
-    stageLabel: 'ENTENDIMENTO DO CENÁRIO',
     title: 'Definimos as prioridades',
     description: 'Analisamos quais mudanças fazem sentido e como as entregas devem trabalhar juntas.',
   },
   {
     id: 'proposta',
     domId: 'processo-03',
-    index: '03',
-    stageLabel: 'DIRECIONAMENTO E PROPOSTA',
     title: 'Apresentamos o projeto',
     description: 'Devolvemos um briefing validado com nossa recomendação, o escopo e o investimento. Você decide sobre a contratação.',
   },
@@ -56,10 +48,6 @@ export default function ProcessSection() {
                 id={step.domId}
                 className={`process-step process-step--${step.id}`}
               >
-                <div className="process-step-datum">
-                  <span className="process-step-rule" aria-hidden="true" />
-                  <span className="process-step-stage">{step.index} // {step.stageLabel}</span>
-                </div>
                 <div className="process-step-body">
                   <h3 className="process-step-title">{step.title}</h3>
                   <p className="process-step-description">{step.description}</p>

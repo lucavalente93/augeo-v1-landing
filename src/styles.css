@@ -33,14 +33,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "IBM Plex Mono";
-  src: url("./assets/fonts/IBMPlexMono-Medium.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-}
-
 @custom-variant dark {
   @media (prefers-color-scheme: dark) { &:where(:root:not(.light), :root:not(.light) *) { @slot; } }
   &:where(.dark, .dark *) { @slot; }
@@ -385,16 +377,12 @@ html { scroll-behavior: smooth; }
 /* PROCESSO — Sticky manifesto and scrolling ledger. */
 .process-section {
   --process-inset: 20px;
-  --process-font-mono: "IBM Plex Mono", monospace;
-  --process-datum-line-height: 0.9375rem;
-  --process-datum-gap: 24px;
   --process-bg: #06070a;
   --process-fg: #f7f7f5;
   --process-title-color: #ffffff;
   --process-muted: #9e9ea2;
   --process-border: rgba(255, 255, 255, 0.08);
   --process-grid-line: rgba(255, 255, 255, 0.045);
-  --process-grid-node: rgba(255, 255, 255, 0.22);
   --process-step-hover-bg: rgba(255, 255, 255, 0.018);
   /* The panel background resolves cqw against this full-width ancestor. */
   container-type: inline-size;
@@ -416,7 +404,6 @@ html { scroll-behavior: smooth; }
   --process-muted: #61615d;
   --process-border: rgba(17, 17, 17, 0.08);
   --process-grid-line: rgba(17, 17, 17, 0.05);
-  --process-grid-node: rgba(17, 17, 17, 0.14);
   --process-step-hover-bg: rgba(17, 17, 17, 0.025);
 }
 .process-section:focus { outline: none; }
@@ -430,28 +417,8 @@ html { scroll-behavior: smooth; }
   background-size: var(--process-grid-size) var(--process-grid-size);
   background-position: -1px -1px;
 }
-/* The section and panel retain full-width cqw origins. Decoration never owns layout. */
-.process-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image:
-    radial-gradient(circle at 1px 1px, var(--process-grid-node) 1.25px, transparent 1.5px),
-    linear-gradient(to bottom, var(--process-grid-line) 1px, transparent 1px);
-  background-size: var(--process-grid-size) var(--process-grid-size);
-  background-position: -1px -1px;
-  display: none;
-}
 .process-header-primary {
-  position: relative;
   padding: 64px var(--process-inset) 24px;
-  background-image:
-    radial-gradient(circle at 1px 1px, var(--process-grid-node) 1.25px, transparent 1.5px),
-    linear-gradient(to bottom, var(--process-grid-line) 1px, transparent 1px);
-  background-size: var(--process-grid-size) var(--process-grid-size);
-  background-position: -1px -1px;
 }
 .process-ledger-wrapper,
 .process-header-primary,
@@ -478,49 +445,11 @@ html { scroll-behavior: smooth; }
 .process-step {
   display: flex;
   flex-direction: column;
-  gap: var(--process-datum-gap);
   padding: 40px var(--process-inset);
   border-bottom: 1px solid var(--process-border);
-  box-shadow: inset 2px 0 transparent;
-  transition: background-color .25s ease, box-shadow .25s ease;
+  transition: background-color .25s ease;
 }
 .process-step:last-child { border-bottom: none; }
-.process-step-datum {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  min-width: 0;
-}
-.process-step-datum::before {
-  content: "";
-  display: block;
-  width: 5px;
-  height: 5px;
-  background-color: var(--accent, #ff482c);
-  opacity: 0.7;
-  flex-shrink: 0;
-  transition: opacity .25s ease;
-}
-.process-step-rule {
-  flex: 1 1 24px;
-  min-width: 0;
-  height: 1px;
-  background: var(--process-muted);
-  opacity: 0.6;
-  transition: opacity .25s ease;
-}
-.process-step-stage {
-  min-width: 0;
-  font-family: var(--process-font-mono);
-  font-weight: 500;
-  font-size: .75rem;
-  line-height: 1.25;
-  color: var(--process-muted);
-  letter-spacing: .02em;
-  overflow-wrap: break-word;
-  transition: color .25s ease;
-}
 .process-step-body { min-width: 0; }
 .process-step-title {
   color: var(--process-title-color);
@@ -567,10 +496,7 @@ html { scroll-behavior: smooth; }
   box-shadow: 0 4px 20px rgba(255, 72, 44, 0.25);
 }
 @media (hover: hover) and (pointer: fine) {
-  .process-step:hover { background-color: var(--process-step-hover-bg); box-shadow: inset 2px 0 var(--accent); }
-  .process-step:hover .process-step-datum::before { opacity: 1; }
-  .process-step:hover .process-step-rule { opacity: .85; }
-  .process-step:hover .process-step-stage { color: var(--process-fg); }
+  .process-step:hover { background-color: var(--process-step-hover-bg); }
 }
 @media (min-width: 1024px) {
   .process-section { --process-inset: 48px; --process-opening: clamp(72px, 8vw, 112px); }
@@ -582,11 +508,6 @@ html { scroll-behavior: smooth; }
     --process-grid-size: 14cqw;
     background-position: calc(2cqw - 1px) -1px;
   }
-  .process-panel::before {
-    display: block;
-    clip-path: inset(0 56% 0 0);
-    background-position: calc(2cqw - 1px) -1px;
-  }
   .process-ledger-wrapper { border-left: 1px solid var(--process-border); }
   .process-header-primary {
     position: sticky;
@@ -594,12 +515,22 @@ html { scroll-behavior: smooth; }
     padding: var(--process-opening) var(--process-inset);
     background: none;
   }
-  .process-step { padding: 0; gap: 0; }
-  .process-step-datum { padding: clamp(48px, 5vw, 72px) var(--process-inset) var(--process-datum-gap); }
-  .process-step:first-child .process-step-datum {
-    padding-top: max(24px, calc(var(--process-opening) - var(--process-datum-line-height) - var(--process-datum-gap)));
+  .process-ledger { border-bottom: none; }
+  .process-step { position: relative; padding: 0; border-bottom: none; }
+  /* Each actual row boundary crosses both columns; no independent horizontal grid. */
+  .process-step::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100cqw;
+    border-bottom: 1px solid var(--process-border);
+    pointer-events: none;
+    z-index: -1;
   }
-  .process-step-body { padding: 0 var(--process-inset) clamp(48px, 5vw, 72px); }
+  .process-step-body { padding: clamp(48px, 5vw, 72px) var(--process-inset); }
+  .process-step:first-child { min-height: max(24rem, 28cqw); }
+  .process-step:first-child .process-step-body { padding-top: var(--process-opening); }
   .process-closing { grid-column: 1 / -1; padding: 0; }
   .process-closing-inner { display: grid; grid-template-columns: minmax(0, 44fr) minmax(0, 56fr); gap: 0; align-items: stretch; }
   .process-closing-meta, .process-closing-action { display: flex; align-items: center; padding: clamp(56px, 5.5vw, 80px) var(--process-inset); }
