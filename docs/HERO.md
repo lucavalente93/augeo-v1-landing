@@ -6,7 +6,7 @@ Implementation checked against code on 2026-10-16; documentation reorganized on 
 
 AUGEO presents itself through business context and the connection between brand, website, acquisition and digital operations. The hero fulfills the Persuade role: editorial message on the left and AUGEO signature in the matrix field on the right. The composition itself demonstrates direction and execution without adding undocumented clients, metrics or promises.
 
-The language combines **precise structure and unstable behavior**: solid, legible heading, striped lettering, modular grid and localized deformation. Symbol, lettering and local fonts support the identity. The moodboard guides geometry, rhythm and hierarchy; its images are not decoration to incorporate into the page. References are in the [plan appendix](archive/HERO_AUDIT_2026-10-07.md#anexo-c--moodboard-e-rastreabilidade).
+The [visual direction](02-WEBSITE_SPEC.md#7-visual-direction) is expressed through solid heading, striped lettering, modular grid and localized deformation. Moodboard references: [plan appendix](archive/HERO_AUDIT_2026-10-07.md#anexo-c--moodboard-e-rastreabilidade).
 
 Applied copy (Portuguese, preserved):
 
@@ -121,7 +121,7 @@ The user authorized preparing local snapshots for manual import, clarifying that
 
 ## Current block plan
 
-This sequence preserves original plan workflows without reviving superseded choices. Read the applicable playbook in full during execution, per [WORKFLOW.md](WORKFLOW.md#impeccable). Do not execute pending blocks merely because they are documented.
+This sequence preserves original plan workflows without reviving superseded choices. Procedure: [WORKFLOW](WORKFLOW.md#impeccable); execution scope: AGENTS.
 
 | Block | Workflows and work | State and exit condition |
 | --- | --- | --- |
@@ -141,6 +141,6 @@ For motion, `motionMode?: 'ambient' | 'intro'` was an interface proposal; it doe
 - Content and cue remain separate; desktop may grow and scroll. Text enlargement must not clip content or cause horizontal overflow. Enlarged root font is not native zoom.
 - On normal mobile, preserve the full signature on the first screen in existing test contexts; with enlarged text, prioritize reading and natural flow.
 - For motion changes, verify introduction/rest/interaction, cancellation, exact return, reduced-motion preference changes, off-screen and hidden-tab states. Preserve touch/scroll, letters and counters.
-- For functional changes, run pertinent build and suite per WORKFLOW; for visuals, use rendered inspection and the applicable detector. Chromium/emulation results do not prove physical devices or other engines.
+- Verification procedure and reporting: WORKFLOW; report Chromium/emulation coverage without claiming other engines or physical devices.
 
 Old criteria and the 13/20 score belong to the [historical audit](archive/HERO_AUDIT_2026-10-07.md). Alternatives and their rejection are in [history](archive/EXECUTION_HISTORY.md#alternativas-visuais-superadas). The 16/10 collision correction is implemented/published with user visual evaluation still pending; it does not close block 2.

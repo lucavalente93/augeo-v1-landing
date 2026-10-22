@@ -1,12 +1,12 @@
 # Antigravity/Codex orchestration
 
-Current local integration contract, updated on 2026-10-18. **Shared reading and the technical write/browser pilot are validated; deliveries await human review. Comparative pilot AUG-8 met fixture acceptance but remains operationally blocked; review AUG-9 is under evaluation.** Next action is in the [backlog](BACKLOG.md#priority-continuity---agent-architecture); full IDs, failures and earlier research are in [history](archive/EXECUTION_HISTORY.md#escrita-delimitada-navegador-e-revisão-vinculada--2026-10-17).
+Local integration contract. Current state and next action: [backlog](BACKLOG.md#priority-continuity---agent-architecture). Dated validation: [history](archive/EXECUTION_HISTORY.md#escrita-delimitada-navegador-e-revisão-vinculada--2026-10-17).
 
 ## Architecture and responsibilities
 
 | Component | Adopted responsibility |
 | --- | --- |
-| Luca | Direction, priorities and creative approval; commit, push and publication require an explicit request. |
+| Luca | Authority defined in resolved global governance. |
 | Antigravity | Frontend/visual execution and creative coordination. |
 | Codex | Structural engineering and technical review. |
 | Paperclip | Dashboard and authority for task state. |
@@ -20,13 +20,9 @@ One coordinator per request and one active executor per project. Each task decla
 
 ## Shared context
 
-`augeo-orchestrator context augeo-website` resolves authorized global/local sources, paths and SHA-256. It sends governance, the global website record, AGENTS and BACKLOG content; other sources appear in a catalog without their text. `--source <registered-source>` adds content as needed; `--all` requires explicit full-context consultation. There is no keyword classification or model call to select documents. Environment configuration resolves roots; the repository contract does not require this machine's paths. The `augeo-context` skill exposes this entry point to executors.
+Source-resolution commands and derived-view maintenance belong in `augeo-context`; module ownership is mapped in [AGENTS](../AGENTS.md). The bridge sends governance, the global website record, AGENTS and BACKLOG content; other sources remain a metadata catalog until selected. Selection makes no model call or keyword classification. Full snapshots retain consumed revisions.
 
-Agency, business, brand and governance belong in the private `global-context-store`. The website keeps its local sources; [AGENTS](../AGENTS.md) defines each module's authority. PRODUCT preserves its path/schema. Personal material and credentials remain private.
-
-Edit originals; `views/` contains eight derived copies with origin/hash, including ORCHESTRATION, now registered as a selectable source. `views` regenerates and `views-check` verifies those copies. Obsidian need not be open for agents to read sources. Graph View shows explicit links; Canvas arranges cards without executing tasks. Source changes during a run require reconciliation; historical snapshots retain the revision consumed.
-
-The [two](refs/stack-referencia-4-camadas.md) [references](architecture-reference.md) informed the adaptation without imposing tools. Embedded PostgreSQL serves only Paperclip. Website database, embeddings, transcription and external services remain unselected. Maestri and Gemini CLI are not dependencies. Installing skill links does not prove discovery in every graphical surface.
+Obsidian need not be open. Graph View shows explicit links; Canvas arranges cards without executing tasks. Embedded PostgreSQL serves only Paperclip; website database, embeddings, transcription and external services remain unselected. Maestri and Gemini CLI are not dependencies.
 
 ### Documentation language and vault names - 19/10
 
@@ -46,14 +42,13 @@ Snapshots, sessions and tickets are not rewritten. Old handoff/recovery evidence
 
 During diagnosis, the CLI reported no native/MCP browser tool or direct image generator; it exposed `image-generator` through `invoke_subagent` without invoking it. `agy mcp list` confirmed no configured servers. Declared availability does not validate image generation, unrestricted browsing or parity with Codex. The previously validated Chromium helper retains its isolated scope. Image, branding, Figma and additional style skills were not installed in this delivery.
 
-The procedure in WORKFLOW and the shared skill requires returning questions/options/brief and the pending decision when a design playbook needs a human response. Record the answer on the same ticket; the saved session continues only through explicit resumption. Complete playbook gates and artifacts remain mandatory; there is no new phase automation, write authorization or deadline change. This diagnosis read the playbook and ran only the technical `engine-probe` handshake outside the model; it did not run `context`, `shape`, detector or a design workflow.
+Design gates and resumption procedure: [WORKFLOW](WORKFLOW.md#shared-skills-and-design-stages). The recorded diagnosis ran only the technical `engine-probe`, not a design workflow.
 
 ### Efficiency direction confirmed on 17/10
 
-1. One executor implements a bounded delivery. Implemented selection: essential sources plus explicit sources from the optional `augeo-task` description block; catalog of the rest for consultation when needed. Governance and AGENTS are retained. Full snapshot, hashes and manifest remain internal to the bridge without injecting all text into the prompt.
-2. Pertinent automatic checks cover verifiable behavior; do not repeat tests without a change, failure or concern warranting another run. Impeccable applies to conception/elaboration/drafting of real visual concepts in projects developed through design stages. Functional maintenance, simple metric/label changes, operational dashboards and technical fixtures/pilots do not trigger it. Preserve presentation of the interface to the user.
-3. Another agent reviews when there is a concrete technical reason; handoff is not mandatory for every task. `handoff` requires `--reason` with explicit reason/focus and reuses source context/evidence/checks without rescheduling checks by default. No review is created automatically on completion. Preserve the input/output communication format and explain it to the user when needed.
-4. Results and usage tracking belong in Paperclip, with execution limits. Do not create a parallel report, spreadsheet or dashboard or require manual usage reporting from the executor. Keep technical artifacts needed for review and recovery.
+Selection, verification and execution ownership are specified in Current cycle below. Another agent reviews only for a concrete technical reason: `handoff --reason` names the reason/focus and reuses existing context/evidence/checks. Completion does not automatically create a second-agent review. Preserve the input/output communication format and explain it when needed.
+
+Results and usage belong in Paperclip, not a parallel report/spreadsheet/dashboard or manual executor usage report. Keep technical artifacts needed for review and recovery. Impeccable activation is owned by global governance; interface presentation is covered by WORKFLOW.
 
 **Dashboard state:** Usage reporting was implemented in the bridge on 17/10 following explicit authorization. **Audit → Costs** (`http://127.0.0.1:3100/AUG/costs`) receives native events linked to agent/task/project/run; nine usable historical records were imported and automatic reporting enabled. Codex cached input is separate; cumulative Antigravity snapshots become per-session deltas. Tests and repeated synchronization confirmed no duplicates. Coverage is limited to preserved logs; this chat and the entire implementation are not accounted for.
 
@@ -63,33 +58,33 @@ Current CLIs do not provide actual billing. Events use `costStatus: unpriced`, u
 
 ### Current cycle
 
-Preparation: an optional `augeo-task` description block selects `contextSources` and named `checks`, each with a reason. Local configuration defines allowed commands; tasks do not supply arbitrary shell or write authorization. Without selection, essential sources enter read-only with no reflexive bridge checks. Human requests remain free-form; block details and commands are in the integration README.
+Preparation: an optional `augeo-task` description block selects `contextSources`, `writePaths` (existing files authorized for scoped writing in `agy` or `codex`, persisting throughout the Paperclip ticket's review/correction cycle) and named `checks`, each with a reason. Local configuration defines allowed commands; tasks do not supply arbitrary shell. Without selection, essential sources enter read-only with no reflexive bridge checks. Human requests remain free-form; block details and commands are in the integration README.
 
 1. Create a Paperclip task with goal, deliverable, exclusions, files and observable acceptance criteria. Do not start another executor outside the assigned task.
 2. The bridge identifies the ticket from the run, checks project/assignment, resolves context, records HEAD/diff/status and file manifest - including local changes - and acquires a project lock.
 3. It runs the CLI read-only by default with selected context and verification plan. Resumptions use the task-specific session; never global `--continue` or autonomous selection of another inbox task. After the model stops, the wrapper runs selected, registered checks once without another agent. Model/checks share the 3/10-minute limits. Failure stops the sequence and blocks the same task for explicit correction without automatic retry. Checks run as trusted wrapper subprocesses on the host; source/code integrity is checked before acceptance.
-4. After the executor stops, the bridge checks sources/files, preserves results/logs/artifacts and releases the lock. A valid result returns to `in_review` with a `human_only` request and `none` continuation; failures receive an impediment and unblock action when checkout has already occurred. Do not reassign the ticket during its own run.
-5. `handoff` creates or reuses a child task for the other executor with origin, result and evidence. It checks sources and the written version before handoff. Technical review is not creative approval or publication authorization.
+4. After the executor stops, the bridge checks sources/files, preserves results/logs/artifacts and releases the lock. A valid result returns to `in_review` with a `human_only` completion review, `native_completion_review` target and `wake_assignee` continuation. **Entrega avaliada** closes as `done` without another model response or publication authorization. **Solicitar correção** requires a reason; submitting it automatically returns to `todo`, wakes the executor, passes the reason from run context into the prompt and resumes the saved session; another response/delivery returns to `in_review`. No manual status change or watchdog dependency. The ticket is not reassigned during its own run. Human comments in `in_review` and legacy-card recovery through `issue_review_path_lost` retain direct checkout (`expectedStatuses: ['todo', 'in_progress', 'in_review']`); closed tasks and late automations without human continuation in review do not execute. Failures receive an impediment and unblock action when checkout has already occurred. Old cards retain their earlier payload and require individual inspection/reconciliation; do not complete them in bulk.
+5. `handoff` creates or reuses a child task for the other executor with origin, result and evidence. It checks sources and the written version before handoff. Authority remains defined by global governance.
 
 Paperclip controls state; bridge files store continuity and evidence (full `context.json`, selected `execution-plan.json`, check results in `verification.json`). Paperclip credentials are removed from model and verification subprocess environments. The bridge validates its operational contract without fully implementing every field/schema proposed in archived research. Reduction affects new inputs and does not erase context from old sessions; actual inference savings depend on the task and will be observable in real usage.
 
 ## Writing and recovery
 
-Writing is enabled **only in Antigravity, by local authorization bound to UUID/project/executor and existing files**. Ticket prose does not grant access. `write-grant` validates the task/files and stores the grant; `write-revoke` removes it. Both require no active checkout/run and do not start execution. The complete procedure is in the integration README.
+Writing is enabled **in Antigravity and Codex, bound to project/executor and existing files** - declared directly in `"writePaths"` in the Paperclip ticket description's `augeo-task` block (persisting between review/correction rounds without terminal commands) or through local CLI `write-grant`/`write-revoke`. The complete procedure is in the integration README.
 
-Bubblewrap mounts the filesystem read-only except authorized files, run `artifacts/` and the `agy` runtime. It rejects `.git`, canonical sources, traversal, symlinks/hardlinks, directories and missing targets. `/tmp` and temporary variables belong to the namespace. Scoped-write uses `accept-edits` with normal permissions and external isolation, without a duplicated inner sandbox or skip-permissions flag.
+Bubblewrap mounts the filesystem read-only except authorized files, run `artifacts/` and the selected executor’s runtime (`CODEX_HOME`, default `~/.codex`, or the Antigravity runtime). It rejects `.git`, canonical sources, traversal, symlinks/hardlinks, directories and missing targets. `/tmp` and temporary variables belong to the namespace. Antigravity scoped-write uses `accept-edits` with normal permissions and external isolation, without a duplicated inner sandbox. Codex retains its `workspace-write` sandbox with the run artifacts directory added; Bubblewrap restricts writes to exact authorized files even though the inner sandbox permits the workspace. Neither executor uses approval-bypass flags. Description grants persist across corrections, while explicit local grants retain project/executor binding and take precedence. Codex prompts use buffered stdin to avoid silent input loss under Bun.
 
 Isolation protects files, but runtime, network and host sockets remain accessible; it is not a complete adversarial sandbox. Files are mounted individually: editors requiring rename/atomic replacement may be incompatible. Read-only mode must not be interpreted as proof of total CLI isolation either.
 
 The bridge records content/hash and checks other manifest files and the file set. Changed sources/baseline require reconciliation. After interruption, confirm the process stopped and inspect partial effects before resuming the same session; never automatically repeat mutations or revert human work. A saved result without a receipt requires recovery, not another model call. Read-only recovery refuses write runs.
 
-An abandoned lock is archived only with an absent PID and inactive run. Respect Paperclip's native lock and provide real reconciliation evidence. Logs and failures are preserved. Deadlines: three minutes read-only and ten minutes for writing; `agy` adapter configured to 660 seconds. Recovery and backup commands are in the integration README.
+An abandoned lock is archived only with an absent PID and inactive run. Respect Paperclip's native lock and provide real reconciliation evidence. Logs and failures are preserved. Deadlines: three minutes read-only and ten minutes for writing; both process adapters require at least 660 seconds; setup uses this default for new agents (existing live configuration was not accessible for verification on 20/10). Recovery and backup commands are in the integration README.
 
 Correction on 18/10: Failure publication under the agent identity must use `unblockDescriptor.owner: { agentId: <executor itself> }`; the API rejects `owner: board` with 403. This identifies ticket responsibility without authorizing autonomous retry. Corrected in the wrapper and covered by a simulated API enforcing this restriction; no additional paid run tested the correction.
 
 ## Recorded validation and limits
 
-**Presentation for human review:** Before requesting evaluation, provide the runnable/visible result and explain the target and concrete change. Ticket, CSS diff, report and backlog do not replace interface presentation. Correction requested by Luca on 17/10: pilots were not visible for evaluation. AUG-5 is an isolated demo page, not a visual landing delivery; its button only updates a local message without querying shared context.
+Presentation procedure: [WORKFLOW](WORKFLOW.md#shared-skills-and-design-stages). AUG-5 is an isolated demo whose button updates a local message, without querying shared context.
 
 | Evidence | Result recorded on 17/10 |
 | --- | --- |
