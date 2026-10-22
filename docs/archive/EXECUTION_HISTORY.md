@@ -1,5 +1,26 @@
 # Histórico de execução e decisões anteriores
 
+## 2026-10-22 — Releitura técnica do handoff
+
+- Salva a [releitura](../reviews/2026-10-22-augeo-audit-releitura.md) solicitada por Luca, confrontando o audit com código, decisões e três capturas existentes. Contém escolhas de implementação, dependências e critérios futuros; nenhum código de interface alterado.
+- Contexto resolvido e orientações de augeo-context/augeo-react-frontend aplicadas à revisão. Conferidos dados renderizados e contraste; consultada a distribuição oficial IBM Plex. Sem aquisição da fonte, workflow Impeccable, segundo executor, nova captura ou suíte.
+- A consolidação documental feita durante a leitura foi preservada. O relatório identifica sua base inicial; implementação e decisão de centralizar o lettering permanecem pendentes. Sem commit, push ou publicação.
+
+
+## 2026-10-22 — Canonical instruction deduplication
+
+- Explicit request: choose the responsible document for repeated principles, remove the other copy and retain only necessary navigation. Authority and Impeccable activation now live in global governance; source resolution/views in `augeo-context`; engineering invariants in `augeo-react-frontend`; validation/design procedure in WORKFLOW; bridge mechanics in ORCHESTRATION; hero detail in HERO and landing/Process requirements in the specification. AGENTS routes sources. PRODUCT retains its schema headings/marker with references instead of duplicate requirements.
+- BACKLOG now carries the current queue/state and latest summary; previous delivery details remain in this history. Existing 22/10 capture record and other pre-existing edits were preserved. Source consolidation also folded the already documented 1024px/220px hero update into its composition sections, replacing the contradictory older values; no new visual decision or code change.
+- Before/after essential source content from `augeo-orchestrator context augeo-website`: 5,549 → 1,197 whitespace-delimited words before this final record update (~78% reduction). This measures input text, not tokenizer counts, real model usage or billing. Across the 11 inspected canonical files (including unchanged AUGEO.md), the initial pass reduced 17,078 → 10,532 words. Historical evidence and generated views are not new instruction sources.
+- Checks: 76 local Markdown destinations/anchors valid; both shared skills passed `quick_validate.py`; `git diff --check` passed; `views` refreshed eight derived copies and `views-check` matched canonical sources. No application tests/build or model execution; changed routing has not been behaviorally validated in a new executor/Impeccable run. No app code, original `augeo_AUDIT.md`, commit, push, ticket or permission changes. Main-thread handoff rereading remains separate work.
+
+
+## 2026-10-22 — Refresh dos snapshots de Playwright
+
+- A pedido de Luca, atualizei o conjunto ativo em `~/augeo-snapshots/2026-10-21/` com a versão corrente de `section-process`, sem alterar arquivos da aplicação. Mantidos o `capture.cjs` original e o conjunto preservado em `archive/2026-10-20/`.
+- A execução inicial do Chromium no sandbox falhou (`Operation not permitted`); a execução externa aprovada concluiu em `/tmp/augeo-snapshots-current/`. Desktop 1440×1000 com documento 1440×2345 e mobile 390×844 com documento 390×2041; arrays de erros vazios no manifest. Inspecionadas as duas imagens de página inteira.
+- Atualizados os cinco PNGs, os dois JSONs de CSS renderizado, os dois DOM snapshots, o manifest e o README. Apenas capturas estáticas da home; sem testes funcionais, mudanças de código, commit, push ou publicação. `#processo` segue experimental e pendente de avaliação humana.
+
 
 ## 2026-10-21 — Supplied proportional grid, explicit theme button and optical refinement
 
@@ -75,7 +96,7 @@ Atualizado em 2026-10-17. Aqui ficam continuidade operacional, trabalho técnico
 - Última validação da aplicação registrada em 16/10: `bun run build` aprovado e `bun run test` **26/26 em 1,5 min**, Chromium, dois workers, servidor auxiliar. A avaliação visual do usuário permanece pendente. Código da aplicação não alterado nesta revisão documental; testes não repetidos.
 - Endereço atual do website informado pelo usuário em 17/10: `https://www.augeocreative.com`. As verificações históricas de HTTPS nos dois domínios permanecem nos registros; não houve nova inspeção de produção nem confirmação de redirecionamento canônico. DNS Hostinger e e-mail comercial preservados.
 - Especificação revisada integralmente contra código e contexto: stack, matriz, copy, temas, assets, domínio e publicação descritos como bases existentes; Processo e formulário continuam previstos; matriz como footer visual mobile e CTA de conversão já implementados. Pro/WhatsApp Business adiados por decisão do usuário.
-- Revisão da especificação publicada em `ea09147`, com push confirmado por gh. Consolidação posterior para seis documentos concluída localmente, conforme pedido do usuário; publicada em `b7d7b51` após a correção da especificação, com push posteriormente autorizado e confirmado por gh. Avaliações do hero permanecem no [registro de decisões](../HERO.md#avaliações-e-decisões-ainda-abertas).
+- Revisão da especificação publicada em `ea09147`, com push confirmado por gh. Consolidação posterior para seis documentos concluída localmente, conforme pedido do usuário; publicada em `b7d7b51` após a correção da especificação, com push posteriormente autorizado e confirmado por gh. Avaliações do hero permanecem no [registro de decisões](../HERO.md#evaluations-and-decisions-still-open).
 
 ## Tooling — restrição de sockets no sandbox; diagnóstico encerrado
 
@@ -120,7 +141,7 @@ Atualizado em 2026-10-17. Aqui ficam continuidade operacional, trabalho técnico
 - Reconciliar o fechamento metodológico do bloco 2: os ajustes de 09/10 não declararam os fluxos completos de `layout`, `typeset` e `polish` concluídos. A execução posterior da suíte não substitui as etapas ausentes. Ver histórico abaixo.
 - Cobertura ainda limitada a Chromium/emulação: sem aparelhos físicos/outros motores, zoom real, CLS ou perfil de frames em hardware. Essas limitações devem informar o fechamento, não gerar repetição automática de verificações já válidas.
 - Limpezas separadas da migração nominal: remover a identidade `pixel`, eliminar a camada de escopo do cue, dividir `tests/matrix.spec.ts`, mover/renomear assets e otimizar o warp. Sem implementação autorizada neste bloco; propostas e dependências visuais ficam no registro de decisões.
-- Figma: conferir a adequação dos dois PNGs em `docs/references/figma/` antes de retomar a edição manual. Em 17/10 ambos existem localmente, com cabeçalhos PNG válidos, ainda não rastreados pelo Git; a ausência registrada anteriormente foi superada. Não há nova comprovação visual, de origem ou de importação. Ver contexto no [registro de decisões](../HERO.md#propostas-de-figma--frente-independente).
+- Figma: conferir a adequação dos dois PNGs em `docs/references/figma/` antes de retomar a edição manual. Em 17/10 ambos existem localmente, com cabeçalhos PNG válidos, ainda não rastreados pelo Git; a ausência registrada anteriormente foi superada. Não há nova comprovação visual, de origem ou de importação. Ver contexto no [registro de decisões](../HERO.md#figma-proposals---independent-workstream).
 - Implementar Processo e formulário de entrada comercial conforme a especificação em frente própria, preservando o footer visual mobile existente. Definição dos destinos está no registro de decisões; não criar seção artificial para satisfazer testes.
 
 ## Histórico técnico transferido do hero
