@@ -1,5 +1,23 @@
 # Histórico de execução e decisões anteriores
 
+## 2026-10-22 — Context efficiency synchronization
+
+- Luca requested checking and synchronizing inference/context optimizations across branches, then supplied a fresh successful `git fetch origin` from the host after this executor could not resolve GitHub. Fetched baselines: `main` = `f5f800c`, `section-process` = `5e46224`, `v3` = `50bdba8`. All three already contain the earlier selected-context and pilot-efficiency commits; only `v3` contained the latest canonical instruction consolidation.
+- Synchronized AGENTS, WORKFLOW, PRODUCT and the shared bridge contract in ORCHESTRATION. Applied specification/HERO deduplication with branch-specific conflict resolution; retained `main`'s 768 px hero/decorative cue and absent Process, and `section-process`'s 1024 px hero/theme toggle/experimental Process. Folded its existing responsive override into HERO's composition sections. No interface code, assets, tests or dependencies were merged from `v3`.
+- Compacted both older backlogs into current state/queue and links to evidence. Preserved their pending work and migrated the English-source/completion records that were still only in backlog into history. The shared installed bridge, context store and skills live outside these Git branches; synchronization does not install another copy or execute an agent.
+
+Whitespace-delimited words in `AGENTS.md` + `docs/BACKLOG.md`, before/after this synchronization (local default content only):
+
+| Branch | Before | After | Reduction |
+| --- | ---: | ---: | ---: |
+| `main` | 3,667 | 957 | 73.9% |
+| `section-process` | 5,143 | 993 | 80.7% |
+| `v3` | 1,197 | 1,238 | -3.4% |
+
+The `v3` entry includes the added continuity summary. Global essential sources are shared and unchanged. These are text measurements, not tokenizer counts, real inference, billing or a promised proportional cost saving. Existing sessions retain their previous context.
+
+- Verification passed: 92/97/108 local Markdown destinations/anchors on main/section-process/v3, schema marker retained, identical shared-instruction hashes, no conflict markers or whitespace errors, and unchanged non-documentation trees against the fetched baseline. Exercised the real context selector against each worktree using in-memory root overrides: four essential sources and ten metadata-only catalog entries in all three; no config file changes or model call. Refreshed eight Obsidian views for the registered active `v3` checkout; `views-check` matched canonical sources. No build, browser, application suite, additional model run, task resumption or deployment is required or claimed for this documentation change. Remote publication must be verified separately from local synchronization.
+
 ## 2026-10-22 — Releitura técnica do handoff
 
 - Salva a [releitura](../reviews/2026-10-22-augeo-audit-releitura.md) solicitada por Luca, confrontando o audit com código, decisões e três capturas existentes. Contém escolhas de implementação, dependências e critérios futuros; nenhum código de interface alterado.

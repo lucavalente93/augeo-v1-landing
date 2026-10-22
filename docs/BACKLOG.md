@@ -2,6 +2,10 @@
 
 Updated on 2026-10-22. Current queue and latest delivery only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Previous deliveries, commands and results: [history](archive/EXECUTION_HISTORY.md).
 
+## Latest delivery — shared context synchronization — 2026-10-22
+
+Propagated compact instruction routing to `main` and `section-process`, preserving their separate interface implementations and pending evaluations. [Verification and text-size comparison](archive/EXECUTION_HISTORY.md#2026-10-22--context-efficiency-synchronization). Next: continue the explicitly selected workstream; synchronization does not resume pending work.
+
 ## Latest delivery — Process grid and datum correction — 2026-10-22
 
 Luca rejected the independent left grid and point–rule–tag datum as unwanted AI slop. Removed the entire datum and redundant stage/index labels; steps begin with their existing titles. One shared vertical grid remains; desktop step boundaries now cross both columns at the same height. First-row opening reserves room below the manifesto. Build passed; pertinent tests 18/18, then final calibrated Process/grid checks 5/5. [Correction evidence](reviews/2026-10-22-process-correction/README.md). Next: Luca's visual evaluation; preserve this rejection rather than restyling the same tag formula.
