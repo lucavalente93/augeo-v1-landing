@@ -49,12 +49,6 @@ export default function ProcessSection() {
           </h2>
         </div>
         <div className="process-ledger-wrapper">
-          <div className="process-header-secondary">
-            <p className="process-lead">
-              Conhecemos seu negócio, identificamos o que precisa mudar e propomos um projeto para conectar apresentação e operação.
-            </p>
-          </div>
-
           <ol className="process-ledger">
             {PROCESS_STEPS.map((step) => (
               <li
@@ -64,7 +58,7 @@ export default function ProcessSection() {
               >
                 <div className="process-step-datum">
                   <span className="process-step-rule" aria-hidden="true" />
-                  <span className="process-step-stage">{step.stageLabel}</span>
+                  <span className="process-step-stage">{step.index} // {step.stageLabel}</span>
                 </div>
                 <div className="process-step-body">
                   <h3 className="process-step-title">{step.title}</h3>

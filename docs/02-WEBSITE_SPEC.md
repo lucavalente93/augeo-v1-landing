@@ -61,7 +61,7 @@ Light/dark themes cover text and matrix. Interaction pauses off-screen and with 
 
 ### Continuation and conversion
 
-The two desktop triangles indicate scroll continuation and remain decorative. Integration with `#processo` depends on the planned section. The **“Apresentar negócio”** button has a distinct role: conversion to sales intake `#entrada`, whose form remains to be implemented.
+On `v3`, the native desktop rail/pulse/node link reaches the implemented `#processo` section; its spans remain decorative. Lifecycle and geometry: [HERO](HERO.md#continuation-cue). The **“Apresentar negócio”** button has a distinct role: conversion to sales intake `#entrada`, whose form remains to be implemented.
 
 ## 5. Public process
 
@@ -83,7 +83,8 @@ Visual planning structured with Impeccable (`shape` + surface extension in `new-
 
 **Experimental status — Luca, 2026-10-21:** Layout decisions after the hero remain open on `section-process`. Neither a repeated hero ratio nor the previous 12-column alternative is a final requirement. The current sticky Process implementation is one experiment, not a template for subsequent sections. Historical compositions and evaluations remain evidence in the execution history.
 
-- **Current experiment:** Dark AUGEO / Full White Process surfaces controlled by the header theme button, proportional grid with intersection nodes, unnumbered stages, theme-calibrated chromatic hover and a sticky desktop introduction beside the lead and steps, followed by a separate closing area. Column proportions, alignment, typography hierarchy and composition may evolve independently of the hero.
+- **Current experiment on `v3` — 2026-10-22:** Theme-controlled surfaces, sticky desktop introduction beside three indexed stages in local IBM Plex Mono Medium, with a separate closing area. Removed redundant secondary lead. Labels and titles stay stationary on fine-pointer hover, with subtle cell background, 2px accent inset and stronger rule/label contrast. Composition remains experimental and does not prescribe subsequent sections.
+- **Grid implementation:** Mobile `calc(100cqw / 3)`; desktop 14cqw at `2cqw - 1px`. Section and panel retain inline-size containers. Panel-wide verticals remain common; decorative horizontals/nodes are confined to the left desktop column, including closing area, or mobile opening. Right-side horizontals use real step/footer borders. Shared opening tokens align H2 with the first H3; wrapping can grow content. Footer spans both columns. [Implementation evidence](reviews/2026-10-22-v3/README.md).
 - **Implementation boundary:** Preserve content, semantic navigation, responsive readability, accessible interaction and reduced-motion behavior while exploring alternatives.
 
 - **Three-step copy (implemented on `section-process`):** Keeps draft steps 1 and 2 and refines step 3 (*“Devolvemos um briefing validado com nossa recomendação, o escopo e o investimento. Você decide sobre a contratação.”*) to explicitly deliver the validated brief alongside recommendation, scope and investment, preserving client decision autonomy.

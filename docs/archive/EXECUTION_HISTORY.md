@@ -1255,3 +1255,11 @@ Usuário autorizou staging, commit e push após o showcase. GitHub CLI confirmou
 - Removed obsolete Process topology prescriptions from the active specification; scoped HERO preservation guidance to the hero. Process checks now verify responsive bounds without requiring the hero axis, a fixed percentage width or equal heading sizes. Current rendered layout is preserved as an experiment.
 - Validation: targeted Process Chromium test passed **1/1 (4.3s)** after sandbox startup failed with socket EPERM and execution was approved outside it; `git diff --check` passed. No application code changed.
 - Prior deliveries below describe implementation/evaluation at their dates, not binding composition rules. Next action: continue visual exploration when requested; no replacement layout selected, commit, push or publication.
+
+## 2026-10-22 — audit rereading implementation on v3
+
+User authorized implementing the technical rereading and sending a new `v3` branch with gh CLI assistance. Created from `section-process` at `5e46224456f8212f5437217c8e7c1d6627e7e462`. Preserved pre-existing documentation edits; staged this delivery separately. Implemented items 4.1–4.7 and 4.9; retained item 4.8 as an explicit direction dependency. No renderer/physics changes, new form or metadata bar.
+
+Build passed. Migrated suite: 30/30 in 52.7 s; added Process review checks: 2/2 in 8.6 s, with both themes, font readiness, shared opening, unchanged hover geometry, CTA states, text enlargement and sticky exit. Initial restricted execution hit browser sandbox denial / Vite listen EPERM; approved/unrestricted execution completed the checks. ResizeObserver warnings appeared during resizing without failing assertions; cause not isolated. Chromium/emulation only, with synthetic hidden-document events and enlarged root font rather than physical-device tab/zoom validation.
+
+Eight before/after desktop/mobile PNGs, source font revision/license, implementation decisions and remaining limits are recorded in [delivery evidence](../reviews/2026-10-22-v3/README.md). Applied augeo-context, augeo-react-frontend and relevant React review checklist; no conception workflow or delegation. Commit/push authorization is scoped to v3; no merge or production publication performed. Remaining work: human visual evaluation, lettering-centering direction and real #entrada intake.

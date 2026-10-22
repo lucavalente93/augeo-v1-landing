@@ -22,7 +22,7 @@ for (const colorScheme of ['light', 'dark'] as const) {
           style.textContent = variant === 'larger'
             ? '.hero-page .scroll-cue { width: 80px; height: 160px; }'
             : variant === 'replacement'
-              ? '.hero-page .scroll-cue { width: auto; height: auto; } .scroll-cue svg { display: none; } .scroll-cue::before { content: "Continue exploring the next chapter"; display: block; max-width: 12ch; padding: 24px 0; font-size: 24px; }'
+              ? '.hero-page .scroll-cue { width: auto; height: auto; } .scroll-cue > span { display: none; } .scroll-cue::before { content: "Continue exploring the next chapter"; display: block; max-width: 12ch; padding: 24px 0; font-size: 24px; }'
               : variant === 'expanded-copy'
                 ? ':root { font-size: 24px; } .hero-description { max-width: 22ch; }'
                 : '';

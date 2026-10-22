@@ -32,10 +32,14 @@ test('Process grid tracks actual container width, divider and responsive breakpo
       const css = getComputedStyle(node);
       const rect = node.getBoundingClientRect();
       const ledger = node.querySelector('.process-ledger-wrapper')!.getBoundingClientRect();
-      return { width: rect.width, cell: parseFloat(css.backgroundSize), offset: parseFloat(css.backgroundPositionX), divider: ledger.x - rect.x };
+      const decoration = getComputedStyle(node, '::before');
+      return { decoration: {display: decoration.display, clip: decoration.clipPath}, background: css.backgroundImage, width: rect.width, cell: parseFloat(css.backgroundSize), offset: parseFloat(css.backgroundPositionX), divider: ledger.x - rect.x };
     });
-    expect(grid.cell).toBeCloseTo(grid.width * (width >= 1024 ? 0.14 : 0.25), 1);
+    expect(grid.cell).toBeCloseTo(grid.width * (width >= 1024 ? 0.14 : 1 / 3), 1);
+    expect(grid.background).not.toContain('to bottom');
     if (width >= 1024) {
+      expect(grid.decoration.display).toBe('block');
+      expect(grid.decoration.clip).toBe('inset(0px 56% 0px 0px)');
       expect(grid.offset + 1 + grid.cell * 3).toBeCloseTo(grid.divider, 1);
       expect(grid.cell * 4).toBeCloseTo(grid.width - grid.divider, 1);
     }

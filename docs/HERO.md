@@ -18,19 +18,19 @@ The graphic signature counterbalances the heading; supporting text is grouped wi
 
 ## Desktop composition
 
-From 768 px, the hero uses two **44/56** columns with a minimum height of 100dvh. The text column contains symbol, heading, supporting text and CTA; the matrix fills the right panel. Brand, text, CTA and triangles share a **48 px** inset. The header is absolutely positioned over the text column, with height 96 px and symbol 66 px.
+On `v3`, from 1024 px, the hero uses two **44/56** columns with a minimum height of 100dvh. The text column contains symbol, heading, supporting text and CTA; the matrix fills the right panel. Brand, text, CTA and continuation link share a **48 px** inset. The header is absolutely positioned over the text column, with height 96 px and symbol 66 px.
 
-The heading uses local Hanken Grotesk, weight **620**, line-height **1.02** and tracking **−0.035em**. Scale responds to the column's usable width (`clamp(2rem, 19.5cqw, 6rem)`), with three spans, maximum width 11ch and 2 px below for descenders. Supporting text uses line-height 1.5, maximum width 34ch and 18–24 px scale; short windows have dedicated scale and spacing adjustments.
+The heading uses local Hanken Grotesk, weight **620**, line-height **1.02** and tracking **−0.035em**. Scale responds to the column's usable width (`clamp(2rem, 19.5cqw, 6rem)`), with three spans, maximum width 11ch and 2 px below for descenders. Supporting text uses line-height 1.5, maximum width 34ch, `text-wrap: pretty` and 18–24 px scale; short windows have dedicated scale and spacing adjustments.
 
-The text panel has 2% white radial illumination over the theme background, with a 1 px vertical divider. The CTA uses inverted theme colors, orange focus, hover glow and scale reduction on press. It stays on one line on desktop.
+The text panel has 2% white radial illumination over the theme background, with a 1 px vertical divider. The CTA uses inverted theme colors, orange focus, orange light-theme hover, dark-theme hover glow and scale reduction on press. It stays on one line on desktop.
 
 ## Mobile composition
 
-Below 768 px, header and hero follow vertical flow. The header is 70 px high with a 58 px symbol and 20 px inset. Copy uses symmetric 20 px insets; heading, supporting text and CTA precede the matrix. The CTA remains visible with minimum height 44 px and top margin 24 px.
+On `v3`, below 1024 px, header and hero follow vertical flow. The header is 70 px high with a 58 px symbol and 20 px inset. Copy uses symmetric 20 px insets; heading, supporting text and CTA precede the matrix. The CTA remains visible with minimum height 44 px and top margin 24 px.
 
-The entire matrix was repositioned as the **mobile hero's visual footer**, full width with height `clamp(140px, 22dvh, 180px)`, a 1 px top divider and automatic margin above. Lettering is centered in this panel and uses `min(85%, 360px)`. `touch-action: pan-y` allows vertical scrolling through the matrix area.
+The entire matrix was repositioned as the **mobile hero's visual footer**, full width with height `clamp(220px, 35dvh, 340px)` with a 220px minimum, a 1 px top divider and automatic margin above. Lettering is centered in this panel and uses `min(85%, 360px)`. `touch-action: pan-y` allows vertical scrolling through the matrix area.
 
-The copy surface extends across the header's 70 px: a single background covers symbol and text down to the matrix without restarting illumination at the header/hero boundary. The triangle cue is hidden on mobile.
+The copy surface extends across the header's 70 px: a single background covers symbol and text down to the matrix without restarting illumination at the header/hero boundary. The continuation cue is hidden on mobile.
 
 ## Themes and brand
 
@@ -56,19 +56,17 @@ The current matrix lifecycle maintains continuous automatic pulses alongside dis
 
 ## Continuation cue
 
-Two solid triangles communicate downward direction on desktop: each measures 36×27 px, the second 18 px below the first with 9 px overlap. The 36×45 px pair is centered in a 36×63 px container. Separate SVGs ensure the active tip is fully painted at the intersection.
+On `v3`, the native desktop link to `#processo` uses a 1×52 px rail, 20 px orange pulse and 5×5 px node separated by 4 px, centered in the existing 36×63 px reserved area. The pulse descends on a 2.4 s CSS cycle, a visual analogue independent of matrix physics. Offscreen and hidden-document suspension preserve elapsed time through the existing observer/listener cleanup pair; reduced motion keeps a static pulse. Decorative spans are hidden from accessibility APIs.
 
-One pass occurs every **2.8 s**, with a **980 ms** offset between triangles. The 5.6 s CSS cycle contains two passes: light upper/dark lower, then dark upper/light lower, using `#e2e2df` and `#20201f`. Initial delays are 300/1280 ms. The change affects fill and paint order while keeping geometry stationary. Pausing off-screen/with a hidden tab preserves time and phase; reduced motion uses static gray.
+The link remains in `.hero-copy` flow after `.hero-content`, on the 48 px axis with minimum 32 px clearance and no flex shrink. It is hidden below 1024 px. Keyboard focus stays visible and native activation reaches Process. Expanded content grows the hero naturally; matrix height follows it. The commercial CTA retains its distinct `#entrada` destination, whose form is still pending.
 
-On desktop, the cue participates in `.hero-copy` flow after the `.hero-content` group (heading, supporting text and CTA). Automatic vertical margins center this group in available space; the cue sits near the panel base with minimum top margin 32 px and bottom inset 28 px. It does not shrink in flex: larger or intrinsically sized variants reserve their own space. When content exceeds window height, the hero grows and the page scrolls; no viewport-based vertical coordinate or duplicated cue height in clearance calculations. The matrix follows hero height.
-
-On `main`, the cue remains decorative (`aria-hidden`, no click or focus). On branch `section-process`, with `#processo` implemented (`src/components/ProcessSection.tsx`), `ScrollCue` was activated on desktop as a native link `<a className="scroll-cue" href="#processo" aria-label="Conhecer nosso processo">`, preserving geometry, `aria-hidden="true"` SVGs, Web Animations lifecycle and mobile hiding. Its meaning remains scroll continuation to Process; the commercial CTA still targets `#entrada` (section not yet implemented). EXPLORE and the earlier arrow are not part of the hero.
+This supersedes the earlier triangle geometry/contrast decisions for this branch. Lettering remains aligned to the H1 center; centering the lettering in the full desktop panel or adding metadata requires a separate direction decision. Evidence: [v3 implementation](reviews/2026-10-22-v3/README.md).
 
 ## Implementation sources
 
 - [src/App.tsx](../src/App.tsx): structure, copy, CTA, props, alignment and mounting of `ProcessSection` below `.hero` on `section-process`.
 - [src/styles.css](../src/styles.css): composition, themes, typography, cue animation and `.process-*` styles.
-- [src/components/ScrollCue.tsx](../src/components/ScrollCue.tsx): triangles, native `#processo` link on `section-process`, pause/resume.
+- [src/components/ScrollCue.tsx](../src/components/ScrollCue.tsx): rail/pulse/node, native `#processo` link, pause/resume.
 - [src/components/ProcessSection.tsx](../src/components/ProcessSection.tsx): architectural ledger for the three `#processo` steps on branch `section-process`.
 - [components/ui/kinetic-matrix.tsx](../components/ui/kinetic-matrix.tsx) and [lib/matrix-motion.ts](../lib/matrix-motion.ts): grid, interaction field and warp.
 - [src/assets/augeo-lettering.svg](../src/assets/augeo-lettering.svg): striped brand and counters.

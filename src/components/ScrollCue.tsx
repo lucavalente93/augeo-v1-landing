@@ -26,12 +26,10 @@ export default function ScrollCue() {
 
   return (
     <a ref={cueRef} className="scroll-cue" href="#processo" aria-label="Conhecer nosso processo">
-      <svg className="scroll-cue-triangle" viewBox="0 0 24 42" aria-hidden="true" focusable="false">
-        <path d="M0 6H24L12 24Z" />
-      </svg>
-      <svg className="scroll-cue-triangle" viewBox="0 0 24 42" aria-hidden="true" focusable="false">
-        <path d="M0 18H24L12 36Z" />
-      </svg>
+      <span className="scroll-cue-rail" aria-hidden="true">
+        <span className="scroll-cue-pulse" />
+      </span>
+      <span className="scroll-cue-node" aria-hidden="true" />
     </a>
   );
 }

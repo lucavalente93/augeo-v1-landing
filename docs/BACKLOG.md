@@ -1,6 +1,10 @@
 # Project backlog
 
-Updated on 2026-10-21. Queue, dependencies and latest delivery. Integration contract in [ORCHESTRATION](ORCHESTRATION.md); evidence and earlier deliveries in [history](archive/EXECUTION_HISTORY.md). Requirements, hero and procedures retain their own sources.
+Updated on 2026-10-22. Queue, dependencies and latest delivery. Integration contract in [ORCHESTRATION](ORCHESTRATION.md); evidence and earlier deliveries in [history](archive/EXECUTION_HISTORY.md). Requirements, hero and procedures retain their own sources.
+
+## Latest delivery — audit rereading implemented on v3 — 2026-10-22
+
+Implemented the supplied rereading: rail/pulse/node continuation, indexed local IBM Plex Mono labels, removed redundant Process lead, shared opening alignment, separated decorative/structural grid, stable hover, corrected light CTA colors and improved paragraph wrapping. Desktop lettering still follows H1; centering direction and `#entrada` remain pending. Build passed; migrated suite 30/30 and additional Process checks 2/2 passed in Chromium. Before/after captures and limits: [delivery evidence](reviews/2026-10-22-v3/README.md). Next: Luca's visual evaluation of `v3`; no creative approval or production publication inferred. Previous documentation consolidation is preserved separately in the workspace.
 
 ## Latest delivery — proportional Process grid and theme toggle — 2026-10-21
 

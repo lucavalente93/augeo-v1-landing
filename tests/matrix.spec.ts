@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { ARTWORK_WARP, approach, artworkShiftTargets, constrainArtworkShifts, MATRIX_MOTION, createPulseProgressThresholds, steppedProgress } from '../lib/matrix-motion';
 
-test('landing: canvas draws, reduced motion freezes it, pointer works, triangles are present without EXPLORE', async ({ page }) => {
+test('landing: canvas draws, reduced motion freezes it, pointer works, rail cue is present without EXPLORE', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
@@ -41,7 +41,7 @@ test('landing: canvas draws, reduced motion freezes it, pointer works, triangles
   expect(errors).toEqual([]);
 });
 
-test('symbol and copy align with the triangles at their existing lateral position', async ({ page }) => {
+test('symbol and copy align with the cue at their existing lateral position', async ({ page }) => {
   await page.goto('/');
   await page.evaluate(() => document.fonts.ready);
   for (const [width, height] of [[1440, 900], [1024, 768], [900, 600], [768, 600], [844, 390]]) {
@@ -63,7 +63,7 @@ test('symbol and copy align with the triangles at their existing lateral positio
     expect(descriptionBounds.x).toBeCloseTo(heading.x, 1);
     expect(brand.x).toBeCloseTo(heading.x, 1);
     expect(cta.x).toBeCloseTo(heading.x, 1);
-    await expect(page.locator('.scroll-cue path')).toHaveCount(2);
+    await expect(page.locator('.scroll-cue-rail, .scroll-cue-node')).toHaveCount(2);
     await expect(page.locator('.explore')).toHaveCount(0);
   }
 });
