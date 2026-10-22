@@ -4,14 +4,7 @@ Requirements and implementation reviewed on 2026-10-13; publication references r
 
 ## 1. Website role
 
-Institutional and commercial landing page for AUGEO Creative. It must:
-
-- introduce the agency unambiguously;
-- demonstrate judgment, direction and execution capability through the website itself;
-- explain the commercial model based on understanding context before proposing work;
-- convert suitable businesses into qualified contacts.
-
-The website must not compensate for missing public case studies with fictional projects, numbers, testimonials or artificial social validation. Until published work exists, evidence comes from page quality, process clarity and precise sales intake.
+Website purpose and priority: [AUGEO.md](AUGEO.md). The landing explains the context-first commercial model and converts suitable businesses into qualified contacts. Until public case studies exist, evidence comes from page quality, process clarity and precise sales intake. Content boundaries are in section 9.
 
 ## 2. First-version scope
 
@@ -47,21 +40,7 @@ The website must not compensate for missing public case studies with fictional p
 
 ## 4. Hero
 
-### Function
-
-Present AUGEO's positioning, demonstrate direction through composition and offer the “Apresentar negócio” action. On desktop, text and matrix counterbalance each other in two columns. On mobile, the matrix moved to the footer to preserve the order **message → CTA → visual signature**.
-
-### Interactive visual field
-
-The reactive composition is implemented: canvas grid and striped SVG lettering respond together to hover/pointer throughout the hero, including the text column. Click or touch generates waves; deformation returns to rest at interaction end.
-
-On desktop, the matrix fills the right column of the 44/56 split. On mobile, the same entire component forms the full-width rectangular footer, with centered lettering and vertical scrolling allowed through the interactive area. This is a composition and ergonomics choice, not another component.
-
-Light/dark themes cover text and matrix. Interaction pauses off-screen and with a hidden tab; `prefers-reduced-motion` keeps composition static. Current automatic pulses continue; finite introduction and warp optimization are refinements recorded in HERO.md.
-
-### Continuation and conversion
-
-The two desktop triangles indicate scroll continuation and remain decorative. Integration with `#processo` depends on the planned section. The **“Apresentar negócio”** button has a distinct role: conversion to sales intake `#entrada`, whose form remains to be implemented.
+Composition, applied copy, interaction, responsive behavior and continuation/conversion roles are owned by [HERO.md](HERO.md). That document distinguishes the published baseline from the `section-process` experiment.
 
 ## 5. Public process
 
@@ -87,7 +66,7 @@ Visual planning structured with Impeccable (`shape` + surface extension in `new-
 - **Implementation boundary:** Preserve content, semantic navigation, responsive readability, accessible interaction and reduced-motion behavior while exploring alternatives.
 
 - **Three-step copy (implemented on `section-process`):** Keeps draft steps 1 and 2 and refines step 3 (*“Devolvemos um briefing validado com nossa recomendação, o escopo e o investimento. Você decide sobre a contratação.”*) to explicitly deliver the validated brief alongside recommendation, scope and investment, preserving client decision autonomy.
-- **Technical and continuity contract (`AUG-12` → `AUG-11`):** Dedicated `src/components/ProcessSection.tsx` rendered as `<section id="processo" className="process-section" aria-labelledby="process-title" tabIndex={-1}>` after `.hero` inside `<main>`, with `<ol className="process-ledger">` for the three steps (`id` values prefixed `processo-entrada`, `processo-entendimento`, `processo-proposta` to preserve `#entrada`) and `aria-hidden="true"` diagram. `ScrollCue` activated on desktop in `section-process` as `<a className="scroll-cue" href="#processo" aria-label="Conhecer nosso processo">` (with `tests/scroll-cue.spec.ts` updated and suite `27/27` passing), keeping commercial CTAs pointing to `#entrada` until form implementation.
+- **Technical structure:** `src/components/ProcessSection.tsx`, `<section id="processo" aria-labelledby="process-title" tabIndex={-1}>` after `.hero` inside `<main>`, with ordered `.process-ledger` steps and IDs `processo-01`, `processo-02`, `processo-03`. Continuation link: [HERO](HERO.md#continuation-cue). Dated implementation and test evidence: history.
 
 ## 6. Sales intake and form
 
@@ -131,11 +110,8 @@ After submission, the interface confirms receipt and explains that AUGEO will pe
 
 ### Established foundations
 
-- Implemented color baseline: light with background `#f7f7f5`/text `#111111`; dark with background `#06070a`/text `#f7f7f5`.
-- Implemented accent: cherry-orange `#ff482c`, used selectively, including focus. Future surfaces must preserve adequate contrast.
-- Current typography: local Hanken Grotesk on the landing, heading weight 620; Archivo as declared alternative and Share Tech Mono in component/demo. The full system for future sections still needs consolidation.
-- On `section-process`, themes initialize from existing `.light`/`.dark` classes or system preference. A rudimentary header button switches the explicit page theme and immediately updates the matrix canvas; Process follows the same theme. The selection lasts for the current page mount.
-- Do not redesign the existing brand and symbol.
+- Existing hero typography/colors/theme behavior: [HERO](HERO.md#themes-and-brand). Archivo remains a declared alternative; Share Tech Mono is used in component/demo. The full system for future sections still needs consolidation.
+- Brand identity and asset commitments come from the registered global brand source.
 - Hero contrasts human/commercial presence with the technical field; do not mechanically repeat this split throughout the page.
 - Typography must support impact and commercial clarity; experimentation must not compromise content, form or navigation readability.
 
@@ -185,13 +161,7 @@ Each asset needs a compositional, narrative or interactive purpose, must satisfy
 
 ## 9. Copy and content
 
-Hero copy is already applied (Portuguese, preserved):
-
-- Heading: **“Presença digital com direção.”**
-- Supporting text: **“O contexto do seu negócio define como conectamos marca, website, aquisição e operação digital.”**
-- CTA: **“Apresentar negócio”.**
-
-Process and form still need dedicated copy, including submission states; drafts are at the end of this document. Messaging must clarify that AUGEO handles direction, presence and digital operations without turning the website into a service list. The process must show the client retains the decision to proceed; AUGEO adds judgment so that decision and scope are coherent.
+Applied hero copy is maintained in [HERO](HERO.md#concept-and-hierarchy). Process copy and client decision autonomy are defined in section 5; form submission states remain draft below. Messaging explains direction, presence and digital operations without turning the website into a service catalog.
 
 Avoid promises of results, quick returns, formulas, total solutions without context, and any claims about nonexistent case studies, clients or metrics.
 
@@ -209,7 +179,7 @@ Avoid promises of results, quick returns, formulas, total solutions without cont
 - Frontend: React 19 and TypeScript with Vite 8; single-page application without implemented router or CMS.
 - Styles: Tailwind CSS 4 integrated with Vite and custom CSS in `src/styles.css`, with local fonts, tokens and themes.
 - Hero: `KineticMatrix` shared between landing and `?demo=matrix` demo, with physics/warp in `lib/matrix-motion.ts`; cue in `ScrollCue`.
-- Tooling: Bun for installation and execution, with `bun.lock` and `bunfig.toml`. Build through `bun run build`; regression tests through `bun run test` using Playwright/Chromium; visual/interactive inspection through `dev-browser`.
+- Tooling and verification commands: [WORKFLOW](WORKFLOW.md#bun-and-validation).
 - Hosting: Vercel, team `augeocreative`, production on `main` with push-triggered deployment integration. The 16/10 record identifies GitHub repository `lucavalente93/augeo-v1-landing`; the local remote still uses earlier name `lucavalente93/augeo-grid-hero`. Vercel project was identified as `augeo-grid-hero` in 13/10 records; its current name was not reconfirmed in that review. No configuration or remote was changed.
 - Custom domain: current address supplied by user on 17/10, `https://www.augeocreative.com`. Historical records confirm HTTPS on root and `www`; DNS/HTTPS and publication evidence belong in [history](archive/EXECUTION_HISTORY.md). Earlier alias `augeo-grid-hero.vercel.app` is a historical reference without availability reconfirmed in that review.
 - DNS managed at Hostinger; existing business email `hello@augeocreative.com`, independent of deployment. Preserve email records when changing website routing.
@@ -228,19 +198,10 @@ Stack, hosting, domain and initial matrix interaction were defined and implement
 
 ## 11. State and next decisions
 
-### Implemented and published baseline
-
-- Branded header, responsive hero, applied copy, conversion button, hover-reactive composition and desktop cue.
-- Mobile footer implemented with matrix and lettering below copy and CTA.
-- Themes, local fonts, accent and hero tokens present in code.
-- Existing React/TypeScript/Vite/Tailwind stack, Bun tooling and Playwright tests.
-- Vercel production deployment and connected custom domain; initial publication complete.
-
-Publication does not equal landing completion, global visual approval or closure of hero methodology. Test results and coverage limitations belong in history, summarized in the backlog, without treating historical evidence as automatic validation of future versions.
+Current delivery state and next action: [BACKLOG](BACKLOG.md#current-state). Hero refinements and evaluation: [HERO](HERO.md#current-block-plan).
 
 ### To finish the complete landing
 
-- Complete authorized hero evaluations/refinements according to existing review points; finite introduction, performance, system extraction and integrated finishing remain distinct workstreams.
 - Structure Process and form with copy consistent with positioning. Preserve the implemented mobile footer.
 - Finalize required fields, receiving tool, data handling, screening owner and success/error messages.
 - Implement `#processo` and `#entrada`, integrate navigation/continuation and connect CTA to the working form.
@@ -248,7 +209,7 @@ Publication does not equal landing completion, global visual approval or closure
 - Validate the complete experience: responsiveness, keyboard/focus, contrast, reduced motion, loading, submission, failures and actual receipt for screening.
 - Define domain redirection/canonical policy and publication/indexing metadata; maintain valid HTTPS on both addresses before closing the complete delivery.
 
-These pending items do not authorize automatic block advancement or service purchases. Operational sequence and authorizations are in the backlog; hero proposals/evaluations are in [HERO.md](HERO.md#evaluations-and-decisions-still-open).
+Scheduling belongs in BACKLOG; scope and authority follow AGENTS and resolved governance.
 
 ### Future, after the first complete version
 
@@ -257,7 +218,7 @@ These pending items do not authorize automatic block advancement or service purc
 
 ## Copy drafts for future sections
 
-Material previously in `copywriting.md`, not yet applied to the website or recorded as approved final copy. Preserved in Portuguese as a starting point for Header, Process, sales intake and footer; does not replace implemented hero copy in section 9.
+Material previously in `copywriting.md`, not yet applied to the website or recorded as approved final copy. Preserved in Portuguese as a starting point for Header, Process, sales intake and footer; does not replace implemented hero copy in HERO.
 
 ### Header
 

@@ -1,5 +1,34 @@
 # Histórico de execução e decisões anteriores
 
+## 2026-10-22 — Context efficiency synchronization
+
+- Luca requested checking and synchronizing inference/context optimizations across branches, then supplied a fresh successful `git fetch origin` from the host after this executor could not resolve GitHub. Fetched baselines: `main` = `f5f800c`, `section-process` = `5e46224`, `v3` = `50bdba8`. All three already contain the earlier selected-context and pilot-efficiency commits; only `v3` contained the latest canonical instruction consolidation.
+- Synchronized AGENTS, WORKFLOW, PRODUCT and the shared bridge contract in ORCHESTRATION. Applied specification/HERO deduplication with branch-specific conflict resolution; retained `main`'s 768 px hero/decorative cue and absent Process, and `section-process`'s 1024 px hero/theme toggle/experimental Process. Folded its existing responsive override into HERO's composition sections. No interface code, assets, tests or dependencies were merged from `v3`.
+- Compacted both older backlogs into current state/queue and links to evidence. Preserved their pending work and migrated the English-source/completion records that were still only in backlog into history. The shared installed bridge, context store and skills live outside these Git branches; synchronization does not install another copy or execute an agent.
+
+Whitespace-delimited words in `AGENTS.md` + `docs/BACKLOG.md`, before/after this synchronization (local default content only):
+
+| Branch | Before | After | Reduction |
+| --- | ---: | ---: | ---: |
+| `main` | 3,667 | 957 | 73.9% |
+| `section-process` | 5,143 | 993 | 80.7% |
+| `v3` | 1,197 | 1,238 | -3.4% |
+
+The `v3` entry includes the added continuity summary. Global essential sources are shared and unchanged. These are text measurements, not tokenizer counts, real inference, billing or a promised proportional cost saving. Existing sessions retain their previous context.
+
+- Verification passed: 92/97/108 local Markdown destinations/anchors on main/section-process/v3, schema marker retained, identical shared-instruction hashes, no conflict markers or whitespace errors, and unchanged non-documentation trees against the fetched baseline. Exercised the real context selector against each worktree using in-memory root overrides: four essential sources and ten metadata-only catalog entries in all three; no config file changes or model call. Refreshed eight Obsidian views for the registered active `v3` checkout; `views-check` matched canonical sources. No build, browser, application suite, additional model run, task resumption or deployment is required or claimed for this documentation change. Remote publication must be verified separately from local synchronization.
+
+## Latest delivery - English documentation and readable Obsidian names - 2026-10-19
+- Translated the eight registered website sources (including this backlog), the six global context sources and the bridge README into English. Preserved Portuguese public copy/drafts, actual Paperclip labels, structured identifiers, historical records and existing work. Shared context guidance now distinguishes registered IDs from resolved physical paths.
+- Renamed agency/business/brand notes and the context index; eight website views now use `Website - Subject.md`, with `Website - Documentation Index.md`. Updated Markdown links, translated-section anchors, Canvas file references and saved Obsidian file paths. Source frontmatter and registered IDs remain stable through optional project `sourcePaths` mappings. View generation/verification share one naming map, encode spaces, preserve external file links and refuse to overwrite manual notes; recognized obsolete generated copies were removed.
+- Canonical-source write protection now checks resolved physical paths, including renamed global/local sources. `bun test` in the bridge passed 32/32 tests and 161 assertions across six files. After the final external-link adjustment, targeted core/access tests passed 13/13 with 53 assertions; `bun run typecheck` passed. Integration tests use fake executors, with no paid model call. Documentation links/anchors, Canvas targets, source-ID stability, regeneration and `git diff --check` are checked as part of migration closure; durable technical evidence is under the bridge state `documentation-migrations/2026-10-19/`.
+- Started the existing Paperclip server at the user's request; health is `ok`. The abandoned project lock belonged to run `f441a400-5bd8-4ae5-b096-8a1dba72757b`, confirmed `cancelled` by the API with no owner process. Archived through `bun src/unlock.ts augeo-website`, preserving its recovery evidence. No task/model rerun, ticket edits, database migration, product changes, Impeccable workflow, commit, push or publication.
+- Next action: use the regenerated vault and English sources in the next explicitly selected task. Earlier snapshots/sessions remain unchanged; handoff/recovery against renamed or translated sources requires reconciliation. Human evaluation of the Obsidian rendering was not performed in the desktop app. Existing pilot, hero and quality-gate work remains pending under its own scope.
+
+## Latest delivery - Paperclip completion and correction - 2026-10-19
+- Bridge updated: new deliveries create a native completion review; **Entrega avaliada** closes as `done`, while submitting **Solicitar correção** returns to `todo` and requests explicit resumption. The reason from run context enters the prompt with the saved session and a new response/review; approval does not authorize publication.
+- `bun test`: 29/29, 139 assertions; typecheck passed. Simulated API and fake executors prove reason propagation, resumption, new response and prevention of execution after completion. An opt-in test of the installed backend was created but blocked by `listen EPERM` before PostgreSQL startup: no end-to-end proof with the real server in that session.
+- The historical receipts named AUG-1/4/5/6/9/10/11/12/14 as candidates; they do not establish current ticket state. No legacy-card audit is active. The optional installed-backend test remained blocked by `listen EPERM` before PostgreSQL startup; its resolution path is undecided. Contract and README updated; no product edit, paid call, commit, push or publication.
 
 ## 2026-10-21 — Supplied proportional grid, explicit theme button and optical refinement
 
@@ -75,7 +104,7 @@ Atualizado em 2026-10-17. Aqui ficam continuidade operacional, trabalho técnico
 - Última validação da aplicação registrada em 16/10: `bun run build` aprovado e `bun run test` **26/26 em 1,5 min**, Chromium, dois workers, servidor auxiliar. A avaliação visual do usuário permanece pendente. Código da aplicação não alterado nesta revisão documental; testes não repetidos.
 - Endereço atual do website informado pelo usuário em 17/10: `https://www.augeocreative.com`. As verificações históricas de HTTPS nos dois domínios permanecem nos registros; não houve nova inspeção de produção nem confirmação de redirecionamento canônico. DNS Hostinger e e-mail comercial preservados.
 - Especificação revisada integralmente contra código e contexto: stack, matriz, copy, temas, assets, domínio e publicação descritos como bases existentes; Processo e formulário continuam previstos; matriz como footer visual mobile e CTA de conversão já implementados. Pro/WhatsApp Business adiados por decisão do usuário.
-- Revisão da especificação publicada em `ea09147`, com push confirmado por gh. Consolidação posterior para seis documentos concluída localmente, conforme pedido do usuário; publicada em `b7d7b51` após a correção da especificação, com push posteriormente autorizado e confirmado por gh. Avaliações do hero permanecem no [registro de decisões](../HERO.md#avaliações-e-decisões-ainda-abertas).
+- Revisão da especificação publicada em `ea09147`, com push confirmado por gh. Consolidação posterior para seis documentos concluída localmente, conforme pedido do usuário; publicada em `b7d7b51` após a correção da especificação, com push posteriormente autorizado e confirmado por gh. Avaliações do hero permanecem no [registro de decisões](../HERO.md#evaluations-and-decisions-still-open).
 
 ## Tooling — restrição de sockets no sandbox; diagnóstico encerrado
 
@@ -120,7 +149,7 @@ Atualizado em 2026-10-17. Aqui ficam continuidade operacional, trabalho técnico
 - Reconciliar o fechamento metodológico do bloco 2: os ajustes de 09/10 não declararam os fluxos completos de `layout`, `typeset` e `polish` concluídos. A execução posterior da suíte não substitui as etapas ausentes. Ver histórico abaixo.
 - Cobertura ainda limitada a Chromium/emulação: sem aparelhos físicos/outros motores, zoom real, CLS ou perfil de frames em hardware. Essas limitações devem informar o fechamento, não gerar repetição automática de verificações já válidas.
 - Limpezas separadas da migração nominal: remover a identidade `pixel`, eliminar a camada de escopo do cue, dividir `tests/matrix.spec.ts`, mover/renomear assets e otimizar o warp. Sem implementação autorizada neste bloco; propostas e dependências visuais ficam no registro de decisões.
-- Figma: conferir a adequação dos dois PNGs em `docs/references/figma/` antes de retomar a edição manual. Em 17/10 ambos existem localmente, com cabeçalhos PNG válidos, ainda não rastreados pelo Git; a ausência registrada anteriormente foi superada. Não há nova comprovação visual, de origem ou de importação. Ver contexto no [registro de decisões](../HERO.md#propostas-de-figma--frente-independente).
+- Figma: conferir a adequação dos dois PNGs em `docs/references/figma/` antes de retomar a edição manual. Em 17/10 ambos existem localmente, com cabeçalhos PNG válidos, ainda não rastreados pelo Git; a ausência registrada anteriormente foi superada. Não há nova comprovação visual, de origem ou de importação. Ver contexto no [registro de decisões](../HERO.md#figma-proposals---independent-workstream).
 - Implementar Processo e formulário de entrada comercial conforme a especificação em frente própria, preservando o footer visual mobile existente. Definição dos destinos está no registro de decisões; não criar seção artificial para satisfazer testes.
 
 ## Histórico técnico transferido do hero

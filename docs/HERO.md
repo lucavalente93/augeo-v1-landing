@@ -6,7 +6,7 @@ Implementation checked against code on 2026-10-16; documentation reorganized on 
 
 AUGEO presents itself through business context and the connection between brand, website, acquisition and digital operations. The hero fulfills the Persuade role: editorial message on the left and AUGEO signature in the matrix field on the right. The composition itself demonstrates direction and execution without adding undocumented clients, metrics or promises.
 
-The language combines **precise structure and unstable behavior**: solid, legible heading, striped lettering, modular grid and localized deformation. Symbol, lettering and local fonts support the identity. The moodboard guides geometry, rhythm and hierarchy; its images are not decoration to incorporate into the page. References are in the [plan appendix](archive/HERO_AUDIT_2026-10-07.md#anexo-c--moodboard-e-rastreabilidade).
+The [visual direction](02-WEBSITE_SPEC.md#7-visual-direction) is expressed through solid heading, striped lettering, modular grid and localized deformation. Moodboard references: [plan appendix](archive/HERO_AUDIT_2026-10-07.md#anexo-c--moodboard-e-rastreabilidade).
 
 Applied copy (Portuguese, preserved):
 
@@ -18,7 +18,7 @@ The graphic signature counterbalances the heading; supporting text is grouped wi
 
 ## Desktop composition
 
-From 768 px, the hero uses two **44/56** columns with a minimum height of 100dvh. The text column contains symbol, heading, supporting text and CTA; the matrix fills the right panel. Brand, text, CTA and triangles share a **48 px** inset. The header is absolutely positioned over the text column, with height 96 px and symbol 66 px.
+From 1024 px, the hero uses two **44/56** columns with a minimum height of 100dvh. The text column contains symbol, heading, supporting text and CTA; the matrix fills the right panel. Brand, text, CTA and triangles share a **48 px** inset. The header is absolutely positioned over the text column, with height 96 px and symbol 66 px.
 
 The heading uses local Hanken Grotesk, weight **620**, line-height **1.02** and tracking **−0.035em**. Scale responds to the column's usable width (`clamp(2rem, 19.5cqw, 6rem)`), with three spans, maximum width 11ch and 2 px below for descenders. Supporting text uses line-height 1.5, maximum width 34ch and 18–24 px scale; short windows have dedicated scale and spacing adjustments.
 
@@ -26,9 +26,9 @@ The text panel has 2% white radial illumination over the theme background, with 
 
 ## Mobile composition
 
-Below 768 px, header and hero follow vertical flow. The header is 70 px high with a 58 px symbol and 20 px inset. Copy uses symmetric 20 px insets; heading, supporting text and CTA precede the matrix. The CTA remains visible with minimum height 44 px and top margin 24 px.
+Below 1024 px, header and hero follow vertical flow. The header is 70 px high with a 58 px symbol and 20 px inset. Copy uses symmetric 20 px insets; heading, supporting text and CTA precede the matrix. The CTA remains visible with minimum height 44 px and top margin 24 px.
 
-The entire matrix was repositioned as the **mobile hero's visual footer**, full width with height `clamp(140px, 22dvh, 180px)`, a 1 px top divider and automatic margin above. Lettering is centered in this panel and uses `min(85%, 360px)`. `touch-action: pan-y` allows vertical scrolling through the matrix area.
+The entire matrix was repositioned as the **mobile hero's visual footer**, full width with height `clamp(220px, 35dvh, 340px)` and a 220 px minimum, a 1 px top divider and automatic margin above. Lettering is centered in this panel and uses `min(85%, 360px)`. `touch-action: pan-y` allows vertical scrolling through the matrix area.
 
 The copy surface extends across the header's 70 px: a single background covers symbol and text down to the matrix without restarting illumination at the header/hero boundary. The triangle cue is hidden on mobile.
 
@@ -42,7 +42,7 @@ The copy surface extends across the header's 70 px: a single background covers s
 | Borders | black at 8% | white at 8% |
 | Accent/focus | `#ff482c` | `#ff482c` |
 
-System preference and explicit `.light`/`.dark` classes control themes. In dark mode, the symbol is inverted at opacity 0.92 and lettering at 0.88. The matrix CSS background uses the theme token; canvas draws its corresponding surface. The hero CRT layer has subtler scanlines than the demo: 0.03 in light and 0.0567 in dark.
+System preference and explicit `.light`/`.dark` classes control themes. On `section-process`, the header `[DARK]` / `[LIGHT]` button initializes from those classes or system preference, applies mutually exclusive classes and persists for the current mount. The matrix MutationObserver redraws immediately, including with reduced motion. In dark mode, the symbol is inverted at opacity 0.92 and lettering at 0.88. The matrix CSS background uses the theme token; canvas draws its corresponding surface. The hero CRT layer has subtler scanlines than the demo: 0.03 in light and 0.0567 in dark.
 
 Lettering preserves geometry, proportions, stripes and counters. In the SVG, “A” and “O” declare `fill-rule="evenodd"` directly on paths filled by the CRT pattern. Desktop width is `min(88%, 680px)`; vertical center follows the heading center, measured in the hero and published as `--hero-heading-center-y`. Alignment observes hero, heading, supporting text and CTA. On mobile, the center is the matrix center.
 
@@ -122,7 +122,7 @@ The user authorized preparing local snapshots for manual import, clarifying that
 
 ## Current block plan
 
-This sequence preserves original plan workflows without reviving superseded choices. Read the applicable playbook in full during execution, per [WORKFLOW.md](WORKFLOW.md#impeccable). Do not execute pending blocks merely because they are documented.
+This sequence preserves original plan workflows without reviving superseded choices. Procedure: [WORKFLOW](WORKFLOW.md#impeccable); execution scope: AGENTS.
 
 | Block | Workflows and work | State and exit condition |
 | --- | --- | --- |
@@ -142,17 +142,14 @@ For motion, `motionMode?: 'ambient' | 'intro'` was an interface proposal; it doe
 - Content and cue remain separate; desktop may grow and scroll. Text enlargement must not clip content or cause horizontal overflow. Enlarged root font is not native zoom.
 - On normal mobile, preserve the full signature on the first screen in existing test contexts; with enlarged text, prioritize reading and natural flow.
 - For motion changes, verify introduction/rest/interaction, cancellation, exact return, reduced-motion preference changes, off-screen and hidden-tab states. Preserve touch/scroll, letters and counters.
-- For functional changes, run pertinent build and suite per WORKFLOW; for visuals, use rendered inspection and the applicable detector. Chromium/emulation results do not prove physical devices or other engines.
+- Verification procedure and reporting: WORKFLOW; report Chromium/emulation coverage without claiming other engines or physical devices.
 
 Old criteria and the 13/20 score belong to the [historical audit](archive/HERO_AUDIT_2026-10-07.md). Alternatives and their rejection are in [history](archive/EXECUTION_HISTORY.md#alternativas-visuais-superadas). The 16/10 collision correction is implemented/published with user visual evaluation still pending; it does not close block 2.
 
 ## Responsive implementation update — 2026-10-21
 
-At Luca's explicit request on branch `section-process`, the hero's two-column layout now starts at 1024px. Below that breakpoint the existing stacked copy/matrix composition extends to tablets, and the matrix panel uses `clamp(220px, 35dvh, 340px)` with a 220px minimum. The continuation cue now shares the 1024px desktop threshold (updated by the subsequent theme/grid request). These scoped changes supersede earlier panel dimensions/breakpoints; they do not close the pending global hero evaluation.
-
-The supplied Antigravity blueprint and subsequent theme/grid refinement produced the current experiment in `#processo`: adaptive Dark AUGEO / Full White surfaces, proportional grid with intersection nodes, unnumbered stages, theme-calibrated chromatic hover and a desktop 44/56 sticky manifesto beside the scrolling lead and steps. The header now exposes a rudimentary `[DARK]` / `[LIGHT]` button; state initially follows existing root classes or system preference, then applies mutually exclusive root classes. The existing matrix MutationObserver immediately redraws theme colors, including with reduced motion. The grid uses 25cqw below 1024px and 14cqw with a 2cqw horizontal offset on desktop; both section and panel establish inline-size containers so the panel background resolves against actual section width. Real ledger/footer borders replace the simulated divider; the lead receives 12px optical compensation. The footer remains below both columns. Reduced-motion transition suppression and touch scrolling are preserved. This is implementation of the supplied direction, pending human visual evaluation; no new Impeccable conception workflow was initiated.
-
+The desktop/mobile sections above incorporate the `section-process` breakpoint and panel-size update. Dated evidence: [history](archive/EXECUTION_HISTORY.md#2026-10-21--supplied-proportional-grid-explicit-theme-button-and-optical-refinement).
 
 ## Open composition scope — 2026-10-21
 
-Luca clarified that all compositions after the hero remain experimental. The current Process proportions and the earlier 12-column alternative are neither final requirements nor templates for the rest of the landing. Hero-specific constraints apply to the hero only; subsequent sections may explore independent proportions, alignments and hierarchy.
+Post-hero composition and Process experiment are owned by the [specification](02-WEBSITE_SPEC.md#5-public-process).
