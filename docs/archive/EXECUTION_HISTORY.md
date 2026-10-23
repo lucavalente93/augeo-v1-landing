@@ -1310,3 +1310,13 @@ Luca explicitly rejected the left/right grid mismatch and the point–rule–tag
 Horizontal borders now belong to the actual steps and cross both desktop columns; removed the independent left and mobile opening horizontals/nodes. First-row minimum reserves room below the manifesto, with responsive/enlarged-text clearance checks. Sticky and footer separation preserved. No new measurements, effects or renderer changes.
 
 Build passed; initial pertinent tests 18/18 (46.1s), then final calibrated Process/theme/grid checks 5/5 (13.4s). Chromium only. Four captures, implementation details and limits: [correction evidence](../reviews/2026-10-22-process-correction/README.md). User visual approval remains pending. This supersedes the datum/grid choices in the earlier rereading and initial v3 delivery.
+
+## 2026-10-23 — Striped Shutter scroll cue on v3
+
+Luca asked for an analysis of the scroll-cue handoff, then authorized implementing it with the small fixes. Replaced the rail/pulse/node markup and CSS with four slats and an anchor. Fixes: keyframes use custom properties (the invalid scoped `@keyframes` was dropped), theme-token colors, `animation: none` on hover, even pixel sizes in the unchanged 36×63 px link, no `outline: none`, no glow, `--i`-based stagger, 0.35 resting slats. The ScrollCue lifecycle effect is unchanged.
+
+Build passed. Migrated `tests/scroll-cue.spec.ts` and the matrix selector check. One float-delay assertion was corrected after a 30/31 run; then full `bun run test` passed 33/33 (49.9 s; first recorded as 31 + 2 capture specs, corrected), Chromium only. Captures and limits: [delivery evidence](../reviews/2026-10-23-scroll-cue/README.md). No commit, push or creative approval.
+
+## 2026-10-23 — scroll cue 6 · 3 · 1 concept approved as scaffold
+
+After the Striped Shutter, Luca requested rows of segments (6, 3, then the anchor), then a larger, sparser drawing, then compression moved from the automatic cycle to hover. He approved the concept and triangle composition, and rejected the current flat CSS squares as final visuals: the implementation is a scaffold to be rebuilt with better components. An orange light visits layers in order every 220 ms (5 s cycle); hover pulls segments 35 % toward the anchor over 0.9 s. Link 80×63 px; hero height unchanged. Tests migrated to the new behavior; full suite 32/33, the one failure being an old 36 px link-width assertion in `matrix.spec.ts`, updated to 80 px and rerun 1/1. Evidence: [delivery](../reviews/2026-10-23-scroll-cue/README.md). No commit or push.

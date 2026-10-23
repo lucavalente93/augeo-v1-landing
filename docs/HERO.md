@@ -56,17 +56,17 @@ The current matrix lifecycle maintains continuous automatic pulses alongside dis
 
 ## Continuation cue
 
-On `v3`, the native desktop link to `#processo` uses a 1×52 px rail, 20 px orange pulse and 5×5 px node separated by 4 px, centered in the existing 36×63 px reserved area. The pulse descends on a 2.4 s CSS cycle, a visual analogue independent of matrix physics. Offscreen and hidden-document suspension preserve elapsed time through the existing observer/listener cleanup pair; reduced motion keeps a static pulse. Decorative spans are hidden from accessibility APIs.
+On `v3`, the native desktop link to `#processo` is a **scaffold** of the approved 6 · 3 · 1 concept (Luca, 2026-10-23): rows of 6 and 3 segments funnel to an orange anchor. An orange light visits each layer in reading order every 220 ms and rests on the anchor; 5 s cycle. Hover pulls every segment 35 % toward the anchor over 0.9 s while the light continues. Concept and triangle are approved; the current flat, CSS-hard-coded squares are not, and will be rebuilt with better components. The link is 80×63 px (height unchanged). Suspension, reduced motion (static), focus and `aria-hidden` decoration are preserved. Evidence: [scroll cue delivery](reviews/2026-10-23-scroll-cue/README.md).
 
 The link remains in `.hero-copy` flow after `.hero-content`, on the 48 px axis with minimum 32 px clearance and no flex shrink. It is hidden below 1024 px. Keyboard focus stays visible and native activation reaches Process. Expanded content grows the hero naturally; matrix height follows it. The commercial CTA retains its distinct `#entrada` destination, whose form is still pending.
 
-This supersedes the earlier triangle geometry/contrast decisions for this branch. Lettering remains aligned to the H1 center; centering the lettering in the full desktop panel or adding metadata requires a separate direction decision. Evidence: [v3 implementation](reviews/2026-10-22-v3/README.md).
+This supersedes the earlier triangle geometry/contrast decisions the 2026-10-22 rail/pulse/node cue and the interim Striped Shutter for this branch. Lettering remains aligned to the H1 center; centering the lettering in the full desktop panel or adding metadata requires a separate direction decision. Evidence: [v3 implementation](reviews/2026-10-22-v3/README.md).
 
 ## Implementation sources
 
 - [src/App.tsx](../src/App.tsx): structure, copy, CTA, props, alignment and mounting of `ProcessSection` below `.hero` on `section-process`.
 - [src/styles.css](../src/styles.css): composition, themes, typography, cue animation and `.process-*` styles.
-- [src/components/ScrollCue.tsx](../src/components/ScrollCue.tsx): rail/pulse/node, native `#processo` link, pause/resume.
+- [src/components/ScrollCue.tsx](../src/components/ScrollCue.tsx): 6 · 3 · 1 segment scaffold, native `#processo` link, pause/resume.
 - [src/components/ProcessSection.tsx](../src/components/ProcessSection.tsx): architectural ledger for the three `#processo` steps on branch `section-process`.
 - [components/ui/kinetic-matrix.tsx](../components/ui/kinetic-matrix.tsx) and [lib/matrix-motion.ts](../lib/matrix-motion.ts): grid, interaction field and warp.
 - [src/assets/augeo-lettering.svg](../src/assets/augeo-lettering.svg): striped brand and counters.

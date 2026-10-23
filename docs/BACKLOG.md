@@ -1,8 +1,12 @@
 # Project backlog
 
-Updated on 2026-10-22. Current queue and latest delivery only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Previous deliveries, commands and results: [history](archive/EXECUTION_HISTORY.md).
+Updated on 2026-10-23. Current queue and latest delivery only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Previous deliveries, commands and results: [history](archive/EXECUTION_HISTORY.md).
 
-## Latest delivery — shared context synchronization — 2026-10-22
+## Latest delivery — scroll cue 6 · 3 · 1 scaffold — 2026-10-23
+
+Luca approved the cue **concept and triangle composition**: rows of 6 and 3 segments plus an orange anchor, with an orange light travelling through them and hover compression toward the anchor. The current visual (flat squares hard-coded in CSS) is explicitly a **scaffold** to be rebuilt with better components. It replaces the interim Striped Shutter on `v3`. [Delivery evidence](reviews/2026-10-23-scroll-cue/README.md). Next: rebuild the cue's visual components when requested; behavior and composition are the reference.
+
+## Previous delivery — shared context synchronization — 2026-10-22
 
 Propagated compact instruction routing to `main` and `section-process`, preserving their separate interface implementations and pending evaluations. [Verification and text-size comparison](archive/EXECUTION_HISTORY.md#2026-10-22--context-efficiency-synchronization). Next: continue the explicitly selected workstream; synchronization does not resume pending work.
 
