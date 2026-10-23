@@ -49,7 +49,7 @@ test('symbol and copy align with the cue at their existing lateral position', as
     const cue = await page.locator('.scroll-cue').boundingBox();
     const heading = (await page.locator('#hero-title').boundingBox())!;
     if (width >= 1024) {
-      expect(cue!.width).toBe(36);
+      expect(cue!.width).toBe(80);
       expect(cue!.height).toBe(63);
       const hero = (await page.locator('.hero').boundingBox())!;
       expect(cue!.y + cue!.height).toBeLessThanOrEqual(hero.y + hero.height);
@@ -63,7 +63,7 @@ test('symbol and copy align with the cue at their existing lateral position', as
     expect(descriptionBounds.x).toBeCloseTo(heading.x, 1);
     expect(brand.x).toBeCloseTo(heading.x, 1);
     expect(cta.x).toBeCloseTo(heading.x, 1);
-    await expect(page.locator('.scroll-cue-rail, .scroll-cue-node')).toHaveCount(2);
+    await expect(page.locator('.scroll-cue-seg, .scroll-cue-anchor')).toHaveCount(10);
     await expect(page.locator('.explore')).toHaveCount(0);
   }
 });

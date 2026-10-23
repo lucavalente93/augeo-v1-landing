@@ -1,24 +1,38 @@
 import { test, expect } from '@playwright/test';
 
-test('cue pulse continues after introduction and becomes static with reduced motion', async ({ page }) => {
+const CUE_ELEMENTS = '.scroll-cue-seg, .scroll-cue-anchor';
+const LAYER_COUNT = 10; // 6 + 3 segments and the anchor
+const CYCLE_MS = 5000;
+const STEP_MS = 220; // the orange light moves to the next layer every 220 ms
+const ACCENT = 'rgb(255, 72, 44)';
+const allStates = (state: string) => Array(LAYER_COUNT).fill(state);
+
+test('orange light visits layers in order and becomes static with reduced motion', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.goto('/');
   const cue = page.locator('.scroll-cue');
   const states = () => cue.evaluate(n => n.getAnimations({ subtree: true }).map(a => a.playState));
-  await expect.poll(states).toEqual(['running']);
-  const timing = await cue.evaluate(n => n.getAnimations({ subtree: true })[0].effect!.getTiming());
-  expect([timing.duration, timing.delay, timing.iterations]).toEqual([2400, 0, Infinity]);
+  await expect.poll(states).toEqual(allStates('running'));
+  const timings = await cue.evaluate(n => n.getAnimations({ subtree: true }).map(a => {
+    const t = a.effect!.getTiming();
+    // calc() delays can carry float noise (e.g. 659.9999 ms).
+    return [t.duration, Math.round(Number(t.delay)), t.iterations];
+  }));
+  expect(timings).toEqual(Array.from({ length: LAYER_COUNT }, (_, i) => [CYCLE_MS, i * STEP_MS, Infinity]));
   const before = await cue.boundingBox();
-  await cue.evaluate(n => n.getAnimations({ subtree: true })[0].currentTime = 3600);
-  await expect.poll(states).toEqual(['running']);
-  const transform = () => cue.locator('.scroll-cue-pulse').evaluate(n => getComputedStyle(n).transform);
-  const ongoing = await transform();
-  await expect.poll(transform).not.toEqual(ongoing);
+  const colors = () => cue.locator(CUE_ELEMENTS).evaluateAll(nodes => nodes.map(n => getComputedStyle(n).backgroundColor).join());
+  const ongoing = await colors();
+  await expect.poll(colors).not.toEqual(ongoing);
   expect(await cue.boundingBox()).toEqual(before);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect.poll(states).toEqual([]);
-  await expect(cue.locator('.scroll-cue-pulse')).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 16)');
+  const rest = await cue.locator(CUE_ELEMENTS).evaluateAll(nodes => nodes.map(n => [getComputedStyle(n).opacity, getComputedStyle(n).transform]));
+  expect(rest).toEqual([...Array(6).fill(['0.45', 'none']), ...Array(3).fill(['0.7', 'none']), ['1', 'none']]);
+  await expect(cue.locator('.scroll-cue-anchor')).toHaveCSS('background-color', ACCENT);
+  await cue.hover();
+  await page.waitForTimeout(1000);
+  await expect(cue.locator('.scroll-cue-seg').first()).toHaveCSS('transform', 'none');
 });
 
 test('offscreen and hidden-document suspension resumes elapsed animation time', async ({ page }) => {
@@ -27,9 +41,9 @@ test('offscreen and hidden-document suspension resumes elapsed animation time', 
   await page.addStyleTag({content:'body {padding-bottom:200vh;}'});
   const cue=page.locator('.scroll-cue');
   const readAnimationStates=()=>cue.evaluate(n=>n.getAnimations({subtree:true}).map(a=>a.playState));
-  await expect.poll(readAnimationStates).toEqual(['running']);
+  await expect.poll(readAnimationStates).toEqual(allStates('running'));
   await page.evaluate(()=>window.scrollTo(0,1200));
-  await expect.poll(readAnimationStates).toEqual(['paused']);
+  await expect.poll(readAnimationStates).toEqual(allStates('paused'));
   const readAnimationTimesMs=()=>cue.evaluate(async node=>{
     const animations=node.getAnimations({subtree:true});
     // playState can change before the pending pause/play task settles.
@@ -41,49 +55,91 @@ test('offscreen and hidden-document suspension resumes elapsed animation time', 
   await page.waitForTimeout(100);
   expect(await readAnimationTimesMs()).toEqual(pausedAnimationTimesMs);
   await page.evaluate(()=>window.scrollTo(0,0));
-  await expect.poll(readAnimationStates).toEqual(['running']);
+  await expect.poll(readAnimationStates).toEqual(allStates('running'));
   expect((await readAnimationTimesMs())[0]).toBeGreaterThanOrEqual(pausedAnimationTimesMs[0] - 0.1);
   // Test the visibility handler deterministically; real OS tab switching is a
   // separate manual verification, not implied by this synthetic state.
   await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,value:true});document.dispatchEvent(new Event('visibilitychange'));});
-  await expect.poll(readAnimationStates).toEqual(['paused']);
+  await expect.poll(readAnimationStates).toEqual(allStates('paused'));
   const hiddenAnimationTimesMs=await readAnimationTimesMs(); await page.waitForTimeout(150); expect(await readAnimationTimesMs()).toEqual(hiddenAnimationTimesMs);
   await page.evaluate(()=>{Reflect.deleteProperty(document,'hidden');document.dispatchEvent(new Event('visibilitychange'));});
-  await expect.poll(readAnimationStates).toEqual(['running']);
+  await expect.poll(readAnimationStates).toEqual(allStates('running'));
   await expect.poll(async ()=>(await readAnimationTimesMs())[0]).toBeGreaterThanOrEqual(hiddenAnimationTimesMs[0]);
 });
 
 for (const colorScheme of ['light', 'dark'] as const) {
+  const foreground = colorScheme === 'dark' ? 'rgb(247, 247, 245)' : 'rgb(17, 17, 17)';
   for (const [width, height] of [[1440, 1000], [1440, 900], [1024, 600], [1920, 900]]) {
-    test(`rail pulse descends without moving the link: ${colorScheme} ${width}x${height}`, async ({ page }) => {
+    test(`light travels the 6-3-1 scaffold and hover compresses it: ${colorScheme} ${width}x${height}`, async ({ page }) => {
       await page.setViewportSize({ width, height });
       await page.emulateMedia({ colorScheme, reducedMotion: 'no-preference' });
       await page.goto('/');
       await page.evaluate(() => document.fonts.ready);
       const cue = page.getByRole('link', { name: 'Conhecer nosso processo' });
       await expect(cue).toHaveAttribute('href', '#processo');
-      await expect(cue.locator('[aria-hidden="true"]')).toHaveCount(2);
-      await expect.poll(() => cue.evaluate(n => n.getAnimations({ subtree: true }).length)).toBe(1);
+      await expect(cue.locator('[aria-hidden="true"]')).toHaveCount(1);
+      await expect(cue.locator('.scroll-cue-row')).toHaveCount(2);
+      await expect.poll(() => cue.evaluate(n => n.getAnimations({ subtree: true }).length)).toBe(LAYER_COUNT);
       await cue.scrollIntoViewIfNeeded();
       const bounds = (await cue.boundingBox())!;
-      expect([bounds.width, bounds.height]).toEqual([36, 63]);
-      const rail = (await cue.locator('.scroll-cue-rail').boundingBox())!;
-      const node = (await cue.locator('.scroll-cue-node').boundingBox())!;
-      expect([rail.width, rail.height, node.width, node.height]).toEqual([1, 52, 5, 5]);
-      expect(node.y - (rail.y + rail.height)).toBe(4);
-      const positions: number[] = [];
-      for (const time of [0, 840, 1680, 2400]) {
-        await cue.evaluate((n, time) => n.getAnimations({ subtree: true }).forEach(a => { a.pause(); a.currentTime = time; }), time);
-        positions.push(await cue.locator('.scroll-cue-pulse').evaluate(n => new DOMMatrix(getComputedStyle(n).transform).m42));
+      expect([bounds.width, bounds.height]).toEqual([80, 63]);
+      const centerX = bounds.x + bounds.width / 2;
+      const boxes = () => cue.locator(CUE_ELEMENTS).evaluateAll(nodes => nodes.map(n => {
+        const r = n.getBoundingClientRect();
+        return { x: r.x, y: r.y, width: r.width, height: r.height, cx: r.x + r.width / 2, cy: r.y + r.height / 2 };
+      }));
+
+      const rest = await boxes();
+      const rows = await cue.locator('.scroll-cue-row').evaluateAll(nodes => nodes.map(n => {
+        const r = n.getBoundingClientRect();
+        return { x: r.x, y: r.y, width: r.width, height: r.height };
+      }));
+      expect(rows.map(r => [r.width, r.height])).toEqual([[78, 4], [36, 4]]);
+      for (const row of rows) expect(row.x + row.width / 2).toBe(centerX);
+      expect(rest.map(l => [l.width, l.height])).toEqual([...Array(9).fill([8, 4]), [8, 8]]);
+      for (const layer of rest) {
+        expect(Number.isInteger(layer.x - bounds.x)).toBe(true);
+        expect(Number.isInteger(layer.y - bounds.y)).toBe(true);
+      }
+      const anchor = rest[9];
+      expect(anchor.cx).toBe(centerX);
+      expect(rows[1].y - (rows[0].y + rows[0].height)).toBe(14);
+      expect(anchor.y - (rows[1].y + rows[1].height)).toBe(14);
+
+      // Freeze all layers at one time and read which ones hold the orange light.
+      const litAt = (time: number) => cue.evaluate((n, time) => {
+        n.getAnimations({ subtree: true }).forEach(a => { a.pause(); a.currentTime = time; });
+        return [...n.querySelectorAll('.scroll-cue-seg, .scroll-cue-anchor')].map(el => getComputedStyle(el).backgroundColor);
+      }, time);
+      for (let i = 0; i < LAYER_COUNT; i++) {
+        const frame = await litAt(i * STEP_MS + 150);
+        expect(frame[i]).toBe(ACCENT);
+        expect(frame.filter((c, j) => j !== i && j < i - 1 && c === ACCENT)).toEqual([]); // earlier layers released the light
         expect(await cue.boundingBox()).toEqual(bounds);
       }
-      expect(positions[0]).toBe(-20);
-      expect(positions[1]).toBeGreaterThan(positions[0]);
-      expect(positions[2]).toBe(52);
-      expect(positions[3]).toBe(-20);
+      const idle = await litAt(4600);
+      expect(idle.every(c => c === foreground)).toBe(true);
+      // No automatic compression: positions never change without hover.
+      expect((await boxes()).map(l => [l.cx, l.cy])).toEqual(rest.map(l => [l.cx, l.cy]));
+      await cue.evaluate(n => n.getAnimations({ subtree: true }).forEach(a => a.play()));
+
+      // Hover pulls every segment 35 % toward the anchor; the light keeps running.
+      await cue.hover();
+      const settledOnHover = async () => {
+        const now = await boxes();
+        return now.slice(0, 9).every((l, i) => Math.abs((l.cx - rest[i].cx) - (anchor.cx - rest[i].cx) * 0.35) < 0.1
+          && Math.abs((l.cy - rest[i].cy) - (anchor.cy - rest[i].cy) * 0.35) < 0.1);
+      };
+      await expect.poll(settledOnHover, { timeout: 3000 }).toBe(true);
+      expect(await cue.evaluate(n => n.getAnimations({ subtree: true }).filter(a => 'animationName' in a && a.playState === 'running').length)).toBe(LAYER_COUNT);
+      expect(await cue.boundingBox()).toEqual(bounds);
+      await page.mouse.move(0, 0);
+      await expect.poll(async () => (await boxes()).map(l => [l.cx, l.cy]), { timeout: 3000 }).toEqual(rest.map(l => [l.cx, l.cy]));
+
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await cue.focus();
       await expect(cue).toHaveCSS('outline-style', 'solid');
+      await expect(cue).toHaveCSS('outline-color', ACCENT);
       await page.keyboard.press('Enter');
       expect(await page.evaluate(() => location.hash)).toBe('#processo');
       await expect(page.locator('#processo')).toBeInViewport();
@@ -100,6 +156,19 @@ for (const colorScheme of ['light', 'dark'] as const) {
     }
   });
 }
+
+test('explicit theme class drives cue colors over the system preference', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' });
+  await page.goto('/');
+  const slat = page.locator('.scroll-cue-seg').first();
+  await expect(slat).toHaveCSS('background-color', 'rgb(17, 17, 17)');
+  await page.evaluate(() => { document.documentElement.classList.remove('light'); document.documentElement.classList.add('dark'); });
+  await expect(slat).toHaveCSS('background-color', 'rgb(247, 247, 245)');
+  await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' });
+  await page.evaluate(() => { document.documentElement.classList.remove('dark'); document.documentElement.classList.add('light'); });
+  await expect(slat).toHaveCSS('background-color', 'rgb(17, 17, 17)');
+});
 
 test('experimental process section preserves content, navigation and responsive bounds', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce', colorScheme: 'dark' });
