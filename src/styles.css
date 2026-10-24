@@ -331,20 +331,14 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
 }
 
 /* Desktop continuity link to #processo: 6 · 3 segment rows and an anchor.
-   An orange light visits each segment in reading order and rests on the anchor.
-   Hover pulls every segment 35 % of the way toward the anchor; the light keeps running. */
+   Option 3: CRT Scanline Aperture Array.
+   Spring physics on hover via Motion; electron beam sweep timeline via GSAP. */
 html { scroll-behavior: smooth; }
 .scroll-cue {
-  --cue-rest: .35;
-  --cue-anchor-rest: .7;
-  --cue-pull: .35;
-  --cue-cycle: 5s;
-  --cue-step: 220ms;
   display: none;
   color: var(--foreground);
   text-decoration: none;
   border-radius: 2px;
-  animation-play-state: paused;
 }
 @media (min-width: 1024px) {
   .hero-page .scroll-cue {
@@ -360,48 +354,73 @@ html { scroll-behavior: smooth; }
     height: 63px;
   }
   /* 78 x 44 px drawing; even sizes keep every resting edge on whole pixels inside the 80 x 63 link. */
-  .scroll-cue-field { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 10px; animation-play-state: inherit; }
-  .scroll-cue-row { display: flex; gap: 6px; animation-play-state: inherit; }
-  .scroll-cue-seg,
-  .scroll-cue-anchor { background-color: currentColor; animation-play-state: inherit; }
+  .scroll-cue-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 10px;
+  }
+  .scroll-cue-row {
+    display: flex;
+    gap: 6px;
+  }
   .scroll-cue-seg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 8px;
     height: 4px;
-    opacity: var(--cue-rest);
-    animation: cue-light var(--cue-cycle) linear calc(var(--i) * var(--cue-step)) infinite backwards;
-    animation-play-state: inherit;
-    transition: transform .9s cubic-bezier(.6, 0, .3, 1);
+    opacity: 0.35;
+    color: var(--foreground);
+    border-radius: 0.5px;
+    overflow: hidden;
+    background: transparent;
+    cursor: pointer;
+    will-change: transform, opacity, color, filter;
+  }
+  .scroll-cue-seg .scroll-cue-scanline {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background-color: currentColor;
+    border-radius: 0.25px;
+    pointer-events: none;
   }
   .scroll-cue-anchor {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 8px;
     height: 8px;
-    opacity: var(--cue-anchor-rest);
-    animation: cue-anchor-light var(--cue-cycle) linear calc(var(--i) * var(--cue-step)) infinite backwards;
-    animation-play-state: inherit;
+    opacity: 0.7;
+    color: var(--foreground);
+    border-radius: 1px;
+    overflow: hidden;
+    background: transparent;
+    cursor: pointer;
+    will-change: transform, opacity, color, filter;
   }
-  .scroll-cue:hover .scroll-cue-seg { transform: translate(calc(var(--dx) * var(--cue-pull)), calc(var(--dy) * var(--cue-pull))); }
-  .scroll-cue:active { transform: scale(.97); }
-  .scroll-cue:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-}
-/* 5 s cycle. Each segment holds the light ~300 ms (6 %) and hands over every 220 ms. */
-@keyframes cue-light {
-  0% { opacity: var(--cue-rest); background-color: currentColor; }
-  1.5%, 5% { opacity: 1; background-color: var(--accent); }
-  9%, 100% { opacity: var(--cue-rest); background-color: currentColor; }
-}
-/* The anchor lights at 1.98 s and holds the light for 1.5 s. */
-@keyframes cue-anchor-light {
-  0% { opacity: var(--cue-anchor-rest); background-color: currentColor; }
-  2%, 32% { opacity: 1; background-color: var(--accent); }
-  40%, 100% { opacity: var(--cue-anchor-rest); background-color: currentColor; }
+  .scroll-cue-anchor .scroll-cue-scanline {
+    display: block;
+    width: 100%;
+    height: 1.25px;
+    background-color: currentColor;
+    border-radius: 0.25px;
+    pointer-events: none;
+  }
+  .scroll-cue:active {
+    transform: scale(0.97);
+  }
+  .scroll-cue:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  .scroll-cue .scroll-cue-seg,
-  .scroll-cue .scroll-cue-anchor { animation: none; transition: none; }
-  .scroll-cue .scroll-cue-row:nth-child(1) .scroll-cue-seg { opacity: .45; }
-  .scroll-cue .scroll-cue-row:nth-child(2) .scroll-cue-seg { opacity: .7; }
-  .scroll-cue:hover .scroll-cue-seg { transform: none; }
-  .scroll-cue .scroll-cue-anchor { opacity: 1; background-color: var(--accent); }
+  .scroll-cue .scroll-cue-seg { opacity: 0.45 !important; transform: none !important; }
+  .scroll-cue .scroll-cue-row:nth-child(2) .scroll-cue-seg { opacity: 0.7 !important; }
+  .scroll-cue .scroll-cue-anchor { opacity: 1 !important; color: var(--accent) !important; transform: none !important; }
 }
 
 /* PROCESSO — Sticky manifesto and scrolling ledger. */

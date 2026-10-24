@@ -56,7 +56,12 @@ The current matrix lifecycle maintains continuous automatic pulses alongside dis
 
 ## Continuation cue
 
-On `v3`, the native desktop link to `#processo` is a **scaffold** of the approved 6 · 3 · 1 concept (Luca, 2026-10-23): rows of 6 and 3 segments funnel to an orange anchor. An orange light visits each layer in reading order every 220 ms and rests on the anchor; 5 s cycle. Hover pulls every segment 35 % toward the anchor over 0.9 s while the light continues. Concept and triangle are approved; the current flat, CSS-hard-coded squares are not, and will be rebuilt with better components. The link is 80×63 px (height unchanged). Suspension, reduced motion (static), focus and `aria-hidden` decoration are preserved. Evidence: [scroll cue delivery](reviews/2026-10-23-scroll-cue/README.md).
+On `v4`, the native desktop link to `#processo` implements **Option 3 (CRT Scanline Aperture Array)** (Luca, 2026-10-24), replacing the interim CSS scaffold:
+- Rows of 6 and 3 segments funnel to an orange anchor in an 80×63 px link on the 48 px axis.
+- Each segment is constructed with microscopic horizontal scanline bars matching the `AUGEO` lettering and CRT matrix.
+- Electron beam sweep runs via GSAP timeline: orange light visits each segment in reading order every 220 ms and rests on the anchor for ~1.5 s with a phosphor drop-shadow bloom.
+- Hover pulls every segment 35 % toward the anchor using Motion spring physics (`stiffness: 280, damping: 22`).
+- Offscreen and tab suspension, reduced-motion static representation, and native `#processo` keyboard navigation are preserved.
 
 The link remains in `.hero-copy` flow after `.hero-content`, on the 48 px axis with minimum 32 px clearance and no flex shrink. It is hidden below 1024 px. Keyboard focus stays visible and native activation reaches Process. Expanded content grows the hero naturally; matrix height follows it. The commercial CTA retains its distinct `#entrada` destination, whose form is still pending.
 
