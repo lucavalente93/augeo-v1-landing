@@ -2,7 +2,24 @@
 
 Updated on 2026-10-24. Current queue and latest delivery only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Previous deliveries, commands and results: [history](archive/EXECUTION_HISTORY.md).
 
-## Latest delivery — global agent-browser adopted for Antigravity CLI — 2026-10-24
+## Latest delivery — ScrollCue: Scanline Raster Geometry & Aperture Refinement — 2026-10-24
+
+- **Eliminação de Defeitos Subpixel:** Removidas espessuras e bordas fracionárias (`1.5px`/`1.25px`, `border-radius: 0.25px`) que causavam serrilhado, moiré e aspecto de ruído sujo.
+- **Geometria Crisp em Pixels Inteiros:**
+  - Segmentos (`.scroll-cue-seg`): 2 linhas de varredura de `1px` inteiro separadas por fenda de `2px`, com cantos nítidos em container de 8×4px.
+  - Âncora (`.scroll-cue-anchor`): 3 linhas de varredura de `2px` inteiro separadas por fendas razor de `1px` (2 + 1 + 2 + 1 + 2 = 8px exatos), criando uma abertura simétrica e calibrada.
+- **Micro-Substrato Estrutural:** Adicionado substrato dinâmico com `color-mix(in srgb, currentColor 8%, transparent)` em `.scroll-cue-seg` e 10% na âncora, dando corpo físico de placa de abertura técnica sem fragmentos flutuantes.
+- **Validação:** `bun run build` aprovado (0 erros TypeScript, bundle Vite gerado); verificação visual com `agent-browser` em iPhone (390×844 @2x retina) em modo claro e escuro.
+
+## Previous delivery — Mobile Layout: Matrix to Site Footer, Cue Activation & Calibrated Breathing Room — 2026-10-24
+
+- **Matriz no Footer Geral (`.site-mobile-footer`):** No mobile (`< 1024px`), a matriz foi transferida do Hero para o encerramento da landing page (logo após `#processo`), mantendo proporção retangular panorâmica (`clamp(140px, 22dvh, 180px)`), `touch-action: pan-y` e interação por touch/curiosidade ao final da leitura. No desktop, permanece no painel direito de 56%.
+- **Ativação e Calibração do Indicador 6 · 3 · 1 no Mobile:** O novo `ScrollCue` (matriz de microaberturas CRT com varredura âmbar GSAP) foi exposto no mobile com respiração equilibrada de 44px abaixo do CTA primário, alinhado à esquerda.
+- **Ritmo e Altura Proporcional do Hero:** Sem vácuo artificial de 100dvh nem aperto excessivo: o conjunto Header + Hero ocupa organicamente ~65% a 70% do viewport móvel (altura total ~580px em telas 390×844), permitindo que o início da seção `#processo` já apareça na borda inferior convidando ao scroll, com o indicador conduzindo com clareza a rolagem.
+- **Deduplicação de CTA:** CTA duplicado ao final do Processo ocultado no mobile.
+- **Validação:** `bun run build` aprovado; validação com `agent-browser` (Chromium 390×844 e 375×667) aprovada com captura de tela e clique navegacional funcional.
+
+## Previous delivery — global agent-browser adopted for Antigravity CLI — 2026-10-24
 
 Luca selected `agent-browser` for routine browser automation instead of Playwright. Installed CLI 0.39.2 globally, installed its official skill and exposed it in Antigravity CLI's global skills directory. An always-loaded global rule and project AGENTS/WORKFLOW now specify that preference; existing Playwright checks are legacy and require an explicit request to run. A real Antigravity CLI verification recognized the global preference, located the skill and executed the installed CLI. Local Chromium smoke checks passed for theme switching, the Process link, desktop/mobile overflow and page errors; both screenshots were opened. [Evidence and limits](archive/EXECUTION_HISTORY.md#2026-10-24--agent-browser-global-installation-and-preference). Next: use this procedure for the next explicitly requested UI check; Luca's Process visual evaluation remains pending.
 

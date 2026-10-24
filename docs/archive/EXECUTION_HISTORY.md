@@ -1355,3 +1355,38 @@ Luca chose `agent-browser` for browser automation in preference to Playwright an
 - Browser smoke checks in the named session: desktop 1440×1000 and mobile-sized viewport 390×844; fonts loaded, no horizontal overflow, two canvases present on mobile, actual click switched root class from `light` to `dark`, actual Process-link click reached `#processo` with `scrollY=1000` and the section in view, `errors` returned an empty array. Opened both screenshots: `/tmp/augeo-agent-browser-desktop.png` and `/tmp/augeo-agent-browser-mobile.png` (temporary). The session reused one browser across commands and was closed afterward. A first batch wait lost JS string quotes and timed out; the correctly quoted direct wait passed, with no product change.
 
 Coverage is a tool-installation smoke check in Chromium with reduced motion, including a narrow viewport rather than a physical mobile device. No full regression suite, other engines, touch/device emulation, motion benchmark, performance comparison or creative approval claimed. No application implementation, dependency migration, commit, push or publication performed in this task; pre-existing application/documentation edits preserved. Unbrowse has been completely uninstalled and removed from project skills and configuration.
+
+## 2026-10-24 — mobile hero balanced breathing room, scroll-cue activation and site footer matrix
+
+Luca requested adjustments to the mobile experience:
+1. **Posicionamento da Matriz no Footer:** Transferida do Hero para o footer geral da página (`.site-mobile-footer`), localizada após o `#processo`, retangular com `clamp(140px, 22dvh, 180px)`, permitindo exploração tátil/curiosidade ao fim do percurso de leitura. A reflexão sobre fixação/sticky foi mantida em aberto para avaliação cautelosa futura (preservando fluxo sem obstrução do viewport móvel).
+2. **Espaçamento e Ritmo Proporcional do Hero:** Ajustado para ocupar ~65% a 70% do primeiro viewport móvel sem forçar 100dvh e sem sufocar os elementos. O `ScrollCue` respira com 44px de espaçamento abaixo do CTA e 40px de padding inferior antes de `#processo`.
+3. **Ativação do Indicador 6 · 3 · 1 no Mobile:** O componente `ScrollCue` (matriz de microaberturas CRT com varredura âmbar GSAP) foi tornado visível e funcional em telas `< 1024px`, alinhado à esquerda na guia do texto e CTA.
+4. **Deduplicação de CTA:** O CTA final duplicado da seção de processo permanece oculto no mobile (`display: none`), mantendo apenas o CTA primário no topo.
+
+### Validação com `agent-browser`
+- Build aprovado com `bun run build`.
+- Sessão `augeo-mobile-hero-respace` no `agent-browser`:
+  - 390×844: Header 70px, Hero 517px (total 587px, ~69.5% do viewport), gap CTA-to-cue 44px, gap cue-to-process 40px (104px até headline do Processo).
+  - 375×667 (iPhone SE): total 580px (~87% do viewport), sem sobreposição e com início do processo visível.
+  - Capturas visuais salvas: `mobile-hero-balanced-golden.png` e `mobile-hero-se-balanced.png`.
+- Desktop 1440×900 verificado sem alterações na composição original (duas colunas 44/56, matriz no painel direito e footer móvel com `display: none`).
+- Sessão de browser fechada ao final do processo.
+
+## 2026-10-24 — scroll-cue scanline raster geometry & aperture refinement
+
+Luca solicitou o refinamento pontual das linhas brutas do componente `ScrollCue`.
+
+1. **Correção de Subpixel e Alinhamento Preciso:**
+   - Eliminados valores fracionários (`1.5px`, `1.25px`, `border-radius: 0.25px`) que geravam ruído ótico, moiré e linhas serrilhadas.
+   - Segmentos (`.scroll-cue-seg`): 2 barras de `1px` inteiro separadas por fenda de `2px` em container de 8×4px.
+   - Âncora (`.scroll-cue-anchor`): 3 barras de `2px` inteiro separadas por fendas de `1px` (2 + 1 + 2 + 1 + 2 = 8px exatos), com 3 spans sincronizados no JSX.
+2. **Micro-Substrato de Abertura (Aperture Plate):**
+   - Adicionado `background: color-mix(in srgb, currentColor 8%, transparent)` em `.scroll-cue-seg` e 10% em `.scroll-cue-anchor`, dando corpo estrutural aos elementos sem parecerem estrias flutuantes soltas.
+3. **Verificação:**
+   - `bun run build`: 0 erros TypeScript, bundle Vite gerado em ~989ms.
+   - `agent-browser` (viewport mobile 390×844 @2x retina):
+     - Modo Claro: Linhas de varredura nítidas, visíveis e com separação clara contra o fundo `#ecece8`.
+     - Modo Escuro: Estética CRT analógica preservada com geometria mais afiada e sem fuzziness.
+     - Capturas geradas: `mobile-screen-light.png` e `mobile-screen-dark.png`. Sessão de browser fechada.
+
