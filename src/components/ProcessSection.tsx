@@ -49,6 +49,24 @@ export default function ProcessSection() {
       if (!section || !title || !header || !step2) return;
 
       const mm = gsap.matchMedia();
+      const desktopQuery = window.matchMedia('(min-width: 1024px)');
+      let refreshFrame = 0;
+
+      const refreshLayout = () => {
+        cancelAnimationFrame(refreshFrame);
+        refreshFrame = requestAnimationFrame(() => {
+          if (!desktopQuery.matches) {
+            gsap.set(title, { clearProps: 'transform,y' });
+          }
+          ScrollTrigger.refresh();
+        });
+      };
+      const addMediaQueryListener = desktopQuery.addEventListener
+        ? () => desktopQuery.addEventListener('change', refreshLayout)
+        : () => desktopQuery.addListener(refreshLayout);
+      const removeMediaQueryListener = desktopQuery.removeEventListener
+        ? () => desktopQuery.removeEventListener('change', refreshLayout)
+        : () => desktopQuery.removeListener(refreshLayout);
 
       // Desktop: animação suave com ScrollTrigger e matchMedia
       mm.add('(min-width: 1024px)', () => {
@@ -139,7 +157,18 @@ export default function ProcessSection() {
         });
       });
 
-      return () => mm.revert();
+      // Window tiling can cross the breakpoint without a scroll event. Re-read
+      // the current trigger progress after the new layout has been painted.
+      window.addEventListener('resize', refreshLayout);
+      addMediaQueryListener();
+      refreshLayout();
+
+      return () => {
+        window.removeEventListener('resize', refreshLayout);
+        removeMediaQueryListener();
+        cancelAnimationFrame(refreshFrame);
+        mm.revert();
+      };
     },
     { scope: sectionRef }
   );
