@@ -93,6 +93,7 @@ export default function ScrollCue() {
       paused: false,
     });
 
+    // Phase 1: Forward Cascade (Sweep Down 0 -> 8 -> Anchor)
     elements.forEach((el, index) => {
       const isAnchor = index === ANCHOR_INDEX;
       const startTime = index * 0.22;
@@ -119,31 +120,146 @@ export default function ScrollCue() {
           },
           startTime + 0.18
         );
-      } else {
-        // Anchor catches the light at 1.98s and holds for ~1.5s
-        tl.to(
-          el,
-          {
-            opacity: 1,
-            color: 'rgb(255, 72, 44)',
-            filter: 'drop-shadow(0 0 8px rgba(255, 72, 44, 0.95))',
-            duration: 0.08,
-            ease: 'power2.out',
-          },
-          startTime
-        ).to(
-          el,
-          {
-            opacity: 0.7,
-            color: 'currentColor',
-            filter: 'drop-shadow(0 0 0px transparent)',
-            duration: 0.45,
-            ease: 'power1.inOut',
-          },
-          startTime + 1.5
-        );
       }
     });
+
+    // Anchor excitation at 1.98s:
+    // Glows intense orange, settles into crisp white CRT phosphor, then dims anterior rectangles
+    const anchorEl = elements[ANCHOR_INDEX];
+    const anteriorEls = elements.slice(0, 9);
+    const anchorStartTime = ANCHOR_INDEX * 0.22; // 1.98s
+
+    // Anchor catches the light in orange
+    tl.to(
+      anchorEl,
+      {
+        opacity: 1,
+        color: 'rgb(255, 72, 44)',
+        filter: 'drop-shadow(0 0 8px rgba(255, 72, 44, 0.95))',
+        duration: 0.08,
+        ease: 'power2.out',
+      },
+      anchorStartTime
+    );
+
+    // Anchor transitions from glowing orange into pure white phosphor at 2.35s
+    tl.to(
+      anchorEl,
+      {
+        color: '#ffffff',
+        filter: 'drop-shadow(0 0 6px rgba(255, 255, 255, 0.9))',
+        duration: 0.25,
+        ease: 'power2.inOut',
+      },
+      anchorStartTime + 0.37
+    );
+
+    // Anterior segments dim down to low resting opacity (0.18) to isolate focus on the white anchor
+    tl.to(
+      anteriorEls,
+      {
+        opacity: 0.18,
+        duration: 0.3,
+        ease: 'power1.out',
+      },
+      anchorStartTime + 0.4
+    );
+
+    // Anchor holds white glow until 3.3s, then gently decays to currentColor
+    tl.to(
+      anchorEl,
+      {
+        opacity: 0.7,
+        color: 'currentColor',
+        filter: 'drop-shadow(0 0 0px transparent)',
+        duration: 0.45,
+        ease: 'power1.inOut',
+      },
+      3.3
+    );
+
+    // Phase 2: Symmetric Funnel Discharge (Vertical Return)
+    // Row 1 center segments (indices 7, 6, 8) and Row 0 center segments (indices 2, 3)
+    // emit a delicate upward return wave between 3.65s and 3.95s
+    const row1CenterEls = [elements[7]]; // center segment of row 1
+    const row1FlankEls = [elements[6], elements[8]]; // flanks of row 1
+    const row0CenterEls = [elements[2], elements[3]]; // center segments of row 0
+    const row0MidEls = [elements[1], elements[4]];
+
+    tl.to(
+      [row1CenterEls, row1FlankEls],
+      {
+        opacity: 0.7,
+        color: 'currentColor',
+        duration: 0.12,
+        ease: 'power2.out',
+        stagger: 0.04,
+      },
+      3.65
+    ).to(
+      [row1CenterEls, row1FlankEls],
+      {
+        opacity: 0.35,
+        duration: 0.22,
+        ease: 'power1.inOut',
+      },
+      3.8
+    );
+
+    tl.to(
+      [row0CenterEls, row0MidEls],
+      {
+        opacity: 0.7,
+        color: 'currentColor',
+        duration: 0.12,
+        ease: 'power2.out',
+        stagger: 0.04,
+      },
+      3.8
+    ).to(
+      [row0CenterEls, row0MidEls],
+      {
+        opacity: 0.35,
+        duration: 0.22,
+        ease: 'power1.inOut',
+      },
+      3.95
+    );
+
+    // Restore any remaining anterior elements smoothly to default resting opacity (0.35)
+    tl.to(
+      anteriorEls,
+      {
+        opacity: 0.35,
+        color: 'currentColor',
+        duration: 0.3,
+        ease: 'power1.inOut',
+      },
+      4.1
+    );
+
+    // Phase 3: Standby Filament Pre-Charge at Segment 0
+    // At 4.82s (right before the next loop at 5.0s), Segment 0 pulses subtly, seeding the eye
+    tl.to(
+      elements[0],
+      {
+        opacity: 0.85,
+        color: 'currentColor',
+        filter: 'drop-shadow(0 0 3px rgba(255, 255, 255, 0.4))',
+        duration: 0.1,
+        ease: 'power2.out',
+      },
+      4.82
+    ).to(
+      elements[0],
+      {
+        opacity: 0.35,
+        filter: 'drop-shadow(0 0 0px transparent)',
+        duration: 0.08,
+        ease: 'power1.in',
+      },
+      4.92
+    );
 
     // 5.0 second total cycle with silence/breathing room before the next pulse
     tl.set({}, {}, 5.0);
