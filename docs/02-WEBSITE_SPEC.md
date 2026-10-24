@@ -13,7 +13,7 @@ Website purpose and priority: [AUGEO.md](AUGEO.md). The landing explains the con
 - Header
 - Hero
 - Process
-- Intake and screening form
+- Commercial entry through WhatsApp, with short chatbot screening and human handoff
 - Mobile visual footer integrated into the hero composition
 
 ### Outside this version's scope
@@ -34,9 +34,9 @@ Website purpose and priority: [AUGEO.md](AUGEO.md). The landing explains the con
 | Hero | Positioning, interactive signature and conversion button; implemented. |
 | Mobile footer | Matrix and lettering close the composition below copy and CTA; implemented. |
 | Process | Explain understanding, direction and proposal; planned. |
-| Form | Receive business context for screening; planned at `#entrada`. |
+| Commercial entry | WhatsApp conversation with short chatbot screening and human handoff; approved direction, not implemented. |
 
-“Apresentar negócio” is the conversion entry already present in the composition. The next step is connecting its destination to the real form; current code uses `href="#entrada"`.
+“Apresentar negócio” remains the conversion entry. Luca approved WhatsApp as its intended destination on 2026-10-24; current code still uses `href="#entrada"`. No number, automated receiving flow or handoff has been connected. An inline form is no longer required by the current direction.
 
 ## 4. Hero
 
@@ -67,12 +67,33 @@ Visual planning structured with Impeccable (`shape` + surface extension in `new-
 - **Visual review approved as baseline — Luca, 2026-10-24:** The 22/10 corrected Process is approved as the current baseline on `v4`. It will still change; the changes are to be defined together with Luca before implementation. The datum/stage-label rejection above still applies.
 - **Implementation boundary:** Preserve content, semantic navigation, responsive readability, accessible interaction and reduced-motion behavior while exploring alternatives.
 
+- **Interaction clarification — Luca, 2026-10-24:** Step opacity belongs to progressive focus: scrolling reveals the reading steps; pointer hover temporarily focuses the cumulative path, and leaving the ledger restores the scroll-driven state. Do not treat a deliberately defocused upcoming step as the permanent reading presentation or infer approval to remove this interaction from an audit of that state. Evaluate legibility at the actual reading position, including pointer exit. The blanket opacity-removal recommendation in the 24/10 audit was withdrawn; computed measurements remain observations of their sampled states.
+
 - **Three-step copy (implemented on `section-process`):** Keeps draft steps 1 and 2 and refines step 3 (*“Devolvemos um briefing validado com nossa recomendação, o escopo e o investimento. Você decide sobre a contratação.”*) to explicitly deliver the validated brief alongside recommendation, scope and investment, preserving client decision autonomy.
 - **Technical structure:** `src/components/ProcessSection.tsx`, `<section id="processo" aria-labelledby="process-title" tabIndex={-1}>` after `.hero` inside `<main>`, with ordered `.process-ledger` steps and IDs `processo-01`, `processo-02`, `processo-03`. Continuation link: [HERO](HERO.md#continuation-cue). Dated implementation and test evidence: history.
 
 ## 6. Sales intake and form
 
-The complete landing will have one intake form, not yet implemented. It does not create two separate journeys or require visitors to know which service to buy.
+**Current decision — Luca, 2026-10-24:** “Apresentar negócio” will lead to WhatsApp. A chatbot receives and organizes the initial contact through a short contextual conversation, then hands it to a person. This supersedes the inline-form proposal; the form is retained as a possible alternative, not required work. Visitors can arrive with a defined request or ask for guidance.
+
+### Approved conversational direction
+
+1. Ask what the business is; accept a site or Instagram link if available.
+2. Ask what brought the person to AUGEO.
+3. Ask a relevant follow-up based on that answer, instead of sending the whole questionnaire at once.
+4. Confirm the summary and route the contact for human analysis.
+
+The bot's role is reception, understanding and organization. Recommendations of a solution, price and commitment to a project remain with the human team. Provide a clear way to request a person. Do not promise response deadlines, automatic quotes or guaranteed meetings. The automation must identify itself as such rather than impersonating the team.
+
+### Implementation status and next decisions
+
+No WhatsApp number, automation provider, account/API integration, receiving destination or human owner has been configured or selected. Define the conversation script, number, handoff owner and data handling before implementing. No tool purchase, account provisioning or publication is authorized by this direction alone.
+
+### Previous form proposal — retained alternative
+
+The material below describes the earlier form study, not the active channel decision or a required section of the landing.
+
+**Earlier design studies — 2026-10-24:** [Form architecture](reviews/2026-10-24-intake-architecture.md) and [component specifications](reviews/2026-10-24-intake-components.md) remain alternative material. Their seven fields and e-mail channel do not govern the WhatsApp conversation. No form or receiving integration was implemented.
 
 ### Form role
 
@@ -173,7 +194,7 @@ Avoid promises of results, quick returns, formulas, total solutions without cont
 
 - Responsive, accessible and performant landing.
 - Hero interaction adapted to mouse, touch and reduced motion.
-- Form with validation, submission confirmation and routing to sales screening.
+- Working WhatsApp conversion destination, conversational screening and reliable human handoff, with clear status/failure handling.
 - Structure prepared to add future case studies and pages without rewriting the main flow.
 
 ### Implemented technical baseline
@@ -204,9 +225,9 @@ Current delivery state and next action: [BACKLOG](BACKLOG.md#current-state). Her
 
 ### To finish the complete landing
 
-- Structure Process and form with copy consistent with positioning. Preserve the implemented mobile footer.
-- Finalize required fields, receiving tool, data handling, screening owner and success/error messages.
-- Implement `#processo` and `#entrada`, integrate navigation/continuation and connect CTA to the working form.
+- Keep Process and the implemented mobile footer; align commercial-entry copy with WhatsApp screening.
+- Define the WhatsApp script, number/tool, data handling, screening owner and handoff/failure messages.
+- Connect conversion CTAs to the configured WhatsApp destination and validate screening through human receipt; do not implement `#entrada` as a form merely to satisfy the superseded proposal.
 - Define placement of public channels using the existing email; WhatsApp Business depends on future setup.
 - Validate the complete experience: responsiveness, keyboard/focus, contrast, reduced motion, loading, submission, failures and actual receipt for screening.
 - Define domain redirection/canonical policy and publication/indexing metadata; maintain valid HTTPS on both addresses before closing the complete delivery.

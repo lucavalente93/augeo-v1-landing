@@ -2,6 +2,48 @@
 
 Updated on 2026-10-24. Current queue and latest delivery only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Previous deliveries, commands and results: [history](archive/EXECUTION_HISTORY.md).
 
+## Latest delivery — Component design applied to existing landing — 2026-10-24
+
+Luca redirected the current task to the last selected skill, `uiuxdesigner:component-design`, rather than advancing WhatsApp setup. Applied it to the actual landing's CTA, theme control, ScrollCue, Process steps and brand/matrix roles. [Component sheets and concrete recommendations](reviews/2026-10-24-landing-components.md).
+
+Preserve the existing visual baseline and progressive Process focus. Proposed local follow-ups: CTA destination/expectation when the WhatsApp number is available, theme action label/touch area, and footer semantics. No bot setup, form implementation or frontend change; this is a source-grounded component specification. Next: review these concrete component choices before implementing an explicitly selected change.
+
+## Current direction — WhatsApp conversational intake — 2026-10-24
+
+Luca approved WhatsApp as the destination for “Apresentar negócio”, with a short chatbot conversation to understand the business/reason for contact, ask a contextual follow-up, confirm a summary and hand off to a person. Human team retains solution recommendations, pricing and project commitments; provide a clear human-contact path. [Responsible specification](02-WEBSITE_SPEC.md#6-sales-intake-and-form).
+
+The inline-form studies below are retained alternatives, not the next implementation task. Current CTA still points to absent `#entrada`; no WhatsApp number, automation or receiving integration is configured. Next: define the bot conversation and handoff owner, then select/configure the actual channel and connect the CTA. No account, tool purchase, frontend change, commit or push in this decision record.
+
+## Latest delivery — Intake architecture and component specifications — 2026-10-24
+
+**Presentation revised at Luca's request:** both proposals now start with the visitor-facing form and a plain-language explanation of its behavior. Technical detail remains below the readable proposal. This changes presentation, not field requirements, approval or implementation status.
+
+Applied both remaining selected skills on Luca's explicit request:
+
+- `uiuxdesigner:information-architecture`: [content inventory, sitemap, desktop/mobile navigation, labels and tree/card-sort test plan](reviews/2026-10-24-intake-architecture.md).
+- `uiuxdesigner:component-design`: [component sheets, dimensions, responsive behavior, keyboard/focus, validation, loading, failure, retry and receipt states](reviews/2026-10-24-intake-components.md).
+
+Concrete proposal: one inline `#entrada` after Process and before the mobile matrix footer; seven fields grouped by business, initial request and contact; five required fields, optional request/references, valid “preciso de orientação” path, no budget or phone requirement. E-mail as return channel, field requirements and layout remain proposed rather than approved policy. Both skills have now been applied at design/specification level; the form and receiving backend are not implemented and no participant test was run.
+
+**User correction incorporated:** Process opacity is intentional scroll/hover focus; the blanket recommendation to remove it is withdrawn. Intended behavior is recorded in [specification §5](02-WEBSITE_SPEC.md#5-public-process); the audit retains sampled measurements with this qualification.
+
+Next: review the concrete intake proposal, settle the receiving destination/triage owner/return channel/data-use information, then implement and verify the actual flow. Documentation-only delivery on `v4`; no commit or push.
+
+## Latest delivery — UX audit and programmed skill sequence — 2026-10-24
+
+**Correction and supplemental audit:** Luca rejected the initial inspection as an incomplete audit. Completed the scoped supplemental review in [the same report](reviews/2026-10-24-ux-skill-sequence.md#supplemental-audit--completed-scoped-review-after-lucas-correction): desktop/mobile in both themes, actual hover/scroll/keyboard paths, computed Process contrast, reduced-motion reading fallback and manual footer semantics. No intake architecture was started.
+
+Historical audit findings: missing `#entrada` blocks conversion; whole-step opacity `.38` yielded sampled resting contrast values. Luca subsequently clarified the intended focus interaction; its blanket removal recommendation is withdrawn. Theme accessible state and named generic footer were smaller findings; 26px theme hit area is an ergonomic recommendation, not a 24px AA failure. The two future skills were subsequently applied as proposals in the latest delivery above.
+
+Read all six requested UI UX Designer skills; selected exactly three. Initial partial inspection was expanded using `ux-audit-critique`; its coverage is qualified above. [Audit, comparison, evidence and future task contracts](reviews/2026-10-24-ux-skill-sequence.md).
+
+- **State reconciled:** lettering through `41aaaf8` is committed and included in `main` merge `84a7809`; earlier entries below describing uncommitted work reflect their original delivery moment. Vercel deployment was not verified.
+- **Finding:** clicking “Apresentar negócio” changes the hash to missing `#entrada`; no form exists. Process navigation/focus works, with zero horizontal overflow at 1440×900 and 390×844. Resting Process contrast is now measured in the supplement; automated accessibility review alone still has two incomplete groups.
+- **Programmed future 1:** `uiuxdesigner:information-architecture` when defining `#entrada`, before component work: content inventory, journey/hierarchy, navigation/labels and tree-test plan, within specification §6.
+- **Programmed future 2:** `uiuxdesigner:component-design` after intake structure/fields are agreed: responsive component sheets, keyboard/focus and submission/loading/error/success states, tied to actual receipt verification.
+
+Future tasks are queued by dependency, not scheduled by time or running in the background. No interface changes, commit or publication in this audit. Current next action is the audit review above.
+
 ## Latest delivery — Experimental `lettering-finish`: linha de apoio óptica — 2026-10-24
 
 - **Acabamento:** Harmonizada a linha de apoio do wordmark: os pés planos de `A` e `E` foram estendidos de `131u` para `133u`, aproximando-os do overshoot natural de `U`, `G` e `O` sem redesenhar as formas.
