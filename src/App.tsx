@@ -75,11 +75,14 @@ export default function App() {
             </div>
             <ScrollCue />
           </div>
-          <div className="hero-matrix-panel">
+          <div className="hero-matrix-panel desktop-only">
             <KineticMatrix title="AUGEO" titleArtworkSrc={augeoLettering} enableArtworkMotion gridSpacing={72} className="hero-matrix" />
           </div>
         </section>
         <ProcessSection />
+        <footer className="site-mobile-footer" aria-label="Assinatura técnica Augeo">
+          <KineticMatrix title="AUGEO" titleArtworkSrc={augeoLettering} enableArtworkMotion gridSpacing={72} className="hero-matrix" />
+        </footer>
       </main>
     </div>
   );

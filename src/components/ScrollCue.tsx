@@ -362,7 +362,6 @@ export default function ScrollCue() {
           <span className="scroll-cue-scanline" />
           <span className="scroll-cue-scanline" />
           <span className="scroll-cue-scanline" />
-          <span className="scroll-cue-scanline" />
         </motion.span>
       </span>
     </motion.a>

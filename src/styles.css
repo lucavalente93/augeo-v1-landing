@@ -40,23 +40,23 @@
 
 
 :root {
-  --background: #f7f7f5;
+  --background: #ecece8;
   --foreground: #111111;
-  --card: #fff;
-  --card-foreground: #111;
-  --popover: #fff;
-  --popover-foreground: #111;
+  --card: #f2f2ee;
+  --card-foreground: #111111;
+  --popover: #f2f2ee;
+  --popover-foreground: #111111;
   --primary: #ff482c;
-  --primary-foreground: #111;
-  --secondary: #ecece8;
-  --secondary-foreground: #111;
-  --muted: #ecece8;
-  --muted-foreground: #61615d;
+  --primary-foreground: #111111;
+  --secondary: #e2e2dc;
+  --secondary-foreground: #111111;
+  --muted: #e2e2dc;
+  --muted-foreground: #5a5a56;
   --accent: #ff482c;
-  --accent-foreground: #111;
+  --accent-foreground: #111111;
   --destructive: #b91c1c;
-  --border: rgba(17, 17, 17, 0.08);
-  --input: #d9d9d4;
+  --border: rgba(17, 17, 17, 0.09);
+  --input: #d4d4cd;
   --ring: #ff482c;
   --radius: 0.5rem;
   --font-heading: "Hanken Grotesk", sans-serif;
@@ -250,13 +250,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
 }
 .hero-matrix-panel { position: relative; min-width: 0; min-height: 100dvh; }
 .hero-matrix-panel > .kinetic-matrix { position: absolute; inset: 0; }
-.kinetic-matrix { container-type: size; position: relative; isolation: isolate; width: 100%; height: 100%; overflow: hidden; user-select: none; background: var(--background); --crt-line: rgba(17, 17, 17, .045); --crt-center: transparent; --crt-edge: rgba(17, 17, 17, .055); }
-.kinetic-matrix::after { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, var(--crt-center) 0%, transparent 55%, var(--crt-edge) 100%), repeating-linear-gradient(to bottom, transparent 0 3px, var(--crt-line) 3px 4px); }
+.kinetic-matrix { container-type: size; position: relative; isolation: isolate; width: 100%; height: 100%; overflow: hidden; user-select: none; background: var(--background); --crt-line: rgba(17, 17, 17, .028); --crt-center: rgba(255, 255, 255, .28); --crt-edge: rgba(17, 17, 17, .055); }
+.kinetic-matrix::after { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, var(--crt-center) 0%, transparent 60%, var(--crt-edge) 100%), repeating-linear-gradient(to bottom, transparent 0 3px, var(--crt-line) 3px 4px); }
 @media (prefers-color-scheme: dark) {
   :root:not(.light) .kinetic-matrix { --crt-line: rgba(255, 255, 255, .085); --crt-center: rgba(255, 255, 255, .025); --crt-edge: rgba(0, 0, 0, .22); }
 }
 .dark .kinetic-matrix { --crt-line: rgba(255, 255, 255, .085); --crt-center: rgba(255, 255, 255, .025); --crt-edge: rgba(0, 0, 0, .22); }
-.light .kinetic-matrix { --crt-line: rgba(17, 17, 17, .045); --crt-center: transparent; --crt-edge: rgba(17, 17, 17, .055); }
+.light .kinetic-matrix { --crt-line: rgba(17, 17, 17, .028); --crt-center: rgba(255, 255, 255, .28); --crt-edge: rgba(17, 17, 17, .055); }
 .matrix-title { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; padding: 12%; }
 .matrix-title h2 { max-width: 100%; margin: 0; font-size: min(14cqw, 24cqh, 8rem); line-height: 1; overflow-wrap: anywhere; text-align: center; }
 .hero-matrix .matrix-title { bottom: auto; height: calc(var(--hero-heading-center-y, 50dvh) * 2); padding: clamp(16px, 5cqw, 68px); }
@@ -278,19 +278,26 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
 }
 .dark .matrix-artwork, .dark .matrix-artwork-reactive { filter: invert(1); opacity: .88; }
 .light .matrix-artwork, .light .matrix-artwork-reactive { filter: none; opacity: 1; }
+.desktop-only { display: block; }
+.site-mobile-footer {
+  display: none;
+}
+
 @media (max-width: 1023px) {
+  .desktop-only { display: none !important; }
   .site-header { position: relative; width: 100%; height: 70px; padding: 0 20px; }
   .brand { width: 58px; height: 58px; }
   .hero {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: calc(100dvh - 70px);
+    min-height: 0;
     width: 100%;
   }
   .hero-copy {
-    padding: 32px 20px 24px;
-    flex: 1 0 auto;
+    padding: 24px 20px 40px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
     isolation: isolate;
     background: none;
   }
@@ -305,23 +312,31 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
   }
   .hero-copy h1 { font-size: min(clamp(2.75rem, 16cqw, 3.75rem), calc(16cqw + 1rem)); }
   .hero-description { margin-top: 20px; }
-  .hero-cta { margin-top: 24px; }
-  .hero-matrix-panel {
+  .hero-cta { margin-top: 28px; }
+  .hero-page .scroll-cue {
+    margin-top: 44px;
+    align-self: flex-start;
+  }
+
+  .site-mobile-footer {
+    display: block;
+    position: relative;
     width: 100%;
-    height: clamp(220px, 35dvh, 340px);
-    min-height: 220px;
-    margin-top: auto;
+    height: clamp(140px, 22dvh, 180px);
+    min-height: 140px;
     border-top: 1px solid var(--border);
     touch-action: pan-y;
   }
-  .hero-matrix-panel .kinetic-matrix {
+  .site-mobile-footer .kinetic-matrix {
+    position: absolute;
+    inset: 0;
     touch-action: pan-y;
   }
-  .hero-matrix .matrix-title {
+  .site-mobile-footer .hero-matrix .matrix-title {
     height: 100%;
     padding: clamp(12px, 3cqw, 24px);
   }
-  .hero-matrix .matrix-artwork-title {
+  .site-mobile-footer .hero-matrix .matrix-artwork-title {
     width: min(85%, 360px);
   }
 }
@@ -330,92 +345,92 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
   .matrix-artwork-reactive { display: none; }
 }
 
-/* Desktop continuity link to #processo: 6 · 3 segment rows and an anchor.
+/* Continuity link to #processo: 6 · 3 segment rows and an anchor.
    Option 3: CRT Scanline Aperture Array.
    Spring physics on hover via Motion; electron beam sweep timeline via GSAP. */
 html { scroll-behavior: smooth; }
 .scroll-cue {
-  display: none;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 24px;
+  max-width: 100%;
+  width: 80px;
+  height: 63px;
   color: var(--foreground);
   text-decoration: none;
   border-radius: 2px;
 }
 @media (min-width: 1024px) {
   .hero-page .scroll-cue {
-    display: inline-flex;
-    align-items: flex-start;
-    justify-content: center;
-    position: relative;
-    flex-shrink: 0;
-    align-self: flex-start;
     margin-top: 32px;
-    max-width: 100%;
-    width: 80px;
-    height: 63px;
   }
-  /* 78 x 44 px drawing; even sizes keep every resting edge on whole pixels inside the 80 x 63 link. */
-  .scroll-cue-field {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    margin-top: 10px;
-  }
-  .scroll-cue-row {
-    display: flex;
-    gap: 6px;
-  }
-  .scroll-cue-seg {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 8px;
-    height: 4px;
-    opacity: 0.35;
-    color: var(--foreground);
-    border-radius: 0.5px;
-    overflow: hidden;
-    background: transparent;
-    cursor: pointer;
-    will-change: transform, opacity, color, filter;
-  }
-  .scroll-cue-seg .scroll-cue-scanline {
-    display: block;
-    width: 100%;
-    height: 1.5px;
-    background-color: currentColor;
-    border-radius: 0.25px;
-    pointer-events: none;
-  }
-  .scroll-cue-anchor {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 8px;
-    height: 8px;
-    opacity: 0.7;
-    color: var(--foreground);
-    border-radius: 1px;
-    overflow: hidden;
-    background: transparent;
-    cursor: pointer;
-    will-change: transform, opacity, color, filter;
-  }
-  .scroll-cue-anchor .scroll-cue-scanline {
-    display: block;
-    width: 100%;
-    height: 1.25px;
-    background-color: currentColor;
-    border-radius: 0.25px;
-    pointer-events: none;
-  }
-  .scroll-cue:active {
-    transform: scale(0.97);
-  }
-  .scroll-cue:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-  }
+}
+/* 78 x 44 px drawing; even sizes keep every resting edge on whole pixels inside the 80 x 63 link. */
+.scroll-cue-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+.scroll-cue-row {
+  display: flex;
+  gap: 6px;
+}
+.scroll-cue-seg {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 8px;
+  height: 4px;
+  opacity: 0.45;
+  color: var(--foreground);
+  border-radius: 1px;
+  overflow: hidden;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  cursor: pointer;
+  will-change: transform, opacity, color, filter;
+}
+.scroll-cue-seg .scroll-cue-scanline {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  border-radius: 0;
+  pointer-events: none;
+}
+.scroll-cue-anchor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 8px;
+  height: 8px;
+  opacity: 0.75;
+  color: var(--foreground);
+  border-radius: 1px;
+  overflow: hidden;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  cursor: pointer;
+  will-change: transform, opacity, color, filter;
+}
+.scroll-cue-anchor .scroll-cue-scanline {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 0;
+  pointer-events: none;
+}
+.scroll-cue:active {
+  transform: scale(0.97);
+}
+.scroll-cue:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue .scroll-cue-seg { opacity: 0.45 !important; transform: none !important; }
@@ -436,6 +451,8 @@ html { scroll-behavior: smooth; }
   --process-border-active: rgba(255, 255, 255, 0.32);
   --process-grid-line: rgba(255, 255, 255, 0.045);
   --process-crosshair-color: #ffffff;
+  --process-vignette-center: rgba(255, 255, 255, 0.03);
+  --process-vignette-edge: rgba(0, 0, 0, 0.42);
   /* The panel background resolves cqw against this full-width ancestor. */
   container-type: inline-size;
   position: relative;
@@ -450,16 +467,18 @@ html { scroll-behavior: smooth; }
   transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 :root.light .process-section {
-  --process-bg: #f7f7f5;
+  --process-bg: #ecece8;
   --process-fg: #111111;
   --process-title-color: rgba(17, 17, 17, 0.88);
   --process-title-active: #111111;
-  --process-muted: #61615d;
+  --process-muted: #5a5a56;
   --process-muted-active: #222222;
-  --process-border: rgba(17, 17, 17, 0.08);
-  --process-border-active: rgba(17, 17, 17, 0.36);
+  --process-border: rgba(17, 17, 17, 0.09);
+  --process-border-active: rgba(17, 17, 17, 0.38);
   --process-grid-line: rgba(17, 17, 17, 0.05);
   --process-crosshair-color: #111111;
+  --process-vignette-center: rgba(255, 255, 255, 0.22);
+  --process-vignette-edge: rgba(17, 17, 17, 0.045);
 }
 .process-section:focus { outline: none; }
 .process-panel {
@@ -468,9 +487,11 @@ html { scroll-behavior: smooth; }
   isolation: isolate;
   width: 100%;
   --process-grid-size: calc(100cqw / 3);
-  background-image: linear-gradient(to right, var(--process-grid-line) 1px, transparent 1px);
-  background-size: var(--process-grid-size) var(--process-grid-size);
-  background-position: -1px -1px;
+  background-image:
+    radial-gradient(ellipse at 50% 30%, var(--process-vignette-center, transparent) 0%, transparent 65%, var(--process-vignette-edge, transparent) 100%),
+    linear-gradient(to right, var(--process-grid-line) 1px, transparent 1px);
+  background-size: 100% 100%, var(--process-grid-size) var(--process-grid-size);
+  background-position: center center, -1px -1px;
 }
 .process-header-primary {
   padding: 64px var(--process-inset) 24px;
@@ -599,7 +620,7 @@ html { scroll-behavior: smooth; }
   overflow-wrap: break-word;
 }
 .process-closing-action {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   margin-top: 6px;
@@ -627,7 +648,7 @@ html { scroll-behavior: smooth; }
     grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
     align-items: start;
     --process-grid-size: 14cqw;
-    background-position: calc(2cqw - 1px) -1px;
+    background-position: center center, calc(2cqw - 1px) -1px;
   }
   .process-ledger-wrapper { border-left: 1px solid var(--process-border); }
   .process-header-primary {

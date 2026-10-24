@@ -167,7 +167,7 @@ export function KineticMatrix({ title = 'TOPOLOGY', titleArtworkSrc, enableArtwo
     function draw() {
       if (!gridContext) return;
       const ink = isDarkTheme ? '255,255,255' : '17,17,17';
-      gridContext.fillStyle = isDarkTheme ? '#06070a' : '#f7f7f5';
+      gridContext.fillStyle = isDarkTheme ? '#06070a' : '#ecece8';
       gridContext.fillRect(0, 0, width, height);
       const pixel = (value: number) => value;
       const weight = Math.min(1.4, Math.max(1, width / 1000));

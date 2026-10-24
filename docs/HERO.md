@@ -26,11 +26,11 @@ The text panel has 2% white radial illumination over the theme background, with 
 
 ## Mobile composition
 
-On `v3`, below 1024 px, header and hero follow vertical flow. The header is 70 px high with a 58 px symbol and 20 px inset. Copy uses symmetric 20 px insets; heading, supporting text and CTA precede the matrix. The CTA remains visible with minimum height 44 px and top margin 24 px.
+On `v4`, below 1024 px, header and hero follow vertical flow. The header is 70 px high with a 58 px symbol and 20 px inset. Copy uses symmetric 20 px insets; heading, supporting text, CTA and `ScrollCue` follow in order. The CTA remains visible with minimum height 44 px and top margin 28 px.
 
-The entire matrix was repositioned as the **mobile hero's visual footer**, full width with height `clamp(220px, 35dvh, 340px)` with a 220px minimum, a 1 px top divider and automatic margin above. Lettering is centered in this panel and uses `min(85%, 360px)`. `touch-action: pan-y` allows vertical scrolling through the matrix area.
+The entire matrix component was moved from the hero to the **site footer** (`.site-mobile-footer`), full width below `#processo` with height `clamp(140px, 22dvh, 180px)`, a 1 px top divider and automatic margin above. Lettering is centered in this panel and uses `min(85%, 360px)`. `touch-action: pan-y` allows vertical scrolling through the matrix area.
 
-The copy surface extends across the header's 70 px: a single background covers symbol and text down to the matrix without restarting illumination at the header/hero boundary. The continuation cue is hidden on mobile.
+The hero on mobile occupies ~65% to 70% of the viewport (~580 px total with header). The `ScrollCue` sits below the CTA with 44 px clearance and 40 px hero bottom padding, pointing down to `#processo` with native smooth scroll navigation. Approved by Luca on 2026-10-24; redesigning the mobile cue/triangle variant remains noted for a future turn.
 
 ## Themes and brand
 
