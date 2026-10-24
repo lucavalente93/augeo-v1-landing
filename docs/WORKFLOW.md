@@ -4,9 +4,19 @@ Current execution and validation procedures. [AGENTS.md](../AGENTS.md) routes au
 
 ## Bun and validation
 
-Use Bun for installation and execution: `bun install --frozen-lockfile`, `bun run dev`, `bun run build`, `bun run preview` and `bun run test` (Playwright). `bunfig.toml` forces Bun for script executables; keep only `bun.lock`. To install Chromium, use `bunx --bun playwright install chromium`.
+Use Bun for project installation and execution: `bun install --frozen-lockfile`, `bun run dev`, `bun run build` and `bun run preview`. `bunfig.toml` forces Bun for script executables; keep only `bun.lock`.
 
-Some executors block sockets with `EPERM`, independently of Playwright. Try `bun run test` in the sandbox once per validation block; if this known error occurs at server startup, request approved execution outside it. Do not repeat IPv4/IPv6, Vite, Node, Python or subprocess probes without new evidence, or change configuration to bypass the restriction. Use `bun run test` for functional regressions and `dev-browser` for visual/interactive inspection, each with its own execution procedures. Reopen investigation if repeated approvals significantly impede development.
+Luca chose `agent-browser` on 2026-10-24 as the default for agent-driven browser validation, replacing Playwright as the routine execution path. Use the globally installed CLI and official skill; Antigravity CLI discovers the skill in its global skills directory. Read `agent-browser skills get core` for instructions matching the installed version. Existing `tests/*.spec.ts`, `playwright.config.ts` and `bun run test` remain legacy coverage; execute or migrate that suite only when explicitly requested. Do not silently fall back to Playwright, Puppeteer, Unbrowse or another browser tool.
+
+For a local UI change:
+
+1. Start or reuse the project's Vite server and choose an explicit named agent-browser session for this task/agent. Reuse the same session across commands. Let agent-browser discover an existing compatible Chrome/Chromium; use `--executable-path` when discovery fails. Download a browser only if none is available. CDP attachment is optional, not a prerequisite for normal local launch.
+2. Navigate to the actual local URL. Prefer compact/scoped snapshots (`snapshot -i`, `snapshot -s <selector>`) and targeted `eval` results over full DOM dumps. Batch independent known actions when no intermediate observation is needed.
+3. Exercise the changed behavior with real `click`, `hover`, pointer, scroll or keyboard commands. Wait for an observable condition rather than an arbitrary delay; wait for fonts before layout measurement or captures. Use DOM evaluation for measurements, not as the sole proof that user interaction works.
+4. Check the affected desktop/mobile sizes, themes and motion preferences when relevant. Capture and open the pertinent screenshots, inspect geometry/overflow and page errors, and report actual assertions and limits. A snapshot of accessible controls alone does not validate canvas, layout or motion. Keep the coverage pertinent to the change; do not claim the historical suite passed.
+5. Close only the named session owned by this task. Do not close another executor's session or the user's browser. Follow the evidence procedure below.
+
+Some executors block sockets or browser launch with `EPERM`, independently of the automation library. Try the required operation once under the current execution policy; if that known restriction occurs, use the executor's approved permission mechanism. Do not repeat IPv4/IPv6, Vite, Node, Python or subprocess probes without new evidence, or change application configuration to bypass the restriction.
 
 ## Impeccable
 
@@ -37,7 +47,7 @@ Apply `coding-standards` from `affaan-m/ECC`, reading the [original SKILL.md](ht
 Apply naming guidance within the React skill's architecture and lifecycle constraints.
 
 1. Record current → proposed names per block and find all uses before editing. Rename identifiers respecting scope and types; do not globally replace words such as `step`, `title`, `from`, `to` or `source`.
-2. Migrate declarations and consumers together: imports/exports, props, landing and `?demo=matrix` demo, CSS/Playwright selectors, DOM queries, custom properties and operational references. Preserve the current `.hero-page` scope during renaming; removing it requires separate analysis.
+2. Migrate declarations and consumers together: imports/exports, props, landing and `?demo=matrix` demo, CSS and browser-check selectors (including retained legacy tests), DOM queries, custom properties and operational references. Preserve the current `.hero-page` scope during renaming; removing it requires separate analysis.
 3. A naming-only migration preserves behavior and values; adding a unit to a name does not convert its value. The matrix API remains generic.
 4. Separate proposals beyond renaming: removing `pixel`, eliminating CSS scopes, reorganizing tests, moving assets or extracting functions. Do not optimize warp, change timings or advance visual blocks during a naming migration.
 5. For naming migrations, run build and regression checks before and after changes; reuse applicable baseline evidence and respect bridge check ownership below. Migrate pertinent test references while preserving assertions.

@@ -28,6 +28,7 @@ Code demonstrates implementation, not approval. Resolve conflicts against curren
 
 ## Execution and local environment
 
+- Use `agent-browser` as the default for browser automation, local interaction checks and screenshots, in preference to Playwright. Antigravity CLI uses the globally installed CLI and its global `agent-browser` skill. The procedure and legacy-suite policy are in [WORKFLOW](docs/WORKFLOW.md#bun-and-validation).
 - For React/TypeScript implementation or review, use `augeo-react-frontend`. For design procedure and verification, follow the relevant WORKFLOW section.
 - Prefer `gh` for equivalent GitHub operations; use Git for local operations and pushes. Permission comes from global governance. Commit subjects/bodies use English Conventional Commits (`type(scope): description`); group implementation with its tests.
 - [Four-layer stack](docs/refs/stack-referencia-4-camadas.md) and [Architecture Reference](docs/architecture-reference.md) are conceptual inputs, not adopted tools or requirements. Adopted integration is in ORCHESTRATION.
