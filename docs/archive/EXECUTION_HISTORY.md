@@ -1,5 +1,29 @@
 # Histórico de execução e decisões anteriores
 
+## 2026-10-24 — Experimental `lettering-finish`: linha de apoio óptica
+
+- No acabamento de produção, harmonizada a linha inferior do wordmark sem redesenhar a identidade: os pés planos do `A` e do `E` passaram de `131u` para `133u`, aproximando a cota visual do overshoot natural observado em `U`, `G` e `O`.
+- Atualizado o snap dinâmico em `src/App.tsx` de `120/126` para `122/126`, refletindo a nova baseline plana no viewBox e mantendo o lettering apoiado na malha de 72px. Escala, kerning, centro externo, matriz cinética e override mobile foram preservados.
+- Validação: `xmllint --noout src/assets/augeo-lettering.svg`, `bun run build` e `git diff --check` aprovados. `agent-browser` inspecionou light/dark em 1440×900 e o footer mobile escuro em 390×844; caixa desktop `606.73 × 130.89px`, footer `295.53px`, `transform: none` no mobile e overflow horizontal `0`. Capturas temporárias em `/tmp/lettering-baseline-light-desktop-final.png` e `/tmp/lettering-baseline-mobile-footer-full.png`. Sem commit, push ou publicação nesta rodada.
+
+## 2026-10-24 — Experimental `lettering-polish`: ritmo óptico do wordmark
+
+- Recalibrado o espaçamento do SVG na ordem de leitura `A·U·G·E·O` com ajustes por par mais perceptíveis: o `A` avança `+5u`, o `G` usa `−1u`, e `E`/`O` recuam `−5u`; o `U` permanece no datum. O intervalo óptico resultante fica aproximadamente em `AU 11u`, `UG 14u`, `GE 16.5u` e `EO 10.5u`, redistribuindo o ritmo sem alterar as formas ou o padrão CRT.
+- As extremidades visuais permanecem centradas no viewBox; a escala experimental de 5%, o snap dinâmico de baseline, o deslocamento desktop e o override mobile não foram modificados. A matriz cinética e sua física permanecem intocadas.
+- Validação: `xmllint --noout src/assets/augeo-lettering.svg`, `bun run build` e `git diff --check` aprovados. `agent-browser` em Chromium 1440×900 confirmou a caixa do artwork inalterada (`606.73 × 130.89px`) e o novo mapa de grupos; em 390×844, o footer manteve `295.53px`, `transform: none` e overflow horizontal `0`. Capturas temporárias inspecionadas em `/tmp/lettering-polish-after-desktop.png` e `/tmp/lettering-polish-after-mobile-footer.png`. A avaliação criativa do Luca, commit, push e publicação continuam pendentes.
+
+## 2026-10-24 — Experimental `lettering-rescale`: escala e kerning óptico
+
+- Reduzido o lettering AUGEO em 5% nos dois usos da matriz: desktop de `min(88%, 680px)` para `min(83.6%, 646px)` e footer móvel de `min(85%, 360px)` para `min(80.75%, 342px)`.
+- O SVG foi dividido em grupos semânticos na ordem de leitura `A·U·G·E·O`. Aplicado kerning óptico simétrico entre os pares, aproximando os intervalos internos sem alterar o padrão CRT, a altura das letras ou o centro visual do wordmark.
+- Validação: `bun run build` e `git diff --check` aprovados. `agent-browser` confirmou redução real de `638.67px → 606.73px` no desktop e `311.09px → 295.53px` no mobile, sem overflow; capturas temporárias inspecionadas em `/tmp/lettering-rescale-desktop.png` e `/tmp/lettering-rescale-mobile.png`.
+
+## 2026-10-24 — Calibração óptica do lettering AUGEO na matriz
+
+- Ajustada a composição desktop do lettering da hero: a borda esquerda do SVG passa a repousar no eixo absoluto do viewport (`x=720` em 1440 px), com deslocamento horizontal de `+5px` em relação à calibração anterior, e o conjunto desce `4px` para reforçar o apoio visual na linha inferior da malha.
+- O snap dinâmico da linha de base para a malha de 72 px foi preservado em `src/App.tsx`; a matriz cinética, seus nós, espaçamento e física não foram alterados. O override mobile mantém `transform: none`.
+- Validação: `bun run build` aprovado; `git diff --check` aprovado; `agent-browser` em Chromium 1440×900 confirmou `heroCenterX=720`, `artwork.left=720.45`, sem overflow horizontal e override mobile ativo. Captura temporária inspecionada em `/tmp/augeo-after.png`; não é artefato persistente.
+
 ## 2026-10-22 — Context efficiency synchronization
 
 - Luca requested checking and synchronizing inference/context optimizations across branches, then supplied a fresh successful `git fetch origin` from the host after this executor could not resolve GitHub. Fetched baselines: `main` = `f5f800c`, `section-process` = `5e46224`, `v3` = `50bdba8`. All three already contain the earlier selected-context and pilot-efficiency commits; only `v3` contained the latest canonical instruction consolidation.
