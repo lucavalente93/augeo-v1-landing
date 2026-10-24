@@ -32,8 +32,8 @@ export default function App() {
       const headingCenterY = headingBounds.top + headingBounds.height / 2 - hero.getBoundingClientRect().top;
       hero.style.setProperty('--hero-heading-center-y', `${headingCenterY}px`);
       if (artwork) {
-        // The SVG's flat letter baseline is 120 units into its 126-unit viewBox.
-        const baselineY = headingCenterY + artwork.getBoundingClientRect().height * (120 / 126 - 0.5);
+        // The SVG's harmonized flat letter baseline is 122 units into its 126-unit viewBox.
+        const baselineY = headingCenterY + artwork.getBoundingClientRect().height * (122 / 126 - 0.5);
         const gridBaselineY = Math.ceil(baselineY / 72) * 72;
         hero.style.setProperty('--hero-artwork-offset-y', `${gridBaselineY - baselineY}px`);
       }

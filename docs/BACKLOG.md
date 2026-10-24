@@ -2,6 +2,14 @@
 
 Updated on 2026-10-24. Current queue and latest delivery only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Previous deliveries, commands and results: [history](archive/EXECUTION_HISTORY.md).
 
+## Latest delivery — Experimental `lettering-finish`: linha de apoio óptica — 2026-10-24
+
+- **Acabamento:** Harmonizada a linha de apoio do wordmark: os pés planos de `A` e `E` foram estendidos de `131u` para `133u`, aproximando-os do overshoot natural de `U`, `G` e `O` sem redesenhar as formas.
+- **Snap:** O cálculo de baseline em `src/App.tsx` passou de `120/126` para `122/126`, mantendo o conjunto apoiado na malha de 72px e preservando a caixa, a escala e o centro do artwork.
+- **Validação:** `xmllint`, `bun run build` e `git diff --check` aprovados; `agent-browser` verificou light/dark em 1440×900, footer mobile escuro em 390×844, `transform: none` no mobile e overflow `0`. [Registro](archive/EXECUTION_HISTORY.md#2026-10-24--experimental-lettering-finish-linha-de-apoio-optica).
+
+Próximo passo: avaliação visual do Luca; esta rodada está no working tree e ainda não foi commitada.
+
 ## Latest delivery — Experimental `lettering-polish`: ritmo óptico do wordmark — 2026-10-24
 
 - **Refinamento:** O lettering AUGEO preserva suas formas, scanlines e escala, mas agora usa deslocamentos por par mais perceptíveis na ordem de leitura (`AU`, `UG`, `GE`, `EO`). O espaçamento foi redistribuído para reduzir o vazio entre o `A` e o `U`, aproximar `G`/`E` e manter o `O` integrado sem deslocar o centro óptico do conjunto.

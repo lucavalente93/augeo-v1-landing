@@ -1,5 +1,11 @@
 # Histórico de execução e decisões anteriores
 
+## 2026-10-24 — Experimental `lettering-finish`: linha de apoio óptica
+
+- No acabamento de produção, harmonizada a linha inferior do wordmark sem redesenhar a identidade: os pés planos do `A` e do `E` passaram de `131u` para `133u`, aproximando a cota visual do overshoot natural observado em `U`, `G` e `O`.
+- Atualizado o snap dinâmico em `src/App.tsx` de `120/126` para `122/126`, refletindo a nova baseline plana no viewBox e mantendo o lettering apoiado na malha de 72px. Escala, kerning, centro externo, matriz cinética e override mobile foram preservados.
+- Validação: `xmllint --noout src/assets/augeo-lettering.svg`, `bun run build` e `git diff --check` aprovados. `agent-browser` inspecionou light/dark em 1440×900 e o footer mobile escuro em 390×844; caixa desktop `606.73 × 130.89px`, footer `295.53px`, `transform: none` no mobile e overflow horizontal `0`. Capturas temporárias em `/tmp/lettering-baseline-light-desktop-final.png` e `/tmp/lettering-baseline-mobile-footer-full.png`. Sem commit, push ou publicação nesta rodada.
+
 ## 2026-10-24 — Experimental `lettering-polish`: ritmo óptico do wordmark
 
 - Recalibrado o espaçamento do SVG na ordem de leitura `A·U·G·E·O` com ajustes por par mais perceptíveis: o `A` avança `+5u`, o `G` usa `−1u`, e `E`/`O` recuam `−5u`; o `U` permanece no datum. O intervalo óptico resultante fica aproximadamente em `AU 11u`, `UG 14u`, `GE 16.5u` e `EO 10.5u`, redistribuindo o ritmo sem alterar as formas ou o padrão CRT.
