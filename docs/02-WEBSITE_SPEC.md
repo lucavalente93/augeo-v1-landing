@@ -24,7 +24,7 @@ Website purpose and priority: [AUGEO.md](AUGEO.md). The landing explains the con
 - FAQ
 - Internal pages, blog and client area
 
-**Published state:** Header, hero with copy and “Apresentar negócio” conversion button, hover-reactive matrix and desktop cue. On mobile, the entire matrix component was repositioned as a visual footer below copy and CTA. Process and intake form remain planned.
+**Source state — 2026-10-24:** Header, hero, Process, mobile continuation cue and matrix footer are included in main merge `b107bc5`. WhatsApp intake is approved as a direction but not configured. This reconciles Git/code state; no new production deployment or domain inspection was performed.
 
 ## 3. Architecture and flow
 
@@ -33,14 +33,14 @@ Website purpose and priority: [AUGEO.md](AUGEO.md). The landing explains the con
 | Header | Brand with return to top; implemented. |
 | Hero | Positioning, interactive signature and conversion button; implemented. |
 | Mobile footer | Matrix and lettering close the composition below copy and CTA; implemented. |
-| Process | Explain understanding, direction and proposal; planned. |
+| Process | Explain understanding, direction and proposal; implemented in the current source baseline, preserving its explicit approval/evaluation limits in section 5. |
 | Commercial entry | WhatsApp conversation with short chatbot screening and human handoff; approved direction, not implemented. |
 
 “Apresentar negócio” remains the conversion entry. Luca approved WhatsApp as its intended destination on 2026-10-24; current code still uses `href="#entrada"`. No number, automated receiving flow or handoff has been connected. An inline form is no longer required by the current direction.
 
 ## 4. Hero
 
-Composition, applied copy, interaction, responsive behavior and continuation/conversion roles are owned by [HERO.md](HERO.md). That document distinguishes the published baseline from the `section-process` experiment.
+Composition, applied copy, interaction, responsive behavior and continuation/conversion roles are owned by [HERO.md](HERO.md). That document distinguishes the published baseline from the historical Process experiment.
 
 ## 5. Public process
 
@@ -56,20 +56,20 @@ The process is the landing's main commercial element. It shows that an initial r
 
 The website communicates the working model, not the full internal procedure. Initial call, brief structuring, handoffs, validation and second call belong to operations and are documented in registered global source `global:business/augeo.md`, resolved through `augeo-orchestrator context augeo-website`; show them publicly only when they help the lead decide.
 
-### Plan, architecture and implementation of `#processo` (branch `section-process`)
+### Plan, architecture and implementation of `#processo` (historical branch `section-process`)
 
 Visual planning structured with Impeccable (`shape` + surface extension in `new-work`, followed by `clarify`, `harden`, `layout`, `typeset`, `adapt`, `animate`, `polish`), owned by **Antigravity** (parent ticket `AUG-12`, `bcabbd93-a912-45e1-a6cf-01928244795f`) and technically reviewed by **Codex** in Paperclip (child ticket `AUG-11`, `90b13a80-fc32-44b1-b8d9-f3400bd88b42`), with decisions confirmed by the user and implemented on branch `section-process` on 18/10 (`main` preserved intact):
 
-**Experimental status — Luca, 2026-10-21:** Layout decisions after the hero remain open on `section-process`. Neither a repeated hero ratio nor the previous 12-column alternative is a final requirement. The current sticky Process implementation is one experiment, not a template for subsequent sections. Historical compositions and evaluations remain evidence in the execution history.
+**Historical experimental status — Luca, 2026-10-21:** Layout decisions after the hero remained open on the deleted `section-process` branch. Neither a repeated hero ratio nor the previous 12-column alternative was a final requirement. The sticky Process implementation was an experiment, not a template for subsequent sections. Historical compositions and evaluations remain evidence in the execution history.
 
-- **Current experiment on `v3` — corrected after Luca's review, 2026-10-22:** Theme-controlled surfaces, sticky desktop introduction beside three steps that begin directly with their titles/descriptions, and a separate closing area. **User correction:** the point–rule–tag datum and generic stage labels are rejected AI slop; do not reintroduce this formula under another font or label treatment. Removed the redundant stage/index data and accent hover strip; hover retains only a subtle cell surface. Composition remains experimental.
+- **Historical experiment on deleted `v3` — corrected after Luca's review, 2026-10-22:** Theme-controlled surfaces, sticky desktop introduction beside three steps that begin directly with their titles/descriptions, and a separate closing area. **User correction:** the point–rule–tag datum and generic stage labels are rejected AI slop; do not reintroduce this formula under another font or label treatment. Removed the redundant stage/index data and accent hover strip; hover retains only a subtle cell surface. Composition remains experimental.
 - **Grid implementation:** One common vertical grid: mobile `calc(100cqw / 3)`, desktop 14cqw at `2cqw - 1px`. Each desktop step boundary extends across the full panel, aligning both columns to actual row heights. Removed independent left/mobile-opening horizontals and nodes. Shared opening padding aligns H2/first H3; the first step has `min-height: max(24rem, 28cqw)` and grows with content. Footer spans both columns. [Correction evidence](reviews/2026-10-22-process-correction/README.md).
-- **Visual review approved as baseline — Luca, 2026-10-24:** The 22/10 corrected Process is approved as the current baseline on `v4`. It will still change; the changes are to be defined together with Luca before implementation. The datum/stage-label rejection above still applies.
+- **Visual review approved as baseline — Luca, 2026-10-24:** The 22/10 corrected Process is approved as the current baseline on `dev`. It will still change; the changes are to be defined together with Luca before implementation. The datum/stage-label rejection above still applies.
 - **Implementation boundary:** Preserve content, semantic navigation, responsive readability, accessible interaction and reduced-motion behavior while exploring alternatives.
 
 - **Interaction clarification — Luca, 2026-10-24:** Step opacity belongs to progressive focus: scrolling reveals the reading steps; pointer hover temporarily focuses the cumulative path, and leaving the ledger restores the scroll-driven state. Do not treat a deliberately defocused upcoming step as the permanent reading presentation or infer approval to remove this interaction from an audit of that state. Evaluate legibility at the actual reading position, including pointer exit. The blanket opacity-removal recommendation in the 24/10 audit was withdrawn; computed measurements remain observations of their sampled states.
 
-- **Three-step copy (implemented on `section-process`):** Keeps draft steps 1 and 2 and refines step 3 (*“Devolvemos um briefing validado com nossa recomendação, o escopo e o investimento. Você decide sobre a contratação.”*) to explicitly deliver the validated brief alongside recommendation, scope and investment, preserving client decision autonomy.
+- **Three-step copy (implemented on the historical `section-process` branch):** Keeps draft steps 1 and 2 and refines step 3 (*“Devolvemos um briefing validado com nossa recomendação, o escopo e o investimento. Você decide sobre a contratação.”*) to explicitly deliver the validated brief alongside recommendation, scope and investment, preserving client decision autonomy.
 - **Technical structure:** `src/components/ProcessSection.tsx`, `<section id="processo" aria-labelledby="process-title" tabIndex={-1}>` after `.hero` inside `<main>`, with ordered `.process-ledger` steps and IDs `processo-01`, `processo-02`, `processo-03`. Continuation link: [HERO](HERO.md#continuation-cue). Dated implementation and test evidence: history.
 
 ## 6. Sales intake and form
@@ -93,37 +93,9 @@ No WhatsApp number, automation provider, account/API integration, receiving dest
 
 The material below describes the earlier form study, not the active channel decision or a required section of the landing.
 
-**Earlier design studies — 2026-10-24:** [Form architecture](reviews/2026-10-24-intake-architecture.md) and [component specifications](reviews/2026-10-24-intake-components.md) remain alternative material. Their seven fields and e-mail channel do not govern the WhatsApp conversation. No form or receiving integration was implemented.
+**Earlier design studies — 2026-10-24:** [Form architecture](archive/2026-10-24-ux-review.md#intake-architecture) and [component specifications](archive/2026-10-24-ux-review.md#intake-components) remain alternative material. Their seven fields and e-mail channel do not govern the WhatsApp conversation. No form or receiving integration was implemented.
 
-### Form role
-
-- Collect enough information for initial screening.
-- Allow leads to present an objective request or a still-undefined need.
-- Prepare the initial conversation without preemptively promising a proposal or engagement.
-
-### Minimum structure
-
-- Identification and return contact channel.
-- Business name and context.
-- Goal or problem motivating contact.
-- Current stage/situation.
-- Existing links, references or materials, if available.
-- Field to select or describe the initial request.
-- Budget/investment range only if a later commercial decision confirms it should be collected at intake.
-
-### Requests the form must accommodate
-
-- Identity or visual direction.
-- Website.
-- Acquisition through Meta Ads.
-- CRM, automation or integration.
-- Help understanding which path makes sense.
-
-These options qualify contact; they are not a catalog, fixed package or commitment to standalone engagement.
-
-### Planned post-submission behavior
-
-After submission, the interface confirms receipt and explains that AUGEO will perform an initial review before responding. The message must follow the screening/response policy in the same registered global source `global:business/augeo.md`, without assuming a deadline, automatic quote or guaranteed meeting.
+The previous form's role, field inventory and submission copy are preserved in the [archived form requirements](archive/2026-10-24-ux-review.md#previous-form-requirements). They do not define the WhatsApp conversation.
 
 ## 7. Visual direction
 
@@ -210,7 +182,7 @@ Avoid promises of results, quick returns, formulas, total solutions without cont
 
 ### Open technical decisions and integrations
 
-- Required form fields and validation; receiving backend/service, storage, abuse protection and failure handling.
+- WhatsApp number/channel, conversation script, receiving/handoff owner, storage, abuse protection and failure handling; inline-form requirements are historical alternatives.
 - Data processing, privacy information and operational screening/response parameters.
 - CMS only if a real content-editing need arises; no adoption decided.
 - Analytics and tracking when a measurement goal is defined, respecting applicable privacy and consent.
@@ -229,7 +201,7 @@ Current delivery state and next action: [BACKLOG](BACKLOG.md#current-state). Her
 - Define the WhatsApp script, number/tool, data handling, screening owner and handoff/failure messages.
 - Connect conversion CTAs to the configured WhatsApp destination and validate screening through human receipt; do not implement `#entrada` as a form merely to satisfy the superseded proposal.
 - Define placement of public channels using the existing email; WhatsApp Business depends on future setup.
-- Validate the complete experience: responsiveness, keyboard/focus, contrast, reduced motion, loading, submission, failures and actual receipt for screening.
+- Validate responsiveness, keyboard/focus, contrast, reduced motion, WhatsApp navigation and actual conversation receipt/handoff; test failures for the integration selected.
 - Define domain redirection/canonical policy and publication/indexing metadata; maintain valid HTTPS on both addresses before closing the complete delivery.
 
 Scheduling belongs in BACKLOG; scope and authority follow AGENTS and resolved governance.

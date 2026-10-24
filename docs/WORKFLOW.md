@@ -65,6 +65,8 @@ Apply naming guidance within the React skill's architecture and lifecycle constr
 
 ## Evidence and records
 
+Documentation placement, naming, internal session artifacts and delivery format are defined once in the project-local [augeo-project-output skill](../.agents/skills/augeo-project-output/SKILL.md), loaded through AGENTS by both executors.
+
 For bridge-managed checks, follow [execution ownership](ORCHESTRATION.md#current-cycle). Repeat checks only for new changes, failures or unresolved concerns.
 
 Record the command actually run, count/result, context, limitations and relevant artifacts. Identify screenshots in `/tmp` and `test-results/` as temporary and preserve necessary facts in history; do not rely solely on those files. Update the block summary and next action in the backlog.

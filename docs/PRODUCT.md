@@ -22,7 +22,7 @@ Registered global business source; website application in [Public process](02-WE
 
 ## Capabilities and Constraints
 
-[Version scope](02-WEBSITE_SPEC.md#2-first-version-scope), [form](02-WEBSITE_SPEC.md#6-sales-intake-and-form) and [technical baseline](02-WEBSITE_SPEC.md#10-implementation). Current delivery state: [BACKLOG](BACKLOG.md#current-state).
+[Version scope](02-WEBSITE_SPEC.md#2-first-version-scope), [commercial entry](02-WEBSITE_SPEC.md#6-sales-intake-and-form) and [technical baseline](02-WEBSITE_SPEC.md#10-implementation). Current delivery state: [BACKLOG](BACKLOG.md#current-state).
 
 ## Brand Commitments
 

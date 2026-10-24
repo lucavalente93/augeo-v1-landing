@@ -1,6 +1,6 @@
 # Striped Shutter scroll cue — 2026-10-23
 
-Luca authorized implementing the [Striped Shutter handoff](../2026-10-23-scroll-cue-handoff.md) with the small fixes from the review in the same session. This replaces the rail/pulse/node cue on `v3`; it is not creative approval.
+Luca authorized implementing the [Striped Shutter handoff](../../archive/2026-10-23-scroll-cue-handoff.md) with the small fixes from the review in the same session. This replaces the rail/pulse/node cue on `v3`; it is not creative approval.
 
 ## Fixes applied over the handoff
 

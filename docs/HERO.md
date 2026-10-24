@@ -1,6 +1,6 @@
 # Hero - state, decisions and continuity
 
-Implementation checked against code on 2026-10-16; documentation reorganized on 2026-10-17. Composition sections describe what exists; decisions and proposals have explicit states. Execution and queue: [BACKLOG.md](BACKLOG.md). Procedures: [WORKFLOW.md](WORKFLOW.md). Landing requirements: [specification](02-WEBSITE_SPEC.md).
+Current composition reconciled with the committed dev/main source baseline on 2026-10-24. This is source verification, not a new production inspection. Decisions and proposals have explicit states. Execution and queue: [BACKLOG.md](BACKLOG.md). Procedures: [WORKFLOW.md](WORKFLOW.md). Landing requirements: [specification](02-WEBSITE_SPEC.md).
 
 ## Concept and hierarchy
 
@@ -18,7 +18,7 @@ The graphic signature counterbalances the heading; supporting text is grouped wi
 
 ## Desktop composition
 
-On `v3`, from 1024 px, the hero uses two **44/56** columns with a minimum height of 100dvh. The text column contains symbol, heading, supporting text and CTA; the matrix fills the right panel. Brand, text, CTA and continuation link share a **48 px** inset. The header is absolutely positioned over the text column, with height 96 px and symbol 66 px.
+On `dev`, from 1024 px, the hero uses two **44/56** columns with a minimum height of 100dvh. The text column contains symbol, heading, supporting text and CTA; the matrix fills the right panel. Brand, text, CTA and continuation link share a **48 px** inset. The header is absolutely positioned over the text column, with height 96 px and symbol 66 px.
 
 The heading uses local Hanken Grotesk, weight **620**, line-height **1.02** and tracking **−0.035em**. Scale responds to the column's usable width (`clamp(2rem, 19.5cqw, 6rem)`), with three spans, maximum width 11ch and 2 px below for descenders. Supporting text uses line-height 1.5, maximum width 34ch, `text-wrap: pretty` and 18–24 px scale; short windows have dedicated scale and spacing adjustments.
 
@@ -26,9 +26,9 @@ The text panel has 2% white radial illumination over the theme background, with 
 
 ## Mobile composition
 
-On `v4`, below 1024 px, header and hero follow vertical flow. The header is 70 px high with a 58 px symbol and 20 px inset. Copy uses symmetric 20 px insets; heading, supporting text, CTA and `ScrollCue` follow in order. The CTA remains visible with minimum height 44 px and top margin 28 px.
+On `dev`, below 1024 px, header and hero follow vertical flow. The header is 70 px high with a 58 px symbol and 20 px inset. Copy uses symmetric 20 px insets; heading, supporting text, CTA and `ScrollCue` follow in order. The CTA remains visible with minimum height 44 px and top margin 28 px.
 
-The entire matrix component was moved from the hero to the **site footer** (`.site-mobile-footer`), full width below `#processo` with height `clamp(140px, 22dvh, 180px)`, a 1 px top divider and automatic margin above. Lettering is centered in this panel and uses `min(85%, 360px)`. `touch-action: pan-y` allows vertical scrolling through the matrix area.
+The entire matrix component was moved from the hero to the **site footer** (`.site-mobile-footer`), full width below `#processo` with height `clamp(140px, 22dvh, 180px)`, a 1 px top divider and automatic margin above. Lettering is centered in this panel and uses `min(80.75%, 342px)` with `transform: none`. `touch-action: pan-y` allows vertical scrolling through the matrix area.
 
 The hero on mobile occupies ~65% to 70% of the viewport (~580 px total with header). The `ScrollCue` sits below the CTA with 44 px clearance and 40 px hero bottom padding, pointing down to `#processo` with native smooth scroll navigation. Approved by Luca on 2026-10-24; redesigning the mobile cue/triangle variant remains noted for a future turn.
 
@@ -42,9 +42,9 @@ The hero on mobile occupies ~65% to 70% of the viewport (~580 px total with head
 | Borders | black at 8% | white at 8% |
 | Accent/focus | `#ff482c` | `#ff482c` |
 
-System preference and explicit `.light`/`.dark` classes control themes. On `section-process`, the header `[DARK]` / `[LIGHT]` button initializes from those classes or system preference, applies mutually exclusive classes and persists for the current mount. The matrix MutationObserver redraws immediately, including with reduced motion. In dark mode, the symbol is inverted at opacity 0.92 and lettering at 0.88. The matrix CSS background uses the theme token; canvas draws its corresponding surface. The hero CRT layer has subtler scanlines than the demo: 0.03 in light and 0.0567 in dark.
+System preference and explicit `.light`/`.dark` classes control themes. On the current baseline, the header `[DARK]` / `[LIGHT]` button initializes from those classes or system preference, applies mutually exclusive classes and persists for the current mount. The matrix MutationObserver redraws immediately, including with reduced motion. In dark mode, the symbol is inverted at opacity 0.92 and lettering at 0.88. The matrix CSS background uses the theme token; canvas draws its corresponding surface. The hero CRT layer has subtler scanlines than the demo: 0.03 in light and 0.0567 in dark.
 
-Lettering preserves geometry, proportions, stripes and counters. In the SVG, “A” and “O” declare `fill-rule="evenodd"` directly on paths filled by the CRT pattern. Desktop width is `min(88%, 680px)`; vertical center follows the heading center, measured in the hero and published as `--hero-heading-center-y`. Alignment observes hero, heading, supporting text and CTA. On mobile, the center is the matrix center.
+Lettering preserves geometry, proportions, stripes and counters. In the SVG, “A” and “O” declare `fill-rule="evenodd"` directly on paths filled by the CRT pattern. Desktop width is `min(83.6%, 646px)` after the 5% rescale. The heading center is published as `--hero-heading-center-y`; baseline snap uses `122/126` of the artwork height on the 72px grid, with CSS translation `3px` horizontally and `var(--hero-artwork-offset-y) + 4px` vertically. Optical kerning uses separate SVG letter groups; A/E flat bases end at 133u. Alignment observes hero, heading, supporting text and CTA. On mobile, the center is the matrix center.
 
 ## Persistent matrix and interaction
 
@@ -56,23 +56,23 @@ The current matrix lifecycle maintains continuous automatic pulses alongside dis
 
 ## Continuation cue
 
-On `v4`, the native desktop link to `#processo` implements **Option 3 (CRT Scanline Aperture Array)** (Luca, 2026-10-24), replacing the interim CSS scaffold:
+On `dev`, the native desktop link to `#processo` implements **Option 3 (CRT Scanline Aperture Array)** (Luca, 2026-10-24), replacing the interim CSS scaffold:
 - Rows of 6 and 3 segments funnel to an orange anchor in an 80×63 px link on the 48 px axis.
 - Each segment is constructed with microscopic horizontal scanline bars matching the `AUGEO` lettering and CRT matrix.
 - Electron beam sweep runs via GSAP timeline: orange light visits each segment in reading order every 220 ms and rests on the anchor for ~1.5 s with a phosphor drop-shadow bloom.
 - Hover pulls every segment 35 % toward the anchor using Motion spring physics (`stiffness: 280, damping: 22`).
 - Offscreen and tab suspension, reduced-motion static representation, and native `#processo` keyboard navigation are preserved.
 
-The link remains in `.hero-copy` flow after `.hero-content`, on the 48 px axis with minimum 32 px clearance and no flex shrink. It is hidden below 1024 px. Keyboard focus stays visible and native activation reaches Process. Expanded content grows the hero naturally; matrix height follows it. The commercial CTA retains its distinct `#entrada` destination, whose form is still pending.
+The link remains in `.hero-copy` flow after `.hero-content`, on the 48 px axis with minimum 32 px clearance and no flex shrink. It is available below 1024px with the mobile spacing described above. Keyboard focus stays visible and native activation reaches Process. Expanded content grows the hero naturally; matrix height follows it. The commercial CTA still targets absent `#entrada`; the intended replacement is the approved [WhatsApp entry](02-WEBSITE_SPEC.md#6-sales-intake-and-form), not a required inline form.
 
-This supersedes the earlier triangle geometry/contrast decisions the 2026-10-22 rail/pulse/node cue and the interim Striped Shutter for this branch. Lettering remains aligned to the H1 center; centering the lettering in the full desktop panel or adding metadata requires a separate direction decision. Evidence: [v3 implementation](reviews/2026-10-22-v3/README.md).
+This supersedes the earlier triangle geometry/contrast decisions the 2026-10-22 rail/pulse/node cue and the interim Striped Shutter for this branch. The lettering's current baseline/optical calibration is described in Themes and brand; recentering the full panel or adding metadata requires a separate direction decision. Evidence: [v3 implementation](reviews/2026-10-22-v3/README.md).
 
 ## Implementation sources
 
-- [src/App.tsx](../src/App.tsx): structure, copy, CTA, props, alignment and mounting of `ProcessSection` below `.hero` on `section-process`.
+- [src/App.tsx](../src/App.tsx): structure, copy, CTA, props, alignment and mounting of `ProcessSection` below `.hero` in the current source baseline.
 - [src/styles.css](../src/styles.css): composition, themes, typography, cue animation and `.process-*` styles.
 - [src/components/ScrollCue.tsx](../src/components/ScrollCue.tsx): 6 · 3 · 1 segment scaffold, native `#processo` link, pause/resume.
-- [src/components/ProcessSection.tsx](../src/components/ProcessSection.tsx): architectural ledger for the three `#processo` steps on branch `section-process`.
+- [src/components/ProcessSection.tsx](../src/components/ProcessSection.tsx): architectural ledger for the three `#processo` steps in the current source baseline.
 - [components/ui/kinetic-matrix.tsx](../components/ui/kinetic-matrix.tsx) and [lib/matrix-motion.ts](../lib/matrix-motion.ts): grid, interaction field and warp.
 - [src/assets/augeo-lettering.svg](../src/assets/augeo-lettering.svg): striped brand and counters.
 
@@ -84,7 +84,7 @@ This supersedes the earlier triangle geometry/contrast decisions the 2026-10-22 
 | Revise heading and supporting text | Adopted message: “Presença digital com direção.”; business context connects brand, website, acquisition and digital operations | Incorporated |
 | Keep desktop 44/56 | Matrix field as a graphic counterpoint to text; restored after rejection of the 38/62 experiment | Incorporated |
 | Size heading by column | Initial weight 750/line-height 0.98 replaced by Hanken 620/1.02; scale by usable width | Incorporated |
-| Enlarge signature | Lettering moved from a 527 px limit to `min(88%, 680px)` in desktop hero, preserving SVG and proportions | Incorporated |
+| Calibrate signature | Earlier enlargement followed by the approved experimental 5% rescale, pair kerning and baseline calibration; current values are in Themes and brand | Implemented; no global visual closure inferred |
 | Align heading and signature | Lettering center follows desktop heading center; on mobile it follows the matrix | Incorporated |
 | Align elements on the 48 px axis | On 09/10, approximately 32 px inset was deemed too close to the edge; user authorized 48 px for brand, heading, supporting text and triangles | Incorporated |
 | Increase supporting text presence | 18–24 px scale and 20 px mobile insets; subsequently measure condensed to 34ch and desktop margin to 28 px | Incorporated |
@@ -105,8 +105,8 @@ Implementation does not equal global visual approval. Approval of the mobile bac
 | Desktop composition | User evaluation after alignment, larger supporting text, panel and cue | No recorded global visual closure |
 | Mobile hero | Check published version on the user's device | Background correction approved; device evaluation is distinct |
 | Deployed counters | Visually confirm A/O in the browser and viewport reported on 11/10 | SVG correction already published; no new publication pending for this reason |
-| Continuation integration | Evaluate native `<a href="#processo">` link and `#processo` section implemented on branch `section-process` in a browser | Implemented on `section-process` (`AUG-12`/`AUG-11`); `main` remains without `#processo` until approval; do not restore EXPLORE |
-| Sales intake | Connect “Apresentar negócio” to the real `#entrada` form | CTA and continuation have different destinations; section still absent |
+| Continuation integration | Evaluate native `<a href="#processo">` link and `#processo` section in a browser | Source is included in the main merge `b107bc5`; deployment not rechecked; preserve the approved Process baseline and do not restore EXPLORE |
+| Sales intake | Connect “Apresentar negócio” to the configured WhatsApp destination | Current CTA still points to absent `#entrada`; channel and handoff not configured |
 | Matrix introduction | Entry completed within four seconds, then rest and discrete responses | Block 3 not yet implemented; current loops continue. Do not extend this proposal to triangles without a separate decision |
 | Warp performance | Optimize and compare at DPR 2 while preserving the image | Block 4 depends on evaluation of the previous block |
 | System record | Extract `DESIGN.md` from implementation | Block 5 not started; do not replace it with a historical report |
@@ -131,7 +131,7 @@ This sequence preserves original plan workflows without reviving superseded choi
 | --- | --- | --- |
 | 1 - Message and integrity | `clarify`, `harden`: truthful copy and removal of the false EXPLORE action | Historical completion for that target; does not certify the current commercial CTA, whose section does not yet exist. |
 | 2 - Visual evolution | `shape`, `bolder`, `layout`, `typeset`, `adapt`: hierarchy, typography and responsive composition | Implemented and iterated; global visual evaluation and reconciliation of methodological stages remain pending. |
-| 3 - Motion | **Deferred — Luca, 2026-10-24:** the hero typography entrance reveal (and magnetic CTA step) resumes only after `section-process` work. `animate`: matrix entry within four seconds, including pulse termination; then rest with local responses | Not implemented. Do not apply this limit to triangles without a specific decision; preserve ambient demo and allow interaction after introduction. |
+| 3 - Motion | **Deferred — Luca, 2026-10-24:** the hero typography entrance reveal (and magnetic CTA step) resumes after the Process work. `animate`: matrix entry within four seconds, including pulse termination; then rest with local responses | Not implemented. Do not apply this limit to triangles without a specific decision; preserve ambient demo and allow interaction after introduction. |
 | 4 - Performance | `optimize`: locate bottleneck and compare before/after in the same DPR 2, 1440×900 scenario, pointer over lettering + click | Pending after previous block evaluation. Record callback median/p95 and long tasks; preserve resolution, stripes, counters, interpolation and return to rest. |
 | 5 - Visual system | `document`: extract system from implementation, with confirmation/refinement and playbook-required artifacts | DESIGN.md, sidecar and formal surface brief pending. This file does not replace them. `extract` only for actual reuse work. |
 | 6 - Finishing | `polish`: verify in-scope path and findings still accepted | Pending. No formal critique snapshot; use manual findings and valid evidence without fabricating workflows or an audit score. |
@@ -151,7 +151,7 @@ Old criteria and the 13/20 score belong to the [historical audit](archive/HERO_A
 
 ## Responsive implementation update — 2026-10-21
 
-The desktop/mobile sections above incorporate the `section-process` breakpoint and panel-size update. Dated evidence: [history](archive/EXECUTION_HISTORY.md#2026-10-21--supplied-proportional-grid-explicit-theme-button-and-optical-refinement).
+The desktop/mobile sections above incorporate the Process breakpoint and panel-size update. Dated evidence: [history](archive/EXECUTION_HISTORY.md#2026-10-21--supplied-proportional-grid-explicit-theme-button-and-optical-refinement).
 
 ## Open composition scope — 2026-10-21
 

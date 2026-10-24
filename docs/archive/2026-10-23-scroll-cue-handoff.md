@@ -2,7 +2,7 @@
 ## Conceito: Striped Shutter / Scanline Cascade
 
 - **Data:** 23/10/2026
-- **Status:** Superado em 23/10/2026 pelo conceito 6 · 3 · 1 aprovado por Luca (implementação atual é scaffold). As seções abaixo são a proposta original — valores implementados e correções em [evidência da entrega](2026-10-23-scroll-cue/README.md).
+- **Status:** Superado em 23/10/2026 pelo conceito 6 · 3 · 1 aprovado por Luca (implementação atual é scaffold). As seções abaixo são a proposta original — valores implementados e correções em [evidência da entrega](../reviews/2026-10-23-scroll-cue/README.md).
 - **Branch alvo:** `v3`
 - **Contexto:** Hero Section da Augeo Creative (`augeo-website`)
 
@@ -107,7 +107,7 @@ O ciclo total dura **2.4s** com repetição infinita. O movimento é um rastro d
 * **Foco por Teclado (`.scroll-cue:focus-visible`):**
   * `outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px;`
 
-### 5.2 Estrutura de Código React ([ScrollCue.tsx](src/components/ScrollCue.tsx))
+### 5.2 Estrutura de Código React ([ScrollCue.tsx](../../src/components/ScrollCue.tsx))
 ```tsx
 import { useEffect, useRef } from 'react';
 
@@ -149,7 +149,7 @@ export default function ScrollCue() {
 }
 ```
 
-### 5.3 CSS de Referência ([styles.css](src/styles.css))
+### 5.3 CSS de Referência ([styles.css](../../src/styles.css))
 ```css
 /* Desktop continuity link to #processo: Striped Shutter */
 .scroll-cue {

@@ -21,6 +21,7 @@ Code demonstrates implementation, not approval. Resolve conflicts against curren
 
 ## Resuming and continuity
 
+- Before producing or updating project documentation, plans, handoffs or delivery artifacts (including Antigravity's internal session artifacts), load [augeo-project-output](.agents/skills/augeo-project-output/SKILL.md). It is the shared project-local output procedure; no manual invocation or global installation is required in each session.
 - Check Git and relevant files before acting; preserve existing changes and reconcile interruptions with actual state.
 - The current request bounds execution. A new session or documentation update does not authorize pending work or the next hero block.
 - After a material delivery, update the backlog's latest summary/next action and append durable evidence to history. Update the responsible source when a decision changes; record user corrections there. Report links in the final response. Questions without context changes need no artificial records.
