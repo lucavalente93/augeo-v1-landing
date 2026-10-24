@@ -277,8 +277,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
 .light .hero-matrix { --crt-line: rgba(17, 17, 17, .03); }
 .matrix-title .matrix-artwork-title { width: min(78.2%, 527px); }
 .hero-matrix .matrix-artwork-title {
-  width: min(88%, 680px);
-  transform: translateX(-2px);
+  width: min(83.6%, 646px);
+  transform: translate(3px, calc(var(--hero-artwork-offset-y, 0px) + 4px));
 }
 .matrix-artwork-stack { position: relative; display: block; width: 100%; }
 .matrix-artwork { display: block; width: 100%; height: auto; max-height: 70cqh; object-fit: contain; }
@@ -369,7 +369,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
     padding: clamp(12px, 3cqw, 24px);
   }
   .site-mobile-footer .hero-matrix .matrix-artwork-title {
-    width: min(85%, 360px);
+    width: min(80.75%, 342px);
     transform: none;
   }
 }

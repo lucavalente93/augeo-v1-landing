@@ -26,14 +26,22 @@ export default function App() {
     const hero = heroRef.current;
     const heading = headingRef.current;
     if (!hero || !heading) return;
+    const artwork = hero.querySelector<HTMLElement>('.matrix-artwork-title');
     const updateHeroHeadingCenter = () => {
       const headingBounds = heading.getBoundingClientRect();
       const headingCenterY = headingBounds.top + headingBounds.height / 2 - hero.getBoundingClientRect().top;
       hero.style.setProperty('--hero-heading-center-y', `${headingCenterY}px`);
+      if (artwork) {
+        // The SVG's flat letter baseline is 120 units into its 126-unit viewBox.
+        const baselineY = headingCenterY + artwork.getBoundingClientRect().height * (120 / 126 - 0.5);
+        const gridBaselineY = Math.ceil(baselineY / 72) * 72;
+        hero.style.setProperty('--hero-artwork-offset-y', `${gridBaselineY - baselineY}px`);
+      }
     };
     const resizeObserver = new ResizeObserver(updateHeroHeadingCenter);
     resizeObserver.observe(hero);
     resizeObserver.observe(heading);
+    if (artwork) resizeObserver.observe(artwork);
     resizeObserver.observe(hero.querySelector('.hero-description')!);
     const cta = hero.querySelector('.hero-cta');
     if (cta) resizeObserver.observe(cta);

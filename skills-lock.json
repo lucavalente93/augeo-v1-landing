@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "logo-design": {
+      "source": "rampstackco/claude-skills",
+      "sourceType": "github",
+      "skillPath": "skills/logo-design/SKILL.md",
+      "computedHash": "268eb7ad5ae687a3b9a72986257dbce8a0f11a41b3eace3bc887e7eefcbdd8ce"
+    }
+  }
+}

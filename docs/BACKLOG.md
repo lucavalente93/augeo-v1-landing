@@ -2,6 +2,28 @@
 
 Updated on 2026-10-24. Current queue and latest delivery only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Previous deliveries, commands and results: [history](archive/EXECUTION_HISTORY.md).
 
+## Latest delivery — Experimental `lettering-polish`: ritmo óptico do wordmark — 2026-10-24
+
+- **Refinamento:** O lettering AUGEO preserva suas formas, scanlines e escala, mas agora usa deslocamentos por par mais perceptíveis na ordem de leitura (`AU`, `UG`, `GE`, `EO`). O espaçamento foi redistribuído para reduzir o vazio entre o `A` e o `U`, aproximar `G`/`E` e manter o `O` integrado sem deslocar o centro óptico do conjunto.
+- **Critério:** A largura externa foi mantida centrada; não houve alteração na matriz cinética, na física dos nós, no baseline snap ou no override mobile.
+- **Próximo passo:** avaliação visual do Luca em desktop/mobile; permanece no working tree até autorização explícita de commit/publicação. [Registro](archive/EXECUTION_HISTORY.md#2026-10-24--experimental-lettering-polish-ritmo-optico-do-wordmark).
+
+## Latest delivery — Experimental `lettering-rescale`: escala e kerning óptico — 2026-10-24
+
+- **Escala:** O lettering AUGEO foi reduzido em 5% no painel desktop e no footer móvel, preservando o comportamento responsivo existente.
+- **Kerning óptico:** O SVG agora separa `A`, `U`, `G`, `E` e `O` em grupos na ordem de leitura e aplica microajustes simétricos de espaçamento, mantendo o centro visual e o padrão CRT.
+- **Validação:** `bun run build` e `git diff --check` aprovados; `agent-browser` confirmou as dimensões `606.73px` desktop e `295.53px` mobile, sem overflow. [Registro](archive/EXECUTION_HISTORY.md#2026-10-24--experimental-lettering-rescale-escala-e-kerning-optico).
+
+Próximo passo: avaliação visual do Luca; a experiência segue experimental e permanece no working tree até autorização explícita de commit/publicação.
+
+## Latest delivery — Hero Matrix: Optical Lettering Alignment — 2026-10-24
+
+- **Eixo absoluto da hero:** O lettering desktop foi deslocado `+5px` para que sua borda esquerda repouse no eixo central do viewport (`x=720` em 1440 px), preservando o centro óptico do painel.
+- **Apoio na malha:** O conjunto desceu `4px` sobre o snap de linha de base existente, aproximando o lettering da linha inferior sem alterar a matriz cinética ou o mobile footer.
+- **Validação:** `bun run build` e `git diff --check` aprovados; inspeção visual com `agent-browser` em Chromium 1440×900, sem overflow horizontal, com override mobile confirmado. [Registro](archive/EXECUTION_HISTORY.md#2026-10-24--calibracao-optica-do-lettering-augeo-na-matriz).
+
+Próximo passo: avaliação visual do Luca; a implementação permanece no working tree até autorização explícita de commit/publicação.
+
 ## Latest delivery — Mobile Hero: Shader, Radial Light & Continuous Grid Alignment — 2026-10-24
 
 - **Continuidade Atmosférica e Eliminação do Gap Visual:** Adicionada iluminação radial volumétrica elíptica calibrada (`--hero-vignette-center`, `--hero-vignette-edge`) e grid trilinear contínuo (`--hero-grid-size: calc(100cqw / 3)`) no fundo do Hero móvel (`.hero-copy::before`), abrangendo o header e o conteúdo tipográfico.
