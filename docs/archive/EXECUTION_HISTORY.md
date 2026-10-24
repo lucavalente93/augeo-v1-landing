@@ -1390,3 +1390,18 @@ Luca solicitou o refinamento pontual das linhas brutas do componente `ScrollCue`
      - Modo Escuro: Estética CRT analógica preservada com geometria mais afiada e sem fuzziness.
      - Capturas geradas: `mobile-screen-light.png` e `mobile-screen-dark.png`. Sessão de browser fechada.
 
+## 2026-10-24 — mobile hero shader, radial light and continuous grid alignment
+
+Luca solicitou a eliminação do gap visual entre o Hero móvel e o Processo abaixo através da adição da luz radial e do grid de continuidade.
+
+1. **Continuidade de Grid e Atmosfera Ótica:**
+   - O fundo do Hero móvel (`.hero-copy::before`) recebeu a luz radial volumétrica elíptica calibrada (`radial-gradient(ellipse at 50% 38%, var(--hero-vignette-center) 0%, transparent 68%, var(--hero-vignette-edge) 100%)`).
+   - Adicionada a malha de 3 colunas (`linear-gradient(to right, var(--hero-grid-line) 1px, transparent 1px)` com `--hero-grid-size: calc(100cqw / 3)` e `background-position: center center, -1px -1px`), exatamente idêntica e coincidente aos pixels com o grid de `#processo`.
+2. **Harmonia Cromática Dark e Light:**
+   - Dark: Núcleo luminoso suave `rgba(255, 255, 255, 0.055)`, vinheta de borda `rgba(0, 0, 0, 0.38)` e linhas `rgba(255, 255, 255, 0.045)`.
+   - Light: Núcleo luminoso branco `rgba(255, 255, 255, 0.38)`, vinheta suave `rgba(17, 17, 17, 0.048)` e linhas `rgba(17, 17, 17, 0.05)`.
+3. **Verificação com `agent-browser`:**
+   - Build aprovado (`bun run build`).
+   - Capturas salvas: `mobile-hero-shader-dark.png`, `mobile-hero-shader-light.png` e `desktop-verify-after-shader.png`.
+   - Continuidade vertical perfeita observada em ambos os temas sem impacto no layout desktop.
+

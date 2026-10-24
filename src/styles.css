@@ -61,6 +61,9 @@
   --radius: 0.5rem;
   --font-heading: "Hanken Grotesk", sans-serif;
   --font-subheadline: "Libre Franklin", "Archivo", sans-serif;
+  --hero-vignette-center: rgba(255, 255, 255, 0.38);
+  --hero-vignette-edge: rgba(17, 17, 17, 0.048);
+  --hero-grid-line: rgba(17, 17, 17, 0.05);
   font-family: var(--font-heading);
   color: var(--foreground);
   background: var(--background);
@@ -80,6 +83,9 @@
     --muted-foreground: #9e9ea2;
     --border: rgba(255, 255, 255, 0.08);
     --input: #23242a;
+    --hero-vignette-center: rgba(255, 255, 255, 0.055);
+    --hero-vignette-edge: rgba(0, 0, 0, 0.38);
+    --hero-grid-line: rgba(255, 255, 255, 0.045);
   }
 }
 
@@ -96,6 +102,9 @@
   --muted-foreground: #9e9ea2;
   --border: rgba(255, 255, 255, 0.08);
   --input: #23242a;
+  --hero-vignette-center: rgba(255, 255, 255, 0.055);
+  --hero-vignette-edge: rgba(0, 0, 0, 0.38);
+  --hero-grid-line: rgba(255, 255, 255, 0.045);
 }
 
 @theme inline {
@@ -288,12 +297,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
   .site-header { position: relative; width: 100%; height: 70px; padding: 0 20px; }
   .brand { width: 58px; height: 58px; }
   .hero {
+    container-type: inline-size;
     display: flex;
     flex-direction: column;
     min-height: 0;
     width: 100%;
+    --hero-grid-size: calc(100cqw / 3);
   }
   .hero-copy {
+    container-type: normal;
     padding: 24px 20px 40px;
     flex: 0 0 auto;
     display: flex;
@@ -308,7 +320,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
     inset: -70px 0 0;
     z-index: -1;
     pointer-events: none;
-    background: var(--hero-panel-background);
+    background-image:
+      radial-gradient(ellipse at 50% 38%, var(--hero-vignette-center) 0%, transparent 68%, var(--hero-vignette-edge) 100%),
+      linear-gradient(to right, var(--hero-grid-line) 1px, transparent 1px);
+    background-size: 100% 100%, var(--hero-grid-size) var(--hero-grid-size);
+    background-position: center center, -1px -1px;
+    background-color: var(--background);
   }
   .hero-copy h1 { font-size: min(clamp(2.75rem, 16cqw, 3.75rem), calc(16cqw + 1rem)); }
   .hero-description { margin-top: 20px; }
@@ -319,6 +336,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
   }
 
   .site-mobile-footer {
+    container-type: inline-size;
     display: block;
     position: relative;
     width: 100%;
@@ -326,6 +344,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
     min-height: 140px;
     border-top: 1px solid var(--border);
     touch-action: pan-y;
+    --footer-grid-size: calc(100cqw / 3);
+  }
+  .site-mobile-footer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background-image: linear-gradient(to right, var(--hero-grid-line) 1px, transparent 1px);
+    background-size: var(--footer-grid-size) 100%;
+    background-position: -1px 0;
   }
   .site-mobile-footer .kinetic-matrix {
     position: absolute;

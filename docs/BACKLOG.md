@@ -2,7 +2,16 @@
 
 Updated on 2026-10-24. Current queue and latest delivery only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Previous deliveries, commands and results: [history](archive/EXECUTION_HISTORY.md).
 
-## Latest delivery — ScrollCue: Scanline Raster Geometry & Aperture Refinement — 2026-10-24
+## Latest delivery — Mobile Hero: Shader, Radial Light & Continuous Grid Alignment — 2026-10-24
+
+- **Continuidade Atmosférica e Eliminação do Gap Visual:** Adicionada iluminação radial volumétrica elíptica calibrada (`--hero-vignette-center`, `--hero-vignette-edge`) e grid trilinear contínuo (`--hero-grid-size: calc(100cqw / 3)`) no fundo do Hero móvel (`.hero-copy::before`), abrangendo o header e o conteúdo tipográfico.
+- **Alinhamento Perfeito de Colunas:** As linhas verticais do Hero alinham-se exatamente aos pixels das linhas de `#processo`, eliminando o corte seco e unificando a experiência móvel numa única prancheta técnica.
+- **Calibração Dark / Light:**
+  - Dark: Núcleo luminoso suave `rgba(255, 255, 255, 0.055)`, vinheta de borda `rgba(0, 0, 0, 0.38)` e linhas de grid `rgba(255, 255, 255, 0.045)`.
+  - Light: Núcleo luminoso branco `rgba(255, 255, 255, 0.38)`, vinheta suave `rgba(17, 17, 17, 0.048)` e linhas de grid `rgba(17, 17, 17, 0.05)`.
+- **Validação:** `bun run build` aprovado; validação visual via `agent-browser` (iPhone 390×844 @2x retina e desktop 1440×900) em modo claro e escuro.
+
+## Previous delivery — ScrollCue: Scanline Raster Geometry & Aperture Refinement — 2026-10-24
 
 - **Eliminação de Defeitos Subpixel:** Removidas espessuras e bordas fracionárias (`1.5px`/`1.25px`, `border-radius: 0.25px`) que causavam serrilhado, moiré e aspecto de ruído sujo.
 - **Geometria Crisp em Pixels Inteiros:**
