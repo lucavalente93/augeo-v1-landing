@@ -1405,3 +1405,19 @@ Luca solicitou a eliminação do gap visual entre o Hero móvel e o Processo aba
    - Capturas salvas: `mobile-hero-shader-dark.png`, `mobile-hero-shader-light.png` e `desktop-verify-after-shader.png`.
    - Continuidade vertical perfeita observada em ambos os temas sem impacto no layout desktop.
 
+## 2026-10-24 — micro-alinhamento horizontal do lettering AUGEO com a grade escura
+
+Ajuste fino de raster e repouso ótico das linhas de varredura do lettering `AUGEO` contra a grade de 72px do `KineticMatrix`.
+
+1. **Diagnóstico Ótico e Geometria:**
+   - No painel da matriz desktop (806.4px de largura a 1440×900), o container centralizado do lettering (`.hero-matrix .matrix-artwork-title`) com `width: min(88%, 680px)` estendia sua borda direita até `x = 722.53px`, ultrapassando a 10ª linha de grade (`x = 720.0px`) por `+2.53px`.
+   - As linhas da grade e os traços internos de varredura CRT do lettering possuem espessura de ~1.2px a 2px.
+2. **Calibração Horizontal Não-Invasiva:**
+   - Aplicado `transform: translateX(-2px)` em `.hero-matrix .matrix-artwork-title`, fazendo a borda repousar exatamente sobre o traço de 2px da linha de grade de 720px sem deslocar a percepção de centralização do elemento (desvio de apenas 0,2% em relação ao centro de 806px do painel).
+   - Mantido `transform: none` explícito no rodapé móvel (`.site-mobile-footer .hero-matrix .matrix-artwork-title`).
+3. **Verificação e Entregas:**
+   - Build aprovado (`bun run build`: 0 erros).
+   - Capturas com `agent-browser`: `desktop-hero-dark-final.png`, `desktop-matrix-dark-final.png` e `mobile-footer-dark-final.png`.
+   - Commits e merges sincronizados em `v4` e `main`.
+
+
