@@ -56,6 +56,20 @@ The process is the landing's main commercial element. It shows that an initial r
 
 The website communicates the working model, not the full internal procedure. Initial call, brief structuring, handoffs, validation and second call belong to operations and are documented in registered global source `global:business/augeo.md`, resolved through `augeo-orchestrator context augeo-website`; show them publicly only when they help the lead decide.
 
+### Plan, architecture and implementation of `#processo` (branch `section-process`)
+
+Visual planning structured with Impeccable (`shape` + surface extension in `new-work`, followed by `clarify`, `harden`, `layout`, `typeset`, `adapt`, `animate`, `polish`), owned by **Antigravity** (parent ticket `AUG-12`, `bcabbd93-a912-45e1-a6cf-01928244795f`) and technically reviewed by **Codex** in Paperclip (child ticket `AUG-11`, `90b13a80-fc32-44b1-b8d9-f3400bd88b42`), with decisions confirmed by the user and implemented on branch `section-process` on 18/10 (`main` preserved intact):
+
+**Experimental status — Luca, 2026-10-21:** Layout decisions after the hero remain open on `section-process`. Neither a repeated hero ratio nor the previous 12-column alternative is a final requirement. The current sticky Process implementation is one experiment, not a template for subsequent sections. Historical compositions and evaluations remain evidence in the execution history.
+
+- **Current experiment on `v3` — corrected after Luca's review, 2026-10-22:** Theme-controlled surfaces, sticky desktop introduction beside three steps that begin directly with their titles/descriptions, and a separate closing area. **User correction:** the point–rule–tag datum and generic stage labels are rejected AI slop; do not reintroduce this formula under another font or label treatment. Removed the redundant stage/index data and accent hover strip; hover retains only a subtle cell surface. Composition remains experimental.
+- **Grid implementation:** One common vertical grid: mobile `calc(100cqw / 3)`, desktop 14cqw at `2cqw - 1px`. Each desktop step boundary extends across the full panel, aligning both columns to actual row heights. Removed independent left/mobile-opening horizontals and nodes. Shared opening padding aligns H2/first H3; the first step has `min-height: max(24rem, 28cqw)` and grows with content. Footer spans both columns. [Correction evidence](reviews/2026-10-22-process-correction/README.md).
+- **Visual review approved as baseline — Luca, 2026-10-24:** The 22/10 corrected Process is approved as the current baseline on `v4`. It will still change; the changes are to be defined together with Luca before implementation. The datum/stage-label rejection above still applies.
+- **Implementation boundary:** Preserve content, semantic navigation, responsive readability, accessible interaction and reduced-motion behavior while exploring alternatives.
+
+- **Three-step copy (implemented on `section-process`):** Keeps draft steps 1 and 2 and refines step 3 (*“Devolvemos um briefing validado com nossa recomendação, o escopo e o investimento. Você decide sobre a contratação.”*) to explicitly deliver the validated brief alongside recommendation, scope and investment, preserving client decision autonomy.
+- **Technical structure:** `src/components/ProcessSection.tsx`, `<section id="processo" aria-labelledby="process-title" tabIndex={-1}>` after `.hero` inside `<main>`, with ordered `.process-ledger` steps and IDs `processo-01`, `processo-02`, `processo-03`. Continuation link: [HERO](HERO.md#continuation-cue). Dated implementation and test evidence: history.
+
 ## 6. Sales intake and form
 
 The complete landing will have one intake form, not yet implemented. It does not create two separate journeys or require visitors to know which service to buy.

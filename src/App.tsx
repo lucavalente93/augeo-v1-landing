@@ -1,10 +1,24 @@
 import ScrollCue from './components/ScrollCue';
+import ProcessSection from './components/ProcessSection';
 import KineticMatrix from '@/components/ui/kinetic-matrix';
 import symbol from '@/src/assets/logo/symbol.png';
 import augeoLettering from '@/src/assets/augeo-lettering.svg';
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 export default function App() {
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    const classes = document.documentElement.classList;
+    if (classes.contains('dark')) return 'dark';
+    if (classes.contains('light')) return 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
+  const toggleTheme = () => setTheme(current => current === 'dark' ? 'light' : 'dark');
+
+  useLayoutEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.classList.toggle('light', theme === 'light');
+  }, [theme]);
+
   const heroRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
@@ -37,6 +51,14 @@ export default function App() {
         <a className="brand" href="#inicio" aria-label="Augeo Creative — início">
           <img src={symbol} alt="Augeo Creative" />
         </a>
+        <button
+          type="button"
+          className="theme-toggle-rudimentary"
+          onClick={toggleTheme}
+          aria-label="Alternar entre modo claro e escuro"
+        >
+          [{theme === 'dark' ? 'DARK' : 'LIGHT'}]
+        </button>
       </header>
       <main>
         <section ref={heroRef} className="hero" aria-labelledby="hero-title">
@@ -53,10 +75,14 @@ export default function App() {
             </div>
             <ScrollCue />
           </div>
-          <div className="hero-matrix-panel">
+          <div className="hero-matrix-panel desktop-only">
             <KineticMatrix title="AUGEO" titleArtworkSrc={augeoLettering} enableArtworkMotion gridSpacing={72} className="hero-matrix" />
           </div>
         </section>
+        <ProcessSection />
+        <footer className="site-mobile-footer" aria-label="Assinatura técnica Augeo">
+          <KineticMatrix title="AUGEO" titleArtworkSrc={augeoLettering} enableArtworkMotion gridSpacing={72} className="hero-matrix" />
+        </footer>
       </main>
     </div>
   );
