@@ -1320,3 +1320,38 @@ Build passed. Migrated `tests/scroll-cue.spec.ts` and the matrix selector check.
 ## 2026-10-23 — scroll cue 6 · 3 · 1 concept approved as scaffold
 
 After the Striped Shutter, Luca requested rows of segments (6, 3, then the anchor), then a larger, sparser drawing, then compression moved from the automatic cycle to hover. He approved the concept and triangle composition, and rejected the current flat CSS squares as final visuals: the implementation is a scaffold to be rebuilt with better components. An orange light visits layers in order every 220 ms (5 s cycle); hover pulls segments 35 % toward the anchor over 0.9 s. Link 80×63 px; hero height unchanged. Tests migrated to the new behavior; full suite 32/33, the one failure being an old 36 px link-width assertion in `matrix.spec.ts`, updated to 80 px and rerun 1/1. Evidence: [delivery](../reviews/2026-10-23-scroll-cue/README.md). No commit or push.
+
+## 2026-10-24 — Process baseline approved, hero reveal deferred
+
+On `v4` (`94c38cd`), Luca approved the pending visual review of the 22/10 Process correction as the current baseline, stating it will still change and the changes will be discussed together before implementation. He deferred the hero typography entrance reveal (Step 2, with magnetic CTA) until after `section-process`. Documentation only; no application code, tests or browser runs. `main` untouched.
+
+## 2026-10-24 — Process Scroll Telemetry & Cumulative Hover on v4
+
+On `v4`, finalized the calibrated interaction and layout of `#processo`:
+1. **Scroll Focus & Release on Closing:**
+   - Durante a descida, o scroll focaliza o step mais próximo do horizonte de leitura (38vh).
+   - Ao alcançar o fechamento (`.process-closing`), o scroll desengata imediatamente seu lock (`activeStepId = null`).
+2. **Cumulative Hover:**
+   - Passar o mouse no Step 1 acende o 1; no Step 2 acende 1 e 2; no Step 3 acende 1, 2 e 3 (esteira cumulativa de processo).
+   - Retirar o mouse do ledger retorna todos os steps ao estado estático neutro. Zero multifoco ou estado quebrado.
+3. **Fechamento e CTA:**
+   - Tipografia concisa: *"A contratação começa pelo diagnóstico."* e *"O projeto é desenhado para o seu momento; sem pacotes fechados ou compromisso antecipado."*
+   - CTA com alinhamento firme e sem divisores artificiais.
+4. **Verificação:**
+   - `bun run build` passou em 690ms.
+   - Teste direcionado `tests/process-review.spec.ts` passou 2/2 em 7.6s.
+   - Suíte completa `bun run test` passou **33/33** em 1.2m em todos os viewports e temas.
+   - `main` permanece 100% intocada.
+
+## 2026-10-24 — agent-browser global installation and preference
+
+Luca chose `agent-browser` for browser automation in preference to Playwright and requested global access and persistent preference discovery for **Antigravity CLI**, not the IDE.
+
+- Installed `agent-browser@0.39.2` globally with npm under the user's `.local` prefix. npm initially blocked the package's postinstall; `npm rebuild --global --prefix /home/luca/.local --allow-scripts=agent-browser agent-browser` completed the package-specific setup. `agent-browser --version` returned `agent-browser 0.39.2`; the global executable resolves directly to the native Linux x64 binary.
+- Used the skill-installer GitHub helper to install the official `vercel-labs/agent-browser` skill into the shared global skills directory. Exposed the same skill by symlink in `~/.gemini/antigravity-cli/skills/agent-browser`. Read its instructions and loaded `agent-browser skills get core`, which serves the workflow matching the installed CLI.
+- Added an always-loaded preference in `~/.gemini/AGENTS.md`, plus project routing in `AGENTS.md` and the procedure in `docs/WORKFLOW.md`. The routine browser path is now agent-browser. Retained Playwright source/configuration/scripts are legacy, not a standing instruction to run that suite; using it requires Luca's explicit request. Added only the agent-browser command and its absolute executable path to Antigravity CLI's global command allow rules, enabling headless execution without changing other permissions.
+- Verified actual Antigravity CLI 1.4.7 behavior with a read-only print-mode prompt. First probe could not execute its command under headless permissions and returned an empty SUCCESS; it was not accepted as verification. After the scoped command allowance, conversation `51e36f7b-5183-4875-9340-fdc695702bcb` explicitly recognized `RULE[user_global]` and project AGENTS, described the agent-browser/legacy-Playwright preference, identified the global skill and returned `agent-browser 0.39.2` from the requested executable check. This proves rule discovery and command access, not a complete browser task delegated to Antigravity.
+- `agent-browser --session augeo-browser-setup doctor --offline --quick`: 7 pass, 0 warn, 0 fail. Automatically reused the already-installed Chrome for Testing 153.0.8010.12 executable from the existing browser cache; no additional browser download or Playwright execution. Reused Vite on `http://127.0.0.1:5173`.
+- Browser smoke checks in the named session: desktop 1440×1000 and mobile-sized viewport 390×844; fonts loaded, no horizontal overflow, two canvases present on mobile, actual click switched root class from `light` to `dark`, actual Process-link click reached `#processo` with `scrollY=1000` and the section in view, `errors` returned an empty array. Opened both screenshots: `/tmp/augeo-agent-browser-desktop.png` and `/tmp/augeo-agent-browser-mobile.png` (temporary). The session reused one browser across commands and was closed afterward. A first batch wait lost JS string quotes and timed out; the correctly quoted direct wait passed, with no product change.
+
+Coverage is a tool-installation smoke check in Chromium with reduced motion, including a narrow viewport rather than a physical mobile device. No full regression suite, other engines, touch/device emulation, motion benchmark, performance comparison or creative approval claimed. No application implementation, dependency migration, commit, push or publication performed in this task; pre-existing application/documentation edits preserved. Unbrowse has been completely uninstalled and removed from project skills and configuration.

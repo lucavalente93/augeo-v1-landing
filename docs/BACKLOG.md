@@ -2,7 +2,27 @@
 
 Updated on 2026-10-24. Current queue and latest delivery only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Previous deliveries, commands and results: [history](archive/EXECUTION_HISTORY.md).
 
-## Latest delivery — scroll cue Option 3 CRT scanline array on v4 — 2026-10-24
+## Latest delivery — global agent-browser adopted for Antigravity CLI — 2026-10-24
+
+Luca selected `agent-browser` for routine browser automation instead of Playwright. Installed CLI 0.39.2 globally, installed its official skill and exposed it in Antigravity CLI's global skills directory. An always-loaded global rule and project AGENTS/WORKFLOW now specify that preference; existing Playwright checks are legacy and require an explicit request to run. A real Antigravity CLI verification recognized the global preference, located the skill and executed the installed CLI. Local Chromium smoke checks passed for theme switching, the Process link, desktop/mobile overflow and page errors; both screenshots were opened. [Evidence and limits](archive/EXECUTION_HISTORY.md#2026-10-24--agent-browser-global-installation-and-preference). Next: use this procedure for the next explicitly requested UI check; Luca's Process visual evaluation remains pending.
+
+## Latest delivery — Process Scroll Telemetry & Cumulative Hover on v4 — 2026-10-24
+
+Delivered the calibrated interaction and layout of `#processo` on `v4`:
+- **Scroll Focus & Soltura do Lock:** O scroll guia o foco durante a descida pelo ledger; ao atingir a área de fechamento (`.process-closing`), o lock de scroll é automaticamente desengatado, devolvendo todos os steps ao estado estático neutro sem nenhum travado artificialmente.
+- **Hover Cumulativo de Processo:**
+  - Hover no Step 1: acende o Step 1.
+  - Hover no Step 2: acende o Step 2 e o antecedente (1) também acende, visualizando o fluxo do processo construído.
+  - Hover no Step 3: acende 1, 2 e 3 simultaneamente.
+  - Ao retirar o mouse do grid: todos os steps retornam ao repouso normal. Zero multifoco concorrente.
+- **Fechamento e CTA:** Estrutura limpa de fechamento com tipografia concisa (*"A contratação começa pelo diagnóstico."* e sub-statement com minúscula após ponto e vírgula), sem divisores quebrados ou desalinhamentos.
+- **Validação:** Build aprovado; suite Playwright completa 33/33 aprovada. `main` intocada. Próximo passo: validação visual pelo Luca.
+
+## Previous decision — Process baseline approved, hero reveal deferred — 2026-10-24
+
+Luca approved the 22/10 corrected Process visual review as the current baseline on `v4`. It will still change, and the changes will be defined together before any implementation. The hero typography entrance reveal and magnetic CTA step are deferred until after `section-process`. [Record](archive/EXECUTION_HISTORY.md#2026-10-24--process-baseline-approved-hero-reveal-deferred). Next: agree on the Process changes with Luca, then implement on `v4`; `main` stays untouched.
+
+## Previous delivery — scroll cue Option 3 CRT scanline array on v4 — 2026-10-24
 
 Luca approved Option 3 (Scanline Ribbon / CRT Diode Array) to replace the flat CSS scaffold on `v4`. Rebuilt `src/components/ScrollCue.tsx` using `motion` (spring hover physics) and `gsap` (electron beam sweep timeline with phosphor decay). Segments are precision micro-scanline apertures with horizontal raster lines matching the `AUGEO` lettering and CRT matrix. Dead CSS `@keyframes` and `calc()` variables removed from `src/styles.css`. Build passed; 14/14 Playwright tests passed. Next: Luca's visual inspection of `ScrollCue`; then Step 2 (Hero typography entrance reveal + magnetic CTA).
 
