@@ -1,5 +1,48 @@
 # Histórico de execução e decisões anteriores
 
+## 2026-10-24 — Component design applied to existing landing
+
+- Luca clarified that the current next task was the last selected skill, not WhatsApp setup. Applied `uiuxdesigner:component-design` to existing landing components, using the instructions already read and inspecting actual TSX/CSS.
+- [Deliverable](../reviews/2026-10-24-landing-components.md): purpose/anatomy, responsive sizes, applicable default/hover/focus/active states, explicit non-applicability of loading/error for ordinary links, keyboard/semantics, reduced-motion baseline and component-specific decisions. Preserved Process scroll/hover focus and matrix internals.
+- Concrete proposals: anticipate/connect the WhatsApp destination once the actual number is available, expose the theme's next action and improve its touch area, correct footer naming semantics. No new visual concept, chatbot, account configuration, form, UI code, commit or push.
+- Verification in this round is source/document review and diff checks; prior browser observations are identified as prior evidence. No browser/build/actual WhatsApp test claimed.
+
+## 2026-10-24 — WhatsApp conversational intake approved
+
+- Luca proposed a WhatsApp chatbot to qualify incoming sales contacts and confirmed the direction. Site explains the offer/Process; “Apresentar negócio” is intended to open WhatsApp. Bot receives context, asks a relevant follow-up, confirms a summary and routes to a human; solution recommendations, pricing and commitments remain with the team.
+- Specification §6 now owns this channel decision. Inline-form architecture/components remain historical alternatives, not required implementation. Their seven-field structure must not be copied into a sequential chat questionnaire by default.
+- Current frontend CTA still points to `#entrada`. No number, provider/account, API, bot, receiving workflow, human handoff, purchase, commit, push or deployment was configured. Next work is conversation/handoff definition, followed by actual channel setup and end-to-end verification.
+
+## 2026-10-24 — Intake proposal rewritten for clarity
+
+- Luca found the previous explanation unclear and requested a redo. Reworked the entry of both design proposals: the architecture now shows the actual proposed heading, questions, groups and submit action in reading order; the component document starts with the behavior a visitor would encounter.
+- Kept technical details below those summaries. No new approval, field requirement or frontend implementation inferred; no commit or push.
+
+## 2026-10-24 — Intake architecture and component-design proposals
+
+- Luca explicitly requested application of the two previously reserved skills. Read their full instructions and applied `information-architecture`, followed by `component-design`, to the missing commercial intake. This advances their status from queued to applied at design/specification level; no implementation or external operation inferred.
+- [Architecture](../reviews/2026-10-24-intake-architecture.md): inventory/tree, inline journey, three content groups/seven fields, labels, desktop/mobile navigation, undefined-request path and participant tree/card-sort plan. [Components](../reviews/2026-10-24-intake-components.md): anatomy, proposed sizes, default/hover/focus/active/disabled/loading/error/success behavior, keyboard, validation/receipt microcopy, retry/deduplication and future acceptance criteria.
+- Recommendations are explicitly proposals: e-mail as return channel, field requirements and section placement do not become approved commercial policy. Backend destination, triage owner and data-use decisions remain pending. No tree test, participant recruitment, browser verification of a form, actual submission or receiving integration was performed.
+- Incorporated Luca's correction in specification §5 and the audit: opacity reflects progressive scroll/hover focus and pointer exit restores the scroll-driven state. Withdrew the blanket recommendation to remove that behavior; retained numerical observations with their state-specific limits.
+- Preserved existing working-tree documentation. No frontend edits, visual redesign, matrix-internal changes, commit, push or publication. Documentation checks and derived-view maintenance are the relevant validation.
+
+## 2026-10-24 — Supplemental UX audit after Luca's correction
+
+- Luca rejected the earlier partial inspection being presented as a completed audit, and clarified that “proceed” meant completing that audit rather than starting intake architecture. Corrected the report and backlog; architecture/component tasks remain queued.
+- `agent-browser` session `augeo-audit-complete` checked desktop/mobile light and dark, ordinary-motion active/resting Process states, real hover/scroll and Tab/Enter navigation. All inspected principal widths and the additional 320px geometry check had overflow 0. Session closed cleanly.
+- Confirmed resting Process paragraph contrast by compositing browser-computed colors and `.38` ancestor opacity: 1.746:1 light, 1.958:1 dark over section base; active values 13.433:1 and 13.239:1. Gradient endpoint calculations do not resolve the paragraph deficit. Formula, colors, limits and primary W3C references are in the [supplement](../reviews/2026-10-24-ux-skill-sequence.md#supplemental-audit--completed-scoped-review-after-lucas-correction).
+- Confirmed missing `#entrada` via mouse and keyboard; Process focus transfer and visible control focus work. Recorded static theme accessible name, footer generic/naming mismatch, and 26px theme target as an ergonomic improvement rather than AA failure. Reduced-motion CSS gives opacity 1 to resting rows; full animation-policy verification remains pending.
+- Corrected an evidence assumption: current desktop closing behavior leaves all rows active, unlike earlier neutral-closing documentation. Transitional screenshots were replaced by settled captures. Report includes actual evidence paths, a failed overlarge scroll wait and its corrected geometry, and untested areas.
+- Documentation only, preserving prior changes; no implementation, commit, push or deployment. Full report includes severity/effort, updated heuristic scorecard and five smaller follow-ups separate from the larger intake task.
+
+## 2026-10-24 — UX audit and programmed skill sequence
+
+- Read all six requested UI UX Designer skills and selected exactly three: `ux-audit-critique` applied now; `information-architecture` queued for intake structure; `component-design` queued after structure/fields are agreed. Full task contracts and reasons for excluding the other three: [review](../reviews/2026-10-24-ux-skill-sequence.md).
+- Reconciled repository state: clean `main` at `84a7809` already includes lettering through `41aaaf8`; prior uncommitted/publication-pending statements describe earlier moments. Deployment not queried. Switched to clean `v4` for these documentation changes; inspected application sources have no differences between those branches.
+- Local named `agent-browser` session tested actual CTA and Process navigation, opened desktop/mobile light screenshots, measured zero horizontal overflow and 26px mobile theme control, and observed a visible keyboard focus outline. `#entrada` is absent and forms count is zero. Process navigation focuses `#processo`.
+- axe-core: 0 confirmed violations, 2 incomplete rule groups (ARIA and contrast), 35 passes; no full accessibility certification inferred. Session closed cleanly. Exact commands/results, temporary capture paths and coverage limits are retained in the review.
+- Documentation only; no UI changes, user research, scheduled automation, commit, push or deployment. Future skill use is recorded in BACKLOG with dependency triggers.
+
 ## 2026-10-24 — Experimental `lettering-finish`: linha de apoio óptica
 
 - No acabamento de produção, harmonizada a linha inferior do wordmark sem redesenhar a identidade: os pés planos do `A` e do `E` passaram de `131u` para `133u`, aproximando a cota visual do overshoot natural observado em `U`, `G` e `O`.
