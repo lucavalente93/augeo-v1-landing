@@ -33,141 +33,155 @@ export const PROCESS_STEPS: readonly ProcessStep[] = [
   },
 ] as const;
 
+// Shared grid rhythm, with the former 2% left-edge line deliberately omitted.
+// Each column is split around the protected reading band; row boundaries connect it.
+const PROCESS_INTERSECTION_COLUMN = 44;
+const PROCESS_GRID_COLUMNS = [16, 30, PROCESS_INTERSECTION_COLUMN, 58, 72, 86] as const;
+const PROCESS_LINE_SEGMENTS = [
+  { id: 'upper', axis: 'y', from: 'row-start', to: 'reading-band-start', at: 0, duration: 0.4 },
+  { id: 'lower', axis: 'y', from: 'reading-band-end', to: 'row-end', at: 0.4, duration: 0.4 },
+  { id: 'boundary', axis: 'x', from: 'panel-left', to: 'panel-right', at: 0.8, duration: 0.2 },
+] as const;
+
 export default function ProcessSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
   const [unlockedStepIndex, setUnlockedStepIndex] = useState<number>(-1);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useGSAP(
     () => {
       const section = sectionRef.current;
-      const title = titleRef.current;
-      const header = section?.querySelector<HTMLElement>('.process-header-primary');
-      const step2 = section?.querySelector<HTMLElement>('#processo-02');
-      const closing = section?.querySelector<HTMLElement>('.process-closing');
-      if (!section || !title || !header || !step2) return;
+      if (!section) return;
 
       const mm = gsap.matchMedia();
-      const desktopQuery = window.matchMedia('(min-width: 1024px)');
       let refreshFrame = 0;
+      let isDisposed = false;
+
+      const measureProtectedBands = () => {
+        section.querySelectorAll<HTMLElement>('.process-step').forEach((row) => {
+          const bounds = row.getBoundingClientRect();
+          const blocks = [...row.querySelectorAll<HTMLElement>('.process-step-title, .process-step-description')]
+            .map((element) => element.getBoundingClientRect());
+          const start = Math.max(0, Math.min(...blocks.map((rect) => rect.top)) - bounds.top - 24);
+          const end = Math.min(bounds.height, Math.max(...blocks.map((rect) => rect.bottom)) - bounds.top + 24);
+          row.style.setProperty('--process-reading-start', `${start}px`);
+          row.style.setProperty('--process-reading-end', `${end}px`);
+        });
+      };
+      measureProtectedBands();
+      ScrollTrigger.addEventListener('refreshInit', measureProtectedBands);
 
       const refreshLayout = () => {
         cancelAnimationFrame(refreshFrame);
         refreshFrame = requestAnimationFrame(() => {
-          if (!desktopQuery.matches) {
-            gsap.set(title, { clearProps: 'transform,y' });
-          }
           ScrollTrigger.refresh();
+          // A breakpoint change can preserve a later mobile focus index. Rebuild
+          // the reading state from this layout before scroll callbacks take over.
+          let currentIndex = -1;
+          PROCESS_STEPS.forEach((step, index) => {
+            const element = section.querySelector<HTMLElement>(`#${step.domId}`);
+            if (element && element.getBoundingClientRect().top <= window.innerHeight * 0.45) {
+              currentIndex = index;
+            }
+          });
+          setUnlockedStepIndex(currentIndex);
         });
       };
-      const addMediaQueryListener = desktopQuery.addEventListener
-        ? () => desktopQuery.addEventListener('change', refreshLayout)
-        : () => desktopQuery.addListener(refreshLayout);
-      const removeMediaQueryListener = desktopQuery.removeEventListener
-        ? () => desktopQuery.removeEventListener('change', refreshLayout)
-        : () => desktopQuery.removeListener(refreshLayout);
 
-      // Desktop: animação suave com ScrollTrigger e matchMedia
-      mm.add('(min-width: 1024px)', () => {
-        // 1. Alinhamento contínuo e suave (scrub) da headline com o centro do bloco do Step 2
-        // Calcula o deslocamento exato para que, no final do percurso do processo, o centro
-        // vertical da headline repouse perfeitamente alinhado com o centro do Step 2.
-        const calcShift = () => {
-          const s3 = section.querySelector<HTMLElement>('#processo-03');
-          if (!s3 || !closing) return 0;
-          const s2Height = step2.offsetHeight;
-          const s3Height = s3.offsetHeight;
-          const closingHeight = closing.offsetHeight;
-          const s2TopAtBottom = window.innerHeight - closingHeight - s3Height - s2Height;
-          const s2CenterAtBottom = s2TopAtBottom + s2Height / 2;
+      mm.add(
+        {
+          desktop: '(min-width: 1024px)',
+          narrow: '(max-width: 1023px)',
+          reducedMotion: '(prefers-reduced-motion: reduce)',
+        },
+        (context) => {
+          const { desktop, reducedMotion } = context.conditions!;
 
-          const stickyTop = window.innerHeight * 0.15;
-          const headerPaddingTop = parseFloat(getComputedStyle(header).paddingTop);
-          const hTopAtBottom = stickyTop + headerPaddingTop;
-          const hCenterAtBottom = hTopAtBottom + title.offsetHeight / 2;
+          PROCESS_STEPS.forEach((step, index) => {
+            const row = section.querySelector<HTMLElement>(`#${step.domId}`);
+            const title = row?.querySelector<HTMLElement>('.process-step-title');
+            const description = row?.querySelector<HTMLElement>('.process-step-description');
+            if (!row || !title || !description) return;
 
-          return s2CenterAtBottom - hCenterAtBottom;
-        };
+            ScrollTrigger.create({
+              trigger: row,
+              start: 'top 45%',
+              onEnter: () => setUnlockedStepIndex(index),
+              onEnterBack: () => setUnlockedStepIndex(index),
+              onLeaveBack: () => setUnlockedStepIndex(index - 1),
+            });
 
-        const anim = gsap.to(title, {
-          y: () => calcShift(),
-          ease: 'none',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: 0.8,
-            invalidateOnRefresh: true,
-          },
-        });
+            if (!desktop || reducedMotion) return;
 
-        // 2. Telemetria de foco cumulativo dos passos (1 -> 2 -> 3) com fluidez bidirecional
-        PROCESS_STEPS.forEach((step, idx) => {
-          const el = section.querySelector<HTMLElement>(`#${step.domId}`);
-          if (!el) return;
+            const drawing = gsap.timeline({
+              defaults: { ease: 'none' },
+              scrollTrigger: {
+                trigger: row,
+                start: index === 0 ? 'top 85%' : 'top 55%',
+                // Keep connected segments sequential and let the final branch
+                // finish even when the page has a short closing section.
+                end: 'clamp(bottom 55%)',
+                scrub: 0.35,
+                invalidateOnRefresh: true,
+              },
+            });
 
-          const startTrigger = idx === 0 ? 'top 75%' : 'top 42%';
+            // The joint belongs to the preceding boundary. Reveal it only as
+            // this row supplies the fourth arm of the intersection.
+            const previousJoint = index > 0
+              ? section.querySelector<SVGElement>(`#${PROCESS_STEPS[index - 1].domId} .process-grid-joint`)
+              : null;
+            if (previousJoint) {
+              drawing.fromTo(previousJoint, { opacity: 0 }, { opacity: 1, duration: 0.1 }, 0.05);
+              // The first joint heats earlier; both give one blink at ignition.
+              // CSS mixes live theme/brand tokens, so theme changes stay correct.
+              const heatStart = index === 1 ? 0.2 : 0.25;
+              drawing.fromTo(previousJoint,
+                { '--process-joint-heat': '0%' },
+                { '--process-joint-heat': '100%', duration: 0.85 - heatStart },
+                heatStart,
+              );
+              drawing.to(previousJoint, { opacity: 0.55, duration: 0.05 }, 0.85)
+                .to(previousJoint, { opacity: 1, duration: 0.05 }, 0.9);
+            }
 
-          ScrollTrigger.create({
-            trigger: el,
-            start: startTrigger,
-            onEnter: () => setUnlockedStepIndex((prev) => Math.max(prev, idx)),
-            onEnterBack: () => setUnlockedStepIndex(idx),
-            onLeaveBack: () => setUnlockedStepIndex(idx - 1),
+            PROCESS_LINE_SEGMENTS.forEach((segment) => {
+              const strokes = row.querySelectorAll<HTMLElement>(`[data-line="${segment.id}"]`);
+              drawing.fromTo(strokes,
+                segment.axis === 'y' ? { scaleY: 0 } : { scaleX: 0 },
+                {
+                  ...(segment.axis === 'y' ? { scaleY: 1 } : { scaleX: 1 }),
+                  duration: segment.duration,
+                },
+                segment.at,
+              );
+            });
           });
-        });
 
-        // Desbloqueia todos ao alcançar o fechamento
-        if (closing) {
-          ScrollTrigger.create({
-            trigger: closing,
-            start: 'top 85%',
-            onEnter: () => setUnlockedStepIndex(PROCESS_STEPS.length - 1),
-          });
+          refreshLayout();
         }
+      );
 
-        // Limpeza ao sair da seção por cima
-        ScrollTrigger.create({
-          trigger: section,
-          start: 'top 95%',
-          onLeaveBack: () => setUnlockedStepIndex(-1),
-        });
-
-        return () => {
-          anim.kill();
-        };
-      });
-
-      // Mobile / i3wm tiling (< 1024px):
-      // Reversão limpa de inline styles para evitar qualquer sobreposição
-      mm.add('(max-width: 1023px)', () => {
-        gsap.set(title, { clearProps: 'transform,y' });
-
-        // No mobile, os passos ativam naturalmente conforme entram na tela
-        PROCESS_STEPS.forEach((step, idx) => {
-          const el = section.querySelector<HTMLElement>(`#${step.domId}`);
-          if (!el) return;
-
-          ScrollTrigger.create({
-            trigger: el,
-            start: 'top 80%',
-            onEnter: () => setUnlockedStepIndex((prev) => Math.max(prev, idx)),
-          });
-        });
-      });
-
-      // Window tiling can cross the breakpoint without a scroll event. Re-read
-      // the current trigger progress after the new layout has been painted.
+      // Refresh scroll landmarks when text, fonts or window tiling change row bounds.
+      const resizeObserver = new ResizeObserver(refreshLayout);
+      resizeObserver.observe(section);
       window.addEventListener('resize', refreshLayout);
-      addMediaQueryListener();
+      document.fonts.ready.then(() => {
+        if (!isDisposed) refreshLayout();
+      });
       refreshLayout();
 
       return () => {
+        isDisposed = true;
         window.removeEventListener('resize', refreshLayout);
-        removeMediaQueryListener();
+        resizeObserver.disconnect();
         cancelAnimationFrame(refreshFrame);
+        ScrollTrigger.removeEventListener('refreshInit', measureProtectedBands);
         mm.revert();
+        section.querySelectorAll<HTMLElement>('.process-step').forEach((row) => {
+          row.style.removeProperty('--process-reading-start');
+          row.style.removeProperty('--process-reading-end');
+        });
       };
     },
     { scope: sectionRef }
@@ -184,12 +198,11 @@ export default function ProcessSection() {
       <div className="process-panel">
         <div className="process-header-primary">
           <h2
-            ref={titleRef}
             id="process-title"
             className="process-title"
             tabIndex={-1}
           >
-            Nós estruturamos sua presença digital.
+            O seu contexto define o caminho.
           </h2>
         </div>
         <div className="process-ledger-wrapper">
@@ -210,6 +223,25 @@ export default function ProcessSection() {
                   data-active={isActive ? 'true' : 'false'}
                   onMouseEnter={() => setHoveredIndex(index)}
                 >
+                  <span className="process-line-arrangement" aria-hidden="true">
+                    {PROCESS_GRID_COLUMNS.map((column) => (
+                      <span key={column} className="process-grid-column" style={{ left: `${column}%` }}>
+                        {PROCESS_LINE_SEGMENTS.filter((segment) => segment.axis === 'y').map((segment) => (
+                          <span key={segment.id} className={`process-line process-line--${segment.id}`}
+                            data-line={segment.id} data-from={segment.from} data-to={segment.to} />
+                        ))}
+                      </span>
+                    ))}
+                    <span className="process-line process-line--boundary" data-line="boundary"
+                      data-from="panel-left" data-to="panel-right" />
+                    {index < PROCESS_STEPS.length - 1 && (
+                      <svg className="process-grid-joint" width="15" height="15" viewBox="0 0 15 15"
+                        style={{ left: `calc(${PROCESS_INTERSECTION_COLUMN}% + 0.5px)` }}
+                        focusable="false">
+                        <path d="M7.5 0V15M0 7.5H15" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                      </svg>
+                    )}
+                  </span>
                   <div className="process-step-body">
                     <h3 className="process-step-title">{step.title}</h3>
                     <p className="process-step-description">{step.description}</p>

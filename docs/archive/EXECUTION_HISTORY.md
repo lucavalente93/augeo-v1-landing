@@ -1517,3 +1517,111 @@ Ajuste fino de raster e repouso ótico das linhas de varredura do lettering `AUG
    - Commits e merges sincronizados em `v4` e `main`.
 
 
+
+## 2026-10-24 — Impeccable technical audit
+
+Executed the installed v4.5.0 `audit` workflow: context, code review, detector, production build and named agent-browser Chromium checks. No UI edits. Result: 15/20, five P2 findings, zero confirmed P0/P1/P3. Findings, standards, commands, screenshots and verification limits are preserved in the [audit evidence](../reviews/2026-10-24-impeccable-audit/README.md).
+
+Build passed; detector returned `[]`; axe reported 35 passes, zero violations and incomplete contrast analysis (14 nodes). Sampled widths 320/390/768/1440 had no horizontal document overflow. Verified keyboard focus, theme click, mobile closing-action absence and reduced-motion Process transform. Captures were opened and inspected. Browser session closed. Physical touch, native zoom, other engines, full contrast and production performance remain unverified. WhatsApp integration is an existing pending dependency, not a new audit defect; Process defocus is intentional. Previous untracked critique captures were preserved. No commit/push/publication.
+
+## 2026-10-25 — experimental quality flow rejected and reverted
+
+Created `experiment/impeccable-quality-flow` from `dev` and implemented the audit's five technical fixes. Luca rejected the outcome as not useful, clarified that dark/light is a scaffold and requested removal of the branch and all experimental changes. Restored `src/App.tsx`, `src/components/ProcessSection.tsx` and `src/styles.css` exactly to their pre-experiment Git content; removed experiment screenshots and implementation report. Original audit/critique evidence and prior documentation were preserved. No experiment commit, merge, push or deployment occurred. Dark/light refinement is not a current priority; do not treat historical audit suggestions as an approved queue.
+
+## 2026-10-25 — independent Impeccable visual critique
+
+After explicit permission for sub-agents, ran independent design assessment A (`/root/critique_design`) and detector/browser assessment B (`/root/critique_evidence`) of `src/App.tsx`. B withheld deterministic findings until A completed. Synthesized score18/24, with heuristics5/7/9/10 n/a; three P2 visual/editorial priorities, zero P0/P1. The hero's existing identity is a strength. Proposed work concerns Process progression/hierarchy, rules crossing the moving headline and stronger closing hierarchy. No implementation authorized or executed.
+
+CLI detector once: `[]`. Browser injection succeeded and returned one `repeating-stripes-gradient` advisory, interpreted against the intentional CRT artwork as a contextual false positive. Chromium1440×900 and390×844, both themes; actual reading/scroll states inspected. Preserved selected screenshots and [run notes](../reviews/2026-10-25-impeccable-critique/README.md), linking the native snapshot. Own browsers, temporary detector server and critique-only Vite server stopped; snapshot temp body deleted. No physical device, other-engine, user-research or conversion validation. Prior rollback, dark/light scaffold exclusion, pending WhatsApp and cumulative focus decisions preserved. Next action is choosing the visual-study direction, not automatic implementation.
+
+## 2026-10-25 — polly Process stage 1 implementation
+
+LV confirmed final website copy has not been supplied and all website text/business-facing content is provisional, then authorized critique item #1 implementation with `layout` and `typeset` on new branch `polly`. Combined wide opening with a smaller editorial heading and per-row title/description columns. Adopted working H2 “O seu contexto define o caminho.” No new factual claims or final-copy approval. Earlier local documentation/evidence preserved.
+
+Used independent layout/type and mechanical assessments, then implemented and inspected the new structure. Removed old H2 travel as a topology consequence while preserving cumulative row focus. Corrected a demonstrated stale reading index during breakpoint changes. Final build passed; scoped layout/type pre/post/final detector checks returned no findings. Chromium checks covered desktop/mobile themes,320/390/768/1024/1440px widths, scroll reversal, cumulative hover/pointer exit, breakpoint refresh, reduced motion and long copy at200% root-text size. Opened final screenshots; limits and exact outcomes are in [stage1 evidence](../reviews/2026-10-25-polly-process-stage-1/README.md). No Playwright, physical devices, other engines, universal accessibility/performance claims or new critique score.
+
+**Pending LV approval of the entire item #1 stage. After approval, remind LV and revisit #2 (rules/type relationships with layout/polish), then #3 (closing with clarify/layout). Neither follow-up is started or silently closed by this implementation.** Browser closed; local Vite preview retained for review. No commit, merge, push or deployment.
+
+## 2026-10-25 — tracking discovery decisions before compaction
+
+LV finds the current `polly` Process composition more intuitive for the working copy, but too simple; the original tracking was intended to demonstrate distinctive website presentation. Began Impeccable `shape` discovery without new UI edits. LV answered that motion prominence should adapt to the result and experience objective, rather than being fixed in advance; increasing section height and scroll distance is allowed because the site is very short. These are design constraints, not approval of a particular moving element, interaction concept or completed item #1.
+
+Saved decisions in specification §5 and updated backlog with an explicit compaction resume point: propose concrete tracking alternatives and a brief, without repeating the settled questions. Separate version B remains an explanation, not an implemented/requested variant. All website copy remains provisional. After full item #1 approval only, remind LV and revisit #2 then #3. No new code, build, browser run, commit, merge or publication for this documentation update.
+
+## 2026-10-25 — polly tracking option 2 selected and implemented
+
+Presented three concrete tracking alternatives inside the existing visual world. LV selected option2 and authorized continuation: desktop title/explanation blocks start toward the gutter, then separate into their established reading alignment. Implemented through the Impeccable `animate` playbook after the confirmed `shape` brief, applying AUGEO React and GSAP lifecycle guidance. Increased motion-enabled traversal space; preserved cumulative hover/scroll focus, bidirectional reading and content-driven sizing. Reduced motion retains compact rows without transforms. Existing draft copy and hero/matrix/closing/theme/channel behavior preserved.
+
+Build passed; one detector run returned `[]`. Named agent-browser Chromium checks passed both themes, widths320/390/768/1024/1440, actual forward/reverse scrolling, cumulative hover and pointer-exit restoration, media/breakpoint cleanup, reduced-motion switching, keyboard progression and enlarged/longer text. Initial scroll assertion was masked by pointer hover; isolated scroll state passed without code changes. The stale CSS served by old5173 was bypassed with a new Vite instance on5174; old server preserved. Inspected desktop/mobile captures, then one confirmation pass. [Evidence, exact measurements, captures and coverage limits](../reviews/2026-10-25-polly-process-tracking/README.md).
+
+Option2 is implemented for visual evaluation, not approval of the whole critique item #1. The animate polish handoff and critique items #2/#3 remain pending until LV approves that entire stage. Preview retained on5174; own browser closed. All changes local/uncommitted; no commit, merge, push, publication or legacy Playwright execution.
+
+## 2026-10-26 — tracking origin rejected in visual review
+
+LV finds the tracking result aesthetically clean but its center-left origin arbitrary: it starts from no relevant place and merely settles into the pre-existing layout. Inspected the current component and confirmed the offset is derived from available gutter space; this guarantees separation, not narrative or spatial meaning. Recorded the correction in specification §5 and replaced the backlog's pending evaluation with an origin/path revision inside item #1. No replacement mechanism is selected or implemented. Other forthcoming observations mostly concern item #2; their details are unknown and the approval gate remains intact.
+
+Read the installed Impeccable entry and relevant shape/established-world/animate guidance, reusing the successful context setup from this session; no new discovery interview or full command completion claimed. Preserved UI and evidence. Documentation-only update: no build/browser suite, commit, merge, push or publication.
+
+LV subsequently rejected the conversational follow-up hypothesis of keeping titles stationary and moving explanations from underneath them to the right column, describing it as forced. The hypothesis was clarified with a text diagram before rejection; no UI implementation occurred. Recorded the rejected proposal in specification §5 and backlog so it is not recycled as an approved or unexplored direction. No replacement selected; item #1 remains open and items #2/#3 remain gated. Documentation diff and derived views checked; no application checks required for this record-only update.
+
+
+## 2026-10-26 — semantic arrangement before scroll-drawn lines
+
+LV corrected hover to scroll and confirmed individually controlled lines, with semantic relationships defined before implementation to reduce arrangement overhead. Recorded the requirement and a clearly provisional right-corridor/row-boundary path in specification §5, and refreshed the backlog next action. The proposal preserves the current full-width opening; it does not restore a former split layout or authorize item #2. No UI changes, build, browser validation or performance measurement in this planning delivery.
+
+
+## 2026-10-26 — scroll-drawn Process implementation on polly
+
+LV authorized implementation and specified a simple final static mobile arrangement. Implemented six semantic connected segments with CSS layout anchors and GSAP scroll progress; removed the rejected text displacement and repeating background. Preserved cumulative focus/hover independently. Build passed; detector returned []. Chromium checked five widths, reversal, breakpoint cleanup, both themes, reduced motion and fourfold paragraph content at200% root font without horizontal overflow or line/text overlap. Final confirmation caught an incomplete final branch caused by refresh-time endpoint calculation; switched to ScrollTrigger's clamped endpoint and confirmed all six transforms complete at maximum scroll. No new dependencies or legacy suite. No physical-device frame-time measurement. [Evidence](../reviews/2026-10-26-polly-process-lines/README.md). Stage approval remains pending; no commit/publication.
+
+
+## 2026-10-26 — restore distributed grid after LV rejection
+
+LV's screenshot showed the grid absent from almost the entire section, with only a stroke on the extreme right. Corrected that interpretation on `polly`: restored six distributed columns at the established14% rhythm, omitting the unwanted left-edge line; split each around actual text reading bands; added full-width row boundaries. Scroll drives desktop upper/lower/boundary phases; mobile remains static. Previous changes and evidence preserved. Build passed and detector returned []. Preview verified on5173; the separate5174 instance had ended. Visual approval and physical-device performance measurement remain pending.
+
+
+## 2026-10-26 — grid visibility refinement
+
+LV requested more visible grids after the distributed correction. Increased the grid token alpha to0.14 in both themes and applied it to horizontal grid boundaries; no geometry, thickness or motion changes. Detector returned[]. Scoped CSS-only change; no new test suite or UI mechanism. Full item #1 approval remains pending.
+
+
+## 2026-10-26 — two four-arm intersection markers
+
+At LV's request, restored exactly two11px SVG “+” joints on the44% shared anchor, after steps1 and2; step3/footer has none. Desktop reveal belongs to the following row's upper-arm phase; mobile/reduced motion are static. Build passed; detector[]. Named agent-browser Chromium confirmed marker counts1/1/0, completed desktop opacity1, mobile center errors0px on both axes, and reduced-motion opacity1. Screenshot inspected in light theme. No broader approval or publication.
+
+
+## 2026-10-26 — scroll heat on both intersection joints
+
+LV requested tokenized AUGEO orange after roughly30% of each joint activation. Added a reversible local heat percentage: neutral until timeline0.3, then linear interpolation to `--accent` at1. CSS color-mix keeps theme and brand tokens live. Static mobile/reduced-motion markers use the final accent. Build passed; detector[]. Fresh named agent-browser Chromium checks on both joints in both themes:20%/30% heat0%,65% heat≈50%,100% heat100%, reverse20% heat0%. Mobile and reduced-motion cleanup removed inline heat and rendered final accent. First browser probe failed transiently to find a marker; repeated complete probe passed. No geometry/grid changes, no commit/publication; item #1 still pending approval.
+
+
+## 2026-10-26 — earlier heat and bounded ignition flare
+
+LV requested25% activation and a subtle end-of-color-transition glow. Heating now spans25–85%; a tokenized cross-shaped drop-shadow grows70–85% (4px/75% accent maximum), then settles85–100%. Fully scrubbed/reversible, no loop, no static mobile/reduced-motion flare. Build passed; detector[]. Chromium sampled both markers at20/25/85/100/reverse20%: neutral through25%, full accent≈85%, flare≈1 at85% and0 at rest/reversal. Mobile/reduced-motion remained final accent without inline heat. Theme-class probes were affected by app theme reconciliation, so this pass establishes timing/property behavior rather than independent two-theme visual coverage. Full stage approval remains pending.
+
+
+## 2026-10-26 — first joint20% and one blink instead of glow
+
+LV requested earlier first-joint activation and a blink. First heat starts20%, second25%; both finish color85%. Replaced drop-shadow flare with one opacity dip/recovery85–95%, with no loop. Build passed; detector[]. Named Chromium probe sampled both joints at19/22.5/85/90/96/100/reverse19%: first already heating at22.5%, second neutral; both accent by85%, dim near90%, full opacity by96%, neutral on reversal; filter none. Initial blink-minimum assertion was too narrow for integer scroll positions (observed0.1815 vs ideal0.15); accepted0.23 tolerance without UI changes. Mobile/reduced motion retained static accent. Full stage approval remains pending.
+
+
+## 2026-10-26 — stronger joint visibility, especially light
+
+LV reported poor marker visibility, especially light. Increased viewport to17px, strokes to15px length/2px thickness; blink floor55%. Light markers derive85% brand accent/15% foreground through a local token; global accent unchanged. No timing/anchor/count changes. Build passed; detector[]. Chromium light-theme sampled both markers across heating/blink/reverse: color at completion srgb(0.86,0.25,0.156667), blink opacity≈0.56 at90%, full by96%, no filter. Mobile/reduced-motion retained completed local accent. Dark physical-device/contrast perception remains for LV review; no broad stage approval or publication.
+
+Final light screenshot capture timed out at CDP `Page.captureScreenshot`; browser session closed. No fresh visual-capture approval is claimed; DOM/computed-style checks above passed.
+
+
+## 2026-10-26 — restore marker stroke coherence
+
+LV found the heavier markers inconsistent with page linework. Changed both to15px viewport/arms and1px stroke, matching the grid. Retained light accent contrast,55% blink floor, activation timing and two-marker placement. No other UI changes or stage approval.
+
+
+## 2026-10-26 — intermediate joint weight
+
+LV found1px markers too faint after rejecting2px as inconsistent. Set both15px markers to1.5px stroke only; all other properties retained. Visual acceptance remains pending.
+
+
+## 2026-10-26 — authorized Git promotion
+
+LV explicitly requested a commit, push and promotion of the current `polly` work to `main`, including the preserved review evidence. Fresh `bun run build` and `git diff --check` passed. SSH port 22 timed out; authenticated HTTPS is used for GitHub operations. Integration preserves the existing main history. This Git authorization does not constitute full visual approval of critique item #1 or authorize starting #2/#3.
