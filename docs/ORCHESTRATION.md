@@ -18,11 +18,25 @@ Paperclip `2026.1012.0` uses the `process` adapter for `agy` and Codex CLI. Brid
 
 One coordinator per request and one active executor per project. Each task declares its owner and scope; the other agent may review read-only. Coordination transfers must be recorded without circular delegation. Antigravity as an automatic universal entry point remains a proposal, not an implemented capability.
 
+## Paperclip test branch — `pclip`
+
+`pclip` is reserved exclusively for testing Paperclip and its bridge while their behavior is being evaluated. Keep test edits, commits and pushes on `pclip`; do not switch, merge, push or otherwise alter `main`, `dev`, `polly` or other branches without a separate explicit request. Created from `polly` at `933424f`, it includes the current documentation reconciliation. Before each test, verify the executor's actual checkout/workspace and scoped permissions: a Git branch is a workflow boundary, not filesystem isolation or a guarantee that an executor cannot touch another ref.
+
 ## Shared context
 
 Source-resolution commands and derived-view maintenance belong in `augeo-context`; module ownership is mapped in [AGENTS](../AGENTS.md). The bridge sends governance, the global website record, AGENTS and BACKLOG content; other sources remain a metadata catalog until selected. Selection makes no model call or keyword classification. Full snapshots retain consumed revisions.
 
 Obsidian need not be open. Graph View shows explicit links; Canvas arranges cards without executing tasks. Embedded PostgreSQL serves only Paperclip; website database, embeddings, transcription and external services remain unselected. Maestri and Gemini CLI are not dependencies.
+
+### Current work and historical knowledge
+
+Paperclip owns execution/review state; [BACKLOG](BACKLOG.md#queue-by-workstream) is the essential linked task index, not a second queue. Each ticket references the responsible canonical requirements and selects registered `contextSources` when needed. The orchestrator's existing context selection gives direct source content, paths and revisions; no new knowledge service, registry or duplicated task report is required.
+
+For Process, [AUG-12](http://127.0.0.1:3100/AUG/issues/AUG-12) tracks the current item #1 review, with pending dependent [AUG-19](http://127.0.0.1:3100/AUG/issues/AUG-19) and [AUG-20](http://127.0.0.1:3100/AUG/issues/AUG-20). Select `docs/02-WEBSITE_SPEC.md` for current requirements; use `docs/HERO.md` for Hero and `docs/WORKFLOW.md` for checks. Requesting or assigning future implementation remains distinct from recording its existence.
+
+Historical learning, rejected concepts and dated verification belong in the existing repository archive/review bundles, linked from canonical sources and their derived Obsidian views. They are consulted on demand, not injected as current requirements. Original superseded Paperclip briefs can be preserved in native `historical-brief` documents; existing comments, runs and review states remain evidence. Link historical tickets to current authority without rewriting old runs, inventing usage or closing unresolved evaluations.
+
+Interactive-session synchronization updates ticket descriptions/project navigation without assigning pending agents, posting wake-triggering comments or resuming saved runs. Check active runs before source changes and verify that no new run started. Reconcile Git/deployment claims and approval gates separately. After canonical edits, refresh/check derived views through `augeo-context`.
 
 ### Documentation language and vault names - 19/10
 

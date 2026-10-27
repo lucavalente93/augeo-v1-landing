@@ -2,49 +2,41 @@
 
 Updated on 2026-10-27. Current state, latest delivery and queue only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Earlier deliveries and evidence: [history](archive/EXECUTION_HISTORY.md).
 
-## Latest delivery — `polly`: scroll-drawn Process lines — 2026-10-26
+## Latest delivery — Process refinement and task synchronization — 2026-10-27
 
-Corrected the rejected right-edge-only implementation: distributed grid restored at16/30/44/58/72/86%, split around measured title/description reading bands, with full-width row boundaries. Desktop draws segments with scroll; mobile uses a reduced static grid; opening stays clear. No hero changes. [Current requirements](02-WEBSITE_SPEC.md#scroll-drawn-line-direction--lv-2026-10-26); [evidence](reviews/2026-10-26-polly-process-lines/README.md). Earlier edge-only experiment remains historical, not accepted.
+The Process grid remains scroll-drawn on desktop and static on narrow/reduced-motion layouts. Desktop “+” joints now share the grid color, without orange or blink; below1024px they are hidden. Current behavior: [specification §5](02-WEBSITE_SPEC.md#5-public-process). Prior experiments and lessons: [archived exploration](archive/EXECUTION_HISTORY.md#2026-10-27--superseded-process-exploration-archive), [dated evidence](archive/EXECUTION_HISTORY.md#2026-10-27--restrained-process-intersections) and [review bundle](reviews/2026-10-26-polly-process-lines/README.md).
 
-Build and detector passed. Fresh Chromium coverage and limits are recorded with the correction evidence. Preview is the restarted server at `http://localhost:5173` on `polly`;5174 is no longer running. LV authorized committing the current work and promoting it to `main` on 2026-10-26; The prior delivery reached `main` and `polly` at `3e7cb3d`; its Vercel production deployment succeeded. The 2026-10-27 refinement is local on `polly`.
+`933424f` (`fix(process): quiet intersection markers across breakpoints`) is on local and remote `main`/`polly`; freshly verified on27/10. Current checkout is `pclip`, reserved for Paperclip/bridge tests; [branch boundary](ORCHESTRATION.md#paperclip-test-branch--pclip). The delivered refinement passed build/diff checks and Chromium desktop token matching in both themes plus390px hidden markers/retained grid/no overflow. No new browser/build run was needed for this documentation-only synchronization. Vercel success was verified for preceding `3e7cb3d`; no latest-deployment claim.
 
-**Visibility refinement:** LV requested stronger grid visibility; raised grid alpha to0.14 in both themes and unified horizontal grid strokes with that token, retaining1px thickness and existing motion/layout. Full stage remains unapproved.
+**Next action / review authority:** [AUG-12](http://127.0.0.1:3100/AUG/issues/AUG-12) remains `in_review` for LV's evaluation of the entire critique item #1. Git promotion does not close this gate. Only after full approval, remind/revisit [#2 / AUG-19](http://127.0.0.1:3100/AUG/issues/AUG-19), then [#3 / AUG-20](http://127.0.0.1:3100/AUG/issues/AUG-20). Their creation records pending work; it does not authorize execution.
 
-**Intersection refinement:** restored exactly two44% “+” joints, after steps1/2; none at the footer. Build/detector passed; Chromium confirmed count, mobile centering and static reduced-motion visibility.
-
-**Latest refinement — 2026-10-27:** LV approved removing accent heating/blink from the two desktop joints and hiding them below1024px. Desktop joints retain15px/1.5px geometry and use the grid-line token; mobile grid remains static. Build passed; Chromium checked desktop token matching in both themes and mobile hidden markers/retained grid/no overflow. Visual approval of the full stage remains pending.
-
-**Next action:** LV visual review of item #1 in the preview. Do not infer acceptance from implementation authorization, start #2/#3 or refine unrelated scaffolds.
-
-**Approval gate:** the entire item #1 stage is still unapproved. Only after LV approves it, remind LV and revisit **#2: rules/type relationships** (`layout`/`polish`), then **#3: closing narrative/hierarchy** (`clarify`/`layout`). Do not start or silently close those follow-ups before approval. LV authorized Git promotion to `main`; this does not close the visual approval gate. Current critique snapshot stays historical and is not closed as fully resolved.
+Paperclip synchronization is complete: current Process review and all pending workstreams are linked below; original briefs and superseded exploration are preserved in their existing historical stores. [Synchronization evidence](archive/EXECUTION_HISTORY.md#2026-10-27--quiet-marker-promotion-and-paperclip-reconciliation).
 
 ## Current state
 
-- Previous work is committed as `b6e2a5c` on `dev`, merged and pushed to `main` as `b107bc5` on 24/10 at Luca's request. This confirms Git synchronization, not Vercel deployment readiness.
-- Hero, Process and the mobile matrix footer are included in that source baseline. Lettering rescale/kerning/baseline finish are already committed; old uncommitted summaries belong to history.
-- Commercial entry follows the approved [WhatsApp direction](02-WEBSITE_SPEC.md#6-sales-intake-and-form). Current CTA still targets absent `#entrada`; no WhatsApp number, bot, provider or receiving/handoff integration is configured. The inline form is a superseded alternative.
-- Process opacity is intentional scroll/hover focus. Preserve Luca's clarification in the [specification](02-WEBSITE_SPEC.md#5-public-process); sampled defocused contrast is not authority to remove the behavior.
-- The approved `dev` baseline included Process H2 resize synchronization. In the current `polly` experiment the opening no longer travels; breakpoint refresh instead reconciles cumulative reading focus. Physical qutebrowser/i3wm confirmation remains outside the Chromium evidence.
-- Component recommendations are proposals in the [archived component study](archive/2026-10-24-ux-review.md#landing-components), not implemented changes. No form, chatbot or new visual work is authorized by this documentation task.
-- Current verification procedure: [WORKFLOW](WORKFLOW.md#bun-and-validation). Historical browser evidence does not validate an untested new change.
+Paperclip owns task state. This essential source is a linked index and latest-delivery summary, not an independent queue. Current requirements are in the registered [specification](02-WEBSITE_SPEC.md), [Hero](HERO.md) and [workflow](WORKFLOW.md); historical learning/evidence stays in the existing archive/review system, navigable through derived Obsidian views. Read [ORCHESTRATION](ORCHESTRATION.md#current-work-and-historical-knowledge) for source access and reconciliation.
+
+- Hero/matrix identity and intentional cumulative Process focus remain preserved. Dark/light stays a scaffold; copy is provisional.
+- WhatsApp is the approved entry direction, but channel, bot and human handoff are unconfigured; CTA still targets absent `#entrada`. This is a known dependency, not a new audit finding.
+- Earlier pilots, historical UI studies and previous branch experiments are evidence, not current implementation instructions. Their human evaluations remain separate.
 
 ## Priority continuity - agent architecture
 
-Paperclip + bridge and shared context are implemented. Last recorded pilot state: AUG-8 blocked after command denial/503 and recovery 409; AUG-9 in review. AUG-5/AUG-6 evaluation remains pending; AUG-7 is unexecuted. Technical write/browser grants were revoked. These are recorded states, not a fresh Paperclip query.
-
-Comparison and limits: [18/10 record](archive/EXECUTION_HISTORY.md#piloto-comparativo-dos-pontos-34--2026-10-18). Skill availability and execution boundaries: [ORCHESTRATION](ORCHESTRATION.md#shared-skills---deployed-on-1810). Reconcile preserved evidence before resuming the local pilot; its prior preview address does not establish a running service.
+Live Paperclip query on27/10 confirmed [AUG-13](http://127.0.0.1:3100/AUG/issues/AUG-13) in `backlog`, unassigned; [AUG-8](http://127.0.0.1:3100/AUG/issues/AUG-8) `blocked`; [AUG-9](http://127.0.0.1:3100/AUG/issues/AUG-9), [AUG-5](http://127.0.0.1:3100/AUG/issues/AUG-5) and [AUG-6](http://127.0.0.1:3100/AUG/issues/AUG-6) `in_review`; [AUG-7](http://127.0.0.1:3100/AUG/issues/AUG-7) in `backlog`, unassigned. Original results/impediments were preserved, not resolved in bulk. Historical pilot findings are in [history](archive/EXECUTION_HISTORY.md#piloto-comparativo-dos-pontos-34--2026-10-18). No executor was started by synchronization.
 
 ## Queue by workstream
 
-| Workstream | Next action or dependency | Limit |
-| --- | --- | --- |
-| Documentation | Review the completed output-skill/consolidation delivery; commit and publish only when requested | CLI behavior observed; IDE not exercised. No app edits or publication of this implementation. |
-| Agent architecture | Start `AUG-13` (`c4d0c9a7-45a2-44fc-afd2-ca76a925a626`, standby/`backlog`, no assignee) for the Pre-Review Quality Gatekeeper; evaluate AUG-8/AUG-9; keep AUG-7 in backlog | No ticket execution implied by this queue. |
-| Hero | Luca's visual evaluation and reconciliation of block 2 methodology | [HERO](HERO.md#current-block-plan); deferred motion and other blocks are not resumed. |
-| Landing / intake | When requested, define the WhatsApp conversation, human handoff owner and actual channel setup; connect the CTA only to a real configured destination | [Specification](02-WEBSITE_SPEC.md#6-sales-intake-and-form). No provider, account purchase or form implementation inferred. |
-| Components / quality | Review `polly` critique item #1; after full LV approval, remind and revisit #2 then #3 | Dark/light stays a scaffold. No automatic follow-up from the rejected technical experiment. Copy/business-facing text remains provisional. |
-| Technical cleanup | Evaluate removing `pixel`, cue scope, splitting legacy specs and moving assets | Separate from completed naming migration; legacy Playwright needs an explicit request. |
-| Figma | Check suitability of the local PNGs before resuming manual import | Availability is not provenance, equivalence, import or approval; proposal in HERO. |
-| Publication | Define redirection/canonical and metadata when in scope | Vercel Pro purchase remains postponed; WhatsApp channel setup is pending, not implemented. |
+Status below is a27/10 snapshot; follow the ticket for current state. Pending tickets are unassigned `backlog`; follow-ups retain their explicit approval dependencies. Product work requires its own scoped request/assignment.
 
-The sockets/EPERM diagnosis is closed; fallback is in WORKFLOW. ResizeObserver warnings in old synthetic checks have no isolated cause. Do not reopen those diagnoses without relevant new evidence.
+| Workstream | Paperclip task | Canonical source / next dependency |
+| --- | --- | --- |
+| Process #1 | [AUG-12](http://127.0.0.1:3100/AUG/issues/AUG-12), `in_review` | [Specification §5](02-WEBSITE_SPEC.md#5-public-process); full LV review pending. |
+| Process #2 | [AUG-19](http://127.0.0.1:3100/AUG/issues/AUG-19) | Rules/type relationships; only after full #1 approval. |
+| Process #3 | [AUG-20](http://127.0.0.1:3100/AUG/issues/AUG-20) | Closing narrative/hierarchy; after #1 and #2. |
+| Documentation | [AUG-26](http://127.0.0.1:3100/AUG/issues/AUG-26) | Review shared output procedure/consolidation; IDE parity remains unverified. |
+| Agent architecture | [AUG-13](http://127.0.0.1:3100/AUG/issues/AUG-13) and linked pilots above | [ORCHESTRATION](ORCHESTRATION.md); Gatekeeper unexecuted and historical evaluations pending. |
+| Hero | [AUG-21](http://127.0.0.1:3100/AUG/issues/AUG-21) | [HERO](HERO.md#current-block-plan); reconcile block2, do not advance deferred blocks. |
+| Landing / intake | [AUG-22](http://127.0.0.1:3100/AUG/issues/AUG-22) | [Specification §6](02-WEBSITE_SPEC.md#6-sales-intake-and-form); define real channel, conversation and human handoff. |
+| Technical cleanup | [AUG-23](http://127.0.0.1:3100/AUG/issues/AUG-23) | Evaluate pixel, cue scope, legacy specs and assets; no removals approved. |
+| Figma | [AUG-24](http://127.0.0.1:3100/AUG/issues/AUG-24) | [HERO proposals](HERO.md#figma-proposals---independent-workstream); verify PNG suitability/provenance before resuming import. |
+| Publication | [AUG-25](http://127.0.0.1:3100/AUG/issues/AUG-25) | [Technical baseline](02-WEBSITE_SPEC.md#10-implementation); canonical/redirect/metadata decisions pending, Vercel Pro postponed. |
