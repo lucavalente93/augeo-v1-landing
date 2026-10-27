@@ -2,7 +2,13 @@
 
 Updated on 2026-10-27. Current state, latest delivery and queue only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Earlier deliveries and evidence: [history](archive/EXECUTION_HISTORY.md).
 
-## Latest delivery — Process refinement and task synchronization — 2026-10-27
+## Latest delivery — Brand Immersive Stage & WebP integration — 2026-10-27
+
+Implemented the full-width monumental 3D brand finale in `src/components/BrandImmersiveStage.tsx` (`#entrada`), continuing the Process vertical grid lines (16%, 30%, 44%, 58%, 72%, 86%) and pairing the 3D monolith with the conversion message and island CTA. Integrated high-density responsive WebP assets downsampled from 4K/2K masters, cutting payload by >98% (~106 kB total). Resolved the dark-mode hover overlay bug. Retired the redundant interim mobile footer matrix canvas. Recorded dimensional analysis, crop diagnostics and copy-ready Magnific/Midjourney generation prompts in [3D_MONOGRAM_REPORT.md](3D_MONOGRAM_REPORT.md). Verified with `agent-browser` on desktop (1440px) and mobile (390px) in both themes; build passes in <1s. Promoted to `main`.
+
+**Next action:** Re-generate monograms with 25% safe-zone margin and create the missing Light-mode inverted specular variant when Magnific quota renews.
+
+## Current product baseline — Process refinement and task synchronization
 
 The Process grid remains scroll-drawn on desktop and static on narrow/reduced-motion layouts. Desktop “+” joints now share the grid color, without orange or blink; below1024px they are hidden. Current behavior: [specification §5](02-WEBSITE_SPEC.md#5-public-process). Prior experiments and lessons: [archived exploration](archive/EXECUTION_HISTORY.md#2026-10-27--superseded-process-exploration-archive), [dated evidence](archive/EXECUTION_HISTORY.md#2026-10-27--restrained-process-intersections) and [review bundle](reviews/2026-10-26-polly-process-lines/README.md).
 
@@ -26,13 +32,14 @@ Live Paperclip query on27/10 confirmed [AUG-13](http://127.0.0.1:3100/AUG/issues
 
 ## Queue by workstream
 
-Status below is a27/10 snapshot; follow the ticket for current state. Pending tickets are unassigned `backlog`; follow-ups retain their explicit approval dependencies. Product work requires its own scoped request/assignment.
+Status below is a27/10 snapshot; follow the ticket for current state. Other pending tickets remain unassigned `backlog`; AUG-27 is explicitly released to Antigravity at Medium. Follow-ups retain their explicit approval dependencies. Product work requires its own scoped request/assignment.
 
 | Workstream | Paperclip task | Canonical source / next dependency |
 | --- | --- | --- |
 | Process #1 | [AUG-12](http://127.0.0.1:3100/AUG/issues/AUG-12), `in_review` | [Specification §5](02-WEBSITE_SPEC.md#5-public-process); full LV review pending. |
 | Process #2 | [AUG-19](http://127.0.0.1:3100/AUG/issues/AUG-19) | Rules/type relationships; only after full #1 approval. |
 | Process #3 | [AUG-20](http://127.0.0.1:3100/AUG/issues/AUG-20) | Closing narrative/hierarchy; after #1 and #2. |
+| Brand imagery / layout exploration | [AUG-27](http://127.0.0.1:3100/AUG/issues/AUG-27) | [Asset inventory and brief](02-WEBSITE_SPEC.md#3d-brand-imagery-exploration--2026-10-27); analyze on `pclip`, return options before UI implementation. |
 | Documentation | [AUG-26](http://127.0.0.1:3100/AUG/issues/AUG-26) | Review shared output procedure/consolidation; IDE parity remains unverified. |
 | Agent architecture | [AUG-13](http://127.0.0.1:3100/AUG/issues/AUG-13) and linked pilots above | [ORCHESTRATION](ORCHESTRATION.md); Gatekeeper unexecuted and historical evaluations pending. |
 | Hero | [AUG-21](http://127.0.0.1:3100/AUG/issues/AUG-21) | [HERO](HERO.md#current-block-plan); reconcile block2, do not advance deferred blocks. |

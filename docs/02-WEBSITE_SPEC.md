@@ -181,6 +181,29 @@ Brand, lettering, local fonts and matrix are incorporated into the hero. The moo
 
 Each asset needs a compositional, narrative or interactive purpose, must satisfy contrast and accessibility, and must have loading cost proportional to visual benefit.
 
+### 3D brand imagery exploration — 2026-10-27
+
+LV supplied four local raster files for a **feasibility study**, tracked in [AUG-27](http://127.0.0.1:3100/AUG/issues/AUG-27). Explore placement/layout adaptations that give the imagery a concrete role and make the page less entirely vector-based while preserving the established visual language. No placement, replacement composition or animation technique is approved.
+
+Asset directory: `src/assets/logo/3d/`, relative to the repository root resolved by `augeo-context`. The files are PNGs without filename extensions; keep the exact names during analysis. Links below open the original local assets; the existing Obsidian view generator carries these links into `Website - Specification.md`, without copying images or creating another asset store.
+
+| Original asset | Format / dimensions | File size |
+| --- | --- | --- |
+| [augeo-169-black](../src/assets/logo/3d/augeo-169-black) | PNG RGB,1376×768 |1,022,192 bytes |
+| [augeo-169-black-4k](../src/assets/logo/3d/augeo-169-black-4k) | PNG RGB,5504×3072; LV identifies it as the Light symbol variant |14,549,266 bytes |
+| [augeo-169-white](../src/assets/logo/3d/augeo-169-white) | PNG RGB,2752×1536 |4,646,781 bytes |
+| [augeo-169-white-invert](../src/assets/logo/3d/augeo-169-white-invert) | PNG RGB,2752×1536 |4,829,349 bytes |
+
+The added `augeo-169-black-4k` is the user-designated high-resolution symbol for Light. Compare it with the lower-resolution version; assess downsampling/delivery cost rather than assuming native-size loading.
+
+These are user-supplied source assets, not optimized delivery assets, a verified animation sequence or available 3D models. Actual visual compatibility must be assessed by opening them, not inferred from filenames or metadata. Do not rename, compress, import or replace them as part of registration.
+
+The longer-term direction is a programmatically controlled sequence using variants to suggest changing reflections and related effects instead of a prerecorded animation video. Assess whether the supplied variants can support that direction, what additional assets may be needed, and loading/decoding/memory, responsive, readability, accessibility and reduced-motion trade-offs. Do not assume continuous frame compatibility or a specific renderer.
+
+Deliver a concise feasibility assessment with two or three concrete layout-integration options, trade-offs and a recommendation; distinguish observations from prototype hypotheses. Use the installed Impeccable entry and applicable shape/concept references when the exploration is executed. Explain the direction and obtain LV approval before UI changes or animation implementation. This user-directed study does not authorize generic 3D decoration, replacement of the hero/matrix, theme refinement or closure of the Process approval gate.
+
+Work only on `pclip`, under the [Paperclip test-branch contract](ORCHESTRATION.md#paperclip-test-branch--pclip). The full English execution brief and registered source selection are in AUG-27. LV requested taking it out of backlog and assigning the original Antigravity executor at Medium. The study retains `mode: plan`, no write grants and no automatic checks; implementation still requires concept approval. Live execution state is owned by the ticket.
+
 ## 9. Copy and content
 
 **LV clarification — 2026-10-25:** Final website copy has not yet been supplied. All website text and business-facing content remain provisional and open to substantial revision. Existing strings are working material for composition and should not be treated as approved final messaging. This permits iteration on the website narrative; it does not invent new agency capabilities, operational commitments, client evidence or claims. The current `polly` stage tests layout/type with a provisional Process opening while the later closing stage remains gated above.

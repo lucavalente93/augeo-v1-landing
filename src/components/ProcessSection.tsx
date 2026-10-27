@@ -241,35 +241,6 @@ export default function ProcessSection() {
             })}
           </ol>
         </div>
-
-        <footer className="process-closing">
-          <div className="process-closing-inner">
-            <div className="process-closing-meta">
-              <h3 className="process-closing-title">A contratação começa pelo diagnóstico.</h3>
-              <p className="process-closing-note">
-                O projeto é desenhado para o seu momento; sem pacotes fechados ou compromisso antecipado.
-              </p>
-            </div>
-            <div className="process-closing-action">
-              <a
-                className="process-cta"
-                href="#entrada"
-                aria-label="Apresentar negócio"
-              >
-                <span>Apresentar negócio</span>
-                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path
-                    d="M1 7H13M13 7L7.5 1.5M13 7L7.5 12.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </footer>
       </div>
     </section>
   );
