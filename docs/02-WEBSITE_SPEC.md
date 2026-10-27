@@ -113,7 +113,9 @@ The bot's role is reception, understanding and organization. Recommendations of 
 
 ### Implementation status and next decisions
 
-No WhatsApp number, automation provider, account/API integration, receiving destination or human owner has been configured or selected. Define the conversation script, number, handoff owner and data handling before implementing. No tool purchase, account provisioning or publication is authorized by this direction alone.
+**Channel confirmed — Luca, 2026-10-27:** AUGEO has WhatsApp Business at **+55 44 99183-2843**. Luca supplied the eight-digit local form and confirmed that both forms work, authorizing the nine-digit form for the website. Both “Apresentar negócio” links use `https://wa.me/5544991832843`, shared through `lib/contact.ts`, opening in a new tab with an accessible destination announcement. The closing section retains `#entrada` as its section identifier.
+
+This implements direct contact only. No automation provider, account/API integration or human handoff owner has been selected or configured. Define the conversation script, handoff owner and data handling before implementing automated reception. No tool purchase, account provisioning or publication is authorized by this direction alone.
 
 ### Previous form proposal — retained alternative
 
@@ -230,11 +232,11 @@ Avoid promises of results, quick returns, formulas, total solutions without cont
 - Hosting: Vercel, team `augeocreative`, production on `main` with push-triggered deployment integration. The current local remote and freshly queried GitHub repository are `lucavalente93/augeo-v1-landing`. The 26/10 successful deployment of `3e7cb3d` was linked to Vercel team/project `augeocreative/augeo-v1-landing`. Deployment of `933424f` was not checked during the 27/10 documentation sync. No hosting configuration or remote was changed.
 - Custom domain: current address supplied by user on 17/10, `https://www.augeocreative.com`. Historical records confirm HTTPS on root and `www`; DNS/HTTPS and publication evidence belong in [history](archive/EXECUTION_HISTORY.md). Earlier alias `augeo-grid-hero.vercel.app` is a historical reference without availability reconfirmed in that review.
 - DNS managed at Hostinger; existing business email `hello@augeocreative.com`, independent of deployment. Preserve email records when changing website routing.
-- Current Vercel plan retained by user decision; Pro purchase and WhatsApp Business setup postponed until website completion. They do not block development or constitute authorized tasks in that review.
+- Current Vercel plan retained by user decision; Pro purchase remains postponed. WhatsApp Business was subsequently confirmed by Luca on 2026-10-27; current channel configuration is in section 6.
 
 ### Open technical decisions and integrations
 
-- WhatsApp number/channel, conversation script, receiving/handoff owner, storage, abuse protection and failure handling; inline-form requirements are historical alternatives.
+- WhatsApp automation/API integration, conversation script, receiving/handoff owner, storage, abuse protection and failure handling; the direct-contact number is confirmed in section 6. Inline-form requirements are historical alternatives.
 - Data processing, privacy information and operational screening/response parameters.
 - CMS only if a real content-editing need arises; no adoption decided.
 - Analytics and tracking when a measurement goal is defined, respecting applicable privacy and consent.

@@ -12,7 +12,7 @@ Applied copy (Portuguese, preserved):
 
 - Heading: “Presença digital com direção.”, in three lines.
 - Supporting text: “O contexto do seu negócio define como conectamos marca, website, aquisição e operação digital.”
-- Conversion button: “Apresentar negócio”, targeting `#entrada`.
+- Conversion button: “Apresentar negócio”, opening the confirmed [WhatsApp destination](02-WEBSITE_SPEC.md#6-sales-intake-and-form) in a new tab.
 
 The graphic signature counterbalances the heading; supporting text is grouped with the message, and the continuation cue occupies the lower left edge on desktop. The static composition preserves brand readability when the visitor prefers reduced motion.
 
@@ -63,7 +63,7 @@ On `dev`, the native desktop link to `#processo` implements **Option 3 (CRT Scan
 - Hover pulls every segment 35 % toward the anchor using Motion spring physics (`stiffness: 280, damping: 22`).
 - Offscreen and tab suspension, reduced-motion static representation, and native `#processo` keyboard navigation are preserved.
 
-The link remains in `.hero-copy` flow after `.hero-content`, on the 48 px axis with minimum 32 px clearance and no flex shrink. It is available below 1024px with the mobile spacing described above. Keyboard focus stays visible and native activation reaches Process. Expanded content grows the hero naturally; matrix height follows it. The commercial CTA still targets absent `#entrada`; the intended replacement is the approved [WhatsApp entry](02-WEBSITE_SPEC.md#6-sales-intake-and-form), not a required inline form.
+The link remains in `.hero-copy` flow after `.hero-content`, on the 48 px axis with minimum 32 px clearance and no flex shrink. It is available below 1024px with the mobile spacing described above. Keyboard focus stays visible and native activation reaches Process. Expanded content grows the hero naturally; matrix height follows it. The commercial CTA opens the confirmed [WhatsApp entry](02-WEBSITE_SPEC.md#6-sales-intake-and-form) in a new tab; its accessible name identifies the destination and new tab.
 
 This supersedes the earlier triangle geometry/contrast decisions the 2026-10-22 rail/pulse/node cue and the interim Striped Shutter for this branch. The lettering's current baseline/optical calibration is described in Themes and brand; recentering the full panel or adding metadata requires a separate direction decision. Evidence: [v3 implementation](reviews/2026-10-22-v3/README.md).
 
@@ -106,7 +106,7 @@ Implementation does not equal global visual approval. Approval of the mobile bac
 | Mobile hero | Check published version on the user's device | Background correction approved; device evaluation is distinct |
 | Deployed counters | Visually confirm A/O in the browser and viewport reported on 11/10 | SVG correction already published; no new publication pending for this reason |
 | Continuation integration | Evaluate native `<a href="#processo">` link and `#processo` section in a browser | Source is included in the main merge `b107bc5`; deployment not rechecked; preserve the approved Process baseline and do not restore EXPLORE |
-| Sales intake | Connect “Apresentar negócio” to the configured WhatsApp destination | Current CTA still points to absent `#entrada`; channel and handoff not configured |
+| Sales intake | Configure conversational reception and human handoff | Direct WhatsApp links connected on 2026-10-27; automation and handoff remain unconfigured |
 | Matrix introduction | Entry completed within four seconds, then rest and discrete responses | Block 3 not yet implemented; current loops continue. Do not extend this proposal to triangles without a separate decision |
 | Warp performance | Optimize and compare at DPR 2 while preserving the image | Block 4 depends on evaluation of the previous block |
 | System record | Extract `DESIGN.md` from implementation | Block 5 not started; do not replace it with a historical report |

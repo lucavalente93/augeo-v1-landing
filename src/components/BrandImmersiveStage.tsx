@@ -2,6 +2,7 @@ import { useRef, useEffect, useState, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { WHATSAPP_URL } from '@/lib/contact';
 
 import black2kWebp from '@/src/assets/logo/3d/webp/augeo-3d-black-2k.webp';
 import blackMobileWebp from '@/src/assets/logo/3d/webp/augeo-3d-black-mobile.webp';
@@ -165,8 +166,10 @@ export default function BrandImmersiveStage() {
         <div className="brand-stage-actions">
           <a
             className="brand-stage-cta"
-            href="#entrada"
-            aria-label="Apresentar negócio"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Apresentar negócio pelo WhatsApp (abre em nova aba)"
           >
             <span className="brand-stage-cta-label">Apresentar negócio</span>
             <span className="brand-stage-cta-icon" aria-hidden="true">
