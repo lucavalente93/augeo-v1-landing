@@ -81,9 +81,9 @@ export default function App() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Apresentar negócio pelo WhatsApp (abre em nova aba)"
+                aria-label="Entre em contato pelo WhatsApp (abre em nova aba)"
               >
-                <span>Apresentar negócio</span>
+                <span>Entre em contato</span>
                 <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <path d="M1 7H13M13 7L7.5 1.5M13 7L7.5 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

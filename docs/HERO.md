@@ -12,7 +12,7 @@ Applied copy (Portuguese, preserved):
 
 - Heading: “Presença digital com direção.”, in three lines.
 - Supporting text: “O contexto do seu negócio define como conectamos marca, website, aquisição e operação digital.”
-- Conversion button: “Apresentar negócio”, opening the confirmed [WhatsApp destination](02-WEBSITE_SPEC.md#6-sales-intake-and-form) in a new tab.
+- Conversion button: “Entre em contato”, opening the confirmed [WhatsApp destination](02-WEBSITE_SPEC.md#6-sales-intake-and-form) in a new tab.
 
 The graphic signature counterbalances the heading; supporting text is grouped with the message, and the continuation cue occupies the lower left edge on desktop. The static composition preserves brand readability when the visitor prefers reduced motion.
 

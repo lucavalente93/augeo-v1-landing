@@ -1742,3 +1742,8 @@ Verification story: visitor activates either conversion link → native new-tab 
 Inspected the additional mobile closing-section screenshot `/tmp/augeo-whatsapp-mobile-stage.png`, including its visible keyboard focus ring. Checked changed local documentation destinations/anchors and shared CTA references; `git diff --check` passed. Refreshed eight derived views with `augeo-orchestrator views augeo-website`; `views-check` confirmed they match canonical sources. Closed the task-owned browser session.
 
 The executor restarted during verification; checked the preserved diff and restarted the local server before continuing. Browser startup required filesystem escalation for its socket directory. No message was sent; account ownership, message delivery, physical-device app behavior, automation/API integration and human handoff were not tested. At initial delivery, changes were local on `main`, without commit, push, publication or Paperclip task closure. Luca subsequently explicitly authorized committing and pushing this delivery to `main`. The pre-commit fetch confirmed local `main` and `origin/main` matched; production deployment has not been verified.
+
+
+## 2026-10-27 — Hero contact CTA wording
+
+Luca clarified that “Apresentar negócio” implies an actual presentation. Changed the hero visible label and accessible name to “Entre em contato”; retained the closing CTA wording after the working model explanation and both WhatsApp destinations. Updated current wording in Hero/specification and latest backlog summary. Luca requested a basic commit and push to main. Verification: production build and diff checks; no layout or interaction changes.

@@ -113,7 +113,9 @@ The bot's role is reception, understanding and organization. Recommendations of 
 
 ### Implementation status and next decisions
 
-**Channel confirmed — Luca, 2026-10-27:** AUGEO has WhatsApp Business at **+55 44 99183-2843**. Luca supplied the eight-digit local form and confirmed that both forms work, authorizing the nine-digit form for the website. Both “Apresentar negócio” links use `https://wa.me/5544991832843`, shared through `lib/contact.ts`, opening in a new tab with an accessible destination announcement. The closing section retains `#entrada` as its section identifier.
+**Channel confirmed — Luca, 2026-10-27:** AUGEO has WhatsApp Business at **+55 44 99183-2843**. Luca supplied the eight-digit local form and confirmed that both forms work, authorizing the nine-digit form for the website. The hero “Entre em contato” and closing “Apresentar negócio” links use `https://wa.me/5544991832843`, shared through `lib/contact.ts`, opening in a new tab with an accessible destination announcement. The closing section retains `#entrada` as its section identifier.
+
+**CTA wording clarification — Luca, 2026-10-27:** The hero uses “Entre em contato” because “Apresentar negócio” suggests an actual presentation before the visitor understands the working model. The closing CTA retains “Apresentar negócio” after that model has been explained. Both keep the confirmed WhatsApp destination.
 
 This implements direct contact only. No automation provider, account/API integration or human handoff owner has been selected or configured. Define the conversation script, handoff owner and data handling before implementing automated reception. No tool purchase, account provisioning or publication is authorized by this direction alone.
 

@@ -2,9 +2,9 @@
 
 Updated on 2026-10-27. Current state, latest delivery and queue only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Earlier deliveries and evidence: [history](archive/EXECUTION_HISTORY.md).
 
-## Latest delivery — WhatsApp Business contact links — 2026-10-27
+## Latest delivery — Hero contact CTA wording — 2026-10-27
 
-Luca confirmed AUGEO's WhatsApp Business and authorized the nine-digit local number. Both “Apresentar negócio” CTAs now use the shared direct-contact URL, replacing the hero anchor and the closing CTA's self-link. The accessible names announce WhatsApp and the new tab. Build passed; Chromium desktop click and mobile keyboard activation both opened WhatsApp with the confirmed phone parameter. Channel details and remaining integration decisions: [specification §6](02-WEBSITE_SPEC.md#6-sales-intake-and-form); [verification evidence](archive/EXECUTION_HISTORY.md#2026-10-27--whatsapp-business-direct-contact). Luca authorized commit and push to `main`; deployment status has not been verified.
+Luca requested “Entre em contato” for the hero CTA, including its accessible name. The closing CTA retains “Apresentar negócio” after the working model is explained. Both retain the confirmed WhatsApp destination. Commit and push to `main` authorized by Luca.
 
 **Next action:** Define automated reception, human handoff owner and data handling for [AUG-22](http://127.0.0.1:3100/AUG/issues/AUG-22). The direct link does not complete that workstream. Brand-asset follow-up remains pending: re-generate monograms with 25% safe-zone margin and create the missing Light-mode inverted specular variant when Magnific quota renews.
 
