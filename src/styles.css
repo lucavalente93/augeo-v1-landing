@@ -485,8 +485,6 @@ html { scroll-behavior: smooth; }
   --process-border: rgba(255, 255, 255, 0.08);
   --process-border-active: rgba(255, 255, 255, 0.32);
   --process-grid-line: rgba(255, 255, 255, 0.14);
-  --process-joint-accent: var(--accent);
-  --process-crosshair-color: #ffffff;
   --process-vignette-center: rgba(255, 255, 255, 0.03);
   --process-vignette-edge: rgba(0, 0, 0, 0.42);
   /* The panel background resolves cqw against this full-width ancestor. */
@@ -512,8 +510,6 @@ html { scroll-behavior: smooth; }
   --process-border: rgba(17, 17, 17, 0.09);
   --process-border-active: rgba(17, 17, 17, 0.38);
   --process-grid-line: rgba(17, 17, 17, 0.14);
-  --process-joint-accent: color-mix(in srgb, var(--accent) 85%, var(--process-fg));
-  --process-crosshair-color: #111111;
   --process-vignette-center: rgba(255, 255, 255, 0.22);
   --process-vignette-edge: rgba(17, 17, 17, 0.045);
 }
@@ -607,12 +603,13 @@ html { scroll-behavior: smooth; }
   position: absolute;
   bottom: 0.5px;
   transform: translate(-50%, 50%);
-  color: color-mix(in srgb, var(--process-crosshair-color), var(--process-joint-accent) var(--process-joint-heat, 100%));
+  color: var(--process-grid-line);
   pointer-events: none;
   z-index: 1;
 }
 @media (max-width: 1023px) {
   .process-grid-column:nth-child(2n) { display: none; }
+  .process-grid-joint { display: none; }
 }
 .process-step-title {
   color: var(--process-title-color);

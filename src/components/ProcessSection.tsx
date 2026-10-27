@@ -133,16 +133,6 @@ export default function ProcessSection() {
               : null;
             if (previousJoint) {
               drawing.fromTo(previousJoint, { opacity: 0 }, { opacity: 1, duration: 0.1 }, 0.05);
-              // The first joint heats earlier; both give one blink at ignition.
-              // CSS mixes live theme/brand tokens, so theme changes stay correct.
-              const heatStart = index === 1 ? 0.2 : 0.25;
-              drawing.fromTo(previousJoint,
-                { '--process-joint-heat': '0%' },
-                { '--process-joint-heat': '100%', duration: 0.85 - heatStart },
-                heatStart,
-              );
-              drawing.to(previousJoint, { opacity: 0.55, duration: 0.05 }, 0.85)
-                .to(previousJoint, { opacity: 1, duration: 0.05 }, 0.9);
             }
 
             PROCESS_LINE_SEGMENTS.forEach((segment) => {

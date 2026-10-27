@@ -1625,3 +1625,12 @@ LV found1px markers too faint after rejecting2px as inconsistent. Set both15px m
 ## 2026-10-26 — authorized Git promotion
 
 LV explicitly requested a commit, push and promotion of the current `polly` work to `main`, including the preserved review evidence. Fresh `bun run build` and `git diff --check` passed. SSH port 22 timed out; authenticated HTTPS is used for GitHub operations. Integration preserves the existing main history. This Git authorization does not constitute full visual approval of critique item #1 or authorize starting #2/#3.
+
+
+## 2026-10-27 — restrained Process intersections
+
+LV confirmed neutral desktop joints without accent/blink and no mobile joints. On `polly`, removed the heat/blink timeline and obsolete marker color tokens, reused `--process-grid-line`, and hid joints below1024px. Geometry, fourth-arm reveal, drawing segments and focus behavior are preserved. This supersedes the previous heated-marker experiment; no approval of the full item #1 stage or authorization to start #2/#3 is implied.
+
+Verification: `bun run build` and `git diff --check` passed. Agent-browser/Chromium confirmed both desktop markers match the grid token in light/dark; at390px both are hidden, three grid columns remain, and no horizontal overflow occurs. No new screenshots, physical devices or other engines were tested. Restarted Vite at localhost:5173; browser session closed. No commit or push of this refinement.
+
+Reconciled prior promotion: `fc12a68` was merged with main history as `3e7cb3d` and pushed to main/polly on2026-10-26; GitHub Vercel status reported successful Production deployment for that SHA. This is historical deployment evidence, not deployment of the current refinement.

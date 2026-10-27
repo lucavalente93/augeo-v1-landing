@@ -1,20 +1,18 @@
 # Project backlog
 
-Updated on 2026-10-26. Current state, latest delivery and queue only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Earlier deliveries and evidence: [history](archive/EXECUTION_HISTORY.md).
+Updated on 2026-10-27. Current state, latest delivery and queue only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Earlier deliveries and evidence: [history](archive/EXECUTION_HISTORY.md).
 
 ## Latest delivery — `polly`: scroll-drawn Process lines — 2026-10-26
 
 Corrected the rejected right-edge-only implementation: distributed grid restored at16/30/44/58/72/86%, split around measured title/description reading bands, with full-width row boundaries. Desktop draws segments with scroll; mobile uses a reduced static grid; opening stays clear. No hero changes. [Current requirements](02-WEBSITE_SPEC.md#scroll-drawn-line-direction--lv-2026-10-26); [evidence](reviews/2026-10-26-polly-process-lines/README.md). Earlier edge-only experiment remains historical, not accepted.
 
-Build and detector passed. Fresh Chromium coverage and limits are recorded with the correction evidence. Preview is the existing server at `http://localhost:5173` on `polly`;5174 is no longer running. LV authorized committing the current work and promoting it to `main` on 2026-10-26; Git synchronization is in progress.
+Build and detector passed. Fresh Chromium coverage and limits are recorded with the correction evidence. Preview is the restarted server at `http://localhost:5173` on `polly`;5174 is no longer running. LV authorized committing the current work and promoting it to `main` on 2026-10-26; The prior delivery reached `main` and `polly` at `3e7cb3d`; its Vercel production deployment succeeded. The 2026-10-27 refinement is local on `polly`.
 
 **Visibility refinement:** LV requested stronger grid visibility; raised grid alpha to0.14 in both themes and unified horizontal grid strokes with that token, retaining1px thickness and existing motion/layout. Full stage remains unapproved.
 
 **Intersection refinement:** restored exactly two44% “+” joints, after steps1/2; none at the footer. Build/detector passed; Chromium confirmed count, mobile centering and static reduced-motion visibility.
 
-**Accent refinement:** first joint heats from20%, second from25%, both reaching accent at85%. One opacity blink replaces the former glow during85–95%; static mobile/reduced motion remain full-opacity accent.
-
-**Joint visibility correction:** joints now15px/1.5px after LV found2px too heavy and1px too faint, raised blink minimum to55%, and derived a darker local accent from the existing brand token for light-theme contrast. Timing and count unchanged.
+**Latest refinement — 2026-10-27:** LV approved removing accent heating/blink from the two desktop joints and hiding them below1024px. Desktop joints retain15px/1.5px geometry and use the grid-line token; mobile grid remains static. Build passed; Chromium checked desktop token matching in both themes and mobile hidden markers/retained grid/no overflow. Visual approval of the full stage remains pending.
 
 **Next action:** LV visual review of item #1 in the preview. Do not infer acceptance from implementation authorization, start #2/#3 or refine unrelated scaffolds.
 

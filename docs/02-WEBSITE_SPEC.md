@@ -107,6 +107,8 @@ LV confirmed exploration of individually controlled background lines driven by s
 
 **Intermediate marker weight — LV, 2026-10-26:** LV found the restored1px markers too faint. Use1.5px stroke on the same15px shape as an intermediate between the rejected2px weight and faint1px. All color, timing, opacity and placement remain unchanged; visual review remains pending.
 
+**Restrained intersections — LV, 2026-10-27:** Keep the two desktop joints in the same `--process-grid-line` color as their surrounding strokes, retaining15px/1.5px geometry and the initial reveal when the fourth arm forms. Remove accent heating and blink entirely. Hide both joints below1024px; retain the static mobile grid. Reduced-motion desktop keeps neutral static joints. This supersedes all earlier marker color/blink/mobile-visibility decisions; item #1 remains pending visual approval.
+
 ### Disclosure boundary
 
 The website communicates the working model, not the full internal procedure. Initial call, brief structuring, handoffs, validation and second call belong to operations and are documented in registered global source `global:business/augeo.md`, resolved through `augeo-orchestrator context augeo-website`; show them publicly only when they help the lead decide.
