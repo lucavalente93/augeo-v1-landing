@@ -96,7 +96,7 @@ export default function App() {
           </div>
         </section>
         <ProcessSection />
-        <BrandImmersiveStage />
+        <BrandImmersiveStage theme={theme} />
         <footer className="site-mobile-footer" aria-label="Assinatura técnica Augeo">
           <KineticMatrix title="AUGEO" titleArtworkSrc={augeoLettering} enableArtworkMotion gridSpacing={72} className="hero-matrix" />
         </footer>

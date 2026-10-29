@@ -746,7 +746,6 @@ html { scroll-behavior: smooth; }
   border: none;
   overflow: hidden;
   background-color: #020304;
-  cursor: crosshair;
   user-select: none;
   isolation: isolate;
 }
@@ -806,21 +805,19 @@ html { scroll-behavior: smooth; }
 
 .brand-stage-layer--reflection {
   z-index: 2;
-  opacity: var(--stage-opacity, 0.55);
+  opacity: 0.55;
   mask-image: linear-gradient(
     115deg,
-    transparent calc(var(--stage-sweep, 45%) - 28%),
-    rgba(0, 0, 0, 1) var(--stage-sweep, 45%),
-    transparent calc(var(--stage-sweep, 45%) + 28%)
+    transparent calc(var(--stage-sweep, -35%) - 28%),
+    rgba(0, 0, 0, 1) var(--stage-sweep, -35%),
+    transparent calc(var(--stage-sweep, -35%) + 28%)
   );
   -webkit-mask-image: linear-gradient(
     115deg,
-    transparent calc(var(--stage-sweep, 45%) - 28%),
-    rgba(0, 0, 0, 1) var(--stage-sweep, 45%),
-    transparent calc(var(--stage-sweep, 45%) + 28%)
+    transparent calc(var(--stage-sweep, -35%) - 28%),
+    rgba(0, 0, 0, 1) var(--stage-sweep, -35%),
+    transparent calc(var(--stage-sweep, -35%) + 28%)
   );
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, mask-image;
 }
 
 .brand-stage-vignette {
