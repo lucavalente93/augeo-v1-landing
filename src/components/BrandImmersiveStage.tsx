@@ -173,7 +173,7 @@ export default function BrandImmersiveStage() {
             aria-label="Apresentar negócio pelo WhatsApp (abre em nova aba)"
             accentColor="#ff482c"
             accentSoftColor="#ff7a64"
-            cornerRadius={9999}
+            cornerRadius={12}
           />
         </div>
       </div>
