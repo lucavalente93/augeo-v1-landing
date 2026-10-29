@@ -40,11 +40,11 @@
 
 
 :root {
-  --background: #ecece8;
+  --background: #e6e6e2;
   --foreground: #111111;
-  --card: #f2f2ee;
+  --card: #ecece8;
   --card-foreground: #111111;
-  --popover: #f2f2ee;
+  --popover: #ecece8;
   --popover-foreground: #111111;
   --primary: #ff482c;
   --primary-foreground: #111111;
@@ -500,7 +500,7 @@ html { scroll-behavior: smooth; }
   transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 :root.light .process-section {
-  --process-bg: #ecece8;
+  --process-bg: #e6e6e2;
   --process-fg: #111111;
   --process-title-color: rgba(17, 17, 17, 0.88);
   --process-title-active: #111111;
