@@ -1,16 +1,12 @@
 # Project backlog
 
-Updated on 2026-10-28. Current state, latest delivery and queue only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Earlier deliveries and evidence: [history](archive/EXECUTION_HISTORY.md).
+Updated on 2026-10-29. Current state, latest delivery and queue only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Earlier deliveries and evidence: [history](archive/EXECUTION_HISTORY.md).
 
-## Latest delivery — ScrollCue downward overhaul & ShinyButton CTA — 2026-10-28
+## Latest delivery — Brand-stage source fidelity and reflection comparison — 2026-10-29
 
-Delivered refined ScrollCue CRT aperture array and ShinyButton conversion CTA:
-1. **Light Mode & Surface Alignment:** Aligned canvas background and `:root` / `.process-section` tokens to `#e6e6e2` matching the dark-grid light shade.
-2. **ScrollCue Downward Cascade:** Replaced symmetric recoil cycle with a strictly downward sweep over a measured 6.00s cycle across 8 slats. Apex tip holds orange accent (`#ff482c`) with smooth cubic fade (`power2.out`, $t = 1.10\text{s} \to 2.50\text{s}$) into resting color. Preceding slats echo excitation in theme color with subtle micro-gravity upward pull (`y: -1.0px` to `-1.5px`). Hover spring decoupled to parent container (`.scroll-cue-field`), eliminating GSAP transform contention.
-3. **Timeline Theme Resiliency:** Removed theme state dependency from GSAP lifecycle; timeline persists smoothly across rapid theme toggles with CSS variable `--cue-mix` and native `color-mix`, completely preventing timeline accumulation and segment collapse.
-4. **ShinyButton CTA Integration:** Added `components/ui/shiny-button.tsx` with Houdini `@property` conic sweep, radial speckle and reduced-motion fallback. Integrated as final conversion CTA in `BrandImmersiveStage` with WhatsApp destination.
+On local `dev`, the default `/#entrada` now uses static imagery without the negative overlay or mouse reflection. Compare `/?brandReflection=auto#entrada` for the optional smooth automatic Dark reflection; Light remains static. All existing brand WebPs were rebuilt losslessly from PNG masters, a5504×3072 Light delivery was added, and responsive candidates account for device density and `cover` cropping. Decoded8-bit RGB equality passed for all ten outputs. The suspected85% encoder setting is unverified; previous files were demonstrably lossy, and resting negative blending also altered material contrast. Full details and actual verification: [history](archive/EXECUTION_HISTORY.md#2026-10-29--brand-stage-quality-investigation-and-staticautomatic-comparison-on-dev).
 
-**Next action:** Define automated reception, human handoff owner and data handling for [AUG-22](http://127.0.0.1:3100/AUG/issues/AUG-22). The direct link does not complete that workstream. Brand-asset follow-up remains pending: re-generate monograms with 25% safe-zone margin and create the missing Light-mode inverted specular variant when Magnific quota renews for [AUG-27](http://127.0.0.1:3100/AUG/issues/AUG-27).
+**Next action:** Establish and review the new static render first, following Luca's planned camera/render revision. Evaluate camera, lighting, material and perceived volume before revisiting reflection. Automatic B remains unsatisfactory and its replacement method is deferred. Static A remains the default; retain current crop/layout meanwhile. Lossless deliveries are substantially larger and are for fidelity review. Luca subsequently authorized committing and pushing this delivery to `main`; deployment verification is not included. Existing independent queues and approval gates below remain pending; this request does not authorize their execution. Current requirements and review: [brand-stage specification](02-WEBSITE_SPEC.md#current-brand-stage-quality-and-comparison--2026-10-29).
 
 ## Current product baseline — Process refinement and task synchronization
 
