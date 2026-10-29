@@ -9,3 +9,6 @@ personal/
 
 # Configuração local do agente com caminhos específicos desta máquina
 /.codex/
+
+# Scratch de execução do teamwork
+/.agents/teamwork/

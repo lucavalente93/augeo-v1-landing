@@ -1,12 +1,16 @@
 # Project backlog
 
-Updated on 2026-10-27. Current state, latest delivery and queue only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Earlier deliveries and evidence: [history](archive/EXECUTION_HISTORY.md).
+Updated on 2026-10-28. Current state, latest delivery and queue only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Earlier deliveries and evidence: [history](archive/EXECUTION_HISTORY.md).
 
-## Latest delivery — Hero contact CTA wording — 2026-10-27
+## Latest delivery — ScrollCue downward overhaul & ShinyButton CTA — 2026-10-28
 
-Luca requested “Entre em contato” for the hero CTA, including its accessible name. The closing CTA retains “Apresentar negócio” after the working model is explained. Both retain the confirmed WhatsApp destination. Commit and push to `main` authorized by Luca.
+Delivered refined ScrollCue CRT aperture array and ShinyButton conversion CTA:
+1. **Light Mode & Surface Alignment:** Aligned canvas background and `:root` / `.process-section` tokens to `#e6e6e2` matching the dark-grid light shade.
+2. **ScrollCue Downward Cascade:** Replaced symmetric recoil cycle with a strictly downward sweep over a measured 6.00s cycle across 8 slats. Apex tip holds orange accent (`#ff482c`) with smooth cubic fade (`power2.out`, $t = 1.10\text{s} \to 2.50\text{s}$) into resting color. Preceding slats echo excitation in theme color with subtle micro-gravity upward pull (`y: -1.0px` to `-1.5px`). Hover spring decoupled to parent container (`.scroll-cue-field`), eliminating GSAP transform contention.
+3. **Timeline Theme Resiliency:** Removed theme state dependency from GSAP lifecycle; timeline persists smoothly across rapid theme toggles with CSS variable `--cue-mix` and native `color-mix`, completely preventing timeline accumulation and segment collapse.
+4. **ShinyButton CTA Integration:** Added `components/ui/shiny-button.tsx` with Houdini `@property` conic sweep, radial speckle and reduced-motion fallback. Integrated as final conversion CTA in `BrandImmersiveStage` with WhatsApp destination.
 
-**Next action:** Define automated reception, human handoff owner and data handling for [AUG-22](http://127.0.0.1:3100/AUG/issues/AUG-22). The direct link does not complete that workstream. Brand-asset follow-up remains pending: re-generate monograms with 25% safe-zone margin and create the missing Light-mode inverted specular variant when Magnific quota renews.
+**Next action:** Define automated reception, human handoff owner and data handling for [AUG-22](http://127.0.0.1:3100/AUG/issues/AUG-22). The direct link does not complete that workstream. Brand-asset follow-up remains pending: re-generate monograms with 25% safe-zone margin and create the missing Light-mode inverted specular variant when Magnific quota renews for [AUG-27](http://127.0.0.1:3100/AUG/issues/AUG-27).
 
 ## Current product baseline — Process refinement and task synchronization
 

@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { WHATSAPP_URL } from '@/lib/contact';
+import { ShinyButton } from '@/components/ui/shiny-button';
 
 import black2kWebp from '@/src/assets/logo/3d/webp/augeo-3d-black-2k.webp';
 import blackMobileWebp from '@/src/assets/logo/3d/webp/augeo-3d-black-mobile.webp';
@@ -164,26 +165,16 @@ export default function BrandImmersiveStage() {
         </div>
 
         <div className="brand-stage-actions">
-          <a
-            className="brand-stage-cta"
+          <ShinyButton
+            label="Apresentar negócio"
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Apresentar negócio pelo WhatsApp (abre em nova aba)"
-          >
-            <span className="brand-stage-cta-label">Apresentar negócio</span>
-            <span className="brand-stage-cta-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path
-                  d="M1 7H13M13 7L7.5 1.5M13 7L7.5 12.5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
-          </a>
+            accentColor="#ff482c"
+            accentSoftColor="#ff7a64"
+            cornerRadius={9999}
+          />
         </div>
       </div>
     </section>

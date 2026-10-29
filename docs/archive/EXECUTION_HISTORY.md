@@ -1,5 +1,21 @@
 # Histórico de execução e decisões anteriores
 
+## 2026-10-28 — ScrollCue downward cascade overhaul & ShinyButton CTA integration
+
+Luca requested improvements to the hero scroll cue animation and the integration of a ShinyButton component for the final CTA:
+- **Light mode background alignment:** Adjusted light mode background from `#ecece8` to `#e6e6e2` in `src/styles.css` and `components/ui/kinetic-matrix.tsx` to match the dark-grid shade of white/light-grey.
+- **Scroll cue geometry:** Increased slat thickness and width (16px wide slats, 6px thickness for shaft and wings; 16x9px apex tip anchor with 3 scanlines) to give the CRT scanline array presence and remove the timid appearance.
+- **Scroll cue animation overhaul:** Replaced the symmetric recoil/push-back motion with a strictly downward sweep across 8 segments over an extended 6.00s cycle (~30% slower cadence). Apex tip holds orange accent (`#ff482c`) and fades smoothly via `power2.out` into resting theme color. Upper slats echo the pulse in regular theme colors via CSS `color-mix` with micro-gravity pull (`y: -1.0px` to `-1.5px`).
+- **Hover & transform decoupling:** Framer Motion hover spring lifted to parent container (`.scroll-cue-field`), preventing Motion and GSAP from conflicting over inline `transform: y`.
+- **Theme switch resiliency:** Fixed timeline accumulation and element collapse caused by rapid dark/light switching. Removed `themeTick` recreation from `useGSAP`, allowing a single persistent GSAP timeline to run uninterrupted across theme toggles. Scoped cleanup to `clearProps: 'opacity,filter,y,transform,--cue-mix'`, preserving React inline coordinates.
+- **ShinyButton component:** Integrated `components/ui/shiny-button.tsx` with CSS Houdini `@property` conic-gradient continuous rotation, radial speckle, reduced-motion bypass, and polymorphic link support.
+- **Brand stage CTA:** Replaced the closing CTA in `src/components/BrandImmersiveStage.tsx` with `ShinyButton` pointing to `WHATSAPP_URL` (`target="_blank"`, `rel="noopener noreferrer"`) and labeled "Apresentar negócio".
+
+**Verification:**
+- `bun run build` passed (`tsc --noEmit && vite build`) with exit code 0.
+- `agent-browser` stress test executed: 20x consecutive rapid dark/light toggles verified 0 timeline leaks, 0 segment collapses, and continuous uninterrupted downward cycle.
+- Teamwork adversarial gate review and victory audit passed with victory confirmed.
+
 ## 2026-10-24 — Process H2 resize synchronization
 
 Luca reported that the Process H2 could lose its implemented alignment after entering and leaving an i3wm tile, especially in qutebrowser, while Zen Browser did not reproduce the issue. The affected code used GSAP `matchMedia` and ScrollTrigger but did not explicitly refresh the current trigger state after the viewport crossed the 1024px layout boundary.
