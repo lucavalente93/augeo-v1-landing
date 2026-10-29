@@ -334,7 +334,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
   .hero-description { margin-top: 20px; }
   .hero-cta { margin-top: 28px; }
   .hero-page .scroll-cue {
-    margin-top: 44px;
+    margin-top: 36px;
+    margin-bottom: 12px;
     align-self: flex-start;
   }
 
@@ -377,85 +378,76 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
   .matrix-artwork-reactive { display: none; }
 }
 
-/* Continuity link to #processo: 6 · 3 segment rows and an anchor.
-   Option 3: CRT Scanline Aperture Array.
+/* Continuity link to #processo: Modular shaft + head arrow.
+   CRT Scanline Aperture Array.
    Spring physics on hover via Motion; electron beam sweep timeline via GSAP. */
 html { scroll-behavior: smooth; }
 .scroll-cue {
   display: inline-flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   position: relative;
   flex-shrink: 0;
-  align-self: flex-start;
-  margin-top: 24px;
-  max-width: 100%;
-  width: 80px;
-  height: 63px;
+  width: 76px;
+  height: 82px;
   color: var(--foreground);
   text-decoration: none;
   border-radius: 2px;
 }
 @media (min-width: 1024px) {
   .hero-page .scroll-cue {
-    margin-top: 32px;
+    position: absolute;
+    bottom: clamp(24px, 4dvh, 44px);
+    left: var(--hero-copy-inset);
+    margin-top: 0;
   }
 }
-/* 78 x 44 px drawing; even sizes keep every resting edge on whole pixels inside the 80 x 63 link. */
+/* 68 x 74 px drawing area for bold modular shaft + head arrow */
 .scroll-cue-field {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  margin-top: 10px;
-}
-.scroll-cue-row {
-  display: flex;
-  gap: 6px;
+  display: block;
+  position: relative;
+  width: 68px;
+  height: 74px;
+  will-change: transform;
 }
 .scroll-cue-seg {
+  --cue-mix: 0;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 8px;
-  height: 4px;
+  left: calc(50% + var(--seg-x, 0px));
+  top: var(--seg-y, 0px);
+  width: var(--seg-w, 16px);
+  height: var(--seg-h, 6px);
   opacity: 0.45;
-  color: var(--foreground);
-  border-radius: 1px;
-  overflow: hidden;
-  background: color-mix(in srgb, currentColor 8%, transparent);
-  cursor: pointer;
-  will-change: transform, opacity, color, filter;
-}
-.scroll-cue-seg .scroll-cue-scanline {
-  display: block;
-  width: 100%;
-  height: 1px;
-  background-color: currentColor;
-  border-radius: 0;
-  pointer-events: none;
-}
-.scroll-cue-anchor {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 8px;
-  height: 8px;
-  opacity: 0.75;
-  color: var(--foreground);
+  color: color-mix(in srgb, var(--accent, #ff482c) calc(var(--cue-mix, 0) * 100%), var(--foreground));
   border-radius: 1px;
   overflow: hidden;
   background: color-mix(in srgb, currentColor 10%, transparent);
   cursor: pointer;
-  will-change: transform, opacity, color, filter;
+  will-change: transform, opacity, filter;
+
+  &[data-role="tip"] {
+    height: var(--seg-h, 9px);
+  }
 }
-.scroll-cue-anchor .scroll-cue-scanline {
+.scroll-cue-seg .scroll-cue-scanline {
   display: block;
   width: 100%;
   height: 2px;
   background-color: currentColor;
   border-radius: 0;
   pointer-events: none;
+}
+.scroll-cue-seg.scroll-cue-tip,
+.scroll-cue-seg[data-role="tip"] {
+  height: var(--seg-h, 9px);
+  opacity: 0.8;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+}
+.scroll-cue-seg.scroll-cue-tip .scroll-cue-scanline {
+  height: 2px;
 }
 .scroll-cue:active {
   transform: scale(0.97);
@@ -465,9 +457,9 @@ html { scroll-behavior: smooth; }
   outline-offset: 4px;
 }
 @media (prefers-reduced-motion: reduce) {
+  .scroll-cue .scroll-cue-field { transform: none !important; }
   .scroll-cue .scroll-cue-seg { opacity: 0.45 !important; transform: none !important; }
-  .scroll-cue .scroll-cue-row:nth-child(2) .scroll-cue-seg { opacity: 0.7 !important; }
-  .scroll-cue .scroll-cue-anchor { opacity: 1 !important; color: var(--accent) !important; transform: none !important; }
+  .scroll-cue .scroll-cue-tip { opacity: 1 !important; color: var(--accent) !important; transform: none !important; }
 }
 
 /* PROCESSO — Editorial opening and cumulative reading ledger. */
