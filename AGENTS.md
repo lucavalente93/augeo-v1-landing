@@ -9,10 +9,10 @@ Project ID: `augeo-website`. Start here and read the current queue in [BACKLOG.m
 | Resolved global governance | Authority, creative approval, publication permission and Impeccable activation. |
 | Resolved agency, business and brand sources | Agency identity, positioning, operations and brand commitments. |
 | [AUGEO.md](docs/AUGEO.md) | Website goal and priority. |
-| [Specification](docs/02-WEBSITE_SPEC.md) | Landing requirements, Process/form, assets and technical baseline. |
-| [HERO.md](docs/HERO.md) | Hero composition, decisions, evaluations and block plan. |
-| [WORKFLOW.md](docs/WORKFLOW.md) | Checks, evidence, naming and applicable design procedures. |
-| [ORCHESTRATION.md](docs/ORCHESTRATION.md) | Paperclip/bridge execution, permissions and recovery; read for orchestrated work. |
+| [Specification](docs/02-WEBSITE_SPEC.md) | Page-wide architecture, visual system/tokens, design rules (invariants vs. contextual), Process, Brand Stage, intake and technical baseline. |
+| [HERO.md](docs/HERO.md) | Hero composition, SVG lettering, `KineticMatrix`, `ScrollCue`, mobile matrix footer and hero block plan. |
+| [WORKFLOW.md](docs/WORKFLOW.md) | Browser checks, Impeccable and external design-skill translation protocol, naming and evidence. |
+| [ORCHESTRATION.md](docs/ORCHESTRATION.md) | Direct CLI agent coordination (`agy` / `codex`), shared context/view tooling (`augeo-orchestrator`) and legacy Paperclip archive notes. |
 | [PRODUCT.md](docs/PRODUCT.md) | Impeccable schema entry point to the sources above; read when the skill needs it. |
 | [History](docs/archive/EXECUTION_HISTORY.md) | Dated evidence; consult the relevant entry only. |
 | [Historical audit](docs/archive/HERO_AUDIT_2026-10-07.md) | Original hero diagnosis and moodboard references. |
@@ -32,6 +32,6 @@ Code demonstrates implementation, not approval. Resolve conflicts against curren
 - Use `agent-browser` as the default for browser automation, local interaction checks and screenshots, in preference to Playwright. Antigravity CLI uses the globally installed CLI and its global `agent-browser` skill. The procedure and legacy-suite policy are in [WORKFLOW](docs/WORKFLOW.md#bun-and-validation).
 - For React/TypeScript implementation or review, use `augeo-react-frontend`. For design procedure and verification, follow the relevant WORKFLOW section.
 - Prefer `gh` for equivalent GitHub operations; use Git for local operations and pushes. Permission comes from global governance. Commit subjects/bodies use English Conventional Commits (`type(scope): description`); group implementation with its tests.
-- [Four-layer stack](docs/refs/stack-referencia-4-camadas.md) and [Architecture Reference](docs/architecture-reference.md) are conceptual inputs, not adopted tools or requirements. Adopted integration is in ORCHESTRATION.
+- [Four-layer stack reference](docs/refs/stack-referencia-4-camadas.md) is a conceptual input, not an adopted tool or requirement. Adopted integration is in ORCHESTRATION.
 - The personal guide and `.codex/` stay local and Git-ignored. Do not publish their contents or require machine-specific paths in another executor.
 - Verify required skills, CLIs and connections in the current executor; report missing capabilities rather than inferring availability from history.

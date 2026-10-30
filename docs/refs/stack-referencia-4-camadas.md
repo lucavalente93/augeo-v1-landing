@@ -58,3 +58,15 @@ Para evitar duplicação de dados e garantir reutilização de contexto entre pr
   - **Automação de Fluxos:** n8n / Make
   - **Transcrições e Reuniões:** Fathom, NotebookLM
   - **Deploy & Hospedagem:** Vercel
+
+---
+
+## English Migration Notes (Consolidated from `docs/architecture-reference.md`)
+
+> Consolidated on 2026-10-30 from the duplicate `docs/architecture-reference.md` file to keep `docs/` root reserved for active canonical project sources. The actual adopted orchestration contract for `augeo-website` lives in [`docs/ORCHESTRATION.md`](../ORCHESTRATION.md).
+
+When operating on a pre-existing codebase under this conceptual reference:
+1. **Preserve Existing Code Integrity:** Do not destroy or break existing working code during migration. Incrementally refactor modules to align with Layer 2 skills and Layer 1 context.
+2. **Context Resolution Path:** Look for local configuration in `AGENTS.md` and resolve global references via `~/global-context-store/index.md` (`augeo-orchestrator context <project-id>`).
+3. **Incremental Skill Codification:** Document recurring refactoring or workflow routines as `SKILL.md` files in the shared store or `.agents/skills/`.
+4. **Code-First Target:** Execute code generation, component creation, and build checks directly within the local project repository.

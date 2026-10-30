@@ -1022,7 +1022,7 @@ Transferidas de ORCHESTRATION durante a consolidação documental. O conteúdo a
 
 A modularização publicada em `f368281` preparou contexto local e continuidade. O objetivo seguinte é compartilhar conhecimento e procedimentos, coordenar Antigravity e Codex e validar entregas com pouca intervenção operacional de Luca.
 
-As referências [Stack em quatro camadas](../refs/stack-referencia-4-camadas.md) e [Architecture Reference](../architecture-reference.md) descrevem essencialmente a mesma topologia: contexto global, skills, orquestrador/juiz com Codex executor e ferramentas externas. Ambas deixam Antigravity para integração futura. Atribuir agora a coordenação ao Antigravity é uma adaptação proposta, não uma decisão documentada nem uma superioridade de modelo demonstrada.
+As referências [Stack em quatro camadas](../refs/stack-referencia-4-camadas.md) e [Architecture Reference](../refs/stack-referencia-4-camadas.md#english-migration-notes-consolidated-from-docsarchitecture-referencemd) descrevem essencialmente a mesma topologia: contexto global, skills, orquestrador/juiz com Codex executor e ferramentas externas. Ambas deixam Antigravity para integração futura. Atribuir agora a coordenação ao Antigravity é uma adaptação proposta, não uma decisão documentada nem uma superioridade de modelo demonstrada.
 
 | Responsável | Papel proposto |
 | --- | --- |
@@ -1753,7 +1753,7 @@ Release preflight: no active Paperclip run; original Antigravity (`73cfc461-761c
 
 ## 2026-10-27 — 3D brand immersive stage and production promotion
 
-Created dedicated branch `v5` from `02f419a`. Downsampled 4K/2K PNGs into high-density WebP assets in `src/assets/logo/3d/webp/`, preserving raw masters. Implemented `BrandImmersiveStage` at `#entrada` spanning 100vw, continuing the Process vertical grid rhythm (16%, 30%, 44%, 58%, 72%, 86%). Eliminated an overlay mutation bug on CTA hover. Retired the redundant interim mobile footer matrix canvas. Produced [3D_MONOGRAM_REPORT.md](../3D_MONOGRAM_REPORT.md) capturing dimensional math, responsive crop diagnostics, and four copy-ready prompts for Magnific/Midjourney (including the missing Light-mode inverted specular variant). Verified on Chromium desktop (1440×900) and mobile (390×844) across Dark/Light themes via `agent-browser`; verified `bun run build` (951ms, 0 errors). At LV's direction, committed and promoted to `main`.
+Created dedicated branch `v5` from `02f419a`. Downsampled 4K/2K PNGs into high-density WebP assets in `src/assets/logo/3d/webp/`, preserving raw masters. Implemented `BrandImmersiveStage` at `#entrada` spanning 100vw, continuing the Process vertical grid rhythm (16%, 30%, 44%, 58%, 72%, 86%). Eliminated an overlay mutation bug on CTA hover. Retired the redundant interim mobile footer matrix canvas. Produced [3D_MONOGRAM_REPORT.md](2026-10-27-3d-monogram-report.md) capturing dimensional math, responsive crop diagnostics, and four copy-ready prompts for Magnific/Midjourney (including the missing Light-mode inverted specular variant). Verified on Chromium desktop (1440×900) and mobile (390×844) across Dark/Light themes via `agent-browser`; verified `bun run build` (951ms, 0 errors). At LV's direction, committed and promoted to `main`.
 
 ## 2026-10-27 — WhatsApp Business direct contact
 
@@ -1829,4 +1829,30 @@ Merged `main` into `dev` and applied the approved refinements:
 3. **Process Step Hover Background Token (P1):** Added `--process-step-hover-bg` (`rgba(255, 255, 255, 0.02)` dark, `rgba(17, 17, 17, 0.025)` light) and refined `.process-section` transitions with `cubic-bezier(0.16, 1, 0.3, 1)`, activating the subtle cell surface feedback.
 - **Verification:** `bun run build` passed in 1.49s (0 errors). Inspected 1440×900 screenshots in `agent-browser` across Light and Dark themes, confirming clean typographical isolation on the closing copy and smooth CTA interaction.
 - Committed on `dev` as `abe3595`: `style(stage,cta): refine stage grid mask, cta easing and process hover token`.
-- Follow-up: Luca officially approved the delivery on 30/10/2026.
+- Follow-up: Luca officially approved the delivery on 30/10/2026 and instructed promoting `dev` to `main` in task-isolated commits (`1b984f0`, `76f0001`, `326684c`, `530871f`) and pushing both branches to `origin`.
+
+## 2026-10-30 — Conceptual rules recalibration, documentation consolidation and retirement of Paperclip workflow
+
+Luca requested an investigation of conceptual rules and restrictions that originally prevented generic LLM pitfalls during initial brainstorming, but had become limiting during the visual polish and evolution phase—along with an audit of scattered/redundant documentation files and the retirement of active Paperclip ticket/bridge tracking in favor of direct CLI agent sessions (`agy` and `codex`).
+
+### 1. Investigation of modularization, scattered files and direct CLI workflow
+- Inspected `augeo-orchestrator` (`~/.config/augeo-orchestrator/config.json` and `src/views.ts`): keeping the **8 registered canonical files** (`AGENTS.md`, `docs/AUGEO.md`, `docs/PRODUCT.md`, `docs/02-WEBSITE_SPEC.md`, `docs/HERO.md`, `docs/WORKFLOW.md`, `docs/BACKLOG.md`, `docs/ORCHESTRATION.md`) modularized is optimal so CLI agents load only the sources needed for the task and derived Obsidian views stay synchronized.
+- **Retired active Paperclip dependency:** Updated `AGENTS.md`, `docs/BACKLOG.md`, `docs/ORCHESTRATION.md`, `docs/02-WEBSITE_SPEC.md`, `docs/HERO.md`, `docs/WORKFLOW.md` and global `AUGEO - Context Index.md` to reflect that Luca executes and coordinates all work directly across separate `agy` and `codex` CLI sessions on `main`/`dev` without Paperclip (`127.0.0.1:3100`) or `AUG-*` ticket state locks. Historical pilot and bridge records from 16–27/10 remain preserved in this history.
+- Identified and resolved two unregistered/duplicate files in `docs/` root plus cross-file drift:
+  1. `docs/3D_MONOGRAM_REPORT.md` (unregistered, citing superseded lossy WebP sizes): folded its active `2.22:1` crop math and 25–30% safe-zone camera diagnosis into [specification §8](../02-WEBSITE_SPEC.md#current-brand-stage-quality-and-comparison--2026-10-29) and archived the original report at [2026-10-27-3d-monogram-report.md](2026-10-27-3d-monogram-report.md) (recoverable in Git and preserved in full in `docs/archive/`).
+  2. `docs/architecture-reference.md` (English duplicate of `docs/refs/stack-referencia-4-camadas.md`): merged its English migration notes into [stack-referencia-4-camadas.md](../refs/stack-referencia-4-camadas.md) and removed `docs/architecture-reference.md` from `docs/` root, updating incoming links in `AGENTS.md` and this history.
+  3. Deduplicated page-wide theme tokens (`#06070a` dark, `#e6e6e2` light, `#f4f4f0` stage light, `#ff482c` accent) into [specification §7](../02-WEBSITE_SPEC.md#7-visual-direction), updating the stale `#f7f7f5` light background in [HERO.md](../HERO.md#themes-and-brand) and reconciling `ScrollCue` to the live 8-segment modular arrow (`76×82px`, `6.00s` downward cascade).
+  4. Removed redundant historical narratives (deleted branches `section-process`/`v3`, superseded `pclip` plan-only lock, and 17–18/10 pilot logs) from active sections of `02-WEBSITE_SPEC.md`, `BACKLOG.md` and `ORCHESTRATION.md`, linking to their preserved entries in this history.
+
+### 2. Three-tier recalibration of design constraints
+- Updated [specification §7](../02-WEBSITE_SPEC.md#7-visual-direction), [WORKFLOW](../WORKFLOW.md#shared-skills-and-design-stages) and global `AUGEO - Brand.md` to separate:
+  - **Tier 1 — Core Invariants (Strictly Prohibited):** Fabricated social proof/metrics/clients; generic 3-card SaaS layouts or the rejected `point–rule–tag` stage-badge formula; unauthored stock/3D filler; broken active contrast or un-bypassed reduced motion.
+  - **Tier 2 — Contextual & Role-Based Decisions (Not Needed Yet $\neq$ Prohibited):**
+    - *Navigation:* Header return-to-top suffices for the current 3-section length; section anchors or floating nav pills are currently unnecessary, not prohibited (only edge-to-edge sticky SaaS bars are banned).
+    - *Role-based geometry:* Orthogonal `0–2px` framing for structural grids/dividers/slats coexists with softer radii (`12px` on `ShinyButton`, potential `9999px` pills, or nested `button-in-button` / `double-bezel` hardware shells) for focal interactive controls.
+    - *3D & editorial media:* Authored 3D brand sculptures (`BrandImmersiveStage`), specular lighting studies, shaders and purposeful art-directed/GenAI media are supported counterpoints to vector geometry.
+    - *Grid continuity & optical masking:* Proportional column axes (`16/30/44/58/72/86%` desktop, `100cqw/3` mobile) connect sections when typography is protected via reading-band exclusions or vertical gradient masks.
+    - *Ambient micro-motion & progressive focus:* Continuous loops (`KineticMatrix`, `ScrollCue`, `ShinyButton`) and resting-state dimming (`0.38` on inactive Process rows) are intentional mechanisms with offscreen pause and `prefers-reduced-motion` static fallbacks.
+    - *Dark/Light calibration vs. toggle widget scaffold:* Scoped the "scaffold" restriction strictly to the `[DARK]`/`[LIGHT]` header button widget; calibrating Dark and Light surface tokens, contrast, lighting and hover states is active polish.
+- **Verification:** Checked all 237+ local Markdown links/anchors across `AGENTS.md`, `README.md`, and `docs/` (0 broken); ran `git diff --check` (0 errors); refreshed and verified derived Obsidian views via `augeo-orchestrator views augeo-website` and `augeo-orchestrator views-check augeo-website` (`OK (8 views)`).
+  - **External design-skill translation protocol:** Added rules in `WORKFLOW.md` so skills (`high-end-visual-design`, `design-taste-frontend`, `gpt-taste`, `impeccable`) surface ideas without self-censorship and translate their craft principles into AUGEO's visual language.

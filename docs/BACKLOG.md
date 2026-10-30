@@ -1,54 +1,44 @@
 # Project backlog
 
-Updated on 2026-10-30. Current state, latest delivery and queue only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Earlier deliveries and evidence: [history](archive/EXECUTION_HISTORY.md).
+Updated on 2026-10-30. Current state, latest delivery and active workstream queue for direct CLI sessions (`agy` and `codex`). Coordination and context contract: [ORCHESTRATION](ORCHESTRATION.md). Earlier deliveries and evidence: [history](archive/EXECUTION_HISTORY.md).
 
-## Latest delivery — Mobile footer restoration on main & visual refinements on dev — 2026-10-30
+## Latest delivery — Conceptual rules recalibration, documentation consolidation & direct CLI workflow — 2026-10-30
 
-Luca approved the restoration of the kinetic matrix mobile footer on `main` and visual quality refinements on `dev`:
-1. **Mobile footer on `main` (`2727535`):** Restored `display: block` and `container-type: inline-size` on `.site-mobile-footer` for viewports below 1024px. The full matrix now renders as the terminal signature below the brand stage on mobile, aligning with canonical [HERO.md](HERO.md). Verified via `agent-browser` at 390×844 (Dark/Light) and 768×1024 (Tablet); canvas renders at 180px with no horizontal overflow.
-2. **Visual refinements on `dev` (`abe3595`):**
-   - **Stage grid mask (S1):** Added vertical gradient mask to `.brand-stage-grid` so lines stay sharp over the 3D monolith and fade cleanly before entering the editorial conversion copy and CTA block, honoring [specification §7](02-WEBSITE_SPEC.md#7-visual-direction).
-   - **CTA transitions & Dark hover (R1/R2):** Updated `:is(.hero-cta, .process-cta)` transitions to `cubic-bezier(0.16, 1, 0.3, 1)`, with 4px icon translation and amplified hover depth/glow in dark mode.
-   - **Process step hover token (P1):** Defined `--process-step-hover-bg` (`rgba(255, 255, 255, 0.02)` in dark, `rgba(17, 17, 17, 0.025)` in light), activating cell surface feedback.
+1. **Task-isolated promotion to `main` & `dev` (`2727535` → `530871f`):**
+   - Restored `.site-mobile-footer` (`2727535`) below `1024px` (`display: block; container-type: inline-size;`).
+   - Added vertical gradient mask to `.brand-stage-grid` (`1b984f0`), refined `:is(.hero-cta, .process-cta)` `cubic-bezier(0.16, 1, 0.3, 1)` transitions and Dark hover glow (`76f0001`), and defined `--process-step-hover-bg` (`326684c`). Pushed to `origin/main` and `origin/dev`.
+2. **Conceptual rules recalibration & documentation deduplication:**
+   - **Three-tier design boundaries ([specification §7](02-WEBSITE_SPEC.md#7-visual-direction)):** Separated **Tier 1 Core Invariants** (no fabricated proof, no 3-card SaaS templates or `point–rule–tag` stage badges, no unauthored stock/3D filler) from **Tier 2 Contextual / Role-Based Decisions** (navbars/floating pills are currently unnecessary rather than prohibited; role-based geometry pairs `0–2px` structural grids with `12px`/pill/nested interactive hardware; continuous ambient loops and `0.38` progressive focus dimming are intentional; only the header `[DARK]`/`[LIGHT]` toggle widget is a scaffold while Dark/Light surface calibration is active polish).
+   - **Design-skill translation protocol ([WORKFLOW](WORKFLOW.md#shared-skills-and-design-stages)):** Documented how opinionated taste and motion skills (`high-end-visual-design`, `design-taste-frontend`, `gpt-taste`, `impeccable`) propose ideas without self-censorship while translating generic bans into AUGEO's architectural language.
+   - **Canonical deduplication & direct CLI workflow:** Consolidated `docs/3D_MONOGRAM_REPORT.md` into [specification §8](02-WEBSITE_SPEC.md#current-brand-stage-quality-and-comparison--2026-10-29) (archiving the dated report at [2026-10-27-3d-monogram-report.md](archive/2026-10-27-3d-monogram-report.md)), merged duplicate `docs/architecture-reference.md` into [stack-referencia-4-camadas.md](refs/stack-referencia-4-camadas.md), reconciled `ScrollCue` (8-segment arrow, `6.00s` cascade) and theme tokens (`#e6e6e2` light) in [HERO.md](HERO.md), and retired Paperclip ticket/dashboard tracking in favor of direct execution across separate CLI agent sessions ([ORCHESTRATION.md](ORCHESTRATION.md)).
 
-**Next action:** Evaluate promotion of `dev` refinements to `main` upon Luca's request. LV review of Process #1 ([AUG-12](http://127.0.0.1:3100/AUG/issues/AUG-12)) remains the active gate before follow-up Process work ([AUG-19](http://127.0.0.1:3100/AUG/issues/AUG-19), [AUG-20](http://127.0.0.1:3100/AUG/issues/AUG-20)). Monolith render revision direction remains with Luca.
-
-## Current product baseline — Process refinement and task synchronization
-
-The Process grid remains scroll-drawn on desktop and static on narrow/reduced-motion layouts. Desktop “+” joints now share the grid color, without orange or blink; below1024px they are hidden. Current behavior: [specification §5](02-WEBSITE_SPEC.md#5-public-process). Prior experiments and lessons: [archived exploration](archive/EXECUTION_HISTORY.md#2026-10-27--superseded-process-exploration-archive), [dated evidence](archive/EXECUTION_HISTORY.md#2026-10-27--restrained-process-intersections) and [review bundle](reviews/2026-10-26-polly-process-lines/README.md).
-
-`933424f` (`fix(process): quiet intersection markers across breakpoints`) is on local and remote `main`/`polly`; freshly verified on27/10. That documentation synchronization used `pclip`, reserved for Paperclip/bridge tests; [branch boundary](ORCHESTRATION.md#paperclip-test-branch--pclip). The WhatsApp change is prepared on `main` with commit and push authorized by Luca. The delivered Process refinement passed build/diff checks and Chromium desktop token matching in both themes plus390px hidden markers/retained grid/no overflow. No new browser/build run was needed for that documentation-only synchronization. Vercel success was verified for preceding `3e7cb3d`; no latest-deployment claim.
-
-**Next action / review authority:** [AUG-12](http://127.0.0.1:3100/AUG/issues/AUG-12) remains `in_review` for LV's evaluation of the entire critique item #1. Git promotion does not close this gate. Only after full approval, remind/revisit [#2 / AUG-19](http://127.0.0.1:3100/AUG/issues/AUG-19), then [#3 / AUG-20](http://127.0.0.1:3100/AUG/issues/AUG-20). Their creation records pending work; it does not authorize execution.
-
-Paperclip synchronization is complete: current Process review and all pending workstreams are linked below; original briefs and superseded exploration are preserved in their existing historical stores. [Synchronization evidence](archive/EXECUTION_HISTORY.md#2026-10-27--quiet-marker-promotion-and-paperclip-reconciliation).
+**Next action:** Await Luca's visual evaluation of Process critique item #1 (`#processo`). Only after full approval, revisit **#2 (rules/type relationships)** and then **#3 (closing narrative/hierarchy)**. Monolith 3D static render revision (`#entrada`) awaits Luca's new camera/safe-zone renders (25–30% margin).
 
 ## Current state
 
-Paperclip owns task state. This essential source is a linked index and latest-delivery summary, not an independent queue. Current requirements are in the registered [specification](02-WEBSITE_SPEC.md), [Hero](HERO.md) and [workflow](WORKFLOW.md); historical learning/evidence stays in the existing archive/review system, navigable through derived Obsidian views. Read [ORCHESTRATION](ORCHESTRATION.md#current-work-and-historical-knowledge) for source access and reconciliation.
+This file is the canonical project queue and state summary, coordinated directly by Luca across separate CLI agent sessions (`agy` and `codex`). Current requirements live in the registered [specification](02-WEBSITE_SPEC.md), [Hero](HERO.md) and [workflow](WORKFLOW.md); historical learning and dated verification stay in the archive/review system and remain navigable through derived Obsidian views. Read [ORCHESTRATION](ORCHESTRATION.md#current-work-and-historical-knowledge) for source resolution and view synchronization.
 
-- Hero/matrix identity and intentional cumulative Process focus remain preserved. Dark/light stays a scaffold; copy is provisional.
-- WhatsApp Business direct contact is connected through both conversion CTAs; automation and human handoff remain unconfigured. See [specification §6](02-WEBSITE_SPEC.md#6-sales-intake-and-form).
-- Earlier pilots, historical UI studies and previous branch experiments are evidence, not current implementation instructions. Their human evaluations remain separate.
+- Hero/matrix identity, 8-segment `ScrollCue`, scroll-drawn Process grid with quiet desktop `+` joints ([specification §5](02-WEBSITE_SPEC.md#5-public-process)), `BrandImmersiveStage` (`#entrada`) and `.site-mobile-footer` are live on `main`/`dev`.
+- Only the header `[DARK]`/`[LIGHT]` toggle button is a development scaffold; Dark and Light theme surfaces, contrasts and hover states are actively calibrated. Copy remains provisional.
+- WhatsApp Business direct contact (`+55 44 99183-2843`) is connected through both conversion CTAs; chatbot automation and human handoff remain unconfigured ([specification §6](02-WEBSITE_SPEC.md#6-sales-intake-and-form)).
+- Earlier [archived Process explorations](archive/EXECUTION_HISTORY.md#2026-10-27--superseded-process-exploration-archive) and [restrained intersection checks](archive/EXECUTION_HISTORY.md#2026-10-27--restrained-process-intersections) remain documented in execution history.
 
 ## Priority continuity - agent architecture
 
-Live Paperclip query on27/10 confirmed [AUG-13](http://127.0.0.1:3100/AUG/issues/AUG-13) in `backlog`, unassigned; [AUG-8](http://127.0.0.1:3100/AUG/issues/AUG-8) `blocked`; [AUG-9](http://127.0.0.1:3100/AUG/issues/AUG-9), [AUG-5](http://127.0.0.1:3100/AUG/issues/AUG-5) and [AUG-6](http://127.0.0.1:3100/AUG/issues/AUG-6) `in_review`; [AUG-7](http://127.0.0.1:3100/AUG/issues/AUG-7) in `backlog`, unassigned. Original results/impediments were preserved, not resolved in bulk. Historical pilot findings are in [history](archive/EXECUTION_HISTORY.md#piloto-comparativo-dos-pontos-34--2026-10-18). No executor was started by synchronization.
+**Updated on 2026-10-30:** Paperclip (`127.0.0.1:3100`), its task-runner bridge and `AUG-*` ticket tracking are retired from active operation. Luca runs and coordinates tasks directly in separate Antigravity (`agy`) and Codex (`codex`) CLI sessions over local Git branches (`main` and `dev`), using `augeo-orchestrator context` / `views` strictly for shared Markdown context resolution and Obsidian view synchronization. Historical pilot findings (`AUG-1` through `AUG-13`) remain archived in [history](archive/EXECUTION_HISTORY.md#piloto-comparativo-dos-pontos-34--2026-10-18).
 
 ## Queue by workstream
 
-Status below is a27/10 snapshot; follow the ticket for current state. Other pending tickets remain unassigned `backlog`; AUG-27 is explicitly released to Antigravity at Medium. Follow-ups retain their explicit approval dependencies. Product work requires its own scoped request/assignment.
+Approval gates and task ordering are directed by Luca in the CLI workflow and recorded here.
 
-| Workstream | Paperclip task | Canonical source / next dependency |
+| Workstream | Current status / gate | Canonical source / next dependency |
 | --- | --- | --- |
-| Process #1 | [AUG-12](http://127.0.0.1:3100/AUG/issues/AUG-12), `in_review` | [Specification §5](02-WEBSITE_SPEC.md#5-public-process); full LV review pending. |
-| Process #2 | [AUG-19](http://127.0.0.1:3100/AUG/issues/AUG-19) | Rules/type relationships; only after full #1 approval. |
-| Process #3 | [AUG-20](http://127.0.0.1:3100/AUG/issues/AUG-20) | Closing narrative/hierarchy; after #1 and #2. |
-| Brand imagery / layout exploration | [AUG-27](http://127.0.0.1:3100/AUG/issues/AUG-27) | [Asset inventory and brief](02-WEBSITE_SPEC.md#3d-brand-imagery-exploration--2026-10-27); analyze on `pclip`, return options before UI implementation. |
-| Documentation | [AUG-26](http://127.0.0.1:3100/AUG/issues/AUG-26) | Review shared output procedure/consolidation; IDE parity remains unverified. |
-| Agent architecture | [AUG-13](http://127.0.0.1:3100/AUG/issues/AUG-13) and linked pilots above | [ORCHESTRATION](ORCHESTRATION.md); Gatekeeper unexecuted and historical evaluations pending. |
-| Hero | [AUG-21](http://127.0.0.1:3100/AUG/issues/AUG-21) | [HERO](HERO.md#current-block-plan); reconcile block2, do not advance deferred blocks. |
-| Landing / intake | [AUG-22](http://127.0.0.1:3100/AUG/issues/AUG-22) | [Specification §6](02-WEBSITE_SPEC.md#6-sales-intake-and-form); direct channel connected; define automation, conversation and human handoff. |
-| Technical cleanup | [AUG-23](http://127.0.0.1:3100/AUG/issues/AUG-23) | Evaluate pixel, cue scope, legacy specs and assets; no removals approved. |
-| Figma | [AUG-24](http://127.0.0.1:3100/AUG/issues/AUG-24) | [HERO proposals](HERO.md#figma-proposals---independent-workstream); verify PNG suitability/provenance before resuming import. |
-| Publication | [AUG-25](http://127.0.0.1:3100/AUG/issues/AUG-25) | [Technical baseline](02-WEBSITE_SPEC.md#10-implementation); canonical/redirect/metadata decisions pending, Vercel Pro postponed. |
+| Process #1 | Implemented on `main`, awaiting Luca's visual review | [Specification §5](02-WEBSITE_SPEC.md#5-public-process); full visual review of scroll-drawn lines and `+` joints pending. |
+| Process #2 | Queued (`layout`/`polish`) | Rules/type relationships; gated on full approval of Process #1. |
+| Process #3 | Queued (`clarify`/`layout`) | Closing narrative/hierarchy; gated on Process #1 and #2. |
+| Brand imagery / stage | Awaiting new 3D renders | [Brand Stage quality & safe-zone brief](02-WEBSITE_SPEC.md#3d-brand-imagery-exploration--2026-10-27); new static render with 25–30% safe zone prioritized before reflection. |
+| Hero | Block 2 live on `main`; Block 3 deferred | [HERO](HERO.md#current-block-plan); holistic multi-device sign-off with Luca; optional entrance/magnetic motion deferred until after Process. |
+| Landing / intake | Direct WhatsApp live; bot pending | [Specification §6](02-WEBSITE_SPEC.md#6-sales-intake-and-form); define conversational bot automation and human handoff. |
+| Technical cleanup | Backlog | [Specification §10](02-WEBSITE_SPEC.md#10-implementation); evaluate unused CSS selectors (`.brand-stage-cta*`, `.process-cta`, `.process-closing`) and legacy specs when requested. |
+| Figma | Independent study paused | [HERO proposals](HERO.md#figma-proposals---independent-workstream); verify PNG suitability/provenance before resuming manual Figma import. |
+| Publication | Live on Vercel (`main`); metadata pending | [Technical baseline](02-WEBSITE_SPEC.md#10-implementation); canonical/redirect/metadata decisions pending, Vercel Pro postponed. |

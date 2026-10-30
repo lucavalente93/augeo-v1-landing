@@ -36,7 +36,18 @@ The hero sequence, states and criteria are in [HERO.md](HERO.md#current-block-pl
 
 React implementation guidance belongs in `augeo-react-frontend`; source resolution belongs in `augeo-context`. Resolve installed skills through discovery. For Impeccable, use its single entry skill and routed subcommands/references; do not assume separately installed `/shape` or `/audit` skills.
 
-When an applicable playbook requires a human decision, return its questions/options/brief and the exact pending decision. In Paperclip, record the answer on the same ticket and explicitly resume the saved session. Keep discovery, concept selection, implementation and review distinct; gates/artifacts come from the installed playbook. Interactive conversations use those same gates. Do not cross a gate by extending time limits, starting another executor or repeating checks.
+### Visual polish and external design-skill translation protocol
+
+When Luca invokes specialized visual, taste or motion skills (`high-end-visual-design`, `design-taste-frontend`, `gpt-taste`, `impeccable`, `gsap-react`, `motion-framer`) during the polish and evolution phase, reconcile the skill's heuristics against the three-tier boundaries in [specification §7](02-WEBSITE_SPEC.md#7-visual-direction):
+
+1. **Ideation without self-censorship:** Do not suppress a skill's visual or interactive proposal simply because an element (e.g., a floating navigation pill, softer hardware radius, nested `button-in-button` / `double-bezel` enclosure, or specular lighting treatment) is not currently present. Classify proposals explicitly for Luca into:
+   - *Immediate polish* aligned with the active baseline;
+   - *Contextual / evolutionary options* (currently unnecessary for page length/scope, but valid if Luca chooses to expand that component);
+   - *Rejected patterns* that violate Tier 1 core invariants (fabricated proof, generic 3-card SaaS grids, or the rejected `point–rule–tag` stage badge formula).
+2. **Translate craft principles into AUGEO's language:** Opinionated skills often include blanket rules (such as banning `1px` borders, requiring uniform page-wide corner radii, or prescribing external font stacks). Never blindly delete AUGEO's `1px` architectural grid spine or local typography (`Hanken Grotesk`, `Libre Franklin`, `Share Tech Mono`) to satisfy a generic skill checklist. Instead, translate the skill's craft principle into AUGEO's system—for example, using vertical gradient masks (`.brand-stage-grid`) and reading-band exclusions so `1px` grids never collide with commercial typography, or applying softer radii (`12px`/pill) and inner bezels specifically to interactive conversion hardware (`ShinyButton`) while keeping structural grids orthogonal (`0px–2px`).
+3. **Inspect live mechanics before critiquing dynamic components:** Before flagging visual artifacts on animated, canvas or CSS Houdini components (`KineticMatrix`, `ScrollCue`, `ShinyButton`, `ProcessSection`), read the component's TSX/CSS and sample both rest and interaction frames (`hover`, `focus-visible`, scroll progression) in `agent-browser`. Never misdiagnose a single mid-sweep animation frame or intentional progressive-focus dimming (`opacity: 0.38` on inactive Process rows) as a static rendering defect.
+
+When an applicable playbook requires a human decision, return its questions/options/brief and the exact pending decision directly in the CLI conversation and wait for Luca's direction before proceeding. Keep discovery, concept selection, implementation and review distinct; gates/artifacts come from the installed playbook. Do not cross a gate by starting another executor or repeating checks.
 
 Present a usable preview for interface evaluation. Verify skill discovery, launcher, browser and image-generation availability separately; an `engine-probe` proves only runtime access.
 
@@ -67,7 +78,7 @@ Apply naming guidance within the React skill's architecture and lifecycle constr
 
 Documentation placement, naming, internal session artifacts and delivery format are defined once in the project-local [augeo-project-output skill](../.agents/skills/augeo-project-output/SKILL.md), loaded through AGENTS by both executors.
 
-For bridge-managed checks, follow [execution ownership](ORCHESTRATION.md#current-cycle). Repeat checks only for new changes, failures or unresolved concerns.
+Follow the direct CLI workflow in [ORCHESTRATION](ORCHESTRATION.md#current-cycle). Repeat checks only for new changes, failures or unresolved concerns.
 
 Record the command actually run, count/result, context, limitations and relevant artifacts. Identify screenshots in `/tmp` and `test-results/` as temporary and preserve necessary facts in history; do not rely solely on those files. Update the block summary and next action in the backlog.
 

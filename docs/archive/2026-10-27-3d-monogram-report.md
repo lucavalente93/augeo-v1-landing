@@ -1,5 +1,7 @@
 # 3D Monogram & Immersive Stage Report
 
+> **Historical record (2026-10-27):** Preserved from `docs/3D_MONOGRAM_REPORT.md`. On 2026-10-29, the lossy WebP pipeline described in §3 below was replaced by lossless `VP8L` WebP derivatives (`1376×768` mobile, `2752×1536` 2K, and `5504×3072` 4K Light). Active Brand Stage requirements, responsive crop diagnostics and regeneration prompts are maintained in [02-WEBSITE_SPEC.md](../02-WEBSITE_SPEC.md#current-brand-stage-quality-and-comparison--2026-10-29).
+
 **Date:** 2026-10-27  
 **Author:** Luca Valente & Antigravity  
 **Branch:** `v5` (promoted to `main`)  
