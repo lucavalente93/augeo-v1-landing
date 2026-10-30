@@ -214,22 +214,26 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
   background: var(--foreground);
   color: var(--background);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 :is(.hero-cta, .process-cta):hover {
   background: #ffffff;
   color: #06070a;
-  box-shadow: 0 0 24px rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 28px rgba(255, 255, 255, 0.22);
 }
 :is(.hero-cta, .process-cta):active {
   transform: scale(0.98);
 }
 :is(.hero-cta, .process-cta) svg {
   flex-shrink: 0;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 :is(.hero-cta, .process-cta):hover svg {
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 :is(.hero-cta, .process-cta):focus-visible {
   outline: 2px solid var(--accent);
