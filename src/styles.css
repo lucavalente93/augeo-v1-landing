@@ -340,7 +340,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid #ff482c; outline-offs
   }
 
   .site-mobile-footer {
-    display: none;
+    container-type: inline-size;
+    display: block;
     position: relative;
     width: 100%;
     height: clamp(140px, 22dvh, 180px);
