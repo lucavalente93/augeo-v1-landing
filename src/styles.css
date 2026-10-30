@@ -493,6 +493,7 @@ html { scroll-behavior: smooth; }
   --process-grid-line: rgba(255, 255, 255, 0.14);
   --process-vignette-center: rgba(255, 255, 255, 0.03);
   --process-vignette-edge: rgba(0, 0, 0, 0.42);
+  --process-step-hover-bg: rgba(255, 255, 255, 0.02);
   /* The panel background resolves cqw against this full-width ancestor. */
   container-type: inline-size;
   position: relative;
@@ -504,7 +505,7 @@ html { scroll-behavior: smooth; }
   --foreground: var(--process-fg);
   --border: var(--process-border);
   --muted-foreground: var(--process-muted);
-  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 :root.light .process-section {
   --process-bg: #e6e6e2;
@@ -518,6 +519,7 @@ html { scroll-behavior: smooth; }
   --process-grid-line: rgba(17, 17, 17, 0.14);
   --process-vignette-center: rgba(255, 255, 255, 0.22);
   --process-vignette-edge: rgba(17, 17, 17, 0.045);
+  --process-step-hover-bg: rgba(17, 17, 17, 0.025);
 }
 .process-section:focus { outline: none; }
 .process-panel {
