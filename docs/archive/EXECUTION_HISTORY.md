@@ -1805,3 +1805,28 @@ Luca then reiterated the recommendation to establish the new static render first
 ### Authorized promotion to main — 2026-10-29
 
 After approving the static-render-first direction, Luca explicitly requested commit and push to `main`, superseding the earlier restriction for this delivery. Reviewed the complete pending diff and fetched origin: local and remote `main` matched, and `dev` had no unmerged pre-existing commits relative to `main`. Re-ran `bun run build` successfully (TypeScript/Vite,460 modules; existing approximately502kB JavaScript chunk warning) and `git diff --check`. Earlier Chromium interaction evidence remains the browser coverage for unchanged application code; no new browser run or deployment verification was claimed. Promotion preserves static A as default, optional B as comparison material, lossless assets and the deferred reflection decision.
+
+## 2026-10-30 — Mobile footer restoration on main & visual refinements on dev
+
+Luca reviewed the skill audit against `high-end-visual-design` and instructed:
+1. Restore the kinetic matrix footer on mobile directly on `main`.
+2. Apply the diagnosis-related visual quality refinements inside branch `dev`.
+
+### 1. Main delivery — commit `2727535`
+
+Investigated the missing mobile footer: during the brand-stage introduction (`86f0646`), `.site-mobile-footer` had been set to `display: none` below 1024px while [HERO.md](../HERO.md#mobile-composition) preserved it as the canonical visual footer. Restored `display: block` and `container-type: inline-size` in `src/styles.css`.
+- **Verification:** Ran `agent-browser` against the local Vite instance at `http://localhost:5199/`:
+  - Mobile (390×844) in Light and Dark mode: `.site-mobile-footer` computed `display: block`, height 180px, width 390px, canvas `390×179px`, 0 page errors, no horizontal overflow (`overflowX: false`).
+  - Tablet (768×1024): `display: block`, height 180px, canvas `768×179px`, no overflow.
+  - Desktop (1440×900): `display: none`, height 0 (desktop deliberately uses hero matrix only).
+- Committed on `main` as `2727535`: `fix(mobile): restore hero matrix footer below brand stage`.
+
+### 2. Dev delivery — commit `abe3595`
+
+Merged `main` into `dev` and applied the approved refinements:
+1. **Brand Stage Grid Mask (S1):** Added `mask-image` / `-webkit-mask-image` linear gradient to `.brand-stage-grid`. The equilateral columns stay fully opaque across the 3D monolith, then fade out smoothly (`transparent calc(clamp(520px, 72vh, 900px) + 96px)`) before the conversion heading and copy block. Eliminates the harsh linework cutting through commercial text while preserving structural rhythm.
+2. **CTA Easing and Dark Hover Feedback (R1/R2):** Refined `:is(.hero-cta, .process-cta)` to use `cubic-bezier(0.16, 1, 0.3, 1)` for background, color, transform, and shadow. Trailing SVG arrow transitions with 4px translation on hover. Dark mode hover upgraded from nearly invisible white-on-offwhite to `box-shadow: 0 0 28px rgba(255, 255, 255, 0.22)`, creating clear tactile response.
+3. **Process Step Hover Background Token (P1):** Added `--process-step-hover-bg` (`rgba(255, 255, 255, 0.02)` dark, `rgba(17, 17, 17, 0.025)` light) and refined `.process-section` transitions with `cubic-bezier(0.16, 1, 0.3, 1)`, activating the subtle cell surface feedback.
+- **Verification:** `bun run build` passed in 1.49s (0 errors). Inspected 1440×900 screenshots in `agent-browser` across Light and Dark themes, confirming clean typographical isolation on the closing copy and smooth CTA interaction.
+- Committed on `dev` as `abe3595`: `style(stage,cta): refine stage grid mask, cta easing and process hover token`.
+- Follow-up: Luca officially approved the delivery on 30/10/2026.

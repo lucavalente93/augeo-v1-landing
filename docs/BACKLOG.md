@@ -2,11 +2,16 @@
 
 Updated on 2026-10-30. Current state, latest delivery and queue only. Contract: [ORCHESTRATION](ORCHESTRATION.md). Earlier deliveries and evidence: [history](archive/EXECUTION_HISTORY.md).
 
-## Latest delivery — Hero cue spacing at compact desktop heights — 2026-10-29
+## Latest delivery — Mobile footer restoration on main & visual refinements on dev — 2026-10-30
 
-On desktop viewports up to `768px` tall, the hero scroll cue now follows the CTA in normal flow with `32px` separation, preventing the anchored cue from colliding with growing hero copy. The CSS change and checks/limits are recorded in [history](archive/EXECUTION_HISTORY.md#2026-10-29--hero-cue-spacing-at-compact-desktop-heights). Browser inspection is pending because the local `agent-browser` daemon could not start in this environment. The earlier brand-stage source-fidelity delivery and its review remain recorded in [history](archive/EXECUTION_HISTORY.md#2026-10-29--brand-stage-quality-investigation-and-staticautomatic-comparison-on-dev).
+Luca approved the restoration of the kinetic matrix mobile footer on `main` and visual quality refinements on `dev`:
+1. **Mobile footer on `main` (`2727535`):** Restored `display: block` and `container-type: inline-size` on `.site-mobile-footer` for viewports below 1024px. The full matrix now renders as the terminal signature below the brand stage on mobile, aligning with canonical [HERO.md](HERO.md). Verified via `agent-browser` at 390×844 (Dark/Light) and 768×1024 (Tablet); canvas renders at 180px with no horizontal overflow.
+2. **Visual refinements on `dev` (`abe3595`):**
+   - **Stage grid mask (S1):** Added vertical gradient mask to `.brand-stage-grid` so lines stay sharp over the 3D monolith and fade cleanly before entering the editorial conversion copy and CTA block, honoring [specification §7](02-WEBSITE_SPEC.md#7-visual-direction).
+   - **CTA transitions & Dark hover (R1/R2):** Updated `:is(.hero-cta, .process-cta)` transitions to `cubic-bezier(0.16, 1, 0.3, 1)`, with 4px icon translation and amplified hover depth/glow in dark mode.
+   - **Process step hover token (P1):** Defined `--process-step-hover-bg` (`rgba(255, 255, 255, 0.02)` in dark, `rgba(17, 17, 17, 0.025)` in light), activating cell surface feedback.
 
-**Next action:** Review the compact-height hero fix in a working local browser, then establish and review the new static brand render following Luca's planned camera/render revision. Browser inspection remains pending. The fix is committed locally; push was attempted but Git could not resolve `github.com`, so publication remains pending. Deployment verification is not included. Existing independent queues and approval gates below remain pending; this request does not authorize their execution. Current brand-stage requirements and review: [specification](02-WEBSITE_SPEC.md#current-brand-stage-quality-and-comparison--2026-10-29).
+**Next action:** Evaluate promotion of `dev` refinements to `main` upon Luca's request. LV review of Process #1 ([AUG-12](http://127.0.0.1:3100/AUG/issues/AUG-12)) remains the active gate before follow-up Process work ([AUG-19](http://127.0.0.1:3100/AUG/issues/AUG-19), [AUG-20](http://127.0.0.1:3100/AUG/issues/AUG-20)). Monolith render revision direction remains with Luca.
 
 ## Current product baseline — Process refinement and task synchronization
 
