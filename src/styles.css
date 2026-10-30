@@ -715,6 +715,20 @@ html { scroll-behavior: smooth; }
   inset: 0;
   pointer-events: none;
   z-index: 1;
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black clamp(520px, 72vh, 900px),
+    rgba(0, 0, 0, 0.4) calc(clamp(520px, 72vh, 900px) + 32px),
+    transparent calc(clamp(520px, 72vh, 900px) + 96px)
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black clamp(520px, 72vh, 900px),
+    rgba(0, 0, 0, 0.4) calc(clamp(520px, 72vh, 900px) + 32px),
+    transparent calc(clamp(520px, 72vh, 900px) + 96px)
+  );
 }
 
 .brand-stage-column {
