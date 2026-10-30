@@ -402,6 +402,16 @@ html { scroll-behavior: smooth; }
     margin-top: 0;
   }
 }
+@media (min-width: 1024px) and (max-height: 768px) {
+  .hero-copy { justify-content: flex-start; }
+  .hero-content { margin-block: 0; }
+  .hero-page .scroll-cue {
+    position: relative;
+    inset: auto;
+    margin-top: 32px;
+    align-self: flex-start;
+  }
+}
 /* 68 x 74 px drawing area for bold modular shaft + head arrow */
 .scroll-cue-field {
   display: block;

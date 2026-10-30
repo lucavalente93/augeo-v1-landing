@@ -1,5 +1,11 @@
 # Histórico de execução e decisões anteriores
 
+## 2026-10-29 — Hero cue spacing at compact desktop heights
+
+- Reproduced the layout cause from the current CSS: at desktop widths the CTA stayed in normal flow while the scroll cue was anchored to the panel bottom, allowing them to overlap when the viewport height was compact and hero copy grew.
+- In `src/styles.css`, desktop layouts up to `768px` tall now place the cue in flow after the CTA with `32px` top margin, and align hero content from the top. Taller desktop layouts retain the bottom-anchored cue.
+- `git diff --check` passed. Local browser inspection was attempted at `1440×600`, but `agent-browser` could not start its daemon because its socket directory was read-only; retrying with `/tmp` also failed at daemon startup. The visual result remains unverified in a browser. No test suite or build was run. Luca authorized commit and push on `2026-10-30`; commit was created with reporter credit, but push failed because Git could not resolve `github.com`. Deployment verification is not included.
+
 ## 2026-10-28 — ScrollCue downward cascade overhaul & ShinyButton CTA integration
 
 Luca requested improvements to the hero scroll cue animation and the integration of a ShinyButton component for the final CTA:
